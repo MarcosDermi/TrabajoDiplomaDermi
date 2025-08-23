@@ -1,0 +1,19 @@
+USE [DB_IngSoft]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[BuscarDVSistema]
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    SELECT TOP 1 DV, FechaActualizacion
+    FROM DVSistema
+    ORDER BY Id DESC;
+END
+GO 

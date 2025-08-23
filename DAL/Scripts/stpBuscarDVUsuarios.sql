@@ -1,0 +1,19 @@
+USE [DB_IngSoft]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[BuscarDVUsuarios]
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    SELECT DV
+    FROM Users
+    WHERE deleted = 0 AND DV IS NOT NULL AND DV != '';
+END
+GO 
