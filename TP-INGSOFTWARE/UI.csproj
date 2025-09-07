@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ical.Net, Version=5.0.0.0, Culture=neutral, PublicKeyToken=65c0446cd019ea53, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ical.Net.5.1.0\lib\netstandard2.0\Ical.Net.dll</HintPath>
+    </Reference>
     <Reference Include="MaterialDesignColors, Version=5.2.1.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.5.2.1\lib\net462\MaterialDesignColors.dll</HintPath>
     </Reference>
@@ -44,12 +47,34 @@
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
+    <Reference Include="NodaTime, Version=3.2.2.0, Culture=neutral, PublicKeyToken=4226afe0d9b296d1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NodaTime.3.2.2\lib\netstandard2.0\NodaTime.dll</HintPath>
+    </Reference>
+    <Reference Include="Portable.System.DateTimeOnly, Version=9.0.0.1, Culture=neutral, PublicKeyToken=16fb7a27ac3b9689, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.System.DateTimeOnly.9.0.0\lib\net462\Portable.System.DateTimeOnly.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System">
       <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
     </Reference>
+    <Reference Include="System.Buffers, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.6.0\lib\net462\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.6.0\lib\net462\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.6.0\lib\net462\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.1.0\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -63,96 +88,132 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmGestionBitacoras.cs">
+    <Compile Include="Interfaces\frmGestionStock.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmGestionBitacoras.Designer.cs">
+    <Compile Include="Interfaces\frmGestionStock.Designer.cs">
+      <DependentUpon>frmGestionStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\frmGestionProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\frmGestionProveedores.Designer.cs">
+      <DependentUpon>frmGestionProveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\frmGestionStockInsumosEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\frmGestionStockInsumosEdit.Designer.cs">
+      <DependentUpon>frmGestionStockInsumosEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\frmTurnosLogOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\frmTurnosLogOut.Designer.cs">
+      <DependentUpon>frmTurnosLogOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\frmGestionBitacoras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\frmGestionBitacoras.Designer.cs">
       <DependentUpon>frmGestionBitacoras.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmGestionControlDeCambios.cs">
+    <Compile Include="Interfaces\frmGestionControlDeCambios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmGestionControlDeCambios.Designer.cs">
+    <Compile Include="Interfaces\frmGestionControlDeCambios.Designer.cs">
       <DependentUpon>frmGestionControlDeCambios.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmGestionIdiomas.cs">
+    <Compile Include="Interfaces\frmGestionIdiomas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmGestionIdiomas.Designer.cs">
+    <Compile Include="Interfaces\frmGestionIdiomas.Designer.cs">
       <DependentUpon>frmGestionIdiomas.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmGestionPermisos.cs">
+    <Compile Include="Interfaces\frmGestionPermisos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmGestionPermisos.Designer.cs">
+    <Compile Include="Interfaces\frmGestionPermisos.Designer.cs">
       <DependentUpon>frmGestionPermisos.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmSesion.cs">
+    <Compile Include="Interfaces\frmSesion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSesion.Designer.cs">
+    <Compile Include="Interfaces\frmSesion.Designer.cs">
       <DependentUpon>frmSesion.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmInicioSesion.cs">
+    <Compile Include="Interfaces\frmInicioSesion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmInicioSesion.Designer.cs">
+    <Compile Include="Interfaces\frmInicioSesion.Designer.cs">
       <DependentUpon>frmInicioSesion.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmRegistrarUsuario.cs">
+    <Compile Include="Interfaces\frmRegistrarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmRegistrarUsuario.Designer.cs">
+    <Compile Include="Interfaces\frmRegistrarUsuario.Designer.cs">
       <DependentUpon>frmRegistrarUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmGestionUsuarios.cs">
+    <Compile Include="Interfaces\frmGestionUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmGestionUsuarios.Designer.cs">
+    <Compile Include="Interfaces\frmGestionUsuarios.Designer.cs">
       <DependentUpon>frmGestionUsuarios.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmGestionIntegridad.cs">
+    <Compile Include="Interfaces\frmGestionIntegridad.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmGestionIntegridad.Designer.cs">
+    <Compile Include="Interfaces\frmGestionIntegridad.Designer.cs">
       <DependentUpon>frmGestionIntegridad.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmErrorDV.cs">
+    <Compile Include="Interfaces\frmErrorDV.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmErrorDV.Designer.cs">
+    <Compile Include="Interfaces\frmErrorDV.Designer.cs">
       <DependentUpon>frmErrorDV.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmGestionBitacoras.resx">
+    <EmbeddedResource Include="Interfaces\frmGestionStock.resx">
+      <DependentUpon>frmGestionStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\frmGestionProveedores.resx">
+      <DependentUpon>frmGestionProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\frmGestionStockInsumosEdit.resx">
+      <DependentUpon>frmGestionStockInsumosEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\frmTurnosLogOut.resx">
+      <DependentUpon>frmTurnosLogOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\frmGestionBitacoras.resx">
       <DependentUpon>frmGestionBitacoras.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmGestionControlDeCambios.resx">
+    <EmbeddedResource Include="Interfaces\frmGestionControlDeCambios.resx">
       <DependentUpon>frmGestionControlDeCambios.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmGestionIdiomas.resx">
+    <EmbeddedResource Include="Interfaces\frmGestionIdiomas.resx">
       <DependentUpon>frmGestionIdiomas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmGestionPermisos.resx">
+    <EmbeddedResource Include="Interfaces\frmGestionPermisos.resx">
       <DependentUpon>frmGestionPermisos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSesion.resx">
+    <EmbeddedResource Include="Interfaces\frmSesion.resx">
       <DependentUpon>frmSesion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmInicioSesion.resx">
+    <EmbeddedResource Include="Interfaces\frmInicioSesion.resx">
       <DependentUpon>frmInicioSesion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmRegistrarUsuario.resx">
+    <EmbeddedResource Include="Interfaces\frmRegistrarUsuario.resx">
       <DependentUpon>frmRegistrarUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmGestionUsuarios.resx">
+    <EmbeddedResource Include="Interfaces\frmGestionUsuarios.resx">
       <DependentUpon>frmGestionUsuarios.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmGestionIntegridad.resx">
+    <EmbeddedResource Include="Interfaces\frmGestionIntegridad.resx">
       <DependentUpon>frmGestionIntegridad.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmErrorDV.resx">
+    <EmbeddedResource Include="Interfaces\frmErrorDV.resx">
       <DependentUpon>frmErrorDV.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

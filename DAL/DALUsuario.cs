@@ -188,7 +188,7 @@ namespace DAL
 
             try
             {
-                var cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["IS"].ConnectionString);
+                var cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["TD"].ConnectionString);
                 cnn.Open();
 
                 var cmd = new SqlCommand();

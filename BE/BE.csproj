@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BEInsumo.cs" />
+    <Compile Include="BEProveedor.cs" />
     <Compile Include="ClasesMultiLenguaje\Idioma.cs" />
     <Compile Include="ClasesMultiLenguaje\IdiomaObserver.cs" />
     <Compile Include="ClasesMultiLenguaje\Palabra.cs" />

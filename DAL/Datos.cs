@@ -8,7 +8,9 @@ namespace DAL
 {
     public class Datos
     {
-        private SqlConnection oCnn = new SqlConnection(ConfigurationManager.ConnectionStrings["IS"].ConnectionString);
+        //Server=tcp:trabajodiplomaserver.database.windows.net,1433;Initial Catalog=TrabajoDiploma;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication="Active Directory Default";
+        //Server=tcp:trabajodiplomaserver.database.windows.net,1433;Initial Catalog=TrabajoDiploma;Persist Security Info=False;User ID=MarcosDermi;Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+        private SqlConnection oCnn = new SqlConnection(ConfigurationManager.ConnectionStrings["TD"].ConnectionString);
 
         SqlCommand oCmd;
 

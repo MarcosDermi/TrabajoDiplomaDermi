@@ -268,7 +268,7 @@ namespace DAL
         public void FillUserComponents(BEUsuario oUsuario)
         {
 
-            var cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["IS"].ConnectionString);
+            var cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["TD"].ConnectionString);
             cnn.Open();
 
             var cmd2 = new SqlCommand();
