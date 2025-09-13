@@ -164,10 +164,7 @@ namespace DAL
                 where = familia;
             }
 
-            var cs = new SqlConnectionStringBuilder();
-            cs.IntegratedSecurity = true;
-            cs.DataSource = ".";
-            cs.InitialCatalog = "DB_IngSoft";
+            var cs = new SqlConnectionStringBuilder(ConfigurationManager.ConnectionStrings["TD"].ConnectionString);
             var cnn = new SqlConnection(cs.ConnectionString);
             cnn.Open();
             var cmd = new SqlCommand();
