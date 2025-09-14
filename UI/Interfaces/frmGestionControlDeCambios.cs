@@ -1,5 +1,7 @@
-﻿using BE;
+﻿using ABSTRACCION.Contracts;
+using BE;
 using BLL;
+using SERVICES;
 using System;
 using System.Windows.Forms;
 
@@ -7,10 +9,11 @@ namespace TP_INGSOFTWARE
 {
     public partial class frmGestionControlDeCambios : Form
     {
+        IDigitoVerificadorService DigitoVerificadorService = new DigitoVerificadorService();
         public frmGestionControlDeCambios()
         {
             InitializeComponent();
-            oBLLUsuario = new BLLUsuario();
+            oBLLUsuario = new BLLUsuario(DigitoVerificadorService);
             oBEUsuario = new BEUsuario();
             this.cmbUsuarios.DataSource = oBLLUsuario.ListarTodo(false, 0);
         }

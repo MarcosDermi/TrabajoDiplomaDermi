@@ -1,19 +1,26 @@
-﻿using System;
+﻿using ABSTRACCION.Contracts;
 using BE;
+using BE.ClasesMultiLenguaje;
 using BLL;
 using SERVICES;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using BE.ClasesMultiLenguaje;
 
 namespace TP_INGSOFTWARE
 {
     public partial class frmRegistrarUsuario : Form,IdiomaObserver
     {
         
-        BLLUsuario oBLLUsuario = new BLLUsuario();
+        
+        
+        ISingletonSesionService SingletonSesionService = BLLSingletonSesion.Instancia;
+        IDigitoVerificadorService IDigitoVerificadorService = new DigitoVerificadorService();
+
+        BLLUsuario oBLLUsuario;
         Validators oValidators = new Validators();
+        BLLObserver oBLLObserver = new BLLObserver();
 
         public frmRegistrarUsuario()
         {
@@ -25,8 +32,9 @@ namespace TP_INGSOFTWARE
         {
 
             CargarTextBoxs();
-            Observer.agregarObservador(this);
+            oBLLObserver.agregarObservador(this);
             ListarIdiomas();
+            BLLUsuario oBLLUsuario = new BLLUsuario(IDigitoVerificadorService);
 
         }
         public void CambiarIdioma(Idioma Idioma)
@@ -54,7 +62,7 @@ namespace TP_INGSOFTWARE
                     //Obtener traducciones deberia ejecutarse 1 sola vez.. 
                     //Esto seria sesion.idioma y lo busco desde aca..
 
-                    var traducciones = SingletonSesion.instancia.ObtenerTraduccionesPorIdioma(Idioma.Nombre);
+                    var traducciones = BLLSingletonSesion.Instancia.ObtenerTraduccionesPorIdioma(Idioma.Nombre);
 
                     if (traducciones == null)
                     {
@@ -233,7 +241,7 @@ namespace TP_INGSOFTWARE
                 Idioma idiomaActual = (Idioma)cbIdioma.SelectedItem;
                 if (idiomaActual != null)
                 {
-                    SingletonSesion.instancia.idioma = idiomaActual;
+                    SingletonSesionService.CambiarIdioma(idiomaActual);
                     traducir();
                 }
             }
@@ -521,8 +529,8 @@ namespace TP_INGSOFTWARE
                     return;
 
                 Idioma idiomaSeleccionado = (Idioma)cbIdioma.SelectedItem;
-                SingletonSesion.instancia.idioma = idiomaSeleccionado;
-                Observer.cambiarIdioma(idiomaSeleccionado);
+                SingletonSesionService.CambiarIdioma(idiomaSeleccionado);
+                oBLLObserver.cambiarIdioma(idiomaSeleccionado);
             }
             catch (Exception ex)
             {

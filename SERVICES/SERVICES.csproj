@@ -41,16 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bitacora.cs" />
     <Compile Include="DigitoVerificadorService.cs" />
-    <Compile Include="HashCrypto.cs" />
-    <Compile Include="LoginException.cs" />
-    <Compile Include="LoginResult.cs" />
-    <Compile Include="Observer.cs" />
-    <Compile Include="Sesion.cs" />
-    <Compile Include="SingletonSesion.cs" />
-    <Compile Include="TipoBitacoraEnum.cs" />
-    <Compile Include="Validators.cs" />
+    <Compile Include="GestionStockService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -62,6 +54,11 @@
       <Project>{5dfae93a-2ab8-4d8c-a7ec-52829968cb67}</Project>
       <Name>BE</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{166eb858-5836-4c10-b27e-0d85dbb0e589}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

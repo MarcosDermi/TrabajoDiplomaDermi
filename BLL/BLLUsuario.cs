@@ -1,31 +1,25 @@
-﻿using BE;
-using ABSTRACCION;
+﻿using ABSTRACCION;
+using ABSTRACCION.Contracts;
+using BE;
 using DAL;
+using SERVICES;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SERVICES;
-using System.Security.Cryptography;
-using System.ComponentModel;
 
 namespace BLL
 {
     public class BLLUsuario : IGestor<BEUsuario>
     {
-        public BLLUsuario() 
+        public BLLUsuario(IDigitoVerificadorService DigitoVerificadorService) 
         {
-            oDatos = new Datos();
             oValidators = new Validators();
             oDALUsuario = new DALUsuario();
             oHashCrypto = new HashCrypto();
             oBLLPermisos = new BLLPermisos();
             oBLLBitacora = new BLLBitacora();
-            oBLLDV = new BLLDV();
+            oBLLDV = new BLLDV(DigitoVerificadorService);
         }
 
-        Datos oDatos;
         Validators oValidators;
         DALUsuario oDALUsuario;
         HashCrypto oHashCrypto;
@@ -33,7 +27,6 @@ namespace BLL
         BLLPermisos oBLLPermisos;
         BLLBitacora oBLLBitacora;
         BLLDV oBLLDV;
-
 
         public bool Guardar(BEUsuario oUsuario)
         {
@@ -119,13 +112,14 @@ namespace BLL
 
         public LoginResult Login(string oUsuarioName, string oClave)
         {
-            if (SingletonSesion.instancia.IsLogged())
+            var Sesion = BLLSingletonSesion.Instancia;
+
+            if (Sesion.IsLoggedIn())
             {
                 throw new Exception("Ya existe una sesion iniciada");
             } 
 
-            oBEUsuario = new BEUsuario();
-            oBEUsuario.Usuario=oUsuarioName;
+            oBEUsuario = new BEUsuario {Usuario = oUsuarioName};
 
             oBEUsuario = oDALUsuario.ListarObjeto(oBEUsuario);
 
@@ -137,7 +131,7 @@ namespace BLL
             {
                 oBLLPermisos = new BLLPermisos();
                 oBLLPermisos.FillUserComponents(oBEUsuario);
-                SingletonSesion.instancia.Login(oBEUsuario);
+                Sesion.Login(oBEUsuario);
 
                 Bitacora oBitacora = new Bitacora()
                 { 
@@ -154,11 +148,12 @@ namespace BLL
 
         public void Logout()
         {
-            if (!SingletonSesion.instancia.IsLogged())
+            var Sesion = BLLSingletonSesion.Instancia;
+            if (!Sesion.IsLoggedIn())
                 throw new Exception("No hay sesión iniciada"); //doble validación, anulo en boton en formulario y valido en la bll
 
 
-            SingletonSesion.instancia.Logout();
+            Sesion.Logout();
         }
 
         public void GuardarPermisos(BEUsuario oBEUsuario)
@@ -173,9 +168,5 @@ namespace BLL
             
             return Guardar(oUsuario);
         }
-
-
-
-
     }
 }

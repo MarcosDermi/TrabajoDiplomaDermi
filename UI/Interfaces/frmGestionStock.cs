@@ -1,20 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using SERVICES.Interfaces;
 
 namespace TP_INGSOFTWARE
 {
     public partial class frmGestionStock : Form
     {
+        IGestionStockService IgestionService { get; set; }
+
         public frmGestionStock()
         {
             InitializeComponent();
+
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -36,5 +33,7 @@ namespace TP_INGSOFTWARE
         {
 
         }
+
+        
     }
 }

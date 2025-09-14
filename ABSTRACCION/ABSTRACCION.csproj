@@ -41,9 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IDigitoVerificadorService.cs" />
+    <Compile Include="Contracts\IGestionStockService.cs" />
+    <Compile Include="Contracts\ISingletonSesionService.cs" />
     <Compile Include="IGestor.cs" />
-    <Compile Include="IUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BE\BE.csproj">
+      <Project>{5dfae93a-2ab8-4d8c-a7ec-52829968cb67}</Project>
+      <Name>BE</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

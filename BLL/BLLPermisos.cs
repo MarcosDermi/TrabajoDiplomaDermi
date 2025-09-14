@@ -1,10 +1,8 @@
 ﻿using BE;
 using DAL;
+using SERVICES;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL
 {
@@ -78,6 +76,38 @@ namespace BLL
             oDALPermisos.FillFamilyComponents(oFamilia);
         }
 
+        bool isInRole(BEComponente oComponente, TipoPermiso enumPermiso, bool bExiste)
+        {
+            if (oComponente.Permiso.Equals(enumPermiso)) bExiste = true;
+            else
+            {
+                foreach (var oHijos in oComponente.Hijos)
+                {
+                    bExiste = isInRole(oHijos, enumPermiso, bExiste);
+                    if (bExiste) return true;
+                }
+            }
+
+            return bExiste;
+        }
+
+        public bool IsInRole(TipoPermiso enumPermiso)
+        {
+            var Sesion = BLLSingletonSesion.Instancia;
+
+            bool bExiste = false;
+            foreach (var oPermiso in Sesion.Usuario.Permisos)
+            {
+                if (oPermiso.Permiso.Equals(enumPermiso)) return true;
+                else
+                {
+                    bExiste = isInRole(oPermiso, enumPermiso, bExiste);
+                    if (bExiste) return true;
+                }
+            }
+
+            return bExiste;
+        }
 
     }
 }

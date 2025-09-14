@@ -1,14 +1,9 @@
 ﻿using System;
-using ABSTRACCION;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlTypes;
 
 namespace BE
 {
-    public class BEUsuario: IUsuario
+    public class BEUsuario
     {
         #region Propiedades
 

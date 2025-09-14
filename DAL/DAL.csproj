@@ -45,23 +45,16 @@
     <Compile Include="DALBitacora.cs" />
     <Compile Include="DALDV.cs" />
     <Compile Include="DALPermisos.cs" />
+    <Compile Include="DALProveedor.cs" />
     <Compile Include="DALTraductor.cs" />
     <Compile Include="DALUsuario.cs" />
     <Compile Include="Datos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ABSTRACCION\ABSTRACCION.csproj">
-      <Project>{fe97d1a6-acfb-4d36-99b5-68ae4b06e1ea}</Project>
-      <Name>ABSTRACCION</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BE\BE.csproj">
       <Project>{5dfae93a-2ab8-4d8c-a7ec-52829968cb67}</Project>
       <Name>BE</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SERVICES\SERVICES.csproj">
-      <Project>{f1477697-a5e3-4640-92ed-0f34dc2e427c}</Project>
-      <Name>SERVICES</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

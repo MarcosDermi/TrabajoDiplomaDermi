@@ -11,23 +11,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using ABSTRACCION.Contracts;
 
 
 namespace TP_INGSOFTWARE
 {
     public partial class frmGestionIdiomas : Form,IdiomaObserver
     {
+        ISingletonSesionService SingletonSesionService = BLLSingletonSesion.Instancia;
         public frmGestionIdiomas()
         {
             InitializeComponent();
             oValidators = new Validators();
             oBLLTraductor = new BLLTraductor();
+            oBLLObserver = new BLLObserver();
         }
         Validators oValidators;
         Idioma oIdioma;
         BLLTraductor oBLLTraductor;
         Palabra oPalabra;
         Traduccion oTraduccion;
+        BLLObserver oBLLObserver;
+
         public void CambiarIdioma(Idioma Idioma)
         {
             
@@ -35,7 +40,7 @@ namespace TP_INGSOFTWARE
 
         private void frmGestionIdiomas_Load(object sender, EventArgs e)
         {
-            Observer.agregarObservador(this);
+            oBLLObserver.agregarObservador(this);
             ListarIdiomas();
             CargarPalabras();
             EstilizarDataGridView();
@@ -154,7 +159,7 @@ namespace TP_INGSOFTWARE
                     var traducciones = Traductor.obtenertraducciones(idioma);
                     if (traducciones != null && traducciones.Count > 0)
                     {
-                        SingletonSesion.instancia.AgregarTraduccionesIdioma(idioma.Nombre, traducciones);
+                        SingletonSesionService.AgregarTraduccionesIdioma(idioma.Nombre, traducciones);
                     }
                 }
             }

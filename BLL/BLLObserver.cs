@@ -1,20 +1,24 @@
-﻿using System.Collections.Generic;
+﻿using ABSTRACCION.Contracts;
 using BE.ClasesMultiLenguaje;
+using SERVICES;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-
-
-namespace SERVICES
+namespace BLL
 {
-    public static class Observer
+    public class BLLObserver
     {
-        
+
         static IList<IdiomaObserver> Observadores = new List<IdiomaObserver>();  //creo lista de observadores
-        public static void agregarObservador(IdiomaObserver Observer)    //se agregan observadores
+        public void agregarObservador(IdiomaObserver Observer)    //se agregan observadores
         {
             Observadores.Add(Observer);
         }
 
-        public static void eliminarObservador(IdiomaObserver Observer)  //se eliminan observadores
+        public void eliminarObservador(IdiomaObserver Observer)  //se eliminan observadores
         {
             Observadores.Remove(Observer);
         }
@@ -23,9 +27,9 @@ namespace SERVICES
           Al realizar de un cambio de idioma, guardar lista de traducciones... en algun lado, puede ser en la sesion..
         Pero.. que no se ejecute constantemente.. 
         */
-         
 
-        public static void notificarObeservadores(Idioma Idioma)   //se notifica a los observadores
+
+        public void notificarObeservadores(Idioma Idioma)   //se notifica a los observadores
         {
             foreach (var observer in Observadores)
             {
@@ -33,17 +37,15 @@ namespace SERVICES
             }
         }
 
-        public static void cambiarIdioma(Idioma Idioma)    //Cambio de idioma
+        public void cambiarIdioma(Idioma Idioma)    //Cambio de idioma
         {
-            if (SingletonSesion.instancia != null)
+            var Sesion = BLLSingletonSesion.Instancia;
+
+            if (Sesion != null)
             {
-                //_session.Usuario.Idioma = Idioma;
-                SingletonSesion.instancia.idioma = Idioma;
-                
+                Sesion.CambiarIdioma(Idioma);
                 notificarObeservadores(Idioma);
             }
         }
-        
     }
 }
-

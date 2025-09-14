@@ -1,4 +1,5 @@
 ﻿using ABSTRACCION;
+using ABSTRACCION.Contracts;
 using BE;
 using BLL;
 using SERVICES;
@@ -16,10 +17,11 @@ namespace TP_INGSOFTWARE
 {
     public partial class frmGestionUsuarios : Form
     {
+        IDigitoVerificadorService DigitoVerificadorService = new DigitoVerificadorService();
         public frmGestionUsuarios()
         {
             InitializeComponent();
-            oBLLUsuario = new BLLUsuario();
+            oBLLUsuario = new BLLUsuario(DigitoVerificadorService);
             oBEUsuario = new BEUsuario();
             oValidators = new Validators();
             oBLLPermisos = new BLLPermisos();
@@ -245,7 +247,7 @@ namespace TP_INGSOFTWARE
                         Bitacora oBitacora = new Bitacora()
                         {
                             Detalle = string.Format("Se produjo un: {0} en el usuario: {1}", TipoBitacoraEnum.CambioUsuario.GetDescription(), oBEUsuario.Usuario),
-                            UsuarioResponsable = SingletonSesion.instancia.Usuario,
+                            UsuarioResponsable = BLLSingletonSesion.Instancia.Usuario,
                             BitacoraEnum = TipoBitacoraEnum.CambioUsuario,
                             Fecha = DateTime.Now,
                         };
@@ -253,7 +255,7 @@ namespace TP_INGSOFTWARE
                         oBLLBitacora.GuardarBitacora(oBitacora);
 
                         // Actualizar DV del sistema después de modificar usuario
-                        BLLDV oBLLDV = new BLLDV();
+                        BLLDV oBLLDV = new BLLDV(DigitoVerificadorService);
                         bool dvActualizado = oBLLDV.ActualizarDVSistema();
                         
                         if (dvActualizado)
@@ -319,7 +321,7 @@ namespace TP_INGSOFTWARE
                         if (oBLLUsuario.Baja(oBEUsuario))
                         {
                             // Actualizar DV del sistema después de eliminar usuario
-                            BLLDV oBLLDV = new BLLDV();
+                            BLLDV oBLLDV = new BLLDV(DigitoVerificadorService);
                             bool dvActualizado = oBLLDV.ActualizarDVSistema();
                             
                             if (dvActualizado)

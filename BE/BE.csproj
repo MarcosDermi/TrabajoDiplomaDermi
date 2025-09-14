@@ -43,22 +43,21 @@
   <ItemGroup>
     <Compile Include="BEInsumo.cs" />
     <Compile Include="BEProveedor.cs" />
+    <Compile Include="Bitacora.cs" />
     <Compile Include="ClasesMultiLenguaje\Idioma.cs" />
     <Compile Include="ClasesMultiLenguaje\IdiomaObserver.cs" />
     <Compile Include="ClasesMultiLenguaje\Palabra.cs" />
     <Compile Include="ClasesMultiLenguaje\Traduccion.cs" />
+    <Compile Include="Exceptions\LoginException.cs" />
+    <Compile Include="HashCrypto.cs" />
+    <Compile Include="LoginResult.cs" />
     <Compile Include="TipoPermiso.cs" />
     <Compile Include="BEPatente.cs" />
     <Compile Include="BEFamilia.cs" />
     <Compile Include="BEComponente.cs" />
     <Compile Include="BEUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ABSTRACCION\ABSTRACCION.csproj">
-      <Project>{fe97d1a6-acfb-4d36-99b5-68ae4b06e1ea}</Project>
-      <Name>ABSTRACCION</Name>
-    </ProjectReference>
+    <Compile Include="Validators.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

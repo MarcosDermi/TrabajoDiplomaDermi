@@ -6,17 +6,20 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using ABSTRACCION.Contracts;
 
 
 namespace TP_INGSOFTWARE
 {
     public partial class frmInicioSesion : Form,IdiomaObserver
     {
-        BLLUsuario oBLLUsuario = new BLLUsuario();
-        Validators oValidators = new Validators();
-        BLLPermisos oBLLPermisos = new BLLPermisos();
-        BEUsuario oBEUsuario;
 
+        ISingletonSesionService SingletonSesionService = BLLSingletonSesion.Instancia;
+        IDigitoVerificadorService DigitoVerificadorService = new DigitoVerificadorService();
+
+        Validators oValidators = new Validators();
+        BLLObserver oBLLObserver = new BLLObserver();
+        BLLUsuario oBLLUsuario;
         public frmInicioSesion()
         {
             InitializeComponent();
@@ -31,10 +34,11 @@ namespace TP_INGSOFTWARE
             CargarTextBoxs();
             txtUsuario.Text = "DD";
             txtClave.Text = "123";
-            Observer.agregarObservador(this);
+            oBLLObserver.agregarObservador(this);
             ListarIdiomas();
             txtUsuario.KeyPress += txtUsuario_KeyPress;
             txtClave.KeyPress += txtClave_KeyPress;
+            oBLLUsuario = new BLLUsuario(DigitoVerificadorService);
         }
 
         // Método público para recargar idiomas desde otros formularios
@@ -59,7 +63,7 @@ namespace TP_INGSOFTWARE
                     var traducciones = Traductor.obtenertraducciones(idioma);
                     if (traducciones != null && traducciones.Count > 0)
                     {
-                        SingletonSesion.instancia.AgregarTraduccionesIdioma(idioma.Nombre, traducciones);
+                        SingletonSesionService.AgregarTraduccionesIdioma(idioma.Nombre, traducciones);
                     }
                 }
 
@@ -77,7 +81,7 @@ namespace TP_INGSOFTWARE
                 Idioma idiomaActual = (Idioma)cbIdioma.SelectedItem;
                 if (idiomaActual != null)
                 {
-                    SingletonSesion.instancia.idioma = idiomaActual;
+                    SingletonSesionService.CambiarIdioma(idiomaActual);
                 }
                 
                 // Aplicar traducciones del idioma seleccionado
@@ -112,7 +116,7 @@ namespace TP_INGSOFTWARE
                 else
                 {
                     // Obtengo traducciones ya cargadas de la sesión
-                    var traducciones = SingletonSesion.instancia.ObtenerTraduccionesPorIdioma(idioma.Nombre);
+                    var traducciones = SingletonSesionService.ObtenerTraduccionesPorIdioma(idioma.Nombre);
 
                     if (traducciones == null)
                     {
@@ -216,9 +220,9 @@ namespace TP_INGSOFTWARE
                     
                     if (result == LoginResult.ValidUser)
                     {
-                        BLLDV oBLLDV = new BLLDV();
+                        BLLDV oBLLDV = new BLLDV(DigitoVerificadorService);
                         bool integridadSistema = oBLLDV.ValidarIntegridadSistema();
-                        bool isAdmin = SingletonSesion.instancia.Usuario.isAdmin;
+                        bool isAdmin = BLLSingletonSesion.Instancia.Usuario.isAdmin;
 
                         
                         if (integridadSistema)
@@ -247,9 +251,9 @@ namespace TP_INGSOFTWARE
                         else
                         {
                             // Limpiar la sesión para permitir intentar con otro usuario
-                            if (SingletonSesion.instancia.IsLogged())
+                            if (BLLSingletonSesion.Instancia.IsLoggedIn())
                             {
-                                SingletonSesion.instancia.Logout();
+                                BLLSingletonSesion.Instancia.Logout();
                             }
                             
                             MessageBox.Show("❌ Error de Dígito Verificador\nSe detectó corrupción en los datos del sistema, acceso denegado.\n\nSesión cerrada. Puede intentar con otro usuario.",
@@ -368,12 +372,13 @@ namespace TP_INGSOFTWARE
         {
             try
             {
-                if (cbIdioma.SelectedItem == null)
-                    return;
+                if (cbIdioma.SelectedItem == null) return;
 
                 Idioma idiomaSeleccionado = (Idioma)cbIdioma.SelectedItem;
-                SingletonSesion.instancia.idioma = idiomaSeleccionado;
-                Observer.cambiarIdioma(idiomaSeleccionado);
+                var Sesion = BLLSingletonSesion.Instancia;
+                Sesion.CambiarIdioma(idiomaSeleccionado);
+
+                oBLLObserver.cambiarIdioma(idiomaSeleccionado);
             }
             catch (Exception ex)
             {

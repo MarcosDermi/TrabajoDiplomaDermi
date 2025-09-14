@@ -43,10 +43,14 @@
   <ItemGroup>
     <Compile Include="BLLBitacora.cs" />
     <Compile Include="BLLDV.cs" />
+    <Compile Include="BLLObserver.cs" />
     <Compile Include="BLLPermisos.cs" />
+    <Compile Include="BLLProveedor.cs" />
     <Compile Include="BLLTraductor.cs" />
+    <Compile Include="BLLSesion.cs" />
     <Compile Include="BLLUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="BLLSingletonSesion.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ABSTRACCION\ABSTRACCION.csproj">
@@ -60,10 +64,6 @@
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{bc6f83d2-feb8-41d2-91c6-50da54b1bbad}</Project>
       <Name>DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SERVICES\SERVICES.csproj">
-      <Project>{f1477697-a5e3-4640-92ed-0f34dc2e427c}</Project>
-      <Name>SERVICES</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

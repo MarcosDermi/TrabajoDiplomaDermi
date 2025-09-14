@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using ABSTRACCION.Contracts;
 using BE;
 using BLL;
 using SERVICES;
@@ -17,11 +13,12 @@ namespace TP_INGSOFTWARE
     {
         private BLLDV oBLLDV;
         private List<BEUsuario> usuariosCorruptos;
+        IDigitoVerificadorService DigitoVerificadorService = new DigitoVerificadorService();
 
         public frmErrorDV()
         {
             InitializeComponent();
-            oBLLDV = new BLLDV();
+            oBLLDV = new BLLDV(DigitoVerificadorService);
             CargarUsuariosCorruptos();
         }
 
@@ -168,9 +165,9 @@ namespace TP_INGSOFTWARE
             try
             {
                 // Cerrar la sesión actual
-                if (SERVICES.SingletonSesion.instancia.IsLogged())
+                if (BLLSingletonSesion.Instancia.IsLoggedIn())
                 {
-                    SERVICES.SingletonSesion.instancia.Logout();
+                    BLLSingletonSesion.Instancia.Logout();
                 }
                 
                 MessageBox.Show("Sesión cerrada. Debe iniciar sesión nuevamente para validar la integridad del sistema.", 
@@ -208,7 +205,7 @@ namespace TP_INGSOFTWARE
                     if (result == DialogResult.Yes)
                     {
                         // Usar BLLUsuario para eliminar
-                        BLLUsuario oBLLUsuario = new BLLUsuario();
+                        BLLUsuario oBLLUsuario = new BLLUsuario(DigitoVerificadorService);
                         bool exito = oBLLUsuario.Baja(usuario);
 
                         if (exito)

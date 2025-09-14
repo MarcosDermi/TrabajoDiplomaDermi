@@ -14,8 +14,8 @@ namespace TP_INGSOFTWARE
 
         BLLPermisos oBLLPermisos;
         BEFamilia oSeleccion;
-        SingletonSesion _oSingletonSesion;
-        public frmGestionPermisos(SingletonSesion oSingletonSesion)
+        BLLSingletonSesion _oSingletonSesion;
+        public frmGestionPermisos(BLLSingletonSesion oSingletonSesion)
         {
             _oSingletonSesion = oSingletonSesion;
             InitializeComponent();

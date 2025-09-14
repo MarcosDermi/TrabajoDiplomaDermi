@@ -1,20 +1,16 @@
-﻿using ABSTRACCION;
-using BE;
+﻿using BE;
 using System;
-using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Runtime.Versioning;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace DAL
 {
-    public class DALPermisos:IGestor<BEComponente>
+    public class DALPermisos
     {
         public DALPermisos() 
         {
@@ -348,62 +344,6 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        //public IList<BEComponente> GetAll(string sFamilia)
-        //{
-        //    var sWhere = "is NULL";
-
-        //    if (!String.IsNullOrEmpty(sFamilia))
-        //    {
-        //        sWhere = sFamilia;
-        //    }
-
-        //    List<BEComponente> lstPermisos = new List<BEComponente>();
-
-        //    hDatos = new Hashtable();
-        //    hDatos.Add("@Familia", sFamilia);
-
-        //    string stpNombre = "ObtenerAllPermisos";
-
-        //    oDatos = new Datos();
-        //    DataTable oDt = oDatos.Leer(stpNombre, hDatos);
-
-        //    if (oDt.Rows.Count > 0)
-        //    {
-        //        foreach (DataRow row in oDt.Rows)
-        //        {
-        //            int id_padre = 0;
-
-        //            if (row["id_permiso_padre"] != DBNull.Value)
-        //            {
-        //                id_padre = Convert.ToInt32(row["id_permiso_padre"]);
-        //            }
-
-        //            var id = Convert.ToInt32(row["id"]);
-        //            var nombre = row["nombre"].ToString();
-        //            var Patente = Convert.ToBoolean(row["es_patente"]);
-
-        //            BEComponente oComponente;
-
-        //            if (Patente) oComponente = new BEFamilia();
-        //            else oComponente = new BEPatente();
-
-        //            oComponente.Id = id;
-        //            oComponente.Nombre = nombre;
-
-        //            var oPadre = GetComponente(id_padre, lstPermisos);
-
-        //            if (oPadre == null) { lstPermisos.Add(oComponente); }
-        //            else { oPadre.AgregarHijo(oComponente); }
-
-        //        }
-        //    }
-        //    else
-        //    {
-        //        lstPermisos = null;
-        //    }
-
-        //    return lstPermisos;
-        //}
 
         public List<BEComponente> GetFamilias()
         {

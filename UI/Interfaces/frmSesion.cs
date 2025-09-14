@@ -4,7 +4,7 @@ using SERVICES;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-
+using ABSTRACCION.Contracts;
 
 namespace TP_INGSOFTWARE
 {
@@ -12,11 +12,12 @@ namespace TP_INGSOFTWARE
     {
         public frmSesion()
         {
+            IDigitoVerificadorService iDigitoVerificadorService = new DigitoVerificadorService();
+            _oSingletonSesion = BLLSingletonSesion.Instancia;
+            _BLLUsuario = new BLLUsuario(iDigitoVerificadorService);
+            _BLLPermisos = new BLLPermisos();
             InitializeComponent();
             ValidarForm();
-            _BLLUsuario = new BLLUsuario();
-            _BLLPermisos = new BLLPermisos();
-            _oSingletonSesion = new SingletonSesion();
             this.FormClosing += frmSesion_FormClosing;
         }
 
@@ -29,16 +30,16 @@ namespace TP_INGSOFTWARE
         public frmGestionControlDeCambios oGestionControlDeCambios;
         BLLUsuario _BLLUsuario;
         BLLPermisos _BLLPermisos;
-        SingletonSesion _oSingletonSesion;
+        BLLSingletonSesion _oSingletonSesion;
 
         public void ValidarForm()
         {
-            this.itemLogout.Enabled = SingletonSesion.instancia.IsLogged();
+            this.itemLogout.Enabled = _oSingletonSesion.IsLoggedIn();
 
-            if (SingletonSesion.instancia.IsLogged())
+            if (_oSingletonSesion.IsLoggedIn())
             {
-                this.toolStripSesion.Text = SingletonSesion.instancia.Usuario.Usuario;
-                if (SingletonSesion.instancia.Usuario.isAdmin) this.administrarToolStripMenuItem.Enabled = true;
+                this.toolStripSesion.Text = _oSingletonSesion.Usuario.Usuario;
+                if (_oSingletonSesion.Usuario.isAdmin) this.administrarToolStripMenuItem.Enabled = true;
             }
             else
             { this.toolStripSesion.Text = "[Sesión no iniciada]"; this.Close(); }
@@ -120,7 +121,7 @@ namespace TP_INGSOFTWARE
         {
             //if (MessageBox.Show("¿Está seguro?", "Confirme", MessageBoxButtons.YesNo) == DialogResult.Yes)
             //{
-                if (SingletonSesion.instancia.IsLogged())
+                if (BLLSingletonSesion.Instancia.IsLoggedIn())
                 {
                     _BLLUsuario.Logout();
                 }

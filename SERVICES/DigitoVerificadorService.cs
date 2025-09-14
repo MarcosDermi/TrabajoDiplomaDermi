@@ -1,15 +1,15 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
 using BE;
+using ABSTRACCION.Contracts;
 
 namespace SERVICES
 {
-    public class DigitoVerificadorService
+    public class DigitoVerificadorService: IDigitoVerificadorService
     {
-        public static string CalcularDVUsuario(BEUsuario usuario)
+        public string CalcularDVUsuario(BEUsuario usuario)
         {
             if (usuario == null) return string.Empty;
 
@@ -40,7 +40,7 @@ namespace SERVICES
             return GenerarSHA(dvUsuario);
         }
 
-        public static string GenerarSHA(string cadena)
+        public string GenerarSHA(string cadena)
         {
             UnicodeEncoding ueCodigo = new UnicodeEncoding();
             byte[] ByteSourceText = ueCodigo.GetBytes(cadena);
@@ -49,7 +49,7 @@ namespace SERVICES
             return Convert.ToBase64String(ByteHash);
         }
 
-        public static string CalcularDVSistema(List<BEUsuario> usuarios)
+        public string CalcularDVSistema(List<BEUsuario> usuarios)
         {
             if (usuarios == null || usuarios.Count == 0)
                 return string.Empty;

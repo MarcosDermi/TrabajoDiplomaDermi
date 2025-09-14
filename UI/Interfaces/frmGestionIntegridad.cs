@@ -1,4 +1,8 @@
-﻿using System;
+﻿using ABSTRACCION.Contracts;
+using BE;
+using BLL;
+using SERVICES;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,9 +11,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using BE;
-using BLL;
-using SERVICES;
 
 namespace TP_INGSOFTWARE
 {
@@ -17,11 +18,12 @@ namespace TP_INGSOFTWARE
     {
         private BLLDV oBLLDV;
         private List<BEUsuario> usuarios;
+        IDigitoVerificadorService DigitoVerificadorService = new DigitoVerificadorService();
 
         public frmGestionIntegridad()
         {
             InitializeComponent();
-            oBLLDV = new BLLDV();
+            oBLLDV = new BLLDV(DigitoVerificadorService);
             CargarDatos();
         }
 
