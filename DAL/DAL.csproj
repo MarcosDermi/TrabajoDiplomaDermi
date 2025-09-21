@@ -12,6 +12,8 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -52,6 +55,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ABSTRACCION\ABSTRACCION.csproj">
+      <Project>{FE97D1A6-ACFB-4D36-99B5-68AE4B06E1EA}</Project>
+      <Name>ABSTRACCION</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BE\BE.csproj">
       <Project>{5dfae93a-2ab8-4d8c-a7ec-52829968cb67}</Project>
       <Name>BE</Name>
@@ -77,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".bak\DB_IngSoft.bak" />
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

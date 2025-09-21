@@ -5,6 +5,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using ABSTRACCION.Contracts;
+using TP_INGSOFTWARE.Interfaces;
 
 namespace TP_INGSOFTWARE
 {
@@ -28,6 +29,8 @@ namespace TP_INGSOFTWARE
         public frmGestionIntegridad oGestionIntegridad;
         public frmErrorDV oErrorDV;
         public frmGestionControlDeCambios oGestionControlDeCambios;
+        public frmGestionStock oGestionStock;
+        public frmGestionProveedores oGestionProveedores;
         BLLUsuario _BLLUsuario;
         BLLPermisos _BLLPermisos;
         BLLSingletonSesion _oSingletonSesion;
@@ -81,6 +84,8 @@ namespace TP_INGSOFTWARE
                 this.verToolStripMenuItem.Visible = _oSingletonSesion.IsInRole(TipoPermiso.Leer);
                 this.administrarToolStripMenuItem.Visible = _oSingletonSesion.IsInRole(TipoPermiso.ConfigurarSistema);
                 this.controlDeCambiosToolStripMenuItem.Visible = _oSingletonSesion.IsInRole(TipoPermiso.ConfigurarSistema);
+                this.gestionDeProovedoresToolStripMenuItem.Visible = _oSingletonSesion.IsInRole(TipoPermiso.Crear);
+                this.gestionDeStocksToolStripMenuItem.Visible = _oSingletonSesion.IsInRole(TipoPermiso.Crear);
             }
             else
             {
@@ -223,6 +228,36 @@ namespace TP_INGSOFTWARE
         private void administrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void gestionDeStocksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            oGestionStock = new frmGestionStock();
+
+            if (!FormAbierto(typeof(frmGestionStock)))
+            {
+                oGestionStock.MdiParent = this;
+                oGestionStock.Show();
+            }
+            else
+            {
+                MessageBox.Show("El formulario ya se encuentra abierto.");
+            }
+        }
+
+        private void gestionDeProovedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            oGestionProveedores = new frmGestionProveedores();
+
+            if (!FormAbierto(typeof(frmGestionProveedores)))
+            {
+                oGestionProveedores.MdiParent = this;
+                oGestionProveedores.Show();
+            }
+            else
+            {
+                MessageBox.Show("El formulario ya se encuentra abierto.");
+            }
         }
     }
 }

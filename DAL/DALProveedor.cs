@@ -1,317 +1,35 @@
-﻿using BE.ClasesMultiLenguaje;
+﻿using ABSTRACCION;
+using BE;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class DALProveedor
+    public class DALProveedor : IGestor<BEProveedor>
     {
+        Datos oDatos;
+        Hashtable Hdatos;
+
         public DALProveedor()
         {
             oDatos = new Datos();
         }
-        Datos oDatos;
-        Hashtable Hdatos;
 
-        public List<Idioma> ObtenerIdiomas()
-        {
-            List<Idioma> ListaIdiomas = new List<Idioma>();
-            try
-            {
-                DataTable DT = new DataTable();
-                string consulta = "S_Listar_idioma";
-                DT = oDatos.Leer(consulta, null);
-
-                foreach (DataRow fila in DT.Rows)
-                {
-                    Idioma OIdioma = new Idioma();
-                    OIdioma.ID = Convert.ToInt32(fila["ID"].ToString());
-                    OIdioma.Nombre = fila["Idioma"].ToString();
-                    OIdioma.Default = bool.Parse(fila["predeterminado"].ToString());
-                    ListaIdiomas.Add(OIdioma);
-                }
-
-            }
-            catch (NullReferenceException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return ListaIdiomas;
-        }
-
-        public Idioma ObtenerIdiomaBase()
-        {
-
-            string consulta = "S_listar_idioma";
-            DataTable DT = new DataTable();
-            DT = oDatos.Leer(consulta, null);
-            Idioma Oidioma = new Idioma();
-            foreach (DataRow fila in DT.Rows)
-            {
-                if (Convert.ToBoolean(fila["predeterminado"]) == true)
-                {
-                    Oidioma.ID = Convert.ToInt32(fila["id"]);
-                    Oidioma.Nombre = fila["idioma"].ToString();
-                    Oidioma.Default = Convert.ToBoolean(fila["predeterminado"]);
-                }
-            }
-            return Oidioma;
-        }
-        public Dictionary<string, Traduccion> obtenertraducciones(Idioma Idioma)
-        {
-            if (Idioma == null)
-            {
-                Idioma = ObtenerIdiomaBase();
-            }
-
-            Dictionary<string, Traduccion> Traducciones = new Dictionary<string, Traduccion>();
-
-            try
-            {
-                string consulta = "S_Traer_Traducciones";
-                Hashtable Hdatos = new Hashtable();
-                Hdatos.Add("@ID", Idioma.ID);
-                DataTable DT = new DataTable();
-                DT = oDatos.Leer(consulta, Hdatos);
-                foreach (DataRow fila in DT.Rows)
-                {
-                    var Palabra = fila["Palabra"].ToString();
-                    Traduccion OTraduccion = new Traduccion();
-                    OTraduccion.texto = fila["Traduccion"].ToString();
-
-                    Palabra OPalabra = new Palabra();
-                    OPalabra.ID = Convert.ToInt32(fila["ID"].ToString());
-                    OPalabra.Nombre = Palabra;
-                    Traducciones.Add(Palabra, OTraduccion);
-                }
-
-                return Traducciones;
-            }
-            catch (NullReferenceException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public List<string> obtenerIdiomaOriginal()
-        {
-            List<string> Palabras = new List<string>();
-            try
-            {
-                string consulta = "S_Traer_Palabras";
-                Hashtable Hdatos = new Hashtable();
-                DataTable DT = new DataTable();
-                DT = oDatos.Leer(consulta, null);
-
-                foreach (DataRow fila in DT.Rows)
-                {
-                    string Palabraa = fila["palabra"].ToString();
-                    Palabra Opalabra = new Palabra();
-                    Opalabra.ID = Convert.ToInt32(fila["id"].ToString());
-                    Opalabra.Nombre = Palabraa;
-
-                    Palabras.Add(Palabraa);
-                }
-                return Palabras;
-            }
-            catch (NullReferenceException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-        }
-
-        public DataTable traerTablaxIdioma(int id)
+        public bool Guardar(BEProveedor Objeto)
         {
             try
             {
-                string consulta = "S_Traer_Traducciones";
-                Hashtable Hdatos = new Hashtable();
-                Hdatos.Add("@ID", id);
-                DataTable DT = new DataTable();
-                DT = oDatos.Leer(consulta, Hdatos);
-                foreach (DataRow fila in DT.Rows)
-                {
-                    var Palabra = fila["Palabra"].ToString();
-                    Traduccion OTraduccion = new Traduccion();
-                    OTraduccion.texto = fila["traduccion"].ToString();
 
-                    Palabra OPalabra = new Palabra();
-                    OPalabra.ID = Convert.ToInt32(fila["ID"].ToString());
-                    OPalabra.Nombre = Palabra;
-
-                }
-
-                return DT;
-            }
-            catch (NullReferenceException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        public Idioma TrarIdioma(string Oidioma)
-        {
-            Idioma IdiomaSelec = new Idioma();
-
-            try
-            {
-                string consulta = "S_Traer_unIdioma";
-                Hashtable Hdatos = new Hashtable();
-                Hdatos.Add("@Idioma", Oidioma);
-                DataTable tabla = new DataTable();
-                tabla = oDatos.Leer(consulta, Hdatos);
-
-                foreach (DataRow fila in tabla.Rows)
-                {
-                    IdiomaSelec.ID = Convert.ToInt32(fila["ID"].ToString());
-                    IdiomaSelec.Nombre = fila["idioma"].ToString();
-                    IdiomaSelec.Default = Convert.ToBoolean(fila["predeterminado"]);
-                }
-
-                return IdiomaSelec;
-            }
-            catch (NullReferenceException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-        }
-
-        public bool CrearIdioma(Idioma Oidioma)
-        {
-            try
-            {
-                Hashtable hdatos = new Hashtable();
-                string consulta = "S_Crear_Idioma";
-                hdatos.Add("idioma", Oidioma.Nombre);
-                hdatos.Add("predeterminado", Oidioma.Default);
-              
-                return oDatos.Escribir(consulta, hdatos);
-            }
-            catch (NullReferenceException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-        }
-
-        public bool idiomaExistente(string idioma)
-        {
-            string consulta = "S_Listar_Idioma";
-
-            DataTable DT = new DataTable();
-            DT = oDatos.Leer(consulta, null);
-            foreach (DataRow fila in DT.Rows)
-            {
-                if (idioma == fila["idioma"].ToString()) return true;
-
-            }
-
-            return false;
-
-        }
-
-        public Palabra TraerPalbra(string palabra)
-        {
-            Palabra Opalabra = new Palabra();
-            try
-            {
-                string consulta = "S_Traer_UnaPalabra";
-                DataTable DT = new DataTable();
-                Hashtable Hdatos = new Hashtable();
-                Hdatos.Add("@palabra", palabra);
-                DT = oDatos.Leer(consulta, Hdatos);
-                foreach (DataRow fila in DT.Rows)
-                {
-                    if (palabra == fila["palabra"].ToString())
-                    {
-                        Opalabra.ID = Convert.ToInt32(fila["ID"]);
-                        Opalabra.Nombre = palabra;
-                        return Opalabra;
-                    }
-                    else
-                    {
-                        return null;
-                    }
-                }
-            }
-            catch (NullReferenceException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return Opalabra;
-        }
-        public bool TraduccionExistente(int id_Idioma, int id_Palabra)
-        {
-            try
-            {
-                string consulta = "S_Listar_TraduccionesxIdioma";
-                Hashtable Hdatos = new Hashtable();
-                Hdatos.Add("@id", id_Idioma);
-                DataTable DT = new DataTable();
-                DT = oDatos.Leer(consulta, Hdatos);
-                foreach (DataRow fila in DT.Rows)
-                {
-                    if (id_Palabra == Convert.ToInt32(fila["IDpalabra"])) return true;
-                }
-            }
-            catch (NullReferenceException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-            return false;
-        }
-
-        public bool CrearTraduccion(int ID_idioma, Traduccion Otraduccion)
-        {
-
-            try
-            {
-                string consulta = "S_altaTraduccion";
+                var stpNombre = "AltaProveedor";
                 Hdatos = new Hashtable();
-                Hdatos.Add("@IDidioma", ID_idioma);
-                Hdatos.Add("@IDpalabra", Otraduccion.Palabra.ID);
-                Hdatos.Add("@traduccion", Otraduccion.texto);
-                return oDatos.Escribir(consulta, Hdatos);
+                Hdatos.Add("@Codigo", Objeto.Codigo);
+                Hdatos.Add("@Nombre", Objeto.Nombre);
+                Hdatos.Add("@RazonSocial", Objeto.RazonSocial);
+                return oDatos.Escribir(stpNombre, Hdatos);
+
             }
             catch (SqlException ex)
             {
@@ -321,74 +39,34 @@ namespace DAL
             {
                 throw ex;
             }
-
-
-
         }
 
-        public List<Palabra> obtenerPalabrasSinTraducir(int idioma)
+        public bool Baja(BEProveedor Objeto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<BEProveedor> ListarTodo(bool EsControlCambio, int iIdUsuario)
+        {
+            throw new NotImplementedException();
+        }
+
+        public BEProveedor GetOne(int iId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DataTable GetAll()
         {
             try
             {
-                List<Palabra> Palabras = new List<Palabra>();
-                string consulta = "ObtenerPalabrasSinTraduccion";
 
-                DataTable DT = new DataTable();
-                Hashtable Hdatos = new Hashtable();
-                Hdatos.Add("@idIdioma", idioma);
-                DT = oDatos.Leer(consulta, Hdatos);
-
-                if (DT.Rows.Count == 0)
-                {
-                    return null;
-                }
-                else
-                {
-                    foreach (DataRow fila in DT.Rows)
-                    {
-                        Palabra Opalabra = new Palabra();
-                        Opalabra.Nombre = fila["palabra"].ToString();
-                        Opalabra.ID = Convert.ToInt32(fila["id"].ToString());
-                        Palabras.Add(Opalabra);
-
-                    }
-                    return Palabras;
-                }
+                var stpNombre = "GetAllProveedores";
+                Hdatos = new Hashtable();
+                return oDatos.Leer(stpNombre, Hdatos);
 
             }
-            catch (NullReferenceException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-
-        }
-
-        public List<Palabra> obtenerPalabras()
-        {
-            try
-            {
-                List<Palabra> Palabras = new List<Palabra>();
-                string consulta = "S_Traer_Palabras";
-
-                DataTable DT = new DataTable();
-
-                DT = oDatos.Leer(consulta, null);
-                foreach (DataRow fila in DT.Rows)
-                {
-                    Palabra Opalabra = new Palabra();
-                    Opalabra.Nombre = fila["palabra"].ToString();
-                    Opalabra.ID = Convert.ToInt32(fila["id"].ToString());
-                    Palabras.Add(Opalabra);
-
-                }
-                return Palabras;
-            }
-            catch (NullReferenceException ex)
+            catch (SqlException ex)
             {
                 throw ex;
             }
@@ -396,8 +74,31 @@ namespace DAL
             {
                 throw ex;
             }
-
         }
+
+        public DataTable BuscarProveedoresPorFiltrosVarios(string sCodigo, string sNombre, string sRazonSocial)
+        {
+            try
+            {
+                var stpNombre = "BuscarProveedoresPorFiltrosVarios";
+                Hdatos = new Hashtable();
+                Hdatos.Add("@Codigo", sCodigo);
+                Hdatos.Add("@Nombre", sNombre);
+                Hdatos.Add("@RazonSocial", sRazonSocial);
+
+                return oDatos.Leer(stpNombre, Hdatos);
+
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
-   
+
 }

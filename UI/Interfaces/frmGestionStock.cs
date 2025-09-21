@@ -4,7 +4,7 @@ using SERVICES.Interfaces;
 
 namespace TP_INGSOFTWARE
 {
-    public partial class frmGestionStock : Form
+    public partial class frmGestionStock : BaseForm
     {
         IGestionStockService IgestionService { get; set; }
 

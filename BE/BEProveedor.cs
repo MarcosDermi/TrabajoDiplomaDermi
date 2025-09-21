@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-
+﻿
 namespace BE
 {
     public class BEProveedor
     {
-        public int IDProveedor { get; set; }
+        public int IdProveedor { get; set; }
 
         public string Codigo { get; set; }
 

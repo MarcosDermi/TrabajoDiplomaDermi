@@ -1,19 +1,31 @@
-﻿using SERVICES.Interfaces;
+﻿using BLL;
+using SERVICES.Interfaces;
 using System.Data;
 
 namespace SERVICES
 {
     public class GestionStockService: IGestionStockService
     {
+        BLLProveedor oBLLProovedor;
+
         public GestionStockService() {
+            oBLLProovedor = new BLLProveedor();
         }
-        public DataTable ObtenerProovedores()
+
+        
+        public void ActualizarStock(int productoId, int cantidad)
         {
-            DataTable oDtProveedores = new DataTable();
+            throw new System.NotImplementedException();
+        }
 
+        public DataTable ObtenerProveedores()
+        {
+            return oBLLProovedor.GetAll();
+        }
 
-
-            return oDtProveedores;
+        public DataTable BuscarProveedoresPorFiltrosVarios(string sCodigo, string sNombre, string sRazonSocial)
+        {
+            return oBLLProovedor.BuscarProveedoresPorFiltrosVarios(sCodigo, sNombre, sRazonSocial);
         }
     }
 }

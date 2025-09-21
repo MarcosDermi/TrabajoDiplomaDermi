@@ -5,6 +5,8 @@ using DAL;
 using SERVICES;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 
 namespace BLL
 {
@@ -100,7 +102,7 @@ namespace BLL
            
         }
 
-        public BEUsuario ListarObjeto(BEUsuario Objeto)
+        public BEUsuario GetOne(int iId)
         {
             throw new NotImplementedException();
         }
@@ -167,6 +169,11 @@ namespace BLL
             oUsuario.DV = oBLLDV.CalcularDVUsuario(oUsuario);
             
             return Guardar(oUsuario);
+        }
+
+        public DataTable GetAll()
+        {
+            throw new NotImplementedException();
         }
     }
 }
