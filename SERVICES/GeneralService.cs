@@ -1,4 +1,6 @@
 ﻿using ABSTRACCION.Contracts;
+using BE;
+using BLL;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,6 +13,16 @@ namespace SERVICES
 {
     public class GeneralService: IGeneralService
     {
+
+        BLLMedioDePago oBLLMedioDePago;
+        BLLProfesional oBLLProfesional;
+
+        public GeneralService()
+        {
+            oBLLMedioDePago = new BLLMedioDePago();
+            oBLLProfesional = new BLLProfesional();
+        }
+
         public DataTable LimpiarDataTable(DataTable oDt)
         {
             if (oDt.Columns.Contains("Deleted"))
@@ -32,6 +44,16 @@ namespace SERVICES
             {
                 oDgv.Columns[sNombreColumna].Visible = false;
             }
+        }
+
+        public DataTable ObtenerMediosDePago()
+        {
+            return oBLLMedioDePago.GetAll();
+        }
+
+        public List<BEProfesional> ListarProfesionales()
+        {
+            return oBLLProfesional.ListarTodo(false, 0);
         }
 
     }

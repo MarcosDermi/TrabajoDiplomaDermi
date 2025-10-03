@@ -42,8 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BEHorario.cs" />
     <Compile Include="BEInsumo.cs" />
+    <Compile Include="BEMedioDePago.cs" />
+    <Compile Include="BEServicio.cs" />
+    <Compile Include="BEProfesional.cs" />
     <Compile Include="BEProveedor.cs" />
+    <Compile Include="BEReserva.cs" />
     <Compile Include="Bitacora.cs" />
     <Compile Include="ClasesMultiLenguaje\Idioma.cs" />
     <Compile Include="ClasesMultiLenguaje\IdiomaObserver.cs" />

@@ -16,7 +16,8 @@ namespace TP_INGSOFTWARE
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmInicioSesion());
+            //Application.Run(new frmInicioSesion());
+            Application.Run(new frmTurnosLogOut());
             //Application.Run(new frmGestionIntegridad());
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BE;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -12,5 +13,7 @@ namespace ABSTRACCION.Contracts
     {
         DataTable LimpiarDataTable(DataTable oDt);
         void EsconderColumna(DataGridView oDgv, string sNombreColumna);
+        DataTable ObtenerMediosDePago();
+        List<BEProfesional> ListarProfesionales();
     }
 }

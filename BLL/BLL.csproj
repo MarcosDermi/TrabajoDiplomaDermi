@@ -43,8 +43,10 @@
   <ItemGroup>
     <Compile Include="BLLBitacora.cs" />
     <Compile Include="BLLDV.cs" />
+    <Compile Include="BLLMedioDePago.cs" />
     <Compile Include="BLLObserver.cs" />
     <Compile Include="BLLPermisos.cs" />
+    <Compile Include="BLLProfesional.cs" />
     <Compile Include="BLLProveedor.cs" />
     <Compile Include="BLLTraductor.cs" />
     <Compile Include="BLLSesion.cs" />
