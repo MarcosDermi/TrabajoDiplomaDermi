@@ -33,7 +33,7 @@
             this.ucCalendario = new UI.ProyectoDiploma.CalendarioReservas();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.checkedListBoxServicios = new System.Windows.Forms.CheckedListBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -96,7 +96,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.lblTotal);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.checkedListBoxServicios);
             this.groupBox2.Controls.Add(this.label2);
@@ -112,14 +112,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filtrar:";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(184, 165);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(11, 13);
-            this.label4.TabIndex = 22;
-            this.label4.Text = "-";
+            // lblTotal
+            //
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Location = new System.Drawing.Point(184, 165);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(11, 13);
+            this.lblTotal.TabIndex = 22;
+            this.lblTotal.Text = "-";
             // 
             // label3
             // 
@@ -137,6 +137,7 @@
             this.checkedListBoxServicios.Name = "checkedListBoxServicios";
             this.checkedListBoxServicios.Size = new System.Drawing.Size(150, 132);
             this.checkedListBoxServicios.TabIndex = 20;
+            this.checkedListBoxServicios.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBoxServicios_ItemCheck);
             this.checkedListBoxServicios.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             // 
             // label2
@@ -379,7 +380,7 @@
         private System.Windows.Forms.ComboBox cmbProfesional;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnIniciarSesion;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dataGridViewHorarios;

@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,7 +53,7 @@ namespace TP_INGSOFTWARE
 
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            ActualizarTotalServicios();
         }
 
         private void cmbProfesional_SelectedIndexChanged(object sender, EventArgs e)
@@ -74,6 +75,8 @@ namespace TP_INGSOFTWARE
 
             // Mostrar Nombre pero conservar el objeto
             checkedListBoxServicios.DisplayMember = "Nombre";
+
+            ActualizarTotalServicios();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -134,6 +137,27 @@ namespace TP_INGSOFTWARE
                 int idx = dataGridViewHorarios.Rows.Add(s.ToString("HH:mm"), "Disponible");
                 dataGridViewHorarios.Rows[idx].DefaultCellStyle.BackColor = Color.LightGreen;
             }
+        }
+
+        private void checkedListBoxServicios_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            BeginInvoke(new Action(ActualizarTotalServicios));
+        }
+
+        private void ActualizarTotalServicios()
+        {
+            var serviciosSeleccionados = checkedListBoxServicios.CheckedItems
+                .Cast<BEServicio>()
+                .ToList();
+
+            if (!serviciosSeleccionados.Any())
+            {
+                lblTotal.Text = "-";
+                return;
+            }
+
+            var total = serviciosSeleccionados.Sum(s => s.Precio);
+            lblTotal.Text = total.ToString("C2", CultureInfo.CurrentCulture);
         }
     }
 }
