@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TP_INGSOFTWARE
+namespace UI.Interfaces
 {
     public partial class frmGestionIntegridad : Form
     {

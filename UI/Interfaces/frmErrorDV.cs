@@ -7,7 +7,7 @@ using BE;
 using BLL;
 using SERVICES;
 
-namespace TP_INGSOFTWARE
+namespace UI.Interfaces
 {
     public partial class frmErrorDV : Form
     {

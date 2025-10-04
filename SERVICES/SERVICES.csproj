@@ -47,6 +47,7 @@
     <Compile Include="AgendaService.cs" />
     <Compile Include="GestionStockService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValidatorsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ABSTRACCION\ABSTRACCION.csproj">

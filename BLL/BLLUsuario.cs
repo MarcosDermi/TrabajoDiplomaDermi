@@ -14,7 +14,6 @@ namespace BLL
     {
         public BLLUsuario(IDigitoVerificadorService DigitoVerificadorService) 
         {
-            oValidators = new Validators();
             oDALUsuario = new DALUsuario();
             oHashCrypto = new HashCrypto();
             oBLLPermisos = new BLLPermisos();
@@ -22,7 +21,7 @@ namespace BLL
             oBLLDV = new BLLDV(DigitoVerificadorService);
         }
 
-        Validators oValidators;
+        IValidatorsService oValidators;
         DALUsuario oDALUsuario;
         HashCrypto oHashCrypto;
         BEUsuario oBEUsuario;

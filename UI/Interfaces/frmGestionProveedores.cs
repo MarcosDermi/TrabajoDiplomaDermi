@@ -3,7 +3,7 @@ using System;
 using System.Data;
 using System.Windows.Forms;
 
-namespace TP_INGSOFTWARE.Interfaces
+namespace UI.Interfaces
 {
     public partial class frmGestionProveedores : BaseForm
     {

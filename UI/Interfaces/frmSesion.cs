@@ -5,9 +5,9 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using ABSTRACCION.Contracts;
-using TP_INGSOFTWARE.Interfaces;
+using UI.Interfaces;
 
-namespace TP_INGSOFTWARE
+namespace UI.Interfaces
 {
     public partial class frmSesion: Form
     {

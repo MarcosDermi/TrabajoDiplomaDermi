@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using ABSTRACCION.Contracts;
 
 
-namespace TP_INGSOFTWARE
+namespace UI.Interfaces
 {
     public partial class frmInicioSesion : Form,IdiomaObserver
     {
@@ -17,7 +17,7 @@ namespace TP_INGSOFTWARE
         ISingletonSesionService SingletonSesionService = BLLSingletonSesion.Instancia;
         IDigitoVerificadorService DigitoVerificadorService = new DigitoVerificadorService();
 
-        Validators oValidators = new Validators();
+        ValidatorsService oValidators = new ValidatorsService();
         BLLObserver oBLLObserver = new BLLObserver();
         BLLUsuario oBLLUsuario;
         public frmInicioSesion()

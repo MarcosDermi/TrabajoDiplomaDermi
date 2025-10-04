@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialDesignThemes;
 
-namespace TP_INGSOFTWARE
+namespace UI.Interfaces
 {
     public partial class frmGestionBitacoras : Form
     {

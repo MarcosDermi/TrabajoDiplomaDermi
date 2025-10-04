@@ -29,7 +29,7 @@ namespace BLL
             int total = 0;
             foreach (var id in serviciosSeleccionados)
             {
-                var s = oDALServicio.ObtenerServicio(id); // esto vendría de DALServicios
+                var s = oDALServicio.ObtenerServicio(id);
                 total += s.DuracionMin + s.BufferMin;
             }
             return total;
@@ -130,6 +130,15 @@ namespace BLL
             return slots;
         }
 
-        
+        public int ConfirmarReserva(BEReserva oReserva)
+        {
+            var slots = CalcularSlotsDisponibles(oReserva.ProfesionalID, oReserva.FechaInicio, oReserva.Servicios.Select(s => s.ServicioID));
+            
+            if (!slots.Contains(oReserva.FechaInicio))
+                throw new Exception("El horario seleccionado ya no está disponible.");
+
+            return oDALAgenda.ConfirmarReserva(oReserva);
+        }
+
     }
 }

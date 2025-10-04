@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using SERVICES.Interfaces;
 
-namespace TP_INGSOFTWARE
+namespace UI.Interfaces
 {
     public partial class frmGestionStock : BaseForm
     {

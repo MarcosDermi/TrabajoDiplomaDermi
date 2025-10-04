@@ -20,5 +20,11 @@ namespace SERVICES
         {
             return oBLLProfesional.GetTurnosTomados(iProfesionalID, dtFecha);
         }
+
+        public int ConfirmarReserva(BEReserva oReserva)
+        {
+            BLLAgenda oBLLAgenda = new BLLAgenda();
+            return oBLLAgenda.ConfirmarReserva(oReserva);
+        }
     }
 }

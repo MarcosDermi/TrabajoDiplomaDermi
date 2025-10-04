@@ -4,15 +4,16 @@ using SERVICES.Interfaces;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace TP_INGSOFTWARE
+namespace UI
 {
     public partial class BaseForm : Form
     {
         private IGestionStockService _gestionStockService;
         private IGeneralService _generalService;
         private IAgendaService _agendaService;
+        private IValidatorsService _validatorsService;
 
-        
+
         public BaseForm()
         {
             InitializeComponent();
@@ -75,6 +76,22 @@ namespace TP_INGSOFTWARE
             set
             {
                 _agendaService = value;
+            }
+        }
+
+        public IValidatorsService ValidatorsService
+        {
+            get
+            {
+                if (_validatorsService == null && !DesignMode)
+                {
+                    _validatorsService = new ValidatorsService();
+                }
+                return _validatorsService;
+            }
+            set
+            {
+                _validatorsService = value;
             }
         }
     }

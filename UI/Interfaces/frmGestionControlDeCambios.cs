@@ -5,7 +5,7 @@ using SERVICES;
 using System;
 using System.Windows.Forms;
 
-namespace TP_INGSOFTWARE
+namespace UI.Interfaces
 {
     public partial class frmGestionControlDeCambios : Form
     {

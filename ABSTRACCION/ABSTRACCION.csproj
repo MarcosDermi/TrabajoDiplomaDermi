@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IDigitoVerificadorService.cs" />
+    <Compile Include="Contracts\IValidatorsService.cs" />
     <Compile Include="Contracts\IGeneralService.cs" />
     <Compile Include="Contracts\IAgendaService.cs" />
     <Compile Include="Contracts\IGestionStockService.cs" />

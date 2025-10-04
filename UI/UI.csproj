@@ -95,6 +95,12 @@
     <Compile Include="BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\frmConfirmacionReserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\frmConfirmacionReserva.Designer.cs">
+      <DependentUpon>frmConfirmacionReserva.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\CalendarioReservas.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -195,6 +201,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\frmConfirmacionReserva.resx">
+      <DependentUpon>frmConfirmacionReserva.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\CalendarioReservas.resx">
       <DependentUpon>CalendarioReservas.cs</DependentUpon>

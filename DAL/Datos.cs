@@ -45,13 +45,19 @@ namespace DAL
 
         public bool Escribir(string stpNombre, Hashtable HDatos)
         {
+            int dummy;
+            return Escribir(stpNombre, HDatos, out dummy);
+        }
+
+        public bool Escribir(string stpNombre, Hashtable HDatos, out int idGenerado)
+        {
             oCnn.Open();
             SqlTransaction oSQLTrans;
             oCmd = new SqlCommand(stpNombre, oCnn);
             oCmd.CommandType = CommandType.StoredProcedure;
 
             oSQLTrans = oCnn.BeginTransaction();
-
+            idGenerado = 0;
             try
             {
                 if (HDatos != null)
@@ -61,9 +67,24 @@ namespace DAL
                         oCmd.Parameters.AddWithValue(oDato, HDatos[oDato]);
                     }
                 }
+
+                if (!oCmd.Parameters.Contains("@IdGenerado"))
+                {
+                    var paramId = new SqlParameter("@IdGenerado", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    oCmd.Parameters.Add(paramId);
+                }
+
                 oCmd.Transaction = oSQLTrans;
                 int Respuesta = oCmd.ExecuteNonQuery();
                 oSQLTrans.Commit();
+
+                if (oCmd.Parameters["@IdGenerado"].Value != DBNull.Value) 
+                { idGenerado = Convert.ToInt32(oCmd.Parameters["@IdGenerado"].Value); }
+                    
+
                 return true;
             }
             catch (SqlException ex)

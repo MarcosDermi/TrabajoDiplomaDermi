@@ -83,7 +83,10 @@ namespace DAL
                         Servicios = g.Select(s => new BEServicio
                         {
                             ServicioID = (int)s["ServicioID"],
-                            Nombre = (string)s["NombreServicio"]
+                            Nombre = (string)s["NombreServicio"],
+                            Precio = (decimal)s["PrecioServicio"],
+                            DuracionMin = (int)s["DuracionMin"],
+                            BufferMin = (int)s["BufferMin"]
                         }).ToList()
                     })
                     .ToList();

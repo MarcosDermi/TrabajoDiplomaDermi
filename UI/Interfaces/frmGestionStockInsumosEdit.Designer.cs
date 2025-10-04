@@ -1,4 +1,4 @@
-﻿namespace TP_INGSOFTWARE.Interfaces
+﻿namespace UI.Interfaces
 {
     partial class frmGestionStockInsumosEdit
     {

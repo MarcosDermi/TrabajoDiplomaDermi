@@ -16,7 +16,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TP_INGSOFTWARE
+namespace UI.Interfaces
 {
     public partial class frmTurnosLogOut : BaseForm
     {
@@ -48,7 +48,10 @@ namespace TP_INGSOFTWARE
             {
                 lblMes.Text = mesTexto;
             };
-            lblMes.Text = DateTime.Today.ToString("MMMM yyyy", new System.Globalization.CultureInfo("es-ES"));
+            lblMes.Text = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(
+    DateTime.Today.ToString("MMMM yyyy", new System.Globalization.CultureInfo("es-ES"))
+);
+
         }
 
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -158,6 +161,63 @@ namespace TP_INGSOFTWARE
 
             var total = serviciosSeleccionados.Sum(s => s.Precio);
             lblTotal.Text = total.ToString("C2", CultureInfo.CurrentCulture);
+        }
+
+        private void btnReservar_Click(object sender, EventArgs e)
+        {
+            var oLstServicios = checkedListBoxServicios.CheckedItems
+                .Cast<BEServicio>()
+                .ToList();
+            
+            if (oLstServicios.Count == 0)
+            {
+                MessageBox.Show("Debe seleccionar al menos un servicio.");
+                return;
+            }
+            if(cmbMediosDePago.SelectedItem == null)
+            {
+                MessageBox.Show("Debe seleccionar un medio de pago.");
+                return;
+            }
+            if(_fechaSeleccionada == DateTime.MinValue)
+            {
+                MessageBox.Show("Debe seleccionar un día.");
+                return;
+            }
+            if (dataGridViewHorarios.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Debe seleccionar un horario.");
+                return;
+            }
+
+            // Obtener la hora seleccionada del DataGridView
+            var horaSeleccionada = TimeSpan.Parse(
+                dataGridViewHorarios.SelectedRows[0].Cells["Hora"].Value.ToString()
+            );
+
+            // Calcular la fecha completa de inicio
+            var fechaInicio = _fechaSeleccionada.Date.Add(horaSeleccionada);
+
+            // Calcular duración total de los servicios seleccionados
+            var duracionTotal = TimeSpan.FromMinutes(oLstServicios.Sum(s => s.DuracionMin));
+
+            // Crear la reserva
+            BEReserva oNuevaReserva = new BEReserva()
+            {
+                ProfesionalID = _IdProfesionalSeleccionado,
+                FechaInicio = fechaInicio,
+                FechaFin = fechaInicio.Add(duracionTotal),
+                Cliente = new BEUsuario(),
+                Servicios = oLstServicios,
+                MedioDePagoID = (int)cmbMediosDePago.SelectedValue,
+                PrecioTotal = oLstServicios.Sum(x => x.Precio)
+            };
+            var frmConfirmacion = new frmConfirmacionReserva(oNuevaReserva);
+            this.Hide();
+            var resultado = frmConfirmacion.ShowDialog();
+
+            if (resultado != DialogResult.OK) { this.Show(); return; }
+
         }
     }
 }

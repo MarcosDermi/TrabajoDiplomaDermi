@@ -14,7 +14,7 @@ using System.Data.SqlClient;
 using ABSTRACCION.Contracts;
 
 
-namespace TP_INGSOFTWARE
+namespace UI.Interfaces
 {
     public partial class frmGestionIdiomas : Form,IdiomaObserver
     {
@@ -22,11 +22,11 @@ namespace TP_INGSOFTWARE
         public frmGestionIdiomas()
         {
             InitializeComponent();
-            oValidators = new Validators();
+            oValidators = new ValidatorsService();
             oBLLTraductor = new BLLTraductor();
             oBLLObserver = new BLLObserver();
         }
-        Validators oValidators;
+        ValidatorsService oValidators;
         Idioma oIdioma;
         BLLTraductor oBLLTraductor;
         Palabra oPalabra;

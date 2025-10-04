@@ -127,6 +127,49 @@ namespace DAL
                 throw new Exception("Error general al obtener franjas del profesional.", ex);
             }
         }
-    }
 
+        public int ConfirmarReserva(BEReserva oReserva)
+        {
+            var stpNombre = "ConfirmarReserva";
+            Hdatos = new Hashtable
+            {
+                { "@ClienteID", oReserva.Cliente.Id },
+                { "@ProfesionalID", oReserva.ProfesionalID },
+                { "@FechaInicio", oReserva.FechaInicio },
+                { "@FechaFin", oReserva.FechaFin },
+                { "@MedioDePagoID", oReserva.MedioDePagoID },
+                { "@PrecioTotal", oReserva.PrecioTotal },
+                { "@EmailConfirmacion", oReserva.Cliente.Mail }
+            };
+
+            int _ = 0;
+
+            try
+            {
+                oDatos.Escribir(stpNombre, Hdatos, out int ReservaID);
+
+                foreach (var servicio in oReserva.Servicios)
+                {
+                    var Hdatos = new Hashtable
+                        {
+                            { "@ReservaID", ReservaID },
+                            { "@ServicioID", servicio.ServicioID }
+                        };
+
+                    oDatos.Escribir("InsertarReservaServicio", Hdatos);
+                }
+
+                return ReservaID;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+    }
 }

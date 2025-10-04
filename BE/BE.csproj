@@ -68,7 +68,6 @@
     <Compile Include="BEComponente.cs" />
     <Compile Include="BEUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Validators.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

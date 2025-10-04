@@ -1,4 +1,4 @@
-﻿namespace TP_INGSOFTWARE
+﻿namespace UI.Interfaces
 {
     partial class frmTurnosLogOut
     {
@@ -33,15 +33,15 @@
             this.ucCalendario = new UI.ProyectoDiploma.CalendarioReservas();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lblTotal = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.checkedListBoxServicios = new System.Windows.Forms.CheckedListBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.cmbMediosDePago = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.cmbProfesional = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.cmbMediosDePago = new System.Windows.Forms.ComboBox();
+            this.btnReservar = new System.Windows.Forms.Button();
             this.btnIniciarSesion = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGridViewHorarios = new System.Windows.Forms.DataGridView();
@@ -56,19 +56,21 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHorarios)).BeginInit();
             this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.ucCalendario);
-            this.groupBox1.Location = new System.Drawing.Point(17, 132);
+            this.groupBox1.Location = new System.Drawing.Point(17, 246);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(483, 329);
+            this.groupBox1.Size = new System.Drawing.Size(483, 333);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -77,7 +79,7 @@
             this.ucCalendario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucCalendario.Location = new System.Drawing.Point(3, 17);
             this.ucCalendario.Name = "ucCalendario";
-            this.ucCalendario.Size = new System.Drawing.Size(477, 309);
+            this.ucCalendario.Size = new System.Drawing.Size(477, 313);
             this.ucCalendario.TabIndex = 0;
             this.ucCalendario.DiaSeleccionado += new System.EventHandler<System.DateTime>(this.ucCalendario_DiaSeleccionado);
             this.ucCalendario.Load += new System.EventHandler(this.ucCalendario_Load);
@@ -96,46 +98,23 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.lblTotal);
-            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.checkedListBoxServicios);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.cmbMediosDePago);
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.cmbProfesional);
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Location = new System.Drawing.Point(503, 132);
+            this.groupBox2.Location = new System.Drawing.Point(17, 66);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(364, 338);
+            this.groupBox2.Size = new System.Drawing.Size(364, 104);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Filtrar:";
-            // 
-            // lblTotal
-            //
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(184, 165);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(11, 13);
-            this.lblTotal.TabIndex = 22;
-            this.lblTotal.Text = "-";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(184, 140);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 13);
-            this.label3.TabIndex = 21;
-            this.label3.Text = "Estimado total:";
+            this.groupBox2.Text = "Profesional:";
             // 
             // checkedListBoxServicios
             // 
             this.checkedListBoxServicios.FormattingEnabled = true;
-            this.checkedListBoxServicios.Location = new System.Drawing.Point(16, 103);
+            this.checkedListBoxServicios.Location = new System.Drawing.Point(172, 26);
             this.checkedListBoxServicios.Name = "checkedListBoxServicios";
-            this.checkedListBoxServicios.Size = new System.Drawing.Size(150, 132);
+            this.checkedListBoxServicios.Size = new System.Drawing.Size(178, 68);
             this.checkedListBoxServicios.TabIndex = 20;
             this.checkedListBoxServicios.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBoxServicios_ItemCheck);
             this.checkedListBoxServicios.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
@@ -143,37 +122,20 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 87);
+            this.label2.Location = new System.Drawing.Point(169, 10);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 19;
             this.label2.Text = "Servicios:";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(184, 87);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(81, 13);
-            this.label13.TabIndex = 15;
-            this.label13.Text = "Medio de pago:";
-            // 
-            // cmbMediosDePago
-            // 
-            this.cmbMediosDePago.FormattingEnabled = true;
-            this.cmbMediosDePago.Location = new System.Drawing.Point(187, 103);
-            this.cmbMediosDePago.Name = "cmbMediosDePago";
-            this.cmbMediosDePago.Size = new System.Drawing.Size(150, 21);
-            this.cmbMediosDePago.TabIndex = 14;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(13, 26);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(64, 13);
+            this.label12.Size = new System.Drawing.Size(48, 13);
             this.label12.TabIndex = 13;
-            this.label12.Text = "Profesional:";
+            this.label12.Text = "Nombre:";
             // 
             // cmbProfesional
             // 
@@ -184,23 +146,60 @@
             this.cmbProfesional.TabIndex = 12;
             this.cmbProfesional.SelectedIndexChanged += new System.EventHandler(this.cmbProfesional_SelectedIndexChanged);
             // 
-            // button1
+            // lblTotal
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(95)))), ((int)(((byte)(170)))));
-            this.button1.Location = new System.Drawing.Point(16, 276);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(321, 37);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Reservar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Location = new System.Drawing.Point(32, 79);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(11, 13);
+            this.lblTotal.TabIndex = 22;
+            this.lblTotal.Text = "-";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(22, 61);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(75, 13);
+            this.label3.TabIndex = 21;
+            this.label3.Text = "Precio total:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(22, 21);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(81, 13);
+            this.label13.TabIndex = 15;
+            this.label13.Text = "Medio de pago:";
+            // 
+            // cmbMediosDePago
+            // 
+            this.cmbMediosDePago.FormattingEnabled = true;
+            this.cmbMediosDePago.Location = new System.Drawing.Point(25, 37);
+            this.cmbMediosDePago.Name = "cmbMediosDePago";
+            this.cmbMediosDePago.Size = new System.Drawing.Size(150, 21);
+            this.cmbMediosDePago.TabIndex = 14;
+            // 
+            // btnReservar
+            // 
+            this.btnReservar.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReservar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(95)))), ((int)(((byte)(170)))));
+            this.btnReservar.Location = new System.Drawing.Point(70, 588);
+            this.btnReservar.Name = "btnReservar";
+            this.btnReservar.Size = new System.Drawing.Size(559, 37);
+            this.btnReservar.TabIndex = 2;
+            this.btnReservar.Text = "Reservar";
+            this.btnReservar.UseVisualStyleBackColor = true;
+            this.btnReservar.Click += new System.EventHandler(this.btnReservar_Click);
             // 
             // btnIniciarSesion
             // 
             this.btnIniciarSesion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnIniciarSesion.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIniciarSesion.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnIniciarSesion.Location = new System.Drawing.Point(755, 38);
+            this.btnIniciarSesion.Location = new System.Drawing.Point(599, 23);
             this.btnIniciarSesion.Margin = new System.Windows.Forms.Padding(4);
             this.btnIniciarSesion.Name = "btnIniciarSesion";
             this.btnIniciarSesion.Size = new System.Drawing.Size(116, 30);
@@ -212,25 +211,28 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.dataGridViewHorarios);
-            this.groupBox3.Location = new System.Drawing.Point(12, 467);
+            this.groupBox3.Location = new System.Drawing.Point(506, 214);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(886, 155);
+            this.groupBox3.Size = new System.Drawing.Size(209, 362);
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Horarios:";
             // 
             // dataGridViewHorarios
             // 
+            this.dataGridViewHorarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewHorarios.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridViewHorarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewHorarios.Location = new System.Drawing.Point(14, 19);
+            this.dataGridViewHorarios.Location = new System.Drawing.Point(14, 20);
             this.dataGridViewHorarios.Name = "dataGridViewHorarios";
-            this.dataGridViewHorarios.Size = new System.Drawing.Size(845, 150);
+            this.dataGridViewHorarios.Size = new System.Drawing.Size(189, 336);
             this.dataGridViewHorarios.TabIndex = 24;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(162, 72);
+            this.button2.Location = new System.Drawing.Point(162, 181);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(32, 23);
+            this.button2.Size = new System.Drawing.Size(32, 27);
             this.button2.TabIndex = 24;
             this.button2.Text = ">";
             this.button2.UseVisualStyleBackColor = true;
@@ -239,7 +241,7 @@
             // lblMes
             // 
             this.lblMes.AutoSize = true;
-            this.lblMes.Location = new System.Drawing.Point(67, 77);
+            this.lblMes.Location = new System.Drawing.Point(67, 186);
             this.lblMes.Name = "lblMes";
             this.lblMes.Size = new System.Drawing.Size(11, 13);
             this.lblMes.TabIndex = 23;
@@ -247,9 +249,9 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(17, 72);
+            this.button3.Location = new System.Drawing.Point(17, 181);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(32, 23);
+            this.button3.Size = new System.Drawing.Size(32, 27);
             this.button3.TabIndex = 25;
             this.button3.Text = "<";
             this.button3.UseVisualStyleBackColor = true;
@@ -258,7 +260,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(21, 12);
+            this.label6.Location = new System.Drawing.Point(86, 14);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(35, 13);
             this.label6.TabIndex = 23;
@@ -274,16 +276,16 @@
             this.groupBox4.Controls.Add(this.label8);
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.label6);
-            this.groupBox4.Location = new System.Drawing.Point(17, 100);
+            this.groupBox4.Location = new System.Drawing.Point(17, 214);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(483, 30);
+            this.groupBox4.Size = new System.Drawing.Size(483, 34);
             this.groupBox4.TabIndex = 26;
             this.groupBox4.TabStop = false;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(423, 12);
+            this.label14.Location = new System.Drawing.Point(13, 14);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(48, 13);
             this.label14.TabIndex = 29;
@@ -292,7 +294,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(355, 12);
+            this.label11.Location = new System.Drawing.Point(426, 14);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(43, 13);
             this.label11.TabIndex = 28;
@@ -301,7 +303,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(288, 12);
+            this.label10.Location = new System.Drawing.Point(359, 14);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(42, 13);
             this.label10.TabIndex = 27;
@@ -310,7 +312,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(222, 12);
+            this.label9.Location = new System.Drawing.Point(293, 14);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(41, 13);
             this.label9.TabIndex = 26;
@@ -319,7 +321,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(146, 12);
+            this.label8.Location = new System.Drawing.Point(217, 14);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(51, 13);
             this.label8.TabIndex = 25;
@@ -328,19 +330,34 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(81, 12);
+            this.label7.Location = new System.Drawing.Point(152, 14);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(40, 13);
             this.label7.TabIndex = 24;
             this.label7.Text = "Martes";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.label13);
+            this.groupBox5.Controls.Add(this.lblTotal);
+            this.groupBox5.Controls.Add(this.cmbMediosDePago);
+            this.groupBox5.Controls.Add(this.label3);
+            this.groupBox5.Location = new System.Drawing.Point(387, 66);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(232, 104);
+            this.groupBox5.TabIndex = 27;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Medio de Pago:";
             // 
             // frmTurnosLogOut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(244)))), ((int)(((byte)(245)))));
-            this.ClientSize = new System.Drawing.Size(929, 637);
+            this.ClientSize = new System.Drawing.Size(744, 637);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.btnReservar);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.lblMes);
             this.Controls.Add(this.button2);
@@ -361,6 +378,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHorarios)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -378,7 +397,7 @@
         private System.Windows.Forms.ComboBox cmbMediosDePago;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox cmbProfesional;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnReservar;
         private System.Windows.Forms.Button btnIniciarSesion;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label label3;
@@ -395,5 +414,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.GroupBox groupBox5;
     }
 }

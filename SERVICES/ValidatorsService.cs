@@ -1,12 +1,18 @@
 ﻿
+using ABSTRACCION.Contracts;
+using BE;
+using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 
 namespace SERVICES
 {
-    public class Validators
+    public class ValidatorsService: IValidatorsService
     {
-        public Validators() {  }
+        public ValidatorsService() {  }
 
         #region Regexs
 
@@ -129,6 +135,104 @@ namespace SERVICES
             return validacion;
         }
 
-       
+        public bool validarTelefono(string telefono)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool validarPrecio(string precio)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool validarDuracion(string duracion)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool validarBuffer(string buffer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool validarDescripcion(string descripcion)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool validarComboBox(ComboBox combo)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool validarDataGridView(DataGridView dgv)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool validarListaServicios(IList<BEServicio> lista)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool validarFechaHora(DateTime fechaHora)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool validarDataTable(DataTable dt)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool validarEntero(string entero)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool validarDecimal(string decimalString)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool validarTexto(string texto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool validarListaString(IList<string> lista)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool validarListaEnteros(IList<int> lista)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool validarListaProfesionales(IList<BEProfesional> lista)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool validarListaServiciosCheckedListBox(CheckedListBox clb)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool validarListaProfesionalesCheckedListBox(CheckedListBox clb)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool validarListaStringCheckedListBox(CheckedListBox clb)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool validarListaEnterosCheckedListBox(CheckedListBox clb)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

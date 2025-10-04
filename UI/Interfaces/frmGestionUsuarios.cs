@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TP_INGSOFTWARE
+namespace UI.Interfaces
 {
     public partial class frmGestionUsuarios : Form
     {
@@ -23,7 +23,7 @@ namespace TP_INGSOFTWARE
             InitializeComponent();
             oBLLUsuario = new BLLUsuario(DigitoVerificadorService);
             oBEUsuario = new BEUsuario();
-            oValidators = new Validators();
+            oValidators = new ValidatorsService();
             oBLLPermisos = new BLLPermisos();
             oBLLBitacora = new BLLBitacora();
             this.cboUsuarios.DataSource = oBLLUsuario.ListarTodo(false, 0);
@@ -37,7 +37,7 @@ namespace TP_INGSOFTWARE
         BLLPermisos oBLLPermisos;
         BEUsuario oBEUsuario;
         BEUsuario oBEUsuarioTemp;
-        Validators oValidators;
+        ValidatorsService oValidators;
         BLLBitacora oBLLBitacora;
 
         #endregion

@@ -122,8 +122,11 @@ namespace UI
             public void CambiarMes(int offset)
             {
                 fechaActual = fechaActual.AddMonths(offset);
-                MesCambiado?.Invoke(fechaActual.ToString("MMMM yyyy", new System.Globalization.CultureInfo("es-ES")));
-
+                MesCambiado?.Invoke(
+    System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(
+        fechaActual.ToString("MMMM yyyy", new System.Globalization.CultureInfo("es-ES"))
+    )
+);
                 DibujarCalendario();
             }
         }

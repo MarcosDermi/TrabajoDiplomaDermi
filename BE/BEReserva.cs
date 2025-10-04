@@ -8,9 +8,12 @@ namespace BE
 {
     public class BEReserva
     {
-        public DateTime Hora { get; set; }
-        public string Cliente { get; set; }
-        public string Servicio { get; set; }
-        public string Estilista { get; set; }
+        public DateTime FechaInicio { get; set; }
+        public DateTime FechaFin { get; set; }
+        public BEUsuario Cliente { get; set; }
+        public int ProfesionalID { get; set; }
+        public int MedioDePagoID { get; set; }
+        public List<BEServicio> Servicios { get; set; }
+        public decimal PrecioTotal { get; set; }
     }
 }

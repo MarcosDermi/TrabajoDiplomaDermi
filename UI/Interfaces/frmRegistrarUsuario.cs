@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace TP_INGSOFTWARE
+namespace UI.Interfaces
 {
     public partial class frmRegistrarUsuario : Form,IdiomaObserver
     {
@@ -19,7 +19,7 @@ namespace TP_INGSOFTWARE
         IDigitoVerificadorService IDigitoVerificadorService = new DigitoVerificadorService();
 
         BLLUsuario oBLLUsuario;
-        Validators oValidators = new Validators();
+        ValidatorsService oValidators = new ValidatorsService();
         BLLObserver oBLLObserver = new BLLObserver();
 
         public frmRegistrarUsuario()

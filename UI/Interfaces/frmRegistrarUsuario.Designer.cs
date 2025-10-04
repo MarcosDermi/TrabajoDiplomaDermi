@@ -1,4 +1,4 @@
-﻿namespace TP_INGSOFTWARE
+﻿namespace UI.Interfaces
 {
     partial class frmRegistrarUsuario
     {
