@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="DigitoVerificadorService.cs" />
     <Compile Include="GeneralService.cs" />
+    <Compile Include="AgendaService.cs" />
     <Compile Include="GestionStockService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

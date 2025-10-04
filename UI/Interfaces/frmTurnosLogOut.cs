@@ -1,8 +1,10 @@
 ﻿using BE;
+using BLL;
 using Ical.Net.CalendarComponents;
 using Ical.Net.DataTypes;
 using Ical.Net.Serialization;
 using SERVICES;
+using SERVICES.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,28 +19,17 @@ namespace TP_INGSOFTWARE
 {
     public partial class frmTurnosLogOut : BaseForm
     {
+        private int _IdProfesionalSeleccionado = 0;
+        private readonly BLLAgenda _bllAgenda = new BLLAgenda();
+        private DateTime _fechaSeleccionada = DateTime.MinValue;
         public frmTurnosLogOut()
         {
             InitializeComponent();
         }
 
-
-        private void Calendario_DiaSeleccionado(object sender, DateTime fecha)
-        {
-            dataGridViewHorarios.Rows.Clear();
-
-            // Ejemplo de horarios fijos
-            var horarios = new List<string> { "09:00", "10:00", "11:00", "12:00", "13:00" };
-
-            foreach (var hora in horarios)
-            {
-                dataGridViewHorarios.Rows.Add(hora, "Disponible");
-            }
-        }
-
         private void frmTurnosLogOut_Load(object sender, EventArgs e)
         {
-            calendario.DiaSeleccionado += Calendario_DiaSeleccionado;
+            ucCalendario.DiaSeleccionado += ucCalendario_DiaSeleccionado;
 
             dataGridViewHorarios.Columns.Add("Hora", "Hora");
             dataGridViewHorarios.Columns.Add("Estado", "Estado");
@@ -51,28 +42,97 @@ namespace TP_INGSOFTWARE
             cmbProfesional.DisplayMember = "Nombre";
             cmbProfesional.ValueMember = "ProfesionalID";
             cmbProfesional.DataSource = GeneralService.ListarProfesionales();
+
+            ucCalendario.MesCambiado += (mesTexto) =>
+            {
+                lblMes.Text = mesTexto;
+            };
+            lblMes.Text = DateTime.Today.ToString("MMMM yyyy", new System.Globalization.CultureInfo("es-ES"));
         }
 
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void cmbProfesional_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Obtener el profesional seleccionado
             var profesionalSeleccionado = cmbProfesional.SelectedItem as BEProfesional;
+            if (profesionalSeleccionado == null) return;
 
-            if (profesionalSeleccionado != null)
+            _IdProfesionalSeleccionado = profesionalSeleccionado.ProfesionalID;
+            RefrescarHorariosInteligentes();
+
+            // Limpiar la lista
+            checkedListBoxServicios.Items.Clear();
+
+            // Cargar con objetos BEServicio
+            foreach (var servicio in profesionalSeleccionado.Servicios)
             {
-                // Limpiar la lista de servicios
-                checkedListBoxServicios.Items.Clear();
+                checkedListBoxServicios.Items.Add(servicio, false);
+            }
 
-                // Agregar los servicios del profesional
-                foreach (var servicio in profesionalSeleccionado.Servicios)
-                {
-                    checkedListBoxServicios.Items.Add(servicio.Nombre);
-                }
+            // Mostrar Nombre pero conservar el objeto
+            checkedListBoxServicios.DisplayMember = "Nombre";
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ucCalendario.CambiarMes(+1);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ucCalendario.CambiarMes(-1);
+        }
+
+        private void ucCalendario_DiaSeleccionado(object sender, DateTime dtFechaSeleccionada)
+        {
+            dataGridViewHorarios.Rows.Clear();
+            _fechaSeleccionada = dtFechaSeleccionada;
+
+            RefrescarHorariosInteligentes();
+        }
+
+
+        private void ucCalendario_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ucCalendario_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RefrescarHorariosInteligentes()
+        {
+            if (_fechaSeleccionada == DateTime.MinValue) return;
+            if (cmbProfesional.SelectedItem == null) return;
+
+            // servicios elegidos
+            var serviciosSel = checkedListBoxServicios.CheckedItems
+    .Cast<BEServicio>()
+    .Select(s => s.ServicioID)
+    .ToList();
+
+
+            dataGridViewHorarios.Rows.Clear();
+
+            // slots desde BLL
+            var slots = _bllAgenda.CalcularSlotsDisponibles(_IdProfesionalSeleccionado, _fechaSeleccionada, serviciosSel);
+
+            if (slots.Count == 0)
+            {
+                dataGridViewHorarios.Rows.Add("-", "No hay horarios disponibles");
+                dataGridViewHorarios.Rows[0].DefaultCellStyle.BackColor = Color.Gainsboro;
+                return;
+            }
+
+            foreach (var s in slots)
+            {
+                int idx = dataGridViewHorarios.Rows.Add(s.ToString("HH:mm"), "Disponible");
+                dataGridViewHorarios.Rows[idx].DefaultCellStyle.BackColor = Color.LightGreen;
             }
         }
     }

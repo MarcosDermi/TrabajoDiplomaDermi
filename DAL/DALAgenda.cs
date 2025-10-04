@@ -9,49 +9,14 @@ using System.Linq;
 
 namespace DAL
 {
-    public class DALProfesional : IGestor<BEProfesional>
+    public class DALAgenda
     {
         Datos oDatos;
         Hashtable Hdatos;
 
-        public DALProfesional()
+        public DALAgenda()
         {
             oDatos = new Datos();
-        }
-
-        public bool Baja(BEProfesional Objeto)
-        {
-            throw new NotImplementedException();
-        }
-
-        public DataTable GetAll()
-        {
-            try
-            {
-                var stpNombre = "GetAllProfesionales";
-                Hdatos = new Hashtable();
-
-                return oDatos.Leer(stpNombre, Hdatos);
-
-            }
-            catch (SqlException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public BEProfesional GetOne(int iId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Guardar(BEProfesional Objeto)
-        {
-            throw new NotImplementedException();
         }
 
         public List<BEProfesional> ListarTodo(bool EsControlCambio, int iIdUsuario)
@@ -119,6 +84,48 @@ namespace DAL
                     Inicio = (DateTime)row["FechaInicio"],
                     Fin = (DateTime)row["FechaFin"]
                 }).ToList();
+        }
+
+        public List<BEJornadaLaboral> ObtenerFranjasPorProfesional(int profesionalId)
+        {
+            var oLstJornadas = new List<BEJornadaLaboral>();
+
+            try
+            {
+                var stpNombre = "ObtenerFranjasPorProfesional";
+                Hdatos = new Hashtable
+                {
+                    { "@ProfesionalID", profesionalId }
+                };
+
+                var oDtFranjas = oDatos.Leer(stpNombre, Hdatos);
+
+                oLstJornadas = oDtFranjas.AsEnumerable()
+                    .GroupBy(row => new
+                    {
+                        DiaSemana = Convert.ToInt32(row["DiaSemana"])
+                    })
+                    .Select(g => new BEJornadaLaboral
+                    {
+                        Dia = (DayOfWeek)g.Key.DiaSemana,
+                        Franjas = g.Select(f => new BEFranja
+                        {
+                            Inicio = DateTime.Today.Add((TimeSpan)f["HoraInicio"]),
+                            Fin = DateTime.Today.Add((TimeSpan)f["HoraFin"])
+                        }).ToList()
+                    })
+                    .ToList();
+
+                return oLstJornadas;
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error SQL al obtener franjas del profesional.", ex);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error general al obtener franjas del profesional.", ex);
+            }
         }
     }
 

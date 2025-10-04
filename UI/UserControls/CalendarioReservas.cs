@@ -8,20 +8,20 @@ namespace UI
 {
     namespace ProyectoDiploma
     {
-            public partial class CalendarioReservas : UserControl
-            {
-                private DateTime fechaActual;
-                private Dictionary<DateTime, List<BEReserva>> reservas;
+        public partial class CalendarioReservas : UserControl
+        {
+            private DateTime fechaActual;
+            private Dictionary<DateTime, List<BEReserva>> reservas;
+            private Label lblDiaSeleccionado;
+            public event Action<string> MesCambiado;
 
-                public CalendarioReservas()
-                {
-                    //InitializeComponent(); // <- SI usás diseñador, dejalo
-                                           // Si hacés todo a mano, comentá esta línea
-                    this.Dock = DockStyle.Fill;
-                    fechaActual = DateTime.Today;
-                    reservas = new Dictionary<DateTime, List<BEReserva>>();
-                    DibujarCalendario();
-                }
+            public CalendarioReservas()
+            {
+                this.Dock = DockStyle.Fill;
+                fechaActual = DateTime.Today;
+                reservas = new Dictionary<DateTime, List<BEReserva>>();
+                DibujarCalendario();
+            }
 
             private void DibujarCalendario()
             {
@@ -39,6 +39,7 @@ namespace UI
                 int diasEnMes = DateTime.DaysInMonth(fechaActual.Year, fechaActual.Month);
 
                 int dia = 1;
+                DateTime hoy = DateTime.Today; // 📌 Fecha actual de la PC
 
                 for (int fila = 0; fila < 6; fila++)
                 {
@@ -63,22 +64,40 @@ namespace UI
 
                         DateTime fecha = new DateTime(fechaActual.Year, fechaActual.Month, dia);
 
-                        // 📌 Label del día
                         Label lblDia = new Label
                         {
                             Text = dia.ToString(),
                             Dock = DockStyle.Fill,
                             TextAlign = ContentAlignment.MiddleCenter,
                             Font = new Font("Segoe UI", 10, FontStyle.Bold),
-                            Cursor = Cursors.Hand,
                             Tag = fecha
                         };
 
-                        // 📌 Click en el día → dispara evento
-                        lblDia.Click += (s, e) =>
+
+                        if (fecha < hoy)
                         {
-                            DiaSeleccionado?.Invoke(this, fecha);
-                        };
+                            lblDia.Enabled = false;
+                            lblDia.ForeColor = Color.Gray; // opcional, para distinguir
+                            lblDia.Cursor = Cursors.Default;
+                        }
+                        else
+                        {
+                            lblDia.Cursor = Cursors.Hand;
+                            lblDia.Click += (s, e) =>
+                            {
+                                if (lblDiaSeleccionado != null)
+                                {
+                                    lblDiaSeleccionado.BackColor = Color.White;
+                                    lblDiaSeleccionado.ForeColor = Color.Black;
+                                }
+
+                                // 🔹 Nuevo seleccionado
+                                lblDia.BackColor = Color.FromArgb(20, 95, 170);
+                                lblDia.ForeColor = Color.White; // opcional para contraste
+                                lblDiaSeleccionado = lblDia;
+                                DiaSeleccionado?.Invoke(this, fecha);
+                            };
+                        }
 
                         panelDia.Controls.Add(lblDia);
                         layout.Controls.Add(panelDia, col, fila);
@@ -101,11 +120,13 @@ namespace UI
             }
 
             public void CambiarMes(int offset)
-                {
-                    fechaActual = fechaActual.AddMonths(offset);
-                    DibujarCalendario();
-                }
+            {
+                fechaActual = fechaActual.AddMonths(offset);
+                MesCambiado?.Invoke(fechaActual.ToString("MMMM yyyy", new System.Globalization.CultureInfo("es-ES")));
+
+                DibujarCalendario();
             }
         }
-    
+    }
+
 }

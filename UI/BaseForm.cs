@@ -10,12 +10,30 @@ namespace TP_INGSOFTWARE
     {
         private IGestionStockService _gestionStockService;
         private IGeneralService _generalService;
+        private IAgendaService _agendaService;
+
+        
+        public BaseForm()
+        {
+            InitializeComponent();
+        }
+
+        private void InitializeComponent()
+        {
+            SuspendLayout();
+            Font = new Font("Tahoma", 8.25F, FontStyle.Regular, GraphicsUnit.Point, (0));
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            MinimizeBox = false;
+            StartPosition = FormStartPosition.CenterScreen;
+            KeyPreview = true;
+            ResumeLayout(false);
+        }
 
         public IGestionStockService GestionStockService
         {
             get
             {
-                // Inicialización perezosa: solo se crea cuando se necesita
                 if (_gestionStockService == null && !DesignMode)
                 {
                     _gestionStockService = new GestionStockService();
@@ -32,7 +50,6 @@ namespace TP_INGSOFTWARE
         {
             get
             {
-                // Inicialización perezosa: solo se crea cuando se necesita
                 if (_generalService == null && !DesignMode)
                 {
                     _generalService = new GeneralService();
@@ -44,23 +61,21 @@ namespace TP_INGSOFTWARE
                 _generalService = value;
             }
         }
-        public BaseForm()
-        {
-            InitializeComponent();
-        }
 
-        private void InitializeComponent()
+        public IAgendaService AgendaService
         {
-            SuspendLayout();
-            Font = new Font("Tahoma", 8.25F, FontStyle.Regular, GraphicsUnit.Point, (0));
-            FormBorderStyle = FormBorderStyle.FixedSingle;
-            MaximizeBox = false;
-            MinimizeBox = false;
-            StartPosition = FormStartPosition.CenterScreen;
-            //Icon = Resources.favicon;
-            KeyPreview = true;
-            ResumeLayout(false);
+            get
+            {
+                if (_agendaService == null && !DesignMode)
+                {
+                    _agendaService = new AgendaService();
+                }
+                return _agendaService;
+            }
+            set
+            {
+                _agendaService = value;
+            }
         }
-
     }
 }

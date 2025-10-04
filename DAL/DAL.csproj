@@ -49,6 +49,9 @@
     <Compile Include="DALDV.cs" />
     <Compile Include="DALMedioDePago.cs" />
     <Compile Include="DALPermisos.cs" />
+    <Compile Include="DALAgenda.cs" />
+    <Compile Include="DALProfesionalServicio.cs" />
+    <Compile Include="DALServicios.cs" />
     <Compile Include="DALProfesional.cs" />
     <Compile Include="DALProveedor.cs" />
     <Compile Include="DALTraductor.cs" />

@@ -46,6 +46,7 @@
     <Compile Include="BLLMedioDePago.cs" />
     <Compile Include="BLLObserver.cs" />
     <Compile Include="BLLPermisos.cs" />
+    <Compile Include="BLLAgenda.cs" />
     <Compile Include="BLLProfesional.cs" />
     <Compile Include="BLLProveedor.cs" />
     <Compile Include="BLLTraductor.cs" />

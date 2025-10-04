@@ -1,20 +1,21 @@
-﻿using ABSTRACCION;
-using BE;
+﻿using BE;
+using BE.Exceptions;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
 
 namespace DAL
 {
-    public class DALProfesional : IGestor<BEProfesional>
+    public class DALServicios
     {
         Datos oDatos;
         Hashtable Hdatos;
 
-        public DALProfesional()
+        public DALServicios()
         {
             oDatos = new Datos();
         }
@@ -119,6 +120,74 @@ namespace DAL
                     Inicio = (DateTime)row["FechaInicio"],
                     Fin = (DateTime)row["FechaFin"]
                 }).ToList();
+        }
+
+        public BEServicio ObtenerServicio(int iId)
+        {
+            try
+            {
+                var stpNombre = "ObtenerServicio";
+                Hdatos = new Hashtable();
+                Hdatos.Add("@ServicioID", iId);
+
+                var oDtServicio = oDatos.Leer(stpNombre, Hdatos);
+
+                if (oDtServicio.Rows.Count > 0)
+                {
+                    var row = oDtServicio.Rows[0];
+                    return new BEServicio
+                    {
+                        ServicioID = (int)row["ServicioID"],
+                        Nombre = (string)row["Nombre"],
+                        DuracionMin = (int)row["DuracionMin"],
+                        BufferMin = (int)row["BufferMin"],
+                        Precio = (decimal)row["Precio"]
+                    };
+                }
+
+                throw new ServicioNoEncontradoException(iId);
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<BEServicio> ListarServicios()
+        {
+            try
+            {
+                var stpNombre = "ListarServicios";
+                Hdatos = new Hashtable();
+                var oDtServicios = oDatos.Leer(stpNombre, Hdatos);
+
+                if (oDtServicios.Rows.Count > 0)
+                {
+                    return oDtServicios.AsEnumerable()
+                        .Select(row => new BEServicio
+                        {
+                            ServicioID = (int)row["ServicioID"],
+                            Nombre = (string)row["Nombre"],
+                            DuracionMin = (int)row["DuracionMin"],
+                            BufferMin = (int)row["BufferMin"],
+                            Precio = (decimal)row["Precio"]
+                        }).ToList();
+                }
+
+                return new List<BEServicio>();
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 
