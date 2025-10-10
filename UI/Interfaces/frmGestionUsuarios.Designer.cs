@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.txtDNI = new System.Windows.Forms.TextBox();
@@ -56,6 +56,7 @@
             this.cmdConfigurar = new System.Windows.Forms.Button();
             this.cboUsuarios = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.chBoxProfesional = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.grpPatentes.SuspendLayout();
             this.SuspendLayout();
@@ -69,23 +70,23 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvUsuarios.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvUsuarios.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(47)))), ((int)(((byte)(81)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvUsuarios.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(47)))), ((int)(((byte)(81)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvUsuarios.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvUsuarios.GridColor = System.Drawing.SystemColors.ControlLight;
             this.dgvUsuarios.Location = new System.Drawing.Point(11, 11);
             this.dgvUsuarios.Margin = new System.Windows.Forms.Padding(2);
@@ -102,7 +103,7 @@
             // 
             this.txtUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.txtUsuario.Location = new System.Drawing.Point(404, 275);
+            this.txtUsuario.Location = new System.Drawing.Point(405, 258);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(156, 24);
             this.txtUsuario.TabIndex = 26;
@@ -113,7 +114,7 @@
             // 
             this.txtDNI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDNI.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.txtDNI.Location = new System.Drawing.Point(239, 305);
+            this.txtDNI.Location = new System.Drawing.Point(240, 288);
             this.txtDNI.Name = "txtDNI";
             this.txtDNI.Size = new System.Drawing.Size(160, 24);
             this.txtDNI.TabIndex = 25;
@@ -124,7 +125,7 @@
             // 
             this.txtApellido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.txtApellido.Location = new System.Drawing.Point(239, 275);
+            this.txtApellido.Location = new System.Drawing.Point(240, 258);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(159, 24);
             this.txtApellido.TabIndex = 24;
@@ -136,7 +137,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.label5.ForeColor = System.Drawing.Color.LightGray;
-            this.label5.Location = new System.Drawing.Point(81, 334);
+            this.label5.Location = new System.Drawing.Point(82, 342);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(149, 18);
             this.label5.TabIndex = 23;
@@ -145,7 +146,7 @@
             // dtpFechaNac
             // 
             this.dtpFechaNac.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.dtpFechaNac.Location = new System.Drawing.Point(236, 334);
+            this.dtpFechaNac.Location = new System.Drawing.Point(237, 342);
             this.dtpFechaNac.Name = "dtpFechaNac";
             this.dtpFechaNac.Size = new System.Drawing.Size(323, 24);
             this.dtpFechaNac.TabIndex = 22;
@@ -154,7 +155,7 @@
             // 
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.txtNombre.Location = new System.Drawing.Point(74, 275);
+            this.txtNombre.Location = new System.Drawing.Point(75, 258);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(159, 24);
             this.txtNombre.TabIndex = 20;
@@ -165,7 +166,7 @@
             // 
             this.txtMail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.txtMail.Location = new System.Drawing.Point(34, 305);
+            this.txtMail.Location = new System.Drawing.Point(35, 288);
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(199, 24);
             this.txtMail.TabIndex = 21;
@@ -177,7 +178,7 @@
             this.txtId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtId.Enabled = false;
             this.txtId.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.txtId.Location = new System.Drawing.Point(34, 275);
+            this.txtId.Location = new System.Drawing.Point(35, 258);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(34, 24);
             this.txtId.TabIndex = 27;
@@ -187,7 +188,7 @@
             this.btnModificar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(47)))), ((int)(((byte)(81)))));
-            this.btnModificar.Location = new System.Drawing.Point(11, 371);
+            this.btnModificar.Location = new System.Drawing.Point(12, 379);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(146, 30);
             this.btnModificar.TabIndex = 28;
@@ -200,7 +201,7 @@
             this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(47)))), ((int)(((byte)(81)))));
-            this.btnEliminar.Location = new System.Drawing.Point(205, 372);
+            this.btnEliminar.Location = new System.Drawing.Point(206, 380);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(146, 30);
             this.btnEliminar.TabIndex = 29;
@@ -213,7 +214,7 @@
             this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(47)))), ((int)(((byte)(81)))));
-            this.btnCancelar.Location = new System.Drawing.Point(413, 371);
+            this.btnCancelar.Location = new System.Drawing.Point(414, 379);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(146, 31);
             this.btnCancelar.TabIndex = 30;
@@ -226,7 +227,7 @@
             this.chBoxAdmin.AutoSize = true;
             this.chBoxAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chBoxAdmin.ForeColor = System.Drawing.Color.Transparent;
-            this.chBoxAdmin.Location = new System.Drawing.Point(404, 309);
+            this.chBoxAdmin.Location = new System.Drawing.Point(35, 320);
             this.chBoxAdmin.Margin = new System.Windows.Forms.Padding(2);
             this.chBoxAdmin.Name = "chBoxAdmin";
             this.chBoxAdmin.Size = new System.Drawing.Size(135, 20);
@@ -239,7 +240,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.label1.ForeColor = System.Drawing.Color.LightGray;
-            this.label1.Location = new System.Drawing.Point(8, 276);
+            this.label1.Location = new System.Drawing.Point(9, 259);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(26, 18);
             this.label1.TabIndex = 32;
@@ -386,13 +387,27 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "Todos los usuarios";
             // 
+            // chBoxProfesional
+            // 
+            this.chBoxProfesional.AutoSize = true;
+            this.chBoxProfesional.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chBoxProfesional.ForeColor = System.Drawing.Color.Transparent;
+            this.chBoxProfesional.Location = new System.Drawing.Point(237, 317);
+            this.chBoxProfesional.Margin = new System.Windows.Forms.Padding(2);
+            this.chBoxProfesional.Name = "chBoxProfesional";
+            this.chBoxProfesional.Size = new System.Drawing.Size(120, 20);
+            this.chBoxProfesional.TabIndex = 36;
+            this.chBoxProfesional.Text = "Es Profesional?";
+            this.chBoxProfesional.UseVisualStyleBackColor = true;
+            // 
             // frmGestionUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(47)))), ((int)(((byte)(81)))));
-            this.ClientSize = new System.Drawing.Size(1152, 438);
+            this.ClientSize = new System.Drawing.Size(1152, 460);
+            this.Controls.Add(this.chBoxProfesional);
             this.Controls.Add(this.cmdGuardarFamilia);
             this.Controls.Add(this.treeView1);
             this.Controls.Add(this.grpPatentes);
@@ -453,5 +468,6 @@
         private System.Windows.Forms.Button cmdConfigurar;
         private System.Windows.Forms.ComboBox cboUsuarios;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox chBoxProfesional;
     }
 }

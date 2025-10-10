@@ -17,6 +17,7 @@ namespace BE
         public bool isAdmin { get; set; }
         public DateTime FechaNac { get; set; }
         public string DV { get; set; }
+        public bool EsProfesional { get; set; }
 
         public BEUsuario()
         {

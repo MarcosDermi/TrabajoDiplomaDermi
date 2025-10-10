@@ -49,56 +49,54 @@ namespace DAL
             return Escribir(stpNombre, HDatos, out dummy);
         }
 
-        public bool Escribir(string stpNombre, Hashtable HDatos, out int idGenerado)
+        public bool Escribir(string stpNombre, Hashtable HDatos, out int idGenerado, bool devuelveIdGenerado = false, string outputParamName = "@IdGenerado")
         {
-            oCnn.Open();
-            SqlTransaction oSQLTrans;
-            oCmd = new SqlCommand(stpNombre, oCnn);
-            oCmd.CommandType = CommandType.StoredProcedure;
-
-            oSQLTrans = oCnn.BeginTransaction();
             idGenerado = 0;
+            oCnn.Open();
+            var oSQLTrans = oCnn.BeginTransaction();
+
             try
             {
-                if (HDatos != null)
+                using (var cmd = new SqlCommand(stpNombre, oCnn, oSQLTrans))
                 {
-                    foreach (string oDato in HDatos.Keys)
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    if (HDatos != null)
                     {
-                        oCmd.Parameters.AddWithValue(oDato, HDatos[oDato]);
+                        foreach (DictionaryEntry kv in HDatos)
+                            cmd.Parameters.AddWithValue((string)kv.Key, kv.Value ?? DBNull.Value);
                     }
-                }
 
-                if (!oCmd.Parameters.Contains("@IdGenerado"))
-                {
-                    var paramId = new SqlParameter("@IdGenerado", SqlDbType.Int)
+                    SqlParameter outParam = null;
+                    if (devuelveIdGenerado)
                     {
-                        Direction = ParameterDirection.Output
-                    };
-                    oCmd.Parameters.Add(paramId);
+                        outParam = new SqlParameter(outputParamName, SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+                        cmd.Parameters.Add(outParam);
+                    }
+
+                    cmd.ExecuteNonQuery();
+                    oSQLTrans.Commit();
+
+                    if (devuelveIdGenerado && outParam?.Value != DBNull.Value)
+                        idGenerado = Convert.ToInt32(outParam.Value);
+
+                    return true;
                 }
-
-                oCmd.Transaction = oSQLTrans;
-                int Respuesta = oCmd.ExecuteNonQuery();
-                oSQLTrans.Commit();
-
-                if (oCmd.Parameters["@IdGenerado"].Value != DBNull.Value) 
-                { idGenerado = Convert.ToInt32(oCmd.Parameters["@IdGenerado"].Value); }
-                    
-
-                return true;
             }
-            catch (SqlException ex)
+            catch
             {
                 oSQLTrans.Rollback();
-                throw ex;
+                throw;
             }
-            catch (Exception ex) 
+            finally
             {
-                oSQLTrans.Rollback();
-                throw ex;
+                oCnn.Close();
             }
-            finally { oCnn.Close(); } 
         }
+
 
 
 

@@ -10,7 +10,7 @@ namespace DAL
 {
     public class DALUsuario
     {
-        public DALUsuario() 
+        public DALUsuario()
         {
             Datos oDatos = new Datos();
             Hashtable hDatos = new Hashtable();
@@ -29,7 +29,7 @@ namespace DAL
             oDatos = new Datos();
             string stpNombre;
 
-            if (oUsuario.Id==0)
+            if (oUsuario.Id == 0)
             {
                 stpNombre = "AltaUsuario";
                 hDatos = new Hashtable();
@@ -62,11 +62,11 @@ namespace DAL
                 hDatos.Add("@DNI", oUsuario.DNI);
                 hDatos.Add("@isAdmin", oUsuario.isAdmin);
                 hDatos.Add("@Id", oUsuario.Id);
+                hDatos.Add("@EsProfesional", oUsuario.EsProfesional);
 
                 oDatos.Escribir(stpNombre, hDatos);
 
                 hDatos.Remove("@Id");
-                //hDatos.Add("@UsuarioID", oUsuario.Id);
                 hDatos.Add("@Clave", oUsuario.Clave);
                 hDatos.Add("@deleted", 0);
                 hDatos.Add("@DV", oUsuario.DV);
@@ -74,8 +74,7 @@ namespace DAL
 
                 return oDatos.Escribir(stpNombre, hDatos);
             }
-            
-           
+
         }
 
         public bool Baja(BEUsuario oUsuario)
@@ -83,10 +82,10 @@ namespace DAL
             oDatos = new Datos();
             string stpNombre;
 
-            if (oUsuario.Id!=0)
+            if (oUsuario.Id != 0)
             {
                 stpNombre = "BajaUsuario";
-                hDatos=new Hashtable();
+                hDatos = new Hashtable();
                 hDatos.Add("Id", oUsuario.Id);
 
                 return oDatos.Escribir(stpNombre, hDatos);
@@ -132,6 +131,7 @@ namespace DAL
                     oUsuario.isAdmin = Convert.ToBoolean(row["isAdmin"]);
                     oUsuario.Clave = row["Clave"].ToString();
                     oUsuario.DV = row["DV"]?.ToString() ?? "";
+                    oUsuario.EsProfesional = Convert.ToBoolean(row["EsProfesional"]);
 
                     lstUsuarios.Add(oUsuario);
                 }

@@ -14,6 +14,8 @@ namespace UI
             private Dictionary<DateTime, List<BEReserva>> reservas;
             private Label lblDiaSeleccionado;
             public event Action<string> MesCambiado;
+            public event EventHandler<DateTime> DiaSeleccionado;
+            private List<DateTime> _fechasConReservas = new List<DateTime>();
 
             public CalendarioReservas()
             {
@@ -39,7 +41,7 @@ namespace UI
                 int diasEnMes = DateTime.DaysInMonth(fechaActual.Year, fechaActual.Month);
 
                 int dia = 1;
-                DateTime hoy = DateTime.Today; // 📌 Fecha actual de la PC
+                DateTime hoy = DateTime.Today;
 
                 for (int fila = 0; fila < 6; fila++)
                 {
@@ -55,7 +57,6 @@ namespace UI
                             BorderStyle = BorderStyle.FixedSingle
                         };
 
-                        // Espacios vacíos antes o después de los días válidos
                         if ((fila == 0 && col < offset) || dia > diasEnMes)
                         {
                             layout.Controls.Add(panelDia, col, fila);
@@ -87,18 +88,30 @@ namespace UI
                             {
                                 if (lblDiaSeleccionado != null)
                                 {
-                                    lblDiaSeleccionado.BackColor = Color.White;
-                                    lblDiaSeleccionado.ForeColor = Color.Black;
+                                    var panelAnterior = lblDiaSeleccionado.Parent;
+                                    DateTime fechaAnterior = (DateTime)panelAnterior.Tag;
+
+                                    if (_fechasConReservas.Contains(fechaAnterior.Date))
+                                    {
+                                        panelAnterior.BackColor = Color.LightGreen;
+                                        lblDiaSeleccionado.ForeColor = Color.Black;
+                                    }
+                                    else
+                                    {
+                                        panelAnterior.BackColor = Color.White;
+                                        lblDiaSeleccionado.ForeColor = Color.Black;
+                                    }
                                 }
 
-                                // 🔹 Nuevo seleccionado
-                                lblDia.BackColor = Color.FromArgb(20, 95, 170);
-                                lblDia.ForeColor = Color.White; // opcional para contraste
+                                var panelNuevo = lblDia.Parent;
+                                panelNuevo.BackColor = Color.FromArgb(20, 95, 170); // azul seleccionado
+                                lblDia.ForeColor = Color.White;
                                 lblDiaSeleccionado = lblDia;
                                 DiaSeleccionado?.Invoke(this, fecha);
                             };
                         }
 
+                        panelDia.Tag = fecha;
                         panelDia.Controls.Add(lblDia);
                         layout.Controls.Add(panelDia, col, fila);
                         dia++;
@@ -107,10 +120,6 @@ namespace UI
 
                 this.Controls.Add(layout);
             }
-
-            // 📌 Evento que dispara el día seleccionado
-            public event EventHandler<DateTime> DiaSeleccionado;
-
 
             private void BotonDia_Click(object sender, EventArgs e)
             {
@@ -122,13 +131,43 @@ namespace UI
             public void CambiarMes(int offset)
             {
                 fechaActual = fechaActual.AddMonths(offset);
-                MesCambiado?.Invoke(
-    System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(
-        fechaActual.ToString("MMMM yyyy", new System.Globalization.CultureInfo("es-ES"))
-    )
-);
+                MesCambiado?.Invoke(System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(fechaActual.ToString("MMMM yyyy", new System.Globalization.CultureInfo("es-ES"))));
                 DibujarCalendario();
             }
+
+            public void MarcarFechasConReservas(List<DateTime> fechas)
+            {
+                _fechasConReservas = fechas ?? new List<DateTime>();  // ✅ guardo la referencia internamente
+
+                foreach (Control control in this.Controls)
+                {
+                    if (control is TableLayoutPanel layout)
+                    {
+                        foreach (Control panel in layout.Controls)
+                        {
+                            if (panel.Tag is DateTime fechaPanel)
+                            {
+                                if (_fechasConReservas.Contains(fechaPanel.Date))
+                                {
+                                    panel.BackColor = Color.LightGreen;
+                                }
+                                else
+                                {
+                                    panel.BackColor = Color.White;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            public DateTime FechaActual
+            {
+                get { return fechaActual; }
+            }
+
+
         }
     }
 

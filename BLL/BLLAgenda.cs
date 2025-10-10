@@ -1,9 +1,10 @@
-﻿using System;
+﻿using BE;
+using DAL;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using DAL;
-using BE;
 
 namespace BLL
 {
@@ -24,7 +25,7 @@ namespace BLL
             oDALProfesionalServicio = new DALProfesionalServicio();
         }
 
-        private int DuracionTotalSeleccionadaMin(IEnumerable<int> serviciosSeleccionados)
+        public int DuracionTotalSeleccionadaMin(IEnumerable<int> serviciosSeleccionados)
         {
             int total = 0;
             foreach (var id in serviciosSeleccionados)
@@ -37,7 +38,7 @@ namespace BLL
 
         private bool ProfesionalSoportaServicios(int profesionalId, IEnumerable<int> serviciosSeleccionados, out string motivo)
         {
-            var set = oDALProfesionalServicio.ObtenerServiciosDeProfesional(profesionalId); // vendría de DALProfesionalServicio
+            var set = oDALProfesionalServicio.ObtenerServiciosDeProfesional(profesionalId);
             var faltantes = serviciosSeleccionados.Where(s => !set.Contains(s)).ToList();
             if (faltantes.Count == 0) { motivo = ""; return true; }
             motivo = "Este profesional no realiza: " + string.Join(", ", faltantes.Select(f => oDALServicio.ObtenerServicio(f).Nombre));
@@ -100,11 +101,14 @@ namespace BLL
             return result.Where(x => x.Fin > x.Inicio).ToList();
         }
 
+        bool Solapa(DateTime aInicio, DateTime aFin, DateTime bInicio, DateTime bFin)
+    => aInicio < bFin && bInicio < aFin;
+
         public List<DateTime> CalcularSlotsDisponibles(int profesionalId, DateTime fecha, IEnumerable<int> serviciosSeleccionados)
         {
             var slots = new List<DateTime>();
 
-            // 0) validación de servicios soportados
+            // 0) validación
             if (!ProfesionalSoportaServicios(profesionalId, serviciosSeleccionados, out _))
                 return slots;
 
@@ -117,17 +121,22 @@ namespace BLL
             var franjas = ObtenerFranjasLaboralesDelDia(profesionalId, fecha);
             if (franjas.Count == 0) return slots;
 
-            // 3) reservas ocupadas desde BD
+            // 3) reservas ocupadas desde BD (asumo objetos con Inicio/Fin DateTime)
             var ocupados = oBLLProfesional.GetTurnosTomados(profesionalId, fecha);
-            var libres = RestarOcupaciones(franjas, ocupados);
 
-            // 4) slots cada 15 minutos
-            foreach (var f in libres)
+            // 4) Generar slots cada 15' en TODAS las franjas, filtrando por solape
+            foreach (var f in franjas)
             {
-                for (var inicio = f.Inicio; inicio + dur <= f.Fin; inicio += Paso)
-                    slots.Add(inicio);
+                for (var inicio = f.Inicio; inicio.Add(dur) <= f.Fin; inicio = inicio.Add(Paso))
+                {
+                    var fin = inicio.Add(dur);
+                    bool seSolapa = ocupados.Any(o => Solapa(inicio, fin, o.Inicio, o.Fin));
+                    if (!seSolapa)
+                        slots.Add(inicio);
+                }
             }
-            return slots;
+
+            return slots.OrderBy(s => s).ToList();
         }
 
         public int ConfirmarReserva(BEReserva oReserva)
@@ -138,6 +147,11 @@ namespace BLL
                 throw new Exception("El horario seleccionado ya no está disponible.");
 
             return oDALAgenda.ConfirmarReserva(oReserva);
+        }
+
+        public List<DateTime> ObtenerFechasConReservas(int idProfesional, DateTime mes)
+        {
+            return oDALAgenda.ObtenerFechasConReservas(idProfesional, mes);
         }
 
     }

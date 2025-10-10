@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace UI.Interfaces
 {
-    public partial class frmRegistrarUsuario : Form,IdiomaObserver
+    public partial class frmRegistrarUsuario : BaseForm,IdiomaObserver
     {
         
         
@@ -26,6 +26,7 @@ namespace UI.Interfaces
         {
             
             InitializeComponent();
+            oBLLUsuario = new BLLUsuario(IDigitoVerificadorService);
         }
 
         private void frmRegistrarUsuario_Load(object sender, EventArgs e)
@@ -314,6 +315,39 @@ namespace UI.Interfaces
                     
                     oBEUsuario.Clave = txtClave.Text;
                     oBEUsuario.Id = 0;
+
+                    if (!ValidatorsService.validarNombreOApellido(oBEUsuario.Nombre))
+                    {
+                        throw new Exception("Su nombre o apellido no debe contener caracteres especiales");
+                    }
+
+                    if (!ValidatorsService.validarNombreOApellido(oBEUsuario.Apellido))
+                    {
+                        throw new Exception("Su apellido no debe contener caracteres especiales");
+                    }
+
+                    if (!ValidatorsService.validarDni(oBEUsuario.DNI.ToString()))
+                    {
+                        throw new Exception("El dni ingresado no contiene caracteres invalidos");
+                    }
+
+                    if (oBEUsuario.Id == 0)
+                    {
+                        if (!ValidatorsService.validarPassword(oBEUsuario.Clave))
+                        {
+                            throw new Exception("Su contraseña debe contener:\n\t•Minimo 8 caracteres\n\t•Minimo 1 Mayuscula\n\t•Minimo 1 numero");
+                        }
+                    }
+
+                    if (!ValidatorsService.validarUsuario(oBEUsuario.Usuario))
+                    {
+                        throw new Exception("Su usuario solo puede contener texto alfanumerico o simple");
+                    }
+
+                    if (!ValidatorsService.validarMail(oBEUsuario.Mail))
+                    {
+                        throw new Exception("Ingrese un mail valido");
+                    }
 
                     if (txtClave.Text != txtClaveConfirmada.Text)
                     {

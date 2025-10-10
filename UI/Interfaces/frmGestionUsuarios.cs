@@ -198,13 +198,15 @@ namespace UI.Interfaces
             txtDNI.Text = oBEUsuario.DNI.ToString();
             dtpFechaNac.Value = oBEUsuario.FechaNac;
             txtMail.Text = oBEUsuario.Mail.ToString();
+            
             if (oBEUsuario.isAdmin)
             {
                 chBoxAdmin.Checked = true;
             }
-            else
+
+            if (oBEUsuario.EsProfesional)
             {
-                chBoxAdmin.Checked = false;
+                chBoxProfesional.Checked = true;
             }
         }
 
@@ -217,6 +219,7 @@ namespace UI.Interfaces
             oBEUsuario.DNI = Convert.ToInt32(txtDNI.Text);
             oBEUsuario.Mail = txtMail.Text;
             oBEUsuario.FechaNac = dtpFechaNac.Value;
+            
             if (chBoxAdmin.Checked)
             {
                 oBEUsuario.isAdmin = true;
@@ -224,6 +227,15 @@ namespace UI.Interfaces
             else
             {
                 oBEUsuario.isAdmin = false;
+            }
+
+            if (chBoxProfesional.Checked)
+            {
+                oBEUsuario.EsProfesional = true;
+            }
+            else
+            {
+                oBEUsuario.EsProfesional = false;
             }
 
         }

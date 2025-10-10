@@ -146,17 +146,17 @@ namespace DAL
 
             try
             {
-                oDatos.Escribir(stpNombre, Hdatos, out int ReservaID);
+                oDatos.Escribir(stpNombre, Hdatos, out int ReservaID, true);
 
                 foreach (var servicio in oReserva.Servicios)
                 {
-                    var Hdatos = new Hashtable
+                    Hdatos = new Hashtable
                         {
                             { "@ReservaID", ReservaID },
                             { "@ServicioID", servicio.ServicioID }
                         };
 
-                    oDatos.Escribir("InsertarReservaServicio", Hdatos);
+                    oDatos.Escribir("InsertReservaServicio", Hdatos);
                 }
 
                 return ReservaID;
@@ -170,6 +170,28 @@ namespace DAL
                 throw ex;
             }
         }
+
+        public List<DateTime> ObtenerFechasConReservas(int idProfesional, DateTime mes)
+        {
+            var inicioMes = new DateTime(mes.Year, mes.Month, 1);
+            var finMes = inicioMes.AddMonths(1).AddDays(-1);
+
+            // Llamás a tu DAL o SP para obtener reservas entre inicio y fin del mes
+            var oDtFechasReservasPorProfesional = oDatos.Leer("ObtenerFechasReservasPorProfesional", new Hashtable
+                {
+                    { "@ProfesionalID", idProfesional },
+                    { "@FechaDesde", inicioMes },
+                    { "@FechaHasta", finMes }
+                });
+
+            var oLstFechasReserva = oDtFechasReservasPorProfesional.AsEnumerable()
+                .Select(r => ((DateTime)r["FechaReserva"]).Date)
+                .Distinct()
+                .ToList();
+
+            return oLstFechasReserva;
+        }
+
 
     }
 }

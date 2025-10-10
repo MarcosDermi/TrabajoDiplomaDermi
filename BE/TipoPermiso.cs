@@ -4,7 +4,6 @@ namespace BE
 {
     public enum TipoPermiso
     {
-        // CRUDs
         [Description("Crear")]
         Crear,
         [Description("Leer")]
@@ -24,6 +23,8 @@ namespace BE
         [Description("Exportar datos")]
         ExportarDatos,
         [Description("Aprobar procesos")]
-        AprobarProcesos
+        AprobarProcesos,
+        [Description("Gestionar insumos")]
+        GestionarInsumos
     }
 }

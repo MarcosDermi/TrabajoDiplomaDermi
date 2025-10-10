@@ -116,30 +116,55 @@ namespace UI.Interfaces
             if (_fechaSeleccionada == DateTime.MinValue) return;
             if (cmbProfesional.SelectedItem == null) return;
 
-            // servicios elegidos
+            // 1️⃣ Servicios elegidos
             var serviciosSel = checkedListBoxServicios.CheckedItems
-    .Cast<BEServicio>()
-    .Select(s => s.ServicioID)
-    .ToList();
-
+                .Cast<BEServicio>()
+                .Select(s => s.ServicioID)
+                .ToList();
 
             dataGridViewHorarios.Rows.Clear();
 
-            // slots desde BLL
-            var slots = _bllAgenda.CalcularSlotsDisponibles(_IdProfesionalSeleccionado, _fechaSeleccionada, serviciosSel);
+            // 2️⃣ Slots disponibles desde BLL
+            var slotsDisponibles = AgendaService.CalcularSlotsDisponibles(_IdProfesionalSeleccionado, _fechaSeleccionada, serviciosSel);
 
-            if (slots.Count == 0)
+            // 3️⃣ Turnos ocupados (reservas ya tomadas)
+            var reservasOcupadas = AgendaService.ObtenerTurnosTomados(_IdProfesionalSeleccionado, _fechaSeleccionada);
+            // 👆 este método debe devolver lista con Inicio y Fin de las reservas
+
+            if (slotsDisponibles.Count == 0)
             {
                 dataGridViewHorarios.Rows.Add("-", "No hay horarios disponibles");
                 dataGridViewHorarios.Rows[0].DefaultCellStyle.BackColor = Color.Gainsboro;
                 return;
             }
 
-            foreach (var s in slots)
+            // 4️⃣ Duración de la reserva actual
+            var duracionMin = AgendaService.DuracionTotalSeleccionadaMin(serviciosSel);
+            var duracion = TimeSpan.FromMinutes(duracionMin);
+
+            // 5️⃣ Crear todas las filas, marcando ocupadas en rojo
+            foreach (var slot in slotsDisponibles)
             {
-                int idx = dataGridViewHorarios.Rows.Add(s.ToString("HH:mm"), "Disponible");
-                dataGridViewHorarios.Rows[idx].DefaultCellStyle.BackColor = Color.LightGreen;
+                var finSlot = slot.Add(duracion);
+                bool esOcupado = reservasOcupadas.Any(r => slot < r.Fin && r.Inicio < finSlot);
+
+                int rowIdx = dataGridViewHorarios.Rows.Add(slot.ToString("HH:mm"), esOcupado ? "Ocupado" : "Disponible");
+
+                var row = dataGridViewHorarios.Rows[rowIdx];
+                if (esOcupado)
+                {
+                    row.DefaultCellStyle.BackColor = Color.LightCoral;
+                    row.DefaultCellStyle.ForeColor = Color.White;
+                    row.ReadOnly = true;
+                }
+                else
+                {
+                    row.DefaultCellStyle.BackColor = Color.LightGreen;
+                }
             }
+
+            // 6️⃣ Ordenar por hora, por si vienen mezclados
+            dataGridViewHorarios.Sort(dataGridViewHorarios.Columns["Hora"], ListSortDirection.Ascending);
         }
 
         private void checkedListBoxServicios_ItemCheck(object sender, ItemCheckEventArgs e)
@@ -190,19 +215,15 @@ namespace UI.Interfaces
                 return;
             }
 
-            // Obtener la hora seleccionada del DataGridView
             var horaSeleccionada = TimeSpan.Parse(
                 dataGridViewHorarios.SelectedRows[0].Cells["Hora"].Value.ToString()
             );
 
-            // Calcular la fecha completa de inicio
             var fechaInicio = _fechaSeleccionada.Date.Add(horaSeleccionada);
 
-            // Calcular duración total de los servicios seleccionados
             var duracionTotal = TimeSpan.FromMinutes(oLstServicios.Sum(s => s.DuracionMin));
 
-            // Crear la reserva
-            BEReserva oNuevaReserva = new BEReserva()
+            var oNuevaReserva = new BEReserva()
             {
                 ProfesionalID = _IdProfesionalSeleccionado,
                 FechaInicio = fechaInicio,
@@ -213,11 +234,22 @@ namespace UI.Interfaces
                 PrecioTotal = oLstServicios.Sum(x => x.Precio)
             };
             var frmConfirmacion = new frmConfirmacionReserva(oNuevaReserva);
+
             this.Hide();
             var resultado = frmConfirmacion.ShowDialog();
 
             if (resultado != DialogResult.OK) { this.Show(); return; }
 
+        }
+
+        private void btnIniciarSesion_Click(object sender, EventArgs e)
+        {
+            var ofrmInicioSesion = new frmInicioSesion();
+
+            this.Hide();
+            var resultado = ofrmInicioSesion.ShowDialog();
+
+            if (resultado != DialogResult.OK) { this.Show(); return; }
         }
     }
 }

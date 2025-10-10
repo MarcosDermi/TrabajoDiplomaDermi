@@ -29,7 +29,7 @@ namespace SERVICES
             }
             else
             {
-                Regex re = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$");
+                Regex re = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$");
                 if (re.IsMatch(password))
                 {
                     return true;

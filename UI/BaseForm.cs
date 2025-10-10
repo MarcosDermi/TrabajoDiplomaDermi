@@ -21,14 +21,22 @@ namespace UI
 
         private void InitializeComponent()
         {
-            SuspendLayout();
-            Font = new Font("Tahoma", 8.25F, FontStyle.Regular, GraphicsUnit.Point, (0));
-            FormBorderStyle = FormBorderStyle.FixedSingle;
-            MaximizeBox = false;
-            MinimizeBox = false;
-            StartPosition = FormStartPosition.CenterScreen;
-            KeyPreview = true;
-            ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseForm));
+            this.SuspendLayout();
+            // 
+            // BaseForm
+            // 
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "BaseForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.ResumeLayout(false);
+
         }
 
         public IGestionStockService GestionStockService

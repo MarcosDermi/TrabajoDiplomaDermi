@@ -95,11 +95,23 @@
     <Compile Include="BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\frmAgendaTurnos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\frmAgendaTurnos.Designer.cs">
+      <DependentUpon>frmAgendaTurnos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\frmConfirmacionReserva.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Interfaces\frmConfirmacionReserva.Designer.cs">
       <DependentUpon>frmConfirmacionReserva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\frmSesionNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\frmSesionNew.Designer.cs">
+      <DependentUpon>frmSesionNew.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\CalendarioReservas.cs">
       <SubType>UserControl</SubType>
@@ -202,8 +214,14 @@
     <EmbeddedResource Include="BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\frmAgendaTurnos.resx">
+      <DependentUpon>frmAgendaTurnos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\frmConfirmacionReserva.resx">
       <DependentUpon>frmConfirmacionReserva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\frmSesionNew.resx">
+      <DependentUpon>frmSesionNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\CalendarioReservas.resx">
       <DependentUpon>CalendarioReservas.cs</DependentUpon>

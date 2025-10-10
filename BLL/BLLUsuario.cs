@@ -5,14 +5,13 @@ using DAL;
 using SERVICES;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 
 namespace BLL
 {
     public class BLLUsuario : IGestor<BEUsuario>
     {
-        public BLLUsuario(IDigitoVerificadorService DigitoVerificadorService) 
+        public BLLUsuario(IDigitoVerificadorService DigitoVerificadorService)
         {
             oDALUsuario = new DALUsuario();
             oHashCrypto = new HashCrypto();
@@ -21,7 +20,6 @@ namespace BLL
             oBLLDV = new BLLDV(DigitoVerificadorService);
         }
 
-        IValidatorsService oValidators;
         DALUsuario oDALUsuario;
         HashCrypto oHashCrypto;
         BEUsuario oBEUsuario;
@@ -32,56 +30,16 @@ namespace BLL
         public bool Guardar(BEUsuario oUsuario)
         {
 
-            if (!oValidators.validarNombreOApellido(oUsuario.Nombre))
+            if (oUsuario.Id == 0)
             {
-                throw new Exception("Su nombre o apellido no debe contener caracteres especiales");
+                oUsuario.Clave = oHashCrypto.ConvertToHashMD5(oUsuario.Clave);
             }
-
-
-            if (!oValidators.validarNombreOApellido(oUsuario.Apellido))
-            {
-                throw new Exception("Su apellido no debe contener caracteres especiales");
-            }
-
-            if (!oValidators.validarDni(oUsuario.DNI.ToString()))
-            {
-                throw new Exception("El dni ingresado no contiene caracteres invalidos");
-            }
-
-
-            //Agrego esta validacion asi todo esto mismo nos sirve para MODIFICAR..
-
-            if (oUsuario.Id==0)
-            {
-                if (!oValidators.validarPassword(oUsuario.Clave))
-                {
-                    throw new Exception("Su contraseña debe contener:\n\t•Minimo 8 caracteres\n\t•Minimo 1 Mayuscula\n\t•Minimo 1 numero");
-                }
-                else
-                {
-                    oUsuario.Clave = oHashCrypto.ConvertToHashMD5(oUsuario.Clave);
-                }
-            }
-
-            if (!oValidators.validarUsuario(oUsuario.Usuario))
-            {
-                throw new Exception("Su usuario solo puede contener texto alfanumerico o simple");
-            }
-
-            if (!oValidators.validarMail(oUsuario.Mail))
-            {
-                throw new Exception("Ingrese un mail valido");
-            }
-
-            //dps de todas las validaciones, encriptamos la pass para finalmente guardar.
-
-           
 
             if (oDALUsuario.Guardar(oUsuario))
             {
-                if (oBLLDV.ActualizarDVSistema()) return true; else { return false; } ;
+                if (oBLLDV.ActualizarDVSistema()) return true; else { return false; };
             }
-             else
+            else
             {
                 return false;
             }
@@ -98,7 +56,7 @@ namespace BLL
             {
                 throw e;
             }
-           
+
         }
 
         public BEUsuario GetOne(int iId)
@@ -118,9 +76,9 @@ namespace BLL
             if (Sesion.IsLoggedIn())
             {
                 throw new Exception("Ya existe una sesion iniciada");
-            } 
+            }
 
-            oBEUsuario = new BEUsuario {Usuario = oUsuarioName};
+            oBEUsuario = new BEUsuario { Usuario = oUsuarioName };
 
             oBEUsuario = oDALUsuario.ListarObjeto(oBEUsuario);
 
@@ -128,14 +86,14 @@ namespace BLL
 
             if (!oHashCrypto.ConvertToHashMD5(oClave).Equals(oBEUsuario.Clave)) throw new LoginException(LoginResult.InvalidPassword);
 
-            else 
+            else
             {
                 oBLLPermisos = new BLLPermisos();
                 oBLLPermisos.FillUserComponents(oBEUsuario);
                 Sesion.Login(oBEUsuario);
 
                 Bitacora oBitacora = new Bitacora()
-                { 
+                {
                     Detalle = TipoBitacoraEnum.AccesoUsuario.GetDescription(),
                     UsuarioResponsable = oBEUsuario,
                     Fecha = DateTime.Now,
@@ -166,7 +124,7 @@ namespace BLL
         {
             // Calcular DV antes de guardar
             oUsuario.DV = oBLLDV.CalcularDVUsuario(oUsuario);
-            
+
             return Guardar(oUsuario);
         }
 

@@ -26,5 +26,23 @@ namespace SERVICES
             BLLAgenda oBLLAgenda = new BLLAgenda();
             return oBLLAgenda.ConfirmarReserva(oReserva);
         }
+
+        public int DuracionTotalSeleccionadaMin(IEnumerable<int> serviciosSeleccionados)
+        {
+            BLLAgenda oBLLAgenda = new BLLAgenda();
+            return oBLLAgenda.DuracionTotalSeleccionadaMin(serviciosSeleccionados);
+        }
+
+        public List<DateTime> CalcularSlotsDisponibles(int profesionalId, DateTime fecha, IEnumerable<int> serviciosSeleccionados)
+        {
+            BLLAgenda oBLLAgenda = new BLLAgenda();
+            return oBLLAgenda.CalcularSlotsDisponibles(profesionalId, fecha, serviciosSeleccionados);
+        }
+
+        public List<DateTime> ObtenerFechasConReservas(int idProfesional, DateTime mes)
+        {
+            BLLAgenda oBLLAgenda = new BLLAgenda();
+            return oBLLAgenda.ObtenerFechasConReservas(idProfesional, mes);
+        }
     }
 }

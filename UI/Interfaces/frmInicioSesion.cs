@@ -11,7 +11,7 @@ using ABSTRACCION.Contracts;
 
 namespace UI.Interfaces
 {
-    public partial class frmInicioSesion : Form,IdiomaObserver
+    public partial class frmInicioSesion : Form, IdiomaObserver
     {
 
         ISingletonSesionService SingletonSesionService = BLLSingletonSesion.Instancia;
@@ -76,14 +76,14 @@ namespace UI.Interfaces
                         break;
                     }
                 }
-                
+
                 // Seteo en la sesión el idioma elegido
                 Idioma idiomaActual = (Idioma)cbIdioma.SelectedItem;
                 if (idiomaActual != null)
                 {
                     SingletonSesionService.CambiarIdioma(idiomaActual);
                 }
-                
+
                 // Aplicar traducciones del idioma seleccionado
                 if (idiomaActual != null)
                 {
@@ -199,7 +199,7 @@ namespace UI.Interfaces
 
         private void chkMostrarContraseña_CheckedChanged(object sender, EventArgs e)
         {
-            if(chkMostrarContraseña.Checked)txtClave.PasswordChar = '\0';
+            if (chkMostrarContraseña.Checked) txtClave.PasswordChar = '\0';
             else { txtClave.PasswordChar = '\u2022'; }
         }
 
@@ -208,7 +208,7 @@ namespace UI.Interfaces
 
         }
 
-        
+
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
@@ -217,27 +217,30 @@ namespace UI.Interfaces
                 try
                 {
                     LoginResult result = oBLLUsuario.Login(txtUsuario.Text, txtClave.Text);
-                    
+
                     if (result == LoginResult.ValidUser)
                     {
                         BLLDV oBLLDV = new BLLDV(DigitoVerificadorService);
                         bool integridadSistema = oBLLDV.ValidarIntegridadSistema();
                         bool isAdmin = BLLSingletonSesion.Instancia.Usuario.isAdmin;
 
-                        
+
                         if (integridadSistema)
                         {
+
                             frmSesion frmSesion = new frmSesion();
                             frmSesion.FormClosed += (s, args) => this.Show();
                             frmSesion.Show();
+
                             this.Hide();
                         }
                         else if (isAdmin && !integridadSistema)
                         {
-                            
-                            
+
+
                             frmErrorDV frmErrorDV = new frmErrorDV();
-                            frmErrorDV.FormClosed += (s, args) => {
+                            frmErrorDV.FormClosed += (s, args) =>
+                            {
                                 // Cuando se cierra el formulario de error, volver al login
                                 this.Show();
                                 // Limpiar campos de login
@@ -255,10 +258,10 @@ namespace UI.Interfaces
                             {
                                 BLLSingletonSesion.Instancia.Logout();
                             }
-                            
+
                             MessageBox.Show("❌ Error de Dígito Verificador\nSe detectó corrupción en los datos del sistema, acceso denegado.\n\nSesión cerrada. Puede intentar con otro usuario.",
                                 "Error de Integridad", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            
+
                             // Limpiar campos de login
                             txtUsuario.Text = "";
                             txtClave.Text = "";
@@ -292,7 +295,7 @@ namespace UI.Interfaces
             }
             else
             {
-                MessageBox.Show("Debe completar todos los campos","Campos vacios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Debe completar todos los campos", "Campos vacios", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
