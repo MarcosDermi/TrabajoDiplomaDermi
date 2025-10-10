@@ -154,5 +154,15 @@ namespace BLL
             return oDALAgenda.ObtenerFechasConReservas(idProfesional, mes);
         }
 
+        public DataTable ObtenerReservaDiaPorFechayProfesional(int idProfesional, DateTime dtFecha)
+        {
+            return oDALAgenda.ObtenerReservaDiaPorFechayProfesional(idProfesional, dtFecha);
+        }
+
+        public void ReservaAcciones(int idReserva, ReservaAcciones AccionEnum)
+        {
+            oDALAgenda.ReservaAcciones(idReserva, AccionEnum);
+        }
+
     }
 }

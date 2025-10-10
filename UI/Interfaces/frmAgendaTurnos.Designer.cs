@@ -30,7 +30,11 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.grpTurnoSeleccionado = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblMontoTotal = new System.Windows.Forms.Label();
+            this.btnCancelarTurno = new System.Windows.Forms.Button();
+            this.btnAtendido = new System.Windows.Forms.Button();
+            this.dgvDetalleTurno = new System.Windows.Forms.DataGridView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -53,10 +57,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ucCalendario = new UI.ProyectoDiploma.CalendarioReservas();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.grpTurnoSeleccionado.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleTurno)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHorarios)).BeginInit();
@@ -77,24 +79,75 @@
             // 
             // grpTurnoSeleccionado
             // 
-            this.grpTurnoSeleccionado.Controls.Add(this.button3);
-            this.grpTurnoSeleccionado.Controls.Add(this.button2);
-            this.grpTurnoSeleccionado.Controls.Add(this.dataGridView1);
+            this.grpTurnoSeleccionado.Controls.Add(this.label4);
+            this.grpTurnoSeleccionado.Controls.Add(this.lblMontoTotal);
+            this.grpTurnoSeleccionado.Controls.Add(this.btnCancelarTurno);
+            this.grpTurnoSeleccionado.Controls.Add(this.btnAtendido);
+            this.grpTurnoSeleccionado.Controls.Add(this.dgvDetalleTurno);
             this.grpTurnoSeleccionado.Location = new System.Drawing.Point(727, 193);
             this.grpTurnoSeleccionado.Name = "grpTurnoSeleccionado";
-            this.grpTurnoSeleccionado.Size = new System.Drawing.Size(351, 362);
+            this.grpTurnoSeleccionado.Size = new System.Drawing.Size(163, 361);
             this.grpTurnoSeleccionado.TabIndex = 36;
             this.grpTurnoSeleccionado.TabStop = false;
             this.grpTurnoSeleccionado.Text = "Detalle turno:";
             this.grpTurnoSeleccionado.Visible = false;
             // 
-            // dataGridView1
+            // label4
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 20);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(339, 175);
-            this.dataGridView1.TabIndex = 0;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(14, 206);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(66, 13);
+            this.label4.TabIndex = 29;
+            this.label4.Text = "Monto total:";
+            // 
+            // lblMontoTotal
+            // 
+            this.lblMontoTotal.AutoSize = true;
+            this.lblMontoTotal.Location = new System.Drawing.Point(14, 229);
+            this.lblMontoTotal.Name = "lblMontoTotal";
+            this.lblMontoTotal.Size = new System.Drawing.Size(11, 13);
+            this.lblMontoTotal.TabIndex = 28;
+            this.lblMontoTotal.Text = "-";
+            // 
+            // btnCancelarTurno
+            // 
+            this.btnCancelarTurno.BackColor = System.Drawing.SystemColors.Control;
+            this.btnCancelarTurno.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarTurno.ForeColor = System.Drawing.Color.IndianRed;
+            this.btnCancelarTurno.Location = new System.Drawing.Point(17, 322);
+            this.btnCancelarTurno.Name = "btnCancelarTurno";
+            this.btnCancelarTurno.Size = new System.Drawing.Size(119, 33);
+            this.btnCancelarTurno.TabIndex = 27;
+            this.btnCancelarTurno.Text = "Cancelar";
+            this.btnCancelarTurno.UseVisualStyleBackColor = false;
+            // 
+            // btnAtendido
+            // 
+            this.btnAtendido.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAtendido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(95)))), ((int)(((byte)(170)))));
+            this.btnAtendido.Location = new System.Drawing.Point(6, 283);
+            this.btnAtendido.Name = "btnAtendido";
+            this.btnAtendido.Size = new System.Drawing.Size(145, 33);
+            this.btnAtendido.TabIndex = 26;
+            this.btnAtendido.Text = "Atendido";
+            this.btnAtendido.UseVisualStyleBackColor = true;
+            this.btnAtendido.Click += new System.EventHandler(this.btnAtendido_Click);
+            // 
+            // dgvDetalleTurno
+            // 
+            this.dgvDetalleTurno.AllowUserToAddRows = false;
+            this.dgvDetalleTurno.AllowUserToDeleteRows = false;
+            this.dgvDetalleTurno.AllowUserToResizeColumns = false;
+            this.dgvDetalleTurno.AllowUserToResizeRows = false;
+            this.dgvDetalleTurno.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvDetalleTurno.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvDetalleTurno.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDetalleTurno.Enabled = false;
+            this.dgvDetalleTurno.Location = new System.Drawing.Point(6, 20);
+            this.dgvDetalleTurno.Name = "dgvDetalleTurno";
+            this.dgvDetalleTurno.Size = new System.Drawing.Size(145, 175);
+            this.dgvDetalleTurno.TabIndex = 0;
             // 
             // groupBox4
             // 
@@ -216,6 +269,10 @@
             // 
             // dataGridViewHorarios
             // 
+            this.dataGridViewHorarios.AllowUserToAddRows = false;
+            this.dataGridViewHorarios.AllowUserToDeleteRows = false;
+            this.dataGridViewHorarios.AllowUserToResizeColumns = false;
+            this.dataGridViewHorarios.AllowUserToResizeRows = false;
             this.dataGridViewHorarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewHorarios.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridViewHorarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -309,29 +366,6 @@
             this.ucCalendario.Load += new System.EventHandler(this.ucCalendario_Load);
             this.ucCalendario.Click += new System.EventHandler(this.ucCalendario_Click);
             // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(95)))), ((int)(((byte)(170)))));
-            this.button2.Location = new System.Drawing.Point(32, 277);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(119, 33);
-            this.button2.TabIndex = 26;
-            this.button2.Text = "Atendido";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.SystemColors.Control;
-            this.button3.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.IndianRed;
-            this.button3.Location = new System.Drawing.Point(199, 277);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(119, 33);
-            this.button3.TabIndex = 27;
-            this.button3.Text = "Cancelar";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
             // frmAgendaTurnos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -350,7 +384,8 @@
             this.Text = "Turnos";
             this.Load += new System.EventHandler(this.frmAgendaTurnos_Load);
             this.grpTurnoSeleccionado.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.grpTurnoSeleccionado.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleTurno)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -384,13 +419,15 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox groupBox1;
         private ProyectoDiploma.CalendarioReservas ucCalendario;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvDetalleTurno;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnCancelarTurno;
+        private System.Windows.Forms.Button btnAtendido;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblMontoTotal;
     }
 }

@@ -16,4 +16,11 @@ namespace BE
         public List<BEServicio> Servicios { get; set; }
         public decimal PrecioTotal { get; set; }
     }
+
+    public enum ReservaAcciones
+    {
+        Confirmada = 1,
+        Atendida = 2,
+        Cancelada = 3
+    }
 }

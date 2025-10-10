@@ -176,7 +176,6 @@ namespace DAL
             var inicioMes = new DateTime(mes.Year, mes.Month, 1);
             var finMes = inicioMes.AddMonths(1).AddDays(-1);
 
-            // Llamás a tu DAL o SP para obtener reservas entre inicio y fin del mes
             var oDtFechasReservasPorProfesional = oDatos.Leer("ObtenerFechasReservasPorProfesional", new Hashtable
                 {
                     { "@ProfesionalID", idProfesional },
@@ -192,6 +191,45 @@ namespace DAL
             return oLstFechasReserva;
         }
 
+        public DataTable ObtenerReservaDiaPorFechayProfesional(int idProfesional, DateTime dtFecha)
+        {
+            try
+            {
+                return oDatos.Leer("ObtenerReservaDiaPorFechayProfesional", new Hashtable
+                {
+                    { "@ProfesionalID", idProfesional },
+                    { "@Fecha", dtFecha }
+                });
 
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void ReservaAcciones(int idReserva, ReservaAcciones AccionEnum)
+        {
+            try
+            {
+                oDatos.Escribir("InsertReservaAcciones", new Hashtable
+                {
+                    { "@ReservaID", idReserva },
+                    { "@Accion", (int)AccionEnum }
+                });
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

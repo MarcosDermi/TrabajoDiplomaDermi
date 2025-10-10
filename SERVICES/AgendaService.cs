@@ -44,5 +44,18 @@ namespace SERVICES
             BLLAgenda oBLLAgenda = new BLLAgenda();
             return oBLLAgenda.ObtenerFechasConReservas(idProfesional, mes);
         }
+
+        public DataTable ObtenerReservaDiaPorFechayProfesional(int idProfesional, DateTime dtFecha)
+        {
+            BLLAgenda oBLLAgenda = new BLLAgenda();
+            return oBLLAgenda.ObtenerReservaDiaPorFechayProfesional(idProfesional, dtFecha);
+        }
+
+        public void ReservaAcciones(int idReserva, ReservaAcciones AccionEnum)
+        {
+
+            BLLAgenda oBLLAgenda = new BLLAgenda();
+            oBLLAgenda.ReservaAcciones(idReserva, AccionEnum);
+        }
     }
 }
