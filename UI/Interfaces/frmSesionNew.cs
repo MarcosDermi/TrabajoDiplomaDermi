@@ -228,7 +228,7 @@ namespace UI.Interfaces
             if (_oSingletonSesion.IsLoggedIn())
             {
                 this.lblUsuarioNombre.Text = _oSingletonSesion.Usuario.Usuario;
-                if (_oSingletonSesion.Usuario.isAdmin) { btnAdministrar.Visible = true; }
+                if (_oSingletonSesion.Usuario.isAdmin) { btnAdministar.Visible = true; }
             }
             //else
             //{ this.lblUsuarioNombre.Text = "[Sesión no iniciada]"; this.Close(); }
@@ -352,6 +352,11 @@ namespace UI.Interfaces
         private void btnAdministar_Click(object sender, EventArgs e)
         {
             ShowSubMenu(pnlAdminSubMenu);
+        }
+
+        private void btnHelp_Click_1(object sender, EventArgs e)
+        {
+            ShowSubMenu(pnlHelpSubMenu);
         }
     }
 }

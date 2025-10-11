@@ -50,5 +50,10 @@ namespace BLL
         {
             return oDALProveedor.BuscarProveedoresPorFiltrosVarios(sCodigo, sNombre, sRazonSocial);
         }
+
+        public bool BajaID(int iId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

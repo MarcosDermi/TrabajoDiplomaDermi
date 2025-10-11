@@ -123,6 +123,11 @@ namespace DAL
                     Fin = (DateTime)row["FechaFin"]
                 }).ToList();
         }
+
+        public bool BajaID(int iId)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

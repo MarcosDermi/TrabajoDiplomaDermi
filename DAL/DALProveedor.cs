@@ -99,6 +99,10 @@ namespace DAL
             }
         }
 
+        public bool BajaID(int iId)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

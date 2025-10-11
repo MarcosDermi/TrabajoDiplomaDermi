@@ -142,8 +142,6 @@ namespace DAL
                 { "@EmailConfirmacion", oReserva.Cliente.Mail }
             };
 
-            int _ = 0;
-
             try
             {
                 oDatos.Escribir(stpNombre, Hdatos, out int ReservaID, true);

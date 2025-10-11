@@ -25,6 +25,11 @@ namespace BLL
             throw new NotImplementedException();
         }
 
+        public bool BajaID(int iId)
+        {
+            throw new NotImplementedException();
+        }
+
         public DataTable GetAll()
         {
             return oDALMedioDePago.GetAll();

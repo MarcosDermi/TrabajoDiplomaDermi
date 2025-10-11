@@ -10,28 +10,18 @@ namespace BE
     public class BEInsumo
     {
         public int IDInsumo { get; set; }
-
         public string Codigo { get; set; }
-
         public string Nombre { get; set; }
-
-        public string Categoria { get; set; }
-
+        public BECategoria Categoria { get; set; } = new BECategoria();
         public UnidadesEnum Presentacion { get; set; }
-
         public decimal PrecioCompra { get; set; }
-
         public decimal Descuento { get; set; }
-
+        public decimal PrecioFinal { get; set; }
         public decimal Cantidad { get; set; }
-
         public BEProveedor Proveedor { get; set; } = new BEProveedor();
-
         public decimal Stock { get; set; }
-
-        public decimal StockMinimno { get; set; }
-
-        public byte[] Imagen {  get; set; }
+        public decimal StockMinimo { get; set; }
+        public DateTime FechaVencimiento { get; set; }
     }
 
     public enum UnidadesEnum

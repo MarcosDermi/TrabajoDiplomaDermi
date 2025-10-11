@@ -21,7 +21,7 @@ namespace UI.Interfaces
         {
             var oDtProveedores = new DataTable();
 
-            if (!bFiltrosVarios) { oDtProveedores = GestionStockService.ObtenerProveedores(); }
+            if (!bFiltrosVarios) { oDtProveedores = GestionStockService.ObtenerProveedores(false); }
             else
             {
                 oDtProveedores = GestionStockService.BuscarProveedoresPorFiltrosVarios(txtCodigo.Text, txtNombre.Text, txtRazonSocial.Text);

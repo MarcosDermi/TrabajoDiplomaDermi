@@ -26,6 +26,11 @@ namespace DAL
             throw new NotImplementedException();
         }
 
+        public bool BajaID(int iId)
+        {
+            throw new NotImplementedException();
+        }
+
         public DataTable GetAll()
         {
             try

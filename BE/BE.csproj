@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BECategoria.cs" />
     <Compile Include="BEJornadaLaboral.cs" />
     <Compile Include="BEHorario.cs" />
     <Compile Include="BEInsumo.cs" />

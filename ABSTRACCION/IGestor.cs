@@ -9,6 +9,8 @@ namespace ABSTRACCION
 
         bool Baja(T Objeto);
 
+        bool BajaID(int iId);
+
         List<T> ListarTodo(bool EsControlCambio, int iIdUsuario);
 
         DataTable GetAll();

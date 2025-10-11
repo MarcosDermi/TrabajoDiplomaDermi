@@ -72,5 +72,10 @@ namespace BLL
         {
             return oDALProfesional.ListarReservasPorFecha(iProfesionalID, dtFecha);
         }
+
+        public bool BajaID(int iId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

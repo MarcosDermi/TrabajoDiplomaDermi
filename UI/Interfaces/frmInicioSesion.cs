@@ -228,7 +228,7 @@ namespace UI.Interfaces
                         if (integridadSistema)
                         {
 
-                            frmSesion frmSesion = new frmSesion();
+                            frmSesionNew frmSesion = new frmSesionNew();
                             frmSesion.FormClosed += (s, args) => this.Show();
                             frmSesion.Show();
 

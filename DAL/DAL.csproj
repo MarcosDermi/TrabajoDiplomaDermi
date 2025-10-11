@@ -50,11 +50,13 @@
     <Compile Include="DALMedioDePago.cs" />
     <Compile Include="DALPermisos.cs" />
     <Compile Include="DALAgenda.cs" />
+    <Compile Include="DALCategorias.cs" />
     <Compile Include="DALProfesionalServicio.cs" />
     <Compile Include="DALServicios.cs" />
     <Compile Include="DALProfesional.cs" />
     <Compile Include="DALProveedor.cs" />
     <Compile Include="DALTraductor.cs" />
+    <Compile Include="DALInsumo.cs" />
     <Compile Include="DALUsuario.cs" />
     <Compile Include="Datos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

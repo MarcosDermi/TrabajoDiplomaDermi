@@ -192,7 +192,13 @@ namespace SERVICES
 
         public bool validarDecimal(string decimalString)
         {
-            throw new NotImplementedException();
+            decimal valor;
+            return decimal.TryParse(
+                decimalString,
+                System.Globalization.NumberStyles.Number,
+                System.Globalization.CultureInfo.CurrentCulture,
+                out valor
+            );
         }
 
         public bool validarTexto(string texto)

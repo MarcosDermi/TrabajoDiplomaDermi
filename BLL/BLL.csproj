@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLLInsumo.cs" />
+    <Compile Include="BLLCategorias.cs" />
     <Compile Include="BLLBitacora.cs" />
     <Compile Include="BLLDV.cs" />
     <Compile Include="BLLMedioDePago.cs" />
