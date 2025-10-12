@@ -229,10 +229,11 @@ namespace UI.Interfaces
                         {
 
                             frmSesionNew frmSesion = new frmSesionNew();
-                            frmSesion.FormClosed += (s, args) => this.Show();
                             frmSesion.Show();
 
-                            this.Hide();
+                            //frmSesion.FormClosed += (s, args) => this.Show();
+                            this.DialogResult = DialogResult.OK;
+                            this.Close();
                         }
                         else if (isAdmin && !integridadSistema)
                         {

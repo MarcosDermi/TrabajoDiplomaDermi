@@ -63,6 +63,36 @@ namespace UI.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap admin_panel_settings_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24 {
+            get {
+                object obj = ResourceManager.GetObject("admin_panel_settings_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap approval_delegation_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24 {
+            get {
+                object obj = ResourceManager.GetObject("approval_delegation_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap book_2_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24 {
+            get {
+                object obj = ResourceManager.GetObject("book_2_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap calendar_check_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24 {
             get {
                 object obj = ResourceManager.GetObject("calendar_check_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24", resourceCulture);
@@ -103,6 +133,16 @@ namespace UI.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap groups_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24 {
+            get {
+                object obj = ResourceManager.GetObject("groups_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap help_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24 {
             get {
                 object obj = ResourceManager.GetObject("help_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24", resourceCulture);
@@ -133,9 +173,29 @@ namespace UI.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap integration_instructions_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24__1_ {
+            get {
+                object obj = ResourceManager.GetObject("integration_instructions_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap inventory_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24 {
             get {
                 object obj = ResourceManager.GetObject("inventory_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap language_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24 {
+            get {
+                object obj = ResourceManager.GetObject("language_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,6 +253,16 @@ namespace UI.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap package_2_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24 {
+            get {
+                object obj = ResourceManager.GetObject("package_2_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap passkey_24dp_000000_FILL0_wght300_GRAD0_opsz24 {
             get {
                 object obj = ResourceManager.GetObject("passkey_24dp_000000_FILL0_wght300_GRAD0_opsz24", resourceCulture);
@@ -216,6 +286,36 @@ namespace UI.Properties {
         internal static System.Drawing.Bitmap person_24dp_000000_FILL0_wght300_GRAD0_opsz24 {
             get {
                 object obj = ResourceManager.GetObject("person_24dp_000000_FILL0_wght300_GRAD0_opsz24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap person_alert_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24 {
+            get {
+                object obj = ResourceManager.GetObject("person_alert_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap png {
+            get {
+                object obj = ResourceManager.GetObject("png", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap png__1_ {
+            get {
+                object obj = ResourceManager.GetObject("png (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

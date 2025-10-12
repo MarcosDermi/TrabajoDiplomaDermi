@@ -228,10 +228,8 @@ namespace UI.Interfaces
             if (_oSingletonSesion.IsLoggedIn())
             {
                 this.lblUsuarioNombre.Text = _oSingletonSesion.Usuario.Usuario;
-                if (_oSingletonSesion.Usuario.isAdmin) { btnAdministar.Visible = true; }
+                if (_oSingletonSesion.Usuario.isAdmin) { btnAdministrar.Visible = true; btnHelp.Visible = true; }
             }
-            //else
-            //{ this.lblUsuarioNombre.Text = "[Sesión no iniciada]"; this.Close(); }
         }
 
         private void frmSesion_Load(object sender, EventArgs e)
@@ -357,6 +355,84 @@ namespace UI.Interfaces
         private void btnHelp_Click_1(object sender, EventArgs e)
         {
             ShowSubMenu(pnlHelpSubMenu);
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Está seguro? \n Puedes volver a iniciar sesión en cualquier momento.", "Confirme", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                _BLLUsuario.Logout();
+                this.Hide();
+
+                frmInicioSesion login = new frmInicioSesion();
+                login.ShowDialog();
+
+                // Cuando cierres el login (o inicies de nuevo)
+                if (login.DialogResult != DialogResult.OK)
+                {
+                    Application.Exit();
+                }
+            }
+        }
+
+        private void btnProveedores_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmGestionProveedores());
+            hideSubMenu(pnlStockSubMenu);
+        }
+
+        private void btnManualUsuario_Click(object sender, EventArgs e)
+        {
+            //OpenChildForm(new frmGestionProveedores());
+            hideSubMenu(pnlHelpSubMenu);
+        }
+
+        private void btnAbout_Click(object sender, EventArgs e)
+        {
+            //OpenChildForm(new frmGestionProveedores());
+            hideSubMenu(pnlHelpSubMenu);
+        }
+
+        private void btnNotasVersion_Click(object sender, EventArgs e)
+        {
+            //OpenChildForm(new frmGestionProveedores());
+            hideSubMenu(pnlHelpSubMenu);
+        }
+
+        private void btnUusarios_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmGestionUsuarios());
+            hideSubMenu(pnlAdminSubMenu);
+        }
+
+        private void btnPermisos_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmGestionPermisos(_oSingletonSesion));
+            hideSubMenu(pnlAdminSubMenu);
+        }
+
+        private void btnIdiomas_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmGestionIdiomas());
+            hideSubMenu(pnlAdminSubMenu);
+        }
+
+        private void btnBitacoras_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmGestionBitacoras());
+            hideSubMenu(pnlAdminSubMenu);
+        }
+
+        private void btnIntegridad_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmGestionIntegridad());
+            hideSubMenu(pnlAdminSubMenu);
+        }
+
+        private void btnControlCambios_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmGestionControlDeCambios());
+            hideSubMenu(pnlAdminSubMenu);
         }
     }
 }
