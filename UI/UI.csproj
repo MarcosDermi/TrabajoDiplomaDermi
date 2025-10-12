@@ -113,6 +113,11 @@
     <Compile Include="Interfaces\frmSesionNew.Designer.cs">
       <DependentUpon>frmSesionNew.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\CalendarioReservas.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -273,14 +278,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -320,10 +320,8 @@
     <None Include="Resources\person_alert_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24.png" />
     <None Include="Resources\integration_instructions_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24 %281%29.png" />
     <None Include="Resources\book_2_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24.png" />
-    <None Include="Resources\png %281%29.png" />
     <None Include="Resources\language_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24.png" />
     <None Include="Resources\approval_delegation_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24.png" />
-    <None Include="Resources\png.png" />
     <None Include="Resources\groups_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24.png" />
     <None Include="Resources\person_24dp_000000_FILL0_wght300_GRAD0_opsz24.png" />
     <None Include="Resources\passkey_24dp_000000_FILL0_wght300_GRAD0_opsz24.png" />

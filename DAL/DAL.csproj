@@ -90,8 +90,10 @@
     <Content Include="Scripts\stpActualizarDVSistema.sql" />
   </ItemGroup>
   <ItemGroup>
+    <None Include=".bak\12-10-2025\TrabajoDiplomaLocal.bak" />
     <None Include=".bak\DB_IngSoft.bak" />
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
