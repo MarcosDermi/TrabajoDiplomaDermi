@@ -5,9 +5,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL
 {
@@ -35,11 +32,9 @@ namespace DAL
         {
             try
             {
-
                 var stpNombre = "GetAllMediosDePago";
                 Hdatos = new Hashtable();
                 return oDatos.Leer(stpNombre, Hdatos);
-
             }
             catch (SqlException ex)
             {

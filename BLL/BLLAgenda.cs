@@ -27,136 +27,107 @@ namespace BLL
 
         public int DuracionTotalSeleccionadaMin(IEnumerable<int> serviciosSeleccionados)
         {
-            int total = 0;
+            int iTotal = 0;
             foreach (var id in serviciosSeleccionados)
             {
-                var s = oDALServicio.ObtenerServicio(id);
-                total += s.DuracionMin + s.BufferMin;
+                var oServicio = oDALServicio.ObtenerServicio(id);
+                iTotal += oServicio.DuracionMin + oServicio.BufferMin;
             }
-            return total;
+            return iTotal;
         }
 
-        private bool ProfesionalSoportaServicios(int profesionalId, IEnumerable<int> serviciosSeleccionados, out string motivo)
+        private bool ProfesionalSoportaServicios(int iProfesionalID, IEnumerable<int> serviciosSeleccionados)
         {
-            var set = oDALProfesionalServicio.ObtenerServiciosDeProfesional(profesionalId);
-            var faltantes = serviciosSeleccionados.Where(s => !set.Contains(s)).ToList();
-            if (faltantes.Count == 0) { motivo = ""; return true; }
-            motivo = "Este profesional no realiza: " + string.Join(", ", faltantes.Select(f => oDALServicio.ObtenerServicio(f).Nombre));
+            var oLstServiciosProfesional = oDALProfesionalServicio.ObtenerServiciosDeProfesional(iProfesionalID);
+            // Servicios que el profesional NO tiene asignados
+            var oLstServiciosNoSoportados = serviciosSeleccionados.Where(s => !oLstServiciosProfesional.Contains(s)).ToList();
+            
+            if (oLstServiciosNoSoportados.Count == 0) { return true; }
             return false;
         }
 
-        public void CargarAgenda(int profesionalId)
+        public void CargarAgenda(int iProfesionalID)
         {
-            var jornadas = oDALAgenda.ObtenerFranjasPorProfesional(profesionalId);
-            _dicAgenda[profesionalId] = jornadas;
+            var oLstJornadasProfesional = oDALAgenda.ObtenerFranjasPorProfesional(iProfesionalID);
+            _dicAgenda[iProfesionalID] = oLstJornadasProfesional;
         }
 
-        private List<BEFranja> ObtenerFranjasLaboralesDelDia(int profesionalId, DateTime fecha)
+        private List<BEFranja> ObtenerFranjasLaboralesDelDia(int iProfesionalID, DateTime oDtFecha)
         {
-            CargarAgenda(profesionalId);
+            CargarAgenda(iProfesionalID);
 
-            if (!_dicAgenda.TryGetValue(profesionalId, out var jornadas))
-                return new List<BEFranja>();
+            //Si existe la clave iProfesionalID, oLstJornadasProfesional va a contener la lista de franjas laborales
+            if (!_dicAgenda.TryGetValue(iProfesionalID, out var oLstJornadasProfesional)) return new List<BEFranja>();
 
-            var jornada = jornadas.FirstOrDefault(x => x.Dia == fecha.DayOfWeek);
-            if (jornada == null) return new List<BEFranja>();
+            var oJornadaLaboral = oLstJornadasProfesional.FirstOrDefault(x => x.Dia == oDtFecha.DayOfWeek);
+            
+            if (oJornadaLaboral == null) return new List<BEFranja>();
 
-            // Ajustamos las franjas al día seleccionado
-            return jornada.Franjas.Select(f => new BEFranja
+            // Se ajustan las franjas al dia especifico y devolvemos la lista de franjas dentro de la jornada laboral.
+            return oJornadaLaboral.Franjas.Select(f => new BEFranja
             {
-                Inicio = new DateTime(fecha.Year, fecha.Month, fecha.Day, f.Inicio.Hour, f.Inicio.Minute, 0),
-                Fin = new DateTime(fecha.Year, fecha.Month, fecha.Day, f.Fin.Hour, f.Fin.Minute, 0)
+                Inicio = new DateTime(oDtFecha.Year, oDtFecha.Month, oDtFecha.Day, f.Inicio.Hour, f.Inicio.Minute, 0),
+                Fin = new DateTime(oDtFecha.Year, oDtFecha.Month, oDtFecha.Day, f.Fin.Hour, f.Fin.Minute, 0)
             }).ToList();
         }
 
-        private static List<BEFranja> RestarOcupaciones(List<BEFranja> libres, List<BETurnoTomado> ocupados)
+        public List<DateTime> CalcularSlotsDisponibles(int iProfesionalID, DateTime oDtFecha, IEnumerable<int> serviciosSeleccionados)
         {
-            foreach (var t in ocupados)
-                libres = SubtractInterval(libres, t.Inicio, t.Fin);
-            return libres;
-        }
+            var oLstSlotsDisponibles = new List<DateTime>();
 
-        private static List<BEFranja> SubtractInterval(List<BEFranja> origen, DateTime oIni, DateTime oFin)
-        {
-            var result = new List<BEFranja>();
+            // 0 - Validacion
+            if (!ProfesionalSoportaServicios(iProfesionalID, serviciosSeleccionados)) return oLstSlotsDisponibles;
 
-            foreach (var f in origen)
-            {
-                // Caso 1: sin solapamiento
-                if (oFin <= f.Inicio || oIni >= f.Fin)
-                {
-                    result.Add(f);
-                    continue;
-                }
-
-                // Caso 2: hay solapamiento → recortar
-                if (oIni > f.Inicio)
-                    result.Add(new BEFranja { Inicio = f.Inicio, Fin = oIni });
-
-                if (oFin < f.Fin)
-                    result.Add(new BEFranja { Inicio = oFin, Fin = f.Fin });
-            }
-
-            // Eliminar fragmentos inválidos (Fin <= Inicio)
-            return result.Where(x => x.Fin > x.Inicio).ToList();
-        }
-
-        bool Solapa(DateTime aInicio, DateTime aFin, DateTime bInicio, DateTime bFin)
-    => aInicio < bFin && bInicio < aFin;
-
-        public List<DateTime> CalcularSlotsDisponibles(int profesionalId, DateTime fecha, IEnumerable<int> serviciosSeleccionados)
-        {
-            var slots = new List<DateTime>();
-
-            // 0) validación
-            if (!ProfesionalSoportaServicios(profesionalId, serviciosSeleccionados, out _))
-                return slots;
-
-            // 1) duración requerida
-            var requeridosMin = DuracionTotalSeleccionadaMin(serviciosSeleccionados);
-            if (requeridosMin <= 0) return slots;
-            var dur = TimeSpan.FromMinutes(requeridosMin);
+            // 1-  Duracion requerida
+            var iDuracionRequeridaMin = DuracionTotalSeleccionadaMin(serviciosSeleccionados);
+            if (iDuracionRequeridaMin <= 0) return oLstSlotsDisponibles;
+            var tsDuracionRequeridaMin = TimeSpan.FromMinutes(iDuracionRequeridaMin);
 
             // 2) franjas laborales
-            var franjas = ObtenerFranjasLaboralesDelDia(profesionalId, fecha);
-            if (franjas.Count == 0) return slots;
+            var oLstFranjasLaborales = ObtenerFranjasLaboralesDelDia(iProfesionalID, oDtFecha);
+            if (oLstFranjasLaborales.Count == 0) return oLstSlotsDisponibles;
 
-            // 3) reservas ocupadas desde BD (asumo objetos con Inicio/Fin DateTime)
-            var ocupados = oBLLProfesional.GetTurnosTomados(profesionalId, fecha);
+            // 3) reservas ocupadas desde BD
+            var oLstTurnosOcupados = oBLLProfesional.GetTurnosTomados(iProfesionalID, oDtFecha);
 
-            // 4) Generar slots cada 15' en TODAS las franjas, filtrando por solape
-            foreach (var f in franjas)
+            // 4) Generar slots cada 15'(paso) en todas las franjas, filtrando por solapamiento.
+            foreach (var Franja in oLstFranjasLaborales)
             {
-                for (var inicio = f.Inicio; inicio.Add(dur) <= f.Fin; inicio = inicio.Add(Paso))
+                for (var oDtInicio = Franja.Inicio; oDtInicio.Add(tsDuracionRequeridaMin) <= Franja.Fin; oDtInicio = oDtInicio.Add(Paso))
                 {
-                    var fin = inicio.Add(dur);
-                    bool seSolapa = ocupados.Any(o => Solapa(inicio, fin, o.Inicio, o.Fin));
+                    var oDtFin = oDtInicio.Add(tsDuracionRequeridaMin);
+
+                    bool seSolapa = oLstTurnosOcupados.Any(o => Solapa(oDtInicio, oDtFin, o.Inicio, o.Fin));
+                    
                     if (!seSolapa)
-                        slots.Add(inicio);
+                        oLstSlotsDisponibles.Add(oDtInicio);
                 }
             }
 
-            return slots.OrderBy(s => s).ToList();
+            return oLstSlotsDisponibles.OrderBy(slot => slot).ToList();
         }
+
+        bool Solapa(DateTime aInicio, DateTime aFin, DateTime bInicio, DateTime bFin) => aInicio < bFin && bInicio < aFin;
 
         public int ConfirmarReserva(BEReserva oReserva)
         {
             var slots = CalcularSlotsDisponibles(oReserva.ProfesionalID, oReserva.FechaInicio, oReserva.Servicios.Select(s => s.ServicioID));
-            
+
+            //Si hay usuarios en simultaneo
             if (!slots.Contains(oReserva.FechaInicio))
                 throw new Exception("El horario seleccionado ya no está disponible.");
 
             return oDALAgenda.ConfirmarReserva(oReserva);
         }
 
-        public List<DateTime> ObtenerFechasConReservas(int idProfesional, DateTime mes)
+        public List<DateTime> ObtenerFechasConReservas(int iProfesionalID, DateTime oDtMes)
         {
-            return oDALAgenda.ObtenerFechasConReservas(idProfesional, mes);
+            return oDALAgenda.ObtenerFechasConReservas(iProfesionalID, oDtMes);
         }
 
-        public DataTable ObtenerReservaDiaPorFechayProfesional(int idProfesional, DateTime dtFecha)
+        public DataTable ObtenerReservaDiaPorFechayProfesional(int iProfesionalID, DateTime oDtFecha)
         {
-            return oDALAgenda.ObtenerReservaDiaPorFechayProfesional(idProfesional, dtFecha);
+            return oDALAgenda.ObtenerReservaDiaPorFechayProfesional(iProfesionalID, oDtFecha);
         }
 
         public void ReservaAcciones(int idReserva, ReservaAcciones AccionEnum)

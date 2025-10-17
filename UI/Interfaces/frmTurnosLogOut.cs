@@ -105,57 +105,57 @@ namespace UI.Interfaces
 
         private void RefrescarHorariosInteligentes()
         {
+            //Validaciones
             if (_fechaSeleccionada == DateTime.MinValue) return;
             if (cmbProfesional.SelectedItem == null) return;
 
-            // 1️⃣ Servicios elegidos
-            var serviciosSel = checkedListBoxServicios.CheckedItems
+            // Servicios elegidos
+            var oLstServiciosSeleccionados = checkedListBoxServicios.CheckedItems
                 .Cast<BEServicio>()
                 .Select(s => s.ServicioID)
                 .ToList();
 
             dataGridViewHorarios.Rows.Clear();
 
-            // 2️⃣ Slots disponibles desde BLL
-            var slotsDisponibles = AgendaService.CalcularSlotsDisponibles(_IdProfesionalSeleccionado, _fechaSeleccionada, serviciosSel);
+            // 2️ Slots disponibles desde AgendaService/BLL en base a profesional, fecha y servicios
+            var oLstSlotsDisponibles = AgendaService.CalcularSlotsDisponibles(_IdProfesionalSeleccionado, _fechaSeleccionada, oLstServiciosSeleccionados);
 
-            // 3️⃣ Turnos ocupados (reservas ya tomadas)
-            var reservasOcupadas = AgendaService.ObtenerTurnosTomados(_IdProfesionalSeleccionado, _fechaSeleccionada);
-            // 👆 este método debe devolver lista con Inicio y Fin de las reservas
+            // 3️ Turnos ocupados (reservas ya tomadas)
+            var oLstReservasOcupadas = AgendaService.ObtenerTurnosTomados(_IdProfesionalSeleccionado, _fechaSeleccionada);
 
-            if (slotsDisponibles.Count == 0)
+            if (oLstSlotsDisponibles.Count == 0)
             {
                 dataGridViewHorarios.Rows.Add("-", "No hay horarios disponibles");
                 dataGridViewHorarios.Rows[0].DefaultCellStyle.BackColor = Color.Gainsboro;
                 return;
             }
 
-            // 4️⃣ Duración de la reserva actual
-            var duracionMin = AgendaService.DuracionTotalSeleccionadaMin(serviciosSel);
-            var duracion = TimeSpan.FromMinutes(duracionMin);
+            // 4️ Duracion de la reserva actual
+            var iDuracionMin = AgendaService.DuracionTotalSeleccionadaMin(oLstServiciosSeleccionados);
+            var tsDuracionMin = TimeSpan.FromMinutes(iDuracionMin);
 
-            // 5️⃣ Crear todas las filas, marcando ocupadas en rojo
-            foreach (var slot in slotsDisponibles)
+            // 5️ Crear todas las filas, marcando ocupadas en rojo
+            foreach (var oDtSlot in oLstSlotsDisponibles)
             {
-                var finSlot = slot.Add(duracion);
-                bool esOcupado = reservasOcupadas.Any(r => slot < r.Fin && r.Inicio < finSlot);
+                var oDtFinSlot = oDtSlot.Add(tsDuracionMin);
+                bool esOcupado = oLstReservasOcupadas.Any(r => oDtSlot < r.Fin && r.Inicio < oDtFinSlot);
 
-                int rowIdx = dataGridViewHorarios.Rows.Add(slot.ToString("HH:mm"), esOcupado ? "Ocupado" : "Disponible");
+                int iRowIndex = dataGridViewHorarios.Rows.Add(oDtSlot.ToString("HH:mm"), esOcupado ? "Ocupado" : "Disponible");
 
-                var row = dataGridViewHorarios.Rows[rowIdx];
+                var oRow = dataGridViewHorarios.Rows[iRowIndex];
                 if (esOcupado)
                 {
-                    row.DefaultCellStyle.BackColor = Color.LightCoral;
-                    row.DefaultCellStyle.ForeColor = Color.White;
-                    row.ReadOnly = true;
+                    oRow.DefaultCellStyle.BackColor = Color.LightCoral;
+                    oRow.DefaultCellStyle.ForeColor = Color.White;
+                    oRow.ReadOnly = true;
                 }
                 else
                 {
-                    row.DefaultCellStyle.BackColor = Color.LightGreen;
+                    oRow.DefaultCellStyle.BackColor = Color.LightGreen;
                 }
             }
 
-            // 6️⃣ Ordenar por hora, por si vienen mezclados
+            // 6️ Ordenar por hora
             dataGridViewHorarios.Sort(dataGridViewHorarios.Columns["Hora"], ListSortDirection.Ascending);
         }
 

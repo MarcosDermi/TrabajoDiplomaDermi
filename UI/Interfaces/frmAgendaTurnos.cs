@@ -11,14 +11,15 @@ namespace UI
 {
     public partial class frmAgendaTurnos : BaseForm
     {
-        private int _IdProfesionalSeleccionado = 1;
+        private int _IdProfesionalSeleccionado;
         private readonly BLLAgenda _bllAgenda = new BLLAgenda();
         private DateTime _fechaSeleccionada = DateTime.MinValue;
         private List<DateTime> _fechasConReservas = new List<DateTime>();
         private int _IdReservaSeleccionada = 0;
 
-        public frmAgendaTurnos()
+        public frmAgendaTurnos(int iIdProfesionalSeleccionado)
         {
+            _IdProfesionalSeleccionado = iIdProfesionalSeleccionado;
             InitializeComponent();
         }
 

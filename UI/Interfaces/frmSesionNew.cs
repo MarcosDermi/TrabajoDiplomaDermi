@@ -7,7 +7,7 @@ using ABSTRACCION.Contracts;
 
 namespace UI.Interfaces
 {
-    public partial class frmSesionNew: Form
+    public partial class frmSesionNew: BaseForm
     {
         private Form ActiveForm = null;
         public frmGestionUsuarios oGestionUsuarios;
@@ -247,15 +247,6 @@ namespace UI.Interfaces
             ValidarPermisos();
         }
 
-        //private void Usuario_Click(object sender, EventArgs e)
-        //{
-        //    BEUsuario oBEUsuario = (BEUsuario)((ToolStripMenuItem)sender).Tag;
-
-        //    this.toolStripSesion.Text = oBEUsuario.Nombre;
-
-        //    ValidarPermisos();
-        //}
-
         void ValidarPermisos()
         {
             if (_oSingletonSesion.IsLoggedIn())
@@ -290,9 +281,18 @@ namespace UI.Interfaces
 
         private void button2_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmAgendaTurnos());
+            var iIdProfesional = GeneralService.ObtenerProfesionalPorUsuarioID(_oSingletonSesion.Usuario.Id).ProfesionalID;
 
-            hideSubMenu(pnlSubMenuCalendario);
+            if (iIdProfesional != 0)
+            {
+                OpenChildForm(new frmAgendaTurnos(GeneralService.ObtenerProfesionalPorUsuarioID(_oSingletonSesion.Usuario.Id).ProfesionalID));
+
+                hideSubMenu(pnlSubMenuCalendario);
+            }else
+            {
+                MessageBox.Show("El usuario no es un profesional asociado. Por favor, contacte con el administrador.");
+            }
+
         }
 
         private void button3_Click(object sender, EventArgs e)

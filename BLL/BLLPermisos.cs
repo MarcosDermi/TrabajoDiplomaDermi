@@ -15,7 +15,6 @@ namespace BLL
             oDALPermisos = new DALPermisos();
         }
 
-
         public bool Existe(BEComponente oBEComponente, int iId)
         {
             bool bExiste = false;

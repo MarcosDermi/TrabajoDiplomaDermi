@@ -33,10 +33,10 @@ namespace SERVICES
             return oBLLAgenda.DuracionTotalSeleccionadaMin(serviciosSeleccionados);
         }
 
-        public List<DateTime> CalcularSlotsDisponibles(int profesionalId, DateTime fecha, IEnumerable<int> serviciosSeleccionados)
+        public List<DateTime> CalcularSlotsDisponibles(int iProfesionalID, DateTime oDtFecha, IEnumerable<int> serviciosSeleccionados)
         {
             BLLAgenda oBLLAgenda = new BLLAgenda();
-            return oBLLAgenda.CalcularSlotsDisponibles(profesionalId, fecha, serviciosSeleccionados);
+            return oBLLAgenda.CalcularSlotsDisponibles(iProfesionalID, oDtFecha, serviciosSeleccionados);
         }
 
         public List<DateTime> ObtenerFechasConReservas(int idProfesional, DateTime mes)
@@ -53,7 +53,6 @@ namespace SERVICES
 
         public void ReservaAcciones(int idReserva, ReservaAcciones AccionEnum)
         {
-
             BLLAgenda oBLLAgenda = new BLLAgenda();
             oBLLAgenda.ReservaAcciones(idReserva, AccionEnum);
         }

@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSesionNew));
-            
             this.pnlMenuLateral = new System.Windows.Forms.Panel();
             this.pnlAdminSubMenu = new System.Windows.Forms.Panel();
             this.btnControlCambios = new System.Windows.Forms.Button();
@@ -56,10 +54,10 @@
             this.lblUsuarioNombre = new System.Windows.Forms.Label();
             this.pnlChildForm = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            btnHelp = new System.Windows.Forms.Button();
-            btnSalir = new System.Windows.Forms.Button();
-            btnStock = new System.Windows.Forms.Button();
-            btnCalendario = new System.Windows.Forms.Button();
+            this.btnHelp = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.btnStock = new System.Windows.Forms.Button();
+            this.btnCalendario = new System.Windows.Forms.Button();
             this.pnlMenuLateral.SuspendLayout();
             this.pnlAdminSubMenu.SuspendLayout();
             this.pnlHelpSubMenu.SuspendLayout();
@@ -79,12 +77,12 @@
             this.pnlMenuLateral.Controls.Add(this.pnlAdminSubMenu);
             this.pnlMenuLateral.Controls.Add(this.btnAdministrar);
             this.pnlMenuLateral.Controls.Add(this.pnlHelpSubMenu);
-            this.pnlMenuLateral.Controls.Add(btnHelp);
-            this.pnlMenuLateral.Controls.Add(btnSalir);
+            this.pnlMenuLateral.Controls.Add(this.btnHelp);
+            this.pnlMenuLateral.Controls.Add(this.btnSalir);
             this.pnlMenuLateral.Controls.Add(this.pnlStockSubMenu);
-            this.pnlMenuLateral.Controls.Add(btnStock);
+            this.pnlMenuLateral.Controls.Add(this.btnStock);
             this.pnlMenuLateral.Controls.Add(this.pnlSubMenuCalendario);
-            this.pnlMenuLateral.Controls.Add(btnCalendario);
+            this.pnlMenuLateral.Controls.Add(this.btnCalendario);
             this.pnlMenuLateral.Controls.Add(this.panel1);
             this.pnlMenuLateral.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMenuLateral.Location = new System.Drawing.Point(0, 0);
@@ -327,44 +325,44 @@
             // 
             // btnHelp
             // 
-            btnHelp.Dock = System.Windows.Forms.DockStyle.Top;
-            btnHelp.FlatAppearance.BorderSize = 0;
-            btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnHelp.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            btnHelp.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            btnHelp.Image = global::UI.Properties.Resources.help_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
-            btnHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnHelp.Location = new System.Drawing.Point(0, 401);
-            btnHelp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            btnHelp.Name = "btnHelp";
-            btnHelp.Size = new System.Drawing.Size(184, 59);
-            btnHelp.TabIndex = 6;
-            btnHelp.Text = "Help";
-            btnHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnHelp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            btnHelp.UseVisualStyleBackColor = true;
-            btnHelp.Click += new System.EventHandler(this.btnHelp_Click_1);
+            this.btnHelp.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnHelp.FlatAppearance.BorderSize = 0;
+            this.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHelp.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHelp.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnHelp.Image = global::UI.Properties.Resources.help_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
+            this.btnHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHelp.Location = new System.Drawing.Point(0, 401);
+            this.btnHelp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(184, 59);
+            this.btnHelp.TabIndex = 6;
+            this.btnHelp.Text = "Help";
+            this.btnHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHelp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnHelp.UseVisualStyleBackColor = true;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click_1);
             // 
             // btnSalir
             // 
-            btnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(50)))), ((int)(((byte)(30)))));
-            btnSalir.Dock = System.Windows.Forms.DockStyle.Bottom;
-            btnSalir.FlatAppearance.BorderSize = 0;
-            btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnSalir.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            btnSalir.Image = global::UI.Properties.Resources.login_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
-            btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnSalir.Location = new System.Drawing.Point(0, 913);
-            btnSalir.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            btnSalir.Name = "btnSalir";
-            btnSalir.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            btnSalir.Size = new System.Drawing.Size(184, 45);
-            btnSalir.TabIndex = 5;
-            btnSalir.Text = "Salir";
-            btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            btnSalir.UseVisualStyleBackColor = false;
-            btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            this.btnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(50)))), ((int)(((byte)(30)))));
+            this.btnSalir.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnSalir.FlatAppearance.BorderSize = 0;
+            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalir.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSalir.Image = global::UI.Properties.Resources.login_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
+            this.btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSalir.Location = new System.Drawing.Point(0, 913);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnSalir.Size = new System.Drawing.Size(184, 45);
+            this.btnSalir.TabIndex = 5;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSalir.UseVisualStyleBackColor = false;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // pnlStockSubMenu
             // 
@@ -421,24 +419,24 @@
             // 
             // btnStock
             // 
-            btnStock.Dock = System.Windows.Forms.DockStyle.Top;
-            btnStock.FlatAppearance.BorderSize = 0;
-            btnStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnStock.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            btnStock.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            btnStock.Image = ((System.Drawing.Image)(resources.GetObject("btnStock.Image")));
-            btnStock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnStock.Location = new System.Drawing.Point(0, 251);
-            btnStock.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            btnStock.Name = "btnStock";
-            btnStock.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            btnStock.Size = new System.Drawing.Size(184, 59);
-            btnStock.TabIndex = 3;
-            btnStock.Text = "Stock";
-            btnStock.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnStock.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            btnStock.UseVisualStyleBackColor = true;
-            btnStock.Click += new System.EventHandler(this.btnStock_Click_1);
+            this.btnStock.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnStock.FlatAppearance.BorderSize = 0;
+            this.btnStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStock.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStock.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnStock.Image = ((System.Drawing.Image)(resources.GetObject("btnStock.Image")));
+            this.btnStock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStock.Location = new System.Drawing.Point(0, 251);
+            this.btnStock.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnStock.Name = "btnStock";
+            this.btnStock.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnStock.Size = new System.Drawing.Size(184, 59);
+            this.btnStock.TabIndex = 3;
+            this.btnStock.Text = "Stock";
+            this.btnStock.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStock.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnStock.UseVisualStyleBackColor = true;
+            this.btnStock.Click += new System.EventHandler(this.btnStock_Click_1);
             // 
             // pnlSubMenuCalendario
             // 
@@ -474,23 +472,23 @@
             // 
             // btnCalendario
             // 
-            btnCalendario.Dock = System.Windows.Forms.DockStyle.Top;
-            btnCalendario.FlatAppearance.BorderSize = 0;
-            btnCalendario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnCalendario.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            btnCalendario.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            btnCalendario.Image = global::UI.Properties.Resources.calendar_month_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
-            btnCalendario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnCalendario.Location = new System.Drawing.Point(0, 142);
-            btnCalendario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            btnCalendario.Name = "btnCalendario";
-            btnCalendario.Size = new System.Drawing.Size(184, 59);
-            btnCalendario.TabIndex = 1;
-            btnCalendario.Text = "Calendario";
-            btnCalendario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnCalendario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            btnCalendario.UseVisualStyleBackColor = true;
-            btnCalendario.Click += new System.EventHandler(this.btnCalendario_Click);
+            this.btnCalendario.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCalendario.FlatAppearance.BorderSize = 0;
+            this.btnCalendario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCalendario.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCalendario.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnCalendario.Image = global::UI.Properties.Resources.calendar_month_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
+            this.btnCalendario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCalendario.Location = new System.Drawing.Point(0, 142);
+            this.btnCalendario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnCalendario.Name = "btnCalendario";
+            this.btnCalendario.Size = new System.Drawing.Size(184, 59);
+            this.btnCalendario.TabIndex = 1;
+            this.btnCalendario.Text = "Calendario";
+            this.btnCalendario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCalendario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCalendario.UseVisualStyleBackColor = true;
+            this.btnCalendario.Click += new System.EventHandler(this.btnCalendario_Click);
             // 
             // panel1
             // 
@@ -523,7 +521,7 @@
             this.panel5.Location = new System.Drawing.Point(201, 688);
             this.panel5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(889, 45);
+            this.panel5.Size = new System.Drawing.Size(1017, 45);
             this.panel5.TabIndex = 10;
             // 
             // label1
@@ -556,14 +554,14 @@
             this.pnlChildForm.Controls.Add(this.pictureBox2);
             this.pnlChildForm.Location = new System.Drawing.Point(201, 0);
             this.pnlChildForm.Name = "pnlChildForm";
-            this.pnlChildForm.Size = new System.Drawing.Size(887, 686);
+            this.pnlChildForm.Size = new System.Drawing.Size(1015, 686);
             this.pnlChildForm.TabIndex = 11;
             // 
             // pictureBox2
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox2.Image = global::UI.Properties.Resources.LogoNuevo;
-            this.pictureBox2.Location = new System.Drawing.Point(343, 230);
+            this.pictureBox2.Location = new System.Drawing.Point(407, 230);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(200, 200);
@@ -577,7 +575,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(1090, 733);
+            this.ClientSize = new System.Drawing.Size(1218, 733);
             this.Controls.Add(this.pnlChildForm);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.pnlMenuLateral);
@@ -632,8 +630,8 @@
         private System.Windows.Forms.Button btnAdministrar;
         private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.Button btnCalendario;
-        private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnStock;
+        private System.Windows.Forms.Button btnSalir;
     }
 }
 

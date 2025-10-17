@@ -10,9 +10,9 @@ namespace SERVICES.Interfaces
         List<BETurnoTomado> ObtenerTurnosTomados(int iProfesionalID, DateTime dtFecha);
         int ConfirmarReserva(BEReserva oReserva);
         int DuracionTotalSeleccionadaMin(IEnumerable<int> serviciosSeleccionados);
-        List<DateTime> CalcularSlotsDisponibles(int profesionalId, DateTime fecha, IEnumerable<int> serviciosSeleccionados);
-        List<DateTime> ObtenerFechasConReservas(int idProfesional, DateTime mes);
-        DataTable ObtenerReservaDiaPorFechayProfesional(int idProfesional, DateTime dtFecha);
-        void ReservaAcciones(int idReserva, ReservaAcciones AccionEnum);
+        List<DateTime> CalcularSlotsDisponibles(int iProfesionalID, DateTime dtFecha, IEnumerable<int> serviciosSeleccionados);
+        List<DateTime> ObtenerFechasConReservas(int iProfesionalID, DateTime dtMes);
+        DataTable ObtenerReservaDiaPorFechayProfesional(int iProfesionalID, DateTime dtFecha);
+        void ReservaAcciones(int iReservaID, ReservaAcciones AccionEnum);
     }
 }
