@@ -128,6 +128,28 @@ namespace DAL
         {
             throw new NotImplementedException();
         }
+
+        public BEProfesional ObtenerProfesionalPorUsuarioID(int iUsuarioID)
+        {
+            Hdatos = new Hashtable();
+            Hdatos.Add("@UsuarioID", iUsuarioID);
+
+            var oDtProfesional = oDatos.Leer("ObtenerProfesionalPorUsuarioID", Hdatos);
+
+            foreach (DataRow row in oDtProfesional.Rows)
+            {
+                return new BEProfesional
+                {
+                    ProfesionalID = (int)row["ProfesionalID"],
+                    Nombre = (string)row["Nombre"],
+                    Apellido = (string)row["Apellido"],
+                    Telefono = (string)row["Telefono"],
+                    Email = (string)row["Email"]
+                };
+            }
+
+            return new BEProfesional();
+        }
     }
 
 }

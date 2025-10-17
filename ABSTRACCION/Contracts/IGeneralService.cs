@@ -15,5 +15,6 @@ namespace ABSTRACCION.Contracts
         void EsconderColumna(DataGridView oDgv, string sNombreColumna);
         DataTable ObtenerMediosDePago();
         List<BEProfesional> ListarProfesionales();
+        BEProfesional ObtenerProfesionalPorUsuarioID(int UsuarioID);
     }
 }

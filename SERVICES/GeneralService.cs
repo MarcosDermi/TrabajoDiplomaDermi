@@ -56,5 +56,9 @@ namespace SERVICES
             return oBLLProfesional.ListarTodo(false, 0);
         }
 
+        public BEProfesional ObtenerProfesionalPorUsuarioID(int UsuarioID)
+        {
+            return oBLLProfesional.ObtenerProfesionalPorUsuarioID(UsuarioID);
+        }
     }
 }
