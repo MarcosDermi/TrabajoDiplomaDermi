@@ -40,7 +40,7 @@ namespace UI.Interfaces
 
         private void chkAlertaStockMinimo_CheckedChanged(object sender, EventArgs e)
         {
-            if(chkAlertaStockMinimo.Checked)
+            if (chkAlertaStockMinimo.Checked)
             {
                 txtStockMinimoAlerta.Enabled = true;
             }
@@ -79,36 +79,50 @@ namespace UI.Interfaces
 
         private void txtPrecioCompra_Leave(object sender, EventArgs e)
         {
-            txtPrecioFinal.Text = PrecioTotalCalculado(Convert.ToDecimal(txtPrecioCompra.Text), Convert.ToDecimal(txtDescuento.Text)).ToString();
+            try
+            {
+                txtPrecioFinal.Text = PrecioTotalCalculado(Convert.ToDecimal(txtPrecioCompra.Text), Convert.ToDecimal(txtDescuento.Text)).ToString();
+            }
+            catch (Exception Ex)
+            {
+                MostrarMensajeError(Ex);
+            }
         }
 
         private void btnCrearInsumo_Click(object sender, EventArgs e)
         {
-            var oBEInsumo = new BEInsumo()
+            try
             {
-                Codigo = txtCodigo.Text,
-                Nombre = txtNombre.Text,
-                Presentacion = (UnidadesEnum)cmbPresentacion.SelectedItem,
-                Proveedor = { IdProveedor = Convert.ToInt32(cmbProveedores.SelectedValue) },
-                Categoria = { IdCategoria = Convert.ToInt32(cmbSubCategorias.SelectedValue),
+                var oBEInsumo = new BEInsumo()
+                {
+                    Codigo = txtCodigo.Text,
+                    Nombre = txtNombre.Text,
+                    Presentacion = (UnidadesEnum)cmbPresentacion.SelectedItem,
+                    Proveedor = { IdProveedor = Convert.ToInt32(cmbProveedores.SelectedValue) },
+                    Categoria = { IdCategoria = Convert.ToInt32(cmbSubCategorias.SelectedValue),
                 IdCategoriaPadre = Convert.ToInt32(cmbCategorias.SelectedValue)},
-                Cantidad = Convert.ToDecimal(txtCantidad.Text),
-                Stock = Convert.ToInt32(txtStock.Text),
-                StockMinimo = Convert.ToDecimal(txtStockMinimoAlerta.Text),
-                PrecioCompra = Convert.ToDecimal(txtPrecioCompra.Text),
-                Descuento = Convert.ToDecimal(txtDescuento.Text),
-                PrecioFinal = Convert.ToDecimal(txtPrecioFinal.Text),
-                FechaVencimiento = dtpFechaVencimiento.Value,
-            };
+                    Cantidad = Convert.ToDecimal(txtCantidad.Text),
+                    Stock = Convert.ToInt32(txtStock.Text),
+                    StockMinimo = Convert.ToDecimal(txtStockMinimoAlerta.Text),
+                    PrecioCompra = Convert.ToDecimal(txtPrecioCompra.Text),
+                    Descuento = Convert.ToDecimal(txtDescuento.Text),
+                    PrecioFinal = Convert.ToDecimal(txtPrecioFinal.Text),
+                    FechaVencimiento = dtpFechaVencimiento.Value,
+                };
 
-            if (GestionStockService.GuardarInsumo(oBEInsumo))
-            {
-                MessageBox.Show("Insumo guardado con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                if (GestionStockService.GuardarInsumo(oBEInsumo))
+                {
+                    MessageBox.Show("Insumo guardado con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Ocurrió un error al guardar el insumo. Intente nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+            catch (Exception Ex)
             {
-                MessageBox.Show("Ocurrió un error al guardar el insumo. Intente nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MostrarMensajeError(Ex);
             }
         }
     }

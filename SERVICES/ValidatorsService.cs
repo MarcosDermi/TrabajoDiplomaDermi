@@ -4,6 +4,7 @@ using BE;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -135,59 +136,71 @@ namespace SERVICES
             return validacion;
         }
 
+        // ---------------------------
+        // CAMPOS DE TEXTO BÁSICOS
+        // ---------------------------
+
         public bool validarTelefono(string telefono)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrWhiteSpace(telefono))
+                return false;
+
+            // Solo números, espacios, guiones y paréntesis, entre 7 y 15 dígitos
+            return Regex.IsMatch(telefono, @"^[0-9\s\-\(\)]{7,15}$");
         }
 
         public bool validarPrecio(string precio)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrWhiteSpace(precio))
+                return false;
+
+            // Admite coma o punto decimal
+            return decimal.TryParse(
+                precio,
+                System.Globalization.NumberStyles.AllowDecimalPoint,
+                System.Globalization.CultureInfo.InvariantCulture,
+                out decimal valor
+            ) && valor >= 0;
         }
 
         public bool validarDuracion(string duracion)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrWhiteSpace(duracion))
+                return false;
+
+            // Acepta números enteros (minutos)
+            return int.TryParse(duracion, out int minutos) && minutos > 0 && minutos <= 600;
         }
 
         public bool validarBuffer(string buffer)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrWhiteSpace(buffer))
+                return false;
+
+            return int.TryParse(buffer, out int valor) && valor >= 0 && valor <= 120;
         }
 
         public bool validarDescripcion(string descripcion)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrWhiteSpace(descripcion))
+                return false;
+
+            // Evita descripciones muy cortas o extremadamente largas
+            return descripcion.Length >= 3 && descripcion.Length <= 500;
         }
 
-        public bool validarComboBox(ComboBox combo)
+        public bool validarTexto(string texto)
         {
-            throw new NotImplementedException();
-        }
+            if (string.IsNullOrWhiteSpace(texto))
+                return false;
 
-        public bool validarDataGridView(DataGridView dgv)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool validarListaServicios(IList<BEServicio> lista)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool validarFechaHora(DateTime fechaHora)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool validarDataTable(DataTable dt)
-        {
-            throw new NotImplementedException();
+            // Solo letras, espacios y algunos acentos comunes
+            return Regex.IsMatch(texto, @"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$");
         }
 
         public bool validarEntero(string entero)
         {
-            throw new NotImplementedException();
+            return int.TryParse(entero, out int valor);
         }
 
         public bool validarDecimal(string decimalString)
@@ -201,44 +214,89 @@ namespace SERVICES
             );
         }
 
-        public bool validarTexto(string texto)
+        // ---------------------------
+        // VALIDACIONES DE FECHA / HORA
+        // ---------------------------
+
+        public bool validarFechaHora(DateTime fechaHora)
         {
-            throw new NotImplementedException();
+            // Debe ser mayor o igual a la fecha actual
+            return fechaHora >= DateTime.Now;
+        }
+
+        // ---------------------------
+        // VALIDACIONES DE CONTROLES
+        // ---------------------------
+
+        public bool validarComboBox(ComboBox combo)
+        {
+            // Debe tener un elemento seleccionado
+            return combo != null && combo.SelectedIndex >= 0;
+        }
+
+        public bool validarDataGridView(DataGridView dgv)
+        {
+            // Debe contener al menos una fila válida
+            return dgv != null && dgv.Rows.Count > 0;
+        }
+
+        public bool validarCheckedListBox(CheckedListBox clb)
+        {
+            // Al menos un elemento debe estar seleccionado
+            return clb != null && clb.CheckedItems.Count > 0;
+        }
+
+        // ---------------------------
+        // VALIDACIONES DE LISTAS
+        // ---------------------------
+
+        public bool validarListaServicios(IList<BEServicio> lista)
+        {
+            return lista != null && lista.Any();
         }
 
         public bool validarListaString(IList<string> lista)
         {
-            throw new NotImplementedException();
+            return lista != null && lista.Any(x => !string.IsNullOrWhiteSpace(x));
         }
 
         public bool validarListaEnteros(IList<int> lista)
         {
-            throw new NotImplementedException();
+            return lista != null && lista.Any();
         }
 
         public bool validarListaProfesionales(IList<BEProfesional> lista)
         {
-            throw new NotImplementedException();
+            return lista != null && lista.Any();
         }
+
+        public bool validarDataTable(DataTable dt)
+        {
+            return dt != null && dt.Rows.Count > 0;
+        }
+
+        // ---------------------------
+        // CHECKED LIST BOX ESPECÍFICOS
+        // ---------------------------
 
         public bool validarListaServiciosCheckedListBox(CheckedListBox clb)
         {
-            throw new NotImplementedException();
+            return validarCheckedListBox(clb);
         }
 
         public bool validarListaProfesionalesCheckedListBox(CheckedListBox clb)
         {
-            throw new NotImplementedException();
+            return validarCheckedListBox(clb);
         }
 
         public bool validarListaStringCheckedListBox(CheckedListBox clb)
         {
-            throw new NotImplementedException();
+            return validarCheckedListBox(clb);
         }
 
         public bool validarListaEnterosCheckedListBox(CheckedListBox clb)
         {
-            throw new NotImplementedException();
+            return validarCheckedListBox(clb);
         }
     }
 }

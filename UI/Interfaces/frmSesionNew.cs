@@ -281,18 +281,25 @@ namespace UI.Interfaces
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var iIdProfesional = GeneralService.ObtenerProfesionalPorUsuarioID(_oSingletonSesion.Usuario.Id).ProfesionalID;
-
-            if (iIdProfesional != 0)
+            try
             {
-                OpenChildForm(new frmAgendaTurnos(GeneralService.ObtenerProfesionalPorUsuarioID(_oSingletonSesion.Usuario.Id).ProfesionalID));
+                var iIdProfesional = GeneralService.ObtenerProfesionalPorUsuarioID(_oSingletonSesion.Usuario.Id).ProfesionalID;
 
-                hideSubMenu(pnlSubMenuCalendario);
-            }else
-            {
-                MessageBox.Show("El usuario no es un profesional asociado. Por favor, contacte con el administrador.");
+                if (iIdProfesional != 0)
+                {
+                    OpenChildForm(new frmAgendaTurnos(GeneralService.ObtenerProfesionalPorUsuarioID(_oSingletonSesion.Usuario.Id).ProfesionalID));
+
+                    hideSubMenu(pnlSubMenuCalendario);
+                }
+                else
+                {
+                    MessageBox.Show("El usuario no es un profesional asociado. Por favor, contacte con el administrador.");
+                }
             }
-
+            catch (Exception ex)
+            {
+                MostrarMensajeError(ex);
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)

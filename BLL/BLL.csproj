@@ -51,6 +51,7 @@
     <Compile Include="BLLAgenda.cs" />
     <Compile Include="BLLProfesional.cs" />
     <Compile Include="BLLProveedor.cs" />
+    <Compile Include="BLLLogsErrors.cs" />
     <Compile Include="BLLTraductor.cs" />
     <Compile Include="BLLSesion.cs" />
     <Compile Include="BLLUsuario.cs" />

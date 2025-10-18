@@ -1,6 +1,7 @@
 ﻿using ABSTRACCION.Contracts;
 using SERVICES;
 using SERVICES.Interfaces;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -26,6 +27,7 @@ namespace UI
             // 
             // BaseForm
             // 
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -101,6 +103,12 @@ namespace UI
             {
                 _validatorsService = value;
             }
+        }
+
+        public void MostrarMensajeError(Exception ex)
+        {
+
+            MessageBox.Show("Ocurrio un error inesperado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

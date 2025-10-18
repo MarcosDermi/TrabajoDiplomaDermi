@@ -11,7 +11,7 @@ using ABSTRACCION.Contracts;
 
 namespace UI.Interfaces
 {
-    public partial class frmInicioSesion : Form, IdiomaObserver
+    public partial class frmInicioSesion : BaseForm, IdiomaObserver
     {
 
         ISingletonSesionService SingletonSesionService = BLLSingletonSesion.Instancia;
@@ -100,7 +100,14 @@ namespace UI.Interfaces
 
         public void CambiarIdioma(Idioma Idioma)
         {
-            traducir();
+            try
+            {
+                traducir();
+            }
+            catch (Exception ex)
+            {
+                MostrarMensajeError(ex);
+            }
         }
 
         private void traducir()
@@ -190,10 +197,8 @@ namespace UI.Interfaces
 
             if (frmRegistrarUsuario.ShowDialog() == DialogResult.OK)
             {
-                // El registro fue exitoso, podés hacer algo
-            }
 
-            // Opcional: restaurás la ventana si estaba minimizada
+            }
             this.Show();
         }
 
@@ -212,92 +217,100 @@ namespace UI.Interfaces
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
-            if (!oValidators.ValidarCamposVacios(txtUsuario.Text, txtClave.Text))
+            try
             {
-                try
+                if (!oValidators.ValidarCamposVacios(txtUsuario.Text, txtClave.Text))
                 {
-                    LoginResult result = oBLLUsuario.Login(txtUsuario.Text, txtClave.Text);
-
-                    if (result == LoginResult.ValidUser)
+                    try
                     {
-                        BLLDV oBLLDV = new BLLDV(DigitoVerificadorService);
-                        bool integridadSistema = oBLLDV.ValidarIntegridadSistema();
-                        bool isAdmin = BLLSingletonSesion.Instancia.Usuario.isAdmin;
+                        LoginResult result = oBLLUsuario.Login(txtUsuario.Text, txtClave.Text);
 
-
-                        if (integridadSistema)
+                        if (result == LoginResult.ValidUser)
                         {
-
-                            frmSesionNew frmSesion = new frmSesionNew();
-                            frmSesion.Show();
-
-                            //frmSesion.FormClosed += (s, args) => this.Show();
-                            this.DialogResult = DialogResult.OK;
-                            this.Close();
-                        }
-                        else if (isAdmin && !integridadSistema)
-                        {
+                            BLLDV oBLLDV = new BLLDV(DigitoVerificadorService);
+                            bool integridadSistema = oBLLDV.ValidarIntegridadSistema();
+                            bool isAdmin = BLLSingletonSesion.Instancia.Usuario.isAdmin;
 
 
-                            frmErrorDV frmErrorDV = new frmErrorDV();
-                            frmErrorDV.FormClosed += (s, args) =>
+                            if (integridadSistema)
                             {
-                                // Cuando se cierra el formulario de error, volver al login
-                                this.Show();
+
+                                frmSesionNew frmSesion = new frmSesionNew();
+                                frmSesion.Show();
+
+                                //frmSesion.FormClosed += (s, args) => this.Show();
+                                this.DialogResult = DialogResult.OK;
+                                this.Close();
+                            }
+                            else if (isAdmin && !integridadSistema)
+                            {
+
+
+                                frmErrorDV frmErrorDV = new frmErrorDV();
+                                frmErrorDV.FormClosed += (s, args) =>
+                                {
+                                    // Cuando se cierra el formulario de error, volver al login
+                                    this.Show();
+                                    // Limpiar campos de login
+                                    txtUsuario.Text = "";
+                                    txtClave.Text = "";
+                                    txtUsuario.Focus();
+                                };
+                                frmErrorDV.Show();
+                                this.Hide();
+                            }
+                            else
+                            {
+                                // Limpiar la sesión para permitir intentar con otro usuario
+                                if (BLLSingletonSesion.Instancia.IsLoggedIn())
+                                {
+                                    BLLSingletonSesion.Instancia.Logout();
+                                }
+
+                                MessageBox.Show("❌ Error de Dígito Verificador\nSe detectó corrupción en los datos del sistema, acceso denegado.\n\nSesión cerrada. Puede intentar con otro usuario.",
+                                    "Error de Integridad", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
                                 // Limpiar campos de login
                                 txtUsuario.Text = "";
                                 txtClave.Text = "";
                                 txtUsuario.Focus();
-                            };
-                            frmErrorDV.Show();
-                            this.Hide();
+                            }
                         }
                         else
                         {
-                            // Limpiar la sesión para permitir intentar con otro usuario
-                            if (BLLSingletonSesion.Instancia.IsLoggedIn())
-                            {
-                                BLLSingletonSesion.Instancia.Logout();
-                            }
-
-                            MessageBox.Show("❌ Error de Dígito Verificador\nSe detectó corrupción en los datos del sistema, acceso denegado.\n\nSesión cerrada. Puede intentar con otro usuario.",
-                                "Error de Integridad", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                            // Limpiar campos de login
-                            txtUsuario.Text = "";
-                            txtClave.Text = "";
-                            txtUsuario.Focus();
+                            MessageBox.Show("Usuario o contraseña incorrectos.", "Error de Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-                    else
+                    catch (LoginException error)
                     {
-                        MessageBox.Show("Usuario o contraseña incorrectos.", "Error de Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        switch (error.Result)
+                        {
+                            case LoginResult.InvalidUsername:
+                                MessageBox.Show("Usuario incorrecto", "Error de Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            case LoginResult.InvalidPassword:
+                                MessageBox.Show("Clave Incorrecta", "Error de Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            default:
+                                MessageBox.Show("Error desconocido en el login", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                catch (LoginException error)
+                else
                 {
-                    switch (error.Result)
-                    {
-                        case LoginResult.InvalidUsername:
-                            MessageBox.Show("Usuario incorrecto", "Error de Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
-                        case LoginResult.InvalidPassword:
-                            MessageBox.Show("Clave Incorrecta", "Error de Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
-                        default:
-                            MessageBox.Show("Error desconocido en el login", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Debe completar todos los campos", "Campos vacios", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Debe completar todos los campos", "Campos vacios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MostrarMensajeError(ex);
             }
+            
         }
 
         private void txtClave_Enter(object sender, EventArgs e)
@@ -393,10 +406,10 @@ namespace UI.Interfaces
 
         private void btnIniciarSesion_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                btnIniciarSesion.PerformClick();
-            }
+            //if (e.KeyChar == (char)Keys.Enter)
+            //{
+            //    btnIniciarSesion.PerformClick();
+            //}
         }
 
         private void btnIniciarSesion_Enter(object sender, EventArgs e)
@@ -416,29 +429,29 @@ namespace UI.Interfaces
 
         private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                btnIniciarSesion.PerformClick();
-                e.Handled = true;
-            }
+            //if (e.KeyChar == (char)Keys.Enter)
+            //{
+            //    btnIniciarSesion.PerformClick();
+            //    e.Handled = true;
+            //}
         }
 
         private void txtClave_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                btnIniciarSesion.PerformClick();
-                e.Handled = true;
-            }
+            //if (e.KeyChar == (char)Keys.Enter)
+            //{
+            //    btnIniciarSesion.PerformClick();
+            //    e.Handled = true;
+            //}
         }
 
         private void chkMostrarContraseña_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                btnIniciarSesion.PerformClick();
-                e.Handled = true;
-            }
+            //if (e.KeyChar == (char)Keys.Enter)
+            //{
+            //    btnIniciarSesion.PerformClick();
+            //    e.Handled = true;
+            //}
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
