@@ -1,5 +1,6 @@
 ﻿using BE;
 using BLL;
+using SERVICES.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -90,36 +91,28 @@ namespace UI
             _IdReservaSeleccionada = Convert.ToInt32(oDtReserva.Rows[0]["ReservaID"]);
             lblMontoTotal.Text = oDtReserva.Rows[0]["PrecioTotal"].ToString();
 
-            if (oDtReserva.Rows[0]["Atendido"] != DBNull.Value)
+            if (oDtReserva.Rows[0]["AccionesEnum"] != DBNull.Value)
             {
-                if ((bool)oDtReserva.Rows[0]["Atendido"])
+                var eReservaAccion = (ReservaAcciones)(int)oDtReserva.Rows[0]["AccionesEnum"];
+
+                switch (eReservaAccion)
                 {
-                    btnAtendido.Enabled = false;
-                }
-                else
-                {
-                    btnAtendido.Enabled = true;
+                    case ReservaAcciones.Atendida:
+                        btnAtendido.Enabled = false;
+                        break;
+
+                    case ReservaAcciones.Cancelada:
+                        btnAtendido.Enabled = false;
+                        break;
+
+                    case ReservaAcciones.Confirmada:
+                        btnAtendido.Enabled = true;
+                        break;
                 }
             }
             else
             {
                 btnAtendido.Enabled = true;
-            }
-
-            if (oDtReserva.Rows[0]["Cancelado"] != DBNull.Value)
-            {
-                if ((bool)oDtReserva.Rows[0]["Cancelado"])
-                {
-                    btnCancelarTurno.Enabled = false;
-                }
-                else
-                {
-                    btnCancelarTurno.Enabled = true;
-                }
-            }
-            else
-            {
-                btnCancelarTurno.Enabled = true;
             }
 
             foreach (DataColumn col in oDtReserva.Columns.Cast<DataColumn>().ToList())
@@ -136,14 +129,12 @@ namespace UI
         {
             ucCalendario.CambiarMes(+1);
             ucCalendario.MarcarFechasConReservas(AgendaService.ObtenerFechasConReservas(_IdProfesionalSeleccionado, ucCalendario.FechaActual));
-
         }
 
         private void btnMesAnterior_Click(object sender, EventArgs e)
         {
             ucCalendario.CambiarMes(-1);
             ucCalendario.MarcarFechasConReservas(AgendaService.ObtenerFechasConReservas(_IdProfesionalSeleccionado, ucCalendario.FechaActual));
-
         }
 
         private void ucCalendario_Load(object sender, EventArgs e)
@@ -158,17 +149,39 @@ namespace UI
 
         private void btnAtendido_Click(object sender, EventArgs e)
         {
-
             var Resultado = MessageBox.Show("Desea marcar como atendido el turno?.", "Confirmar turno atendido", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
             if (Resultado == DialogResult.OK)
             {
                 AgendaService.ReservaAcciones(_IdReservaSeleccionada, ReservaAcciones.Atendida);
-                MessageBox.Show("Turno confirmado exitosamente.", "Exito", MessageBoxButtons.OK);
+                MessageBox.Show("Turno confirmado.", "Exito", MessageBoxButtons.OK);
             }
+
             return;
+        }
 
+        private void dgvDetalleTurno_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
+        }
+
+        private void btnCancelarTurno_Click(object sender, EventArgs e)
+        {
+            var Resultado = MessageBox.Show("Desea marcar como cancelado el turno?.", "Confirmar cancelar turno", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+            if (Resultado == DialogResult.OK)
+            {
+                AgendaService.ReservaAcciones(_IdReservaSeleccionada, ReservaAcciones.Cancelada);
+
+                var oReserva = AgendaService.ObtenerReserva(_IdReservaSeleccionada);
+
+                var oEmailHelper = new EmailHelper();
+                oEmailHelper.EnviarCancelacionTurno(new BEReserva { ReservaID = _IdReservaSeleccionada }, _IdReservaSeleccionada);
+
+                MessageBox.Show("Turno cancelado.", "Exito", MessageBoxButtons.OK);
+            }
+
+            return;
         }
     }
 }

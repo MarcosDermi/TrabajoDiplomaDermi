@@ -1,5 +1,6 @@
 ﻿using BE;
 using BLL;
+using SERVICES.Helpers;
 using System;
 using System.Data;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace UI.Interfaces
         {
 
             lblDia.Text = _oReserva.FechaInicio.ToString("dddd, dd 'de' MMMM 'de' yyyy", new System.Globalization.CultureInfo("es-ES"));
-            lblHorario.Text = _oReserva.FechaInicio.Hour.ToString(@"hh\:mm");
+            lblHorario.Text = _oReserva.FechaInicio.Hour.ToString();
             lblProfesional.Text = GeneralService.ListarProfesionales().FirstOrDefault(x => x.ProfesionalID == _oReserva.ProfesionalID).Nombre;
             
             lstServicios.Items.Clear();
@@ -55,7 +56,8 @@ namespace UI.Interfaces
             {
                 _oReserva.Cliente.Mail = txtEmail.Text;
                 var idReserva = AgendaService.ConfirmarReserva(_oReserva);
-
+                var oEmailHelper = new EmailHelper();
+                oEmailHelper.EnviarConfirmacionTurno(_oReserva, idReserva);
 
                 MessageBox.Show($"La reserva se ha confirmado exitosamente. Su número de reserva es: {idReserva}", "Reserva Confirmada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();

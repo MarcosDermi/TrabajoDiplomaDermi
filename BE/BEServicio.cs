@@ -9,5 +9,11 @@ namespace BE
         public int BufferMin { get; set; }
         public decimal Precio { get; set; }
 
+        public enum Acciones
+        {
+            Confirmado = 1,
+            Atendido = 2,
+            Cancelado = 3
+        }
     }
 }

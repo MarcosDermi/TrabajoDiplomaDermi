@@ -121,6 +121,7 @@
             this.btnCancelarTurno.TabIndex = 27;
             this.btnCancelarTurno.Text = "Cancelar";
             this.btnCancelarTurno.UseVisualStyleBackColor = false;
+            this.btnCancelarTurno.Click += new System.EventHandler(this.btnCancelarTurno_Click);
             // 
             // btnAtendido
             // 
@@ -148,6 +149,7 @@
             this.dgvDetalleTurno.Name = "dgvDetalleTurno";
             this.dgvDetalleTurno.Size = new System.Drawing.Size(145, 175);
             this.dgvDetalleTurno.TabIndex = 0;
+            this.dgvDetalleTurno.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalleTurno_CellContentClick);
             // 
             // groupBox4
             // 
