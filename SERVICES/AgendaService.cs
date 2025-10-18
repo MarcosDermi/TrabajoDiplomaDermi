@@ -56,5 +56,11 @@ namespace SERVICES
             BLLAgenda oBLLAgenda = new BLLAgenda();
             oBLLAgenda.ReservaAcciones(idReserva, AccionEnum);
         }
+
+        public BEReserva ObtenerReserva(int idReserva)
+        {
+            BLLAgenda oBLLAgenda = new BLLAgenda();
+            return oBLLAgenda.ObtenerReserva(idReserva);
+        }
     }
 }

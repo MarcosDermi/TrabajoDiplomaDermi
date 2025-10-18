@@ -8,6 +8,7 @@ namespace BE
 {
     public class BEReserva
     {
+        public int ReservaID { get; set; }
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin { get; set; }
         public BEUsuario Cliente { get; set; }

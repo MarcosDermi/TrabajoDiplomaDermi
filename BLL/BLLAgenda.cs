@@ -41,7 +41,7 @@ namespace BLL
             var oLstServiciosProfesional = oDALProfesionalServicio.ObtenerServiciosDeProfesional(iProfesionalID);
             // Servicios que el profesional NO tiene asignados
             var oLstServiciosNoSoportados = serviciosSeleccionados.Where(s => !oLstServiciosProfesional.Contains(s)).ToList();
-            
+
             if (oLstServiciosNoSoportados.Count == 0) { return true; }
             return false;
         }
@@ -60,7 +60,7 @@ namespace BLL
             if (!_dicAgenda.TryGetValue(iProfesionalID, out var oLstJornadasProfesional)) return new List<BEFranja>();
 
             var oJornadaLaboral = oLstJornadasProfesional.FirstOrDefault(x => x.Dia == oDtFecha.DayOfWeek);
-            
+
             if (oJornadaLaboral == null) return new List<BEFranja>();
 
             // Se ajustan las franjas al dia especifico y devolvemos la lista de franjas dentro de la jornada laboral.
@@ -98,7 +98,7 @@ namespace BLL
                     var oDtFin = oDtInicio.Add(tsDuracionRequeridaMin);
 
                     bool seSolapa = oLstTurnosOcupados.Any(o => Solapa(oDtInicio, oDtFin, o.Inicio, o.Fin));
-                    
+
                     if (!seSolapa)
                         oLstSlotsDisponibles.Add(oDtInicio);
                 }
@@ -133,6 +133,11 @@ namespace BLL
         public void ReservaAcciones(int idReserva, ReservaAcciones AccionEnum)
         {
             oDALAgenda.ReservaAcciones(idReserva, AccionEnum);
+        }
+
+        public BEReserva ObtenerReserva(int idReserva)
+        {
+            return oDALAgenda.ObtenerReserva(idReserva);
         }
 
     }

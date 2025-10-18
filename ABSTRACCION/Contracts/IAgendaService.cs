@@ -14,5 +14,6 @@ namespace SERVICES.Interfaces
         List<DateTime> ObtenerFechasConReservas(int iProfesionalID, DateTime dtMes);
         DataTable ObtenerReservaDiaPorFechayProfesional(int iProfesionalID, DateTime dtFecha);
         void ReservaAcciones(int iReservaID, ReservaAcciones AccionEnum);
+        BEReserva ObtenerReserva(int idReserva);
     }
 }

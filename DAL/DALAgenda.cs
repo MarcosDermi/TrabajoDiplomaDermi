@@ -229,5 +229,41 @@ namespace DAL
                 throw ex;
             }
         }
+
+        public BEReserva ObtenerReserva(int idReserva)
+        {
+            try
+            {
+                var oDtReserva = oDatos.Leer("ObtenerReservaPorID", new Hashtable
+                {
+                    { "@ReservaID", idReserva }
+                });
+                if (oDtReserva.Rows.Count == 0)
+                    throw new Exception("No se encontró la reserva solicitada.");
+                var row = oDtReserva.Rows[0];
+                var oReserva = new BEReserva
+                {
+                    ReservaID = (int)row["ReservaID"],
+                    Cliente = new BEUsuario
+                    {
+                        Mail = (string)row["EmailConfirmacion"]
+                    },
+                    ProfesionalID = (int)row["ProfesionalID"],
+                    FechaInicio = (DateTime)row["FechaInicio"],
+                    FechaFin = (DateTime)row["FechaFin"],
+                    MedioDePagoID = (int)row["MedioDePagoID"],
+                    PrecioTotal = (decimal)row["PrecioTotal"]
+                };
+                return oReserva;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
