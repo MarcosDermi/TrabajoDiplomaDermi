@@ -29,11 +29,6 @@ namespace UI.Interfaces
                 dataGridViewHorarios.Columns.Add("Hora", "Hora");
                 dataGridViewHorarios.Columns.Add("Estado", "Estado");
 
-
-                cmbMediosDePago.DisplayMember = "Nombre";
-                cmbMediosDePago.ValueMember = "MedioPagoID";
-                cmbMediosDePago.DataSource = GeneralService.ObtenerMediosDePago();
-
                 cmbProfesional.DisplayMember = "Nombre";
                 cmbProfesional.ValueMember = "ProfesionalID";
                 cmbProfesional.DataSource = GeneralService.ListarProfesionales();
@@ -79,6 +74,8 @@ namespace UI.Interfaces
                 // Cargar con objetos BEServicio
                 foreach (var servicio in profesionalSeleccionado.Servicios)
                 {
+                    if (!servicio.Nombre.Contains("-"))
+                    { servicio.Nombre = string.Format(servicio.Nombre + " - $" + servicio.Precio); }
                     checkedListBoxServicios.Items.Add(servicio, false);
                 }
 
@@ -256,7 +253,7 @@ namespace UI.Interfaces
                     MessageBox.Show("Debe seleccionar al menos un servicio.");
                     return;
                 }
-                if (cmbMediosDePago.SelectedItem == null)
+                if ((!rbEfectivo.Checked && !rbTarjCredito.Checked && !rbTarjDebito.Checked))
                 {
                     MessageBox.Show("Debe seleccionar un medio de pago.");
                     return;
@@ -287,7 +284,7 @@ namespace UI.Interfaces
                     FechaFin = fechaInicio.Add(duracionTotal),
                     Cliente = new BEUsuario(),
                     Servicios = oLstServicios,
-                    MedioDePagoID = (int)cmbMediosDePago.SelectedValue,
+                    MedioDePagoID = MedioDePagoSeleccionado(),
                     PrecioTotal = oLstServicios.Sum(x => x.Precio)
                 };
                 var frmConfirmacion = new frmConfirmacionReserva(oNuevaReserva);
@@ -301,6 +298,13 @@ namespace UI.Interfaces
             {
                 MostrarMensajeError(ex);
             }
+        }
+
+        private int MedioDePagoSeleccionado()
+        {
+            if (rbEfectivo.Checked) { return (int)MedioDePagoEnum.Efectivo; }
+            else if (rbTarjCredito.Checked) { return (int)MedioDePagoEnum.Credito; }
+            else { return (int)MedioDePagoEnum.Debito; }
         }
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)

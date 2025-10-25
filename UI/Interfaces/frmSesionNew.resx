@@ -129,10 +129,10 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnStock.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAHlJREFUSEvt
-        1LEJgDAQBdCMktIxLC3dwNLS8RzBMT7k3x7KFQny28TKexAI94uDhLuUQqgAZJK3HwCT5t3MbKsNzGzX
-        fAiSF8lT66EBMJNctD5EKWWtn+x3zbt93sD58/gzaT00PmQ+bFofguTxWhWb5t1k2WXNw489+jJoMqs3
-        +SwAAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAHtJREFUSEvt
+        lLEJwDAMBD2Ky4yRMmU2SJky43kEj2GwvUfyD+8Ucat0OnjQfyGBBAqO81JKia21m0K9KLaj936MAahP
+        xbageYaSrDOD465Y0SZrS611H0dmrdiO3wcQrodrknVmsKIEZVlb0PjigSm+DcV2fJ5dVOw4ITz6Mmgy
+        wr7Y0wAAAABJRU5ErkJggg==
 </value>
   </data>
   <metadata name="btnCalendario.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

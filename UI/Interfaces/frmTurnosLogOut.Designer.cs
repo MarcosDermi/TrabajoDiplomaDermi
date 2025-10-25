@@ -40,7 +40,6 @@
             this.lblTotal = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.cmbMediosDePago = new System.Windows.Forms.ComboBox();
             this.btnReservar = new System.Windows.Forms.Button();
             this.btnIniciarSesion = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -57,6 +56,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.rbTarjDebito = new System.Windows.Forms.RadioButton();
+            this.rbTarjCredito = new System.Windows.Forms.RadioButton();
+            this.rbEfectivo = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -151,7 +153,7 @@
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(32, 79);
+            this.lblTotal.Location = new System.Drawing.Point(153, 44);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(11, 13);
             this.lblTotal.TabIndex = 22;
@@ -161,7 +163,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(22, 61);
+            this.label3.Location = new System.Drawing.Point(143, 26);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(75, 13);
             this.label3.TabIndex = 21;
@@ -170,22 +172,15 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(22, 21);
+            this.label13.Location = new System.Drawing.Point(18, 17);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(81, 13);
             this.label13.TabIndex = 15;
             this.label13.Text = "Medio de pago:";
             // 
-            // cmbMediosDePago
-            // 
-            this.cmbMediosDePago.FormattingEnabled = true;
-            this.cmbMediosDePago.Location = new System.Drawing.Point(25, 37);
-            this.cmbMediosDePago.Name = "cmbMediosDePago";
-            this.cmbMediosDePago.Size = new System.Drawing.Size(150, 21);
-            this.cmbMediosDePago.TabIndex = 14;
-            // 
             // btnReservar
             // 
+            this.btnReservar.BackColor = System.Drawing.Color.MintCream;
             this.btnReservar.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReservar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(95)))), ((int)(((byte)(170)))));
             this.btnReservar.Location = new System.Drawing.Point(70, 588);
@@ -193,7 +188,7 @@
             this.btnReservar.Size = new System.Drawing.Size(559, 37);
             this.btnReservar.TabIndex = 2;
             this.btnReservar.Text = "Reservar";
-            this.btnReservar.UseVisualStyleBackColor = true;
+            this.btnReservar.UseVisualStyleBackColor = false;
             this.btnReservar.Click += new System.EventHandler(this.btnReservar_Click);
             // 
             // btnIniciarSesion
@@ -341,16 +336,48 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.rbTarjDebito);
+            this.groupBox5.Controls.Add(this.rbTarjCredito);
+            this.groupBox5.Controls.Add(this.rbEfectivo);
             this.groupBox5.Controls.Add(this.label13);
             this.groupBox5.Controls.Add(this.lblTotal);
-            this.groupBox5.Controls.Add(this.cmbMediosDePago);
             this.groupBox5.Controls.Add(this.label3);
             this.groupBox5.Location = new System.Drawing.Point(387, 66);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(232, 104);
+            this.groupBox5.Size = new System.Drawing.Size(242, 104);
             this.groupBox5.TabIndex = 27;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Medio de Pago:";
+            // 
+            // rbTarjDebito
+            // 
+            this.rbTarjDebito.AutoSize = true;
+            this.rbTarjDebito.Location = new System.Drawing.Point(21, 78);
+            this.rbTarjDebito.Name = "rbTarjDebito";
+            this.rbTarjDebito.Size = new System.Drawing.Size(108, 17);
+            this.rbTarjDebito.TabIndex = 25;
+            this.rbTarjDebito.Text = "Tarjeta de debito";
+            this.rbTarjDebito.UseVisualStyleBackColor = true;
+            // 
+            // rbTarjCredito
+            // 
+            this.rbTarjCredito.AutoSize = true;
+            this.rbTarjCredito.Location = new System.Drawing.Point(21, 55);
+            this.rbTarjCredito.Name = "rbTarjCredito";
+            this.rbTarjCredito.Size = new System.Drawing.Size(111, 17);
+            this.rbTarjCredito.TabIndex = 24;
+            this.rbTarjCredito.Text = "Tarjeta de credito";
+            this.rbTarjCredito.UseVisualStyleBackColor = true;
+            // 
+            // rbEfectivo
+            // 
+            this.rbEfectivo.AutoSize = true;
+            this.rbEfectivo.Location = new System.Drawing.Point(21, 32);
+            this.rbEfectivo.Name = "rbEfectivo";
+            this.rbEfectivo.Size = new System.Drawing.Size(64, 17);
+            this.rbEfectivo.TabIndex = 23;
+            this.rbEfectivo.Text = "Efectivo";
+            this.rbEfectivo.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -408,7 +435,6 @@
         private System.Windows.Forms.CheckedListBox checkedListBoxServicios;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox cmbMediosDePago;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox cmbProfesional;
         private System.Windows.Forms.Button btnReservar;
@@ -430,5 +456,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.RadioButton rbTarjDebito;
+        private System.Windows.Forms.RadioButton rbTarjCredito;
+        private System.Windows.Forms.RadioButton rbEfectivo;
     }
 }

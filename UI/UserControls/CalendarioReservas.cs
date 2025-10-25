@@ -137,7 +137,7 @@ namespace UI
 
             public void MarcarFechasConReservas(List<DateTime> fechas)
             {
-                _fechasConReservas = fechas ?? new List<DateTime>();  // ✅ guardo la referencia internamente
+                _fechasConReservas = fechas ?? new List<DateTime>();  // guardo la referencia internamente
 
                 foreach (Control control in this.Controls)
                 {

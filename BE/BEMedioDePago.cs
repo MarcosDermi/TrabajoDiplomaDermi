@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BE
+﻿namespace BE
 {
     public class BEMedioDePago
     {
@@ -13,5 +7,12 @@ namespace BE
         public string Codigo { get; set; }
 
         public string Nombre { get; set; }
+    }
+
+    public enum MedioDePagoEnum
+    {
+        Efectivo = 1,
+        Credito = 2,
+        Debito = 3
     }
 }
