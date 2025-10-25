@@ -122,6 +122,12 @@
     <Compile Include="Interfaces\Sesion\frmSesionNew.Designer.cs">
       <DependentUpon>frmSesionNew.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\Sesion\Servicios\frmGestionarServicios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sesion\Servicios\frmGestionarServicios.Designer.cs">
+      <DependentUpon>frmGestionarServicios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -240,6 +246,9 @@
     <EmbeddedResource Include="Interfaces\Sesion\frmSesionNew.resx">
       <DependentUpon>frmSesionNew.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sesion\Servicios\frmGestionarServicios.resx">
+      <DependentUpon>frmGestionarServicios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\CalendarioReservas.resx">
       <DependentUpon>CalendarioReservas.cs</DependentUpon>
     </EmbeddedResource>
@@ -327,6 +336,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\LogoNuevo.png" />
+    <None Include="Resources\self_care_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
+    <None Include="Resources\manage_accounts_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
+    <None Include="Resources\loyalty_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
+    <None Include="Resources\percent_discount_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
+    <None Include="Resources\campaign_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
+    <None Include="Resources\concierge_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
     <None Include="Resources\package_2_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24.png" />
     <None Include="Resources\admin_panel_settings_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24.png" />
     <None Include="Resources\person_alert_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24.png" />

@@ -28,26 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.Button btnHelp;
+            System.Windows.Forms.Button btnServicios;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BasePanelForm));
+            System.Windows.Forms.Button btnMenuCliente;
+            System.Windows.Forms.Button btnPromociones;
             System.Windows.Forms.Button btnSalir;
             System.Windows.Forms.Button btnStock;
             System.Windows.Forms.Button btnCalendario;
-            System.Windows.Forms.Button button3;
-            System.Windows.Forms.Button button4;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BasePanelForm));
-            System.Windows.Forms.Button btnHelp;
             this.pnlMenuLateral = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.pnlStockSubMenu = new System.Windows.Forms.Panel();
             this.pnlSubMenuCalendario = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnProveedores = new System.Windows.Forms.Button();
-            this.btnGestionStock = new System.Windows.Forms.Button();
-            this.btnAgendaTurnos = new System.Windows.Forms.Button();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.pnlAdminSubMenu = new System.Windows.Forms.Panel();
+            this.pnlHelpSubMenu = new System.Windows.Forms.Panel();
             this.btnControlCambios = new System.Windows.Forms.Button();
             this.btnIntegridad = new System.Windows.Forms.Button();
             this.btnBitacoras = new System.Windows.Forms.Button();
@@ -55,25 +52,35 @@
             this.btnPermisos = new System.Windows.Forms.Button();
             this.btnUusarios = new System.Windows.Forms.Button();
             this.btnAdministrar = new System.Windows.Forms.Button();
-            this.pnlHelpSubMenu = new System.Windows.Forms.Panel();
             this.btnNotasVersion = new System.Windows.Forms.Button();
             this.btnAbout = new System.Windows.Forms.Button();
             this.btnManualUsuario = new System.Windows.Forms.Button();
+            this.btnGestionarServicios = new System.Windows.Forms.Button();
+            this.btnCuentaCliente = new System.Windows.Forms.Button();
+            this.btnFidelizacionCliente = new System.Windows.Forms.Button();
+            this.btnTurnosCliente = new System.Windows.Forms.Button();
+            this.btnGestionarPromociones = new System.Windows.Forms.Button();
+            this.btnProveedores = new System.Windows.Forms.Button();
+            this.btnGestionStock = new System.Windows.Forms.Button();
+            this.btnAgendaTurnos = new System.Windows.Forms.Button();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            btnHelp = new System.Windows.Forms.Button();
+            btnServicios = new System.Windows.Forms.Button();
+            btnMenuCliente = new System.Windows.Forms.Button();
+            btnPromociones = new System.Windows.Forms.Button();
             btnSalir = new System.Windows.Forms.Button();
             btnStock = new System.Windows.Forms.Button();
             btnCalendario = new System.Windows.Forms.Button();
-            button3 = new System.Windows.Forms.Button();
-            button4 = new System.Windows.Forms.Button();
-            btnHelp = new System.Windows.Forms.Button();
             this.pnlMenuLateral.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.pnlStockSubMenu.SuspendLayout();
             this.pnlSubMenuCalendario.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.pnlAdminSubMenu.SuspendLayout();
             this.pnlHelpSubMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMenuLateral
@@ -84,10 +91,12 @@
             this.pnlMenuLateral.Controls.Add(this.btnAdministrar);
             this.pnlMenuLateral.Controls.Add(this.pnlHelpSubMenu);
             this.pnlMenuLateral.Controls.Add(btnHelp);
+            this.pnlMenuLateral.Controls.Add(this.panel4);
+            this.pnlMenuLateral.Controls.Add(btnServicios);
             this.pnlMenuLateral.Controls.Add(this.panel3);
-            this.pnlMenuLateral.Controls.Add(button4);
+            this.pnlMenuLateral.Controls.Add(btnMenuCliente);
             this.pnlMenuLateral.Controls.Add(this.panel2);
-            this.pnlMenuLateral.Controls.Add(button3);
+            this.pnlMenuLateral.Controls.Add(btnPromociones);
             this.pnlMenuLateral.Controls.Add(btnSalir);
             this.pnlMenuLateral.Controls.Add(this.pnlStockSubMenu);
             this.pnlMenuLateral.Controls.Add(btnStock);
@@ -100,6 +109,32 @@
             this.pnlMenuLateral.Name = "pnlMenuLateral";
             this.pnlMenuLateral.Size = new System.Drawing.Size(201, 1675);
             this.pnlMenuLateral.TabIndex = 9;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(50)))), ((int)(((byte)(30)))));
+            this.panel3.Controls.Add(this.btnCuentaCliente);
+            this.panel3.Controls.Add(this.btnFidelizacionCliente);
+            this.panel3.Controls.Add(this.btnTurnosCliente);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 568);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(201, 135);
+            this.panel3.TabIndex = 9;
+            this.panel3.Visible = false;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(50)))), ((int)(((byte)(30)))));
+            this.panel2.Controls.Add(this.btnGestionarPromociones);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 460);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(201, 49);
+            this.panel2.TabIndex = 7;
+            this.panel2.Visible = false;
             // 
             // pnlStockSubMenu
             // 
@@ -135,6 +170,414 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(201, 142);
             this.panel1.TabIndex = 0;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(50)))), ((int)(((byte)(30)))));
+            this.panel4.Controls.Add(this.btnGestionarServicios);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 762);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(201, 49);
+            this.panel4.TabIndex = 15;
+            this.panel4.Visible = false;
+            // 
+            // pnlAdminSubMenu
+            // 
+            this.pnlAdminSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(50)))), ((int)(((byte)(30)))));
+            this.pnlAdminSubMenu.Controls.Add(this.btnControlCambios);
+            this.pnlAdminSubMenu.Controls.Add(this.btnIntegridad);
+            this.pnlAdminSubMenu.Controls.Add(this.btnBitacoras);
+            this.pnlAdminSubMenu.Controls.Add(this.btnIdiomas);
+            this.pnlAdminSubMenu.Controls.Add(this.btnPermisos);
+            this.pnlAdminSubMenu.Controls.Add(this.btnUusarios);
+            this.pnlAdminSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlAdminSubMenu.Location = new System.Drawing.Point(0, 1057);
+            this.pnlAdminSubMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pnlAdminSubMenu.Name = "pnlAdminSubMenu";
+            this.pnlAdminSubMenu.Size = new System.Drawing.Size(201, 266);
+            this.pnlAdminSubMenu.TabIndex = 19;
+            this.pnlAdminSubMenu.Visible = false;
+            // 
+            // pnlHelpSubMenu
+            // 
+            this.pnlHelpSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(50)))), ((int)(((byte)(30)))));
+            this.pnlHelpSubMenu.Controls.Add(this.btnNotasVersion);
+            this.pnlHelpSubMenu.Controls.Add(this.btnAbout);
+            this.pnlHelpSubMenu.Controls.Add(this.btnManualUsuario);
+            this.pnlHelpSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlHelpSubMenu.Location = new System.Drawing.Point(0, 870);
+            this.pnlHelpSubMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pnlHelpSubMenu.Name = "pnlHelpSubMenu";
+            this.pnlHelpSubMenu.Size = new System.Drawing.Size(201, 128);
+            this.pnlHelpSubMenu.TabIndex = 17;
+            this.pnlHelpSubMenu.Visible = false;
+            // 
+            // btnControlCambios
+            // 
+            this.btnControlCambios.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnControlCambios.FlatAppearance.BorderSize = 0;
+            this.btnControlCambios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnControlCambios.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnControlCambios.Image = global::UI.Properties.Resources.person_alert_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
+            this.btnControlCambios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnControlCambios.Location = new System.Drawing.Point(0, 215);
+            this.btnControlCambios.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnControlCambios.Name = "btnControlCambios";
+            this.btnControlCambios.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnControlCambios.Size = new System.Drawing.Size(201, 43);
+            this.btnControlCambios.TabIndex = 5;
+            this.btnControlCambios.Text = "Control de cambios";
+            this.btnControlCambios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnControlCambios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnControlCambios.UseVisualStyleBackColor = true;
+            // 
+            // btnIntegridad
+            // 
+            this.btnIntegridad.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnIntegridad.FlatAppearance.BorderSize = 0;
+            this.btnIntegridad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIntegridad.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnIntegridad.Image = global::UI.Properties.Resources.integration_instructions_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24__1_;
+            this.btnIntegridad.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIntegridad.Location = new System.Drawing.Point(0, 172);
+            this.btnIntegridad.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnIntegridad.Name = "btnIntegridad";
+            this.btnIntegridad.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnIntegridad.Size = new System.Drawing.Size(201, 43);
+            this.btnIntegridad.TabIndex = 4;
+            this.btnIntegridad.Text = "Integridad";
+            this.btnIntegridad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIntegridad.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnIntegridad.UseVisualStyleBackColor = true;
+            // 
+            // btnBitacoras
+            // 
+            this.btnBitacoras.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnBitacoras.FlatAppearance.BorderSize = 0;
+            this.btnBitacoras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBitacoras.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnBitacoras.Image = global::UI.Properties.Resources.book_2_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
+            this.btnBitacoras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBitacoras.Location = new System.Drawing.Point(0, 129);
+            this.btnBitacoras.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnBitacoras.Name = "btnBitacoras";
+            this.btnBitacoras.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnBitacoras.Size = new System.Drawing.Size(201, 43);
+            this.btnBitacoras.TabIndex = 3;
+            this.btnBitacoras.Text = "Bitacoras";
+            this.btnBitacoras.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBitacoras.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBitacoras.UseVisualStyleBackColor = true;
+            // 
+            // btnIdiomas
+            // 
+            this.btnIdiomas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnIdiomas.FlatAppearance.BorderSize = 0;
+            this.btnIdiomas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIdiomas.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnIdiomas.Image = global::UI.Properties.Resources.language_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
+            this.btnIdiomas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIdiomas.Location = new System.Drawing.Point(0, 86);
+            this.btnIdiomas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnIdiomas.Name = "btnIdiomas";
+            this.btnIdiomas.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnIdiomas.Size = new System.Drawing.Size(201, 43);
+            this.btnIdiomas.TabIndex = 2;
+            this.btnIdiomas.Text = "Idiomas";
+            this.btnIdiomas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIdiomas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnIdiomas.UseVisualStyleBackColor = true;
+            // 
+            // btnPermisos
+            // 
+            this.btnPermisos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnPermisos.FlatAppearance.BorderSize = 0;
+            this.btnPermisos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPermisos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnPermisos.Image = global::UI.Properties.Resources.approval_delegation_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
+            this.btnPermisos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPermisos.Location = new System.Drawing.Point(0, 43);
+            this.btnPermisos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnPermisos.Name = "btnPermisos";
+            this.btnPermisos.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnPermisos.Size = new System.Drawing.Size(201, 43);
+            this.btnPermisos.TabIndex = 1;
+            this.btnPermisos.Text = "Permisos";
+            this.btnPermisos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPermisos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPermisos.UseVisualStyleBackColor = true;
+            // 
+            // btnUusarios
+            // 
+            this.btnUusarios.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnUusarios.FlatAppearance.BorderSize = 0;
+            this.btnUusarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUusarios.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnUusarios.Image = global::UI.Properties.Resources.groups_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
+            this.btnUusarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUusarios.Location = new System.Drawing.Point(0, 0);
+            this.btnUusarios.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnUusarios.Name = "btnUusarios";
+            this.btnUusarios.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnUusarios.Size = new System.Drawing.Size(201, 43);
+            this.btnUusarios.TabIndex = 0;
+            this.btnUusarios.Text = "Usuarios";
+            this.btnUusarios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUusarios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnUusarios.UseVisualStyleBackColor = true;
+            // 
+            // btnAdministrar
+            // 
+            this.btnAdministrar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAdministrar.FlatAppearance.BorderSize = 0;
+            this.btnAdministrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdministrar.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdministrar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAdministrar.Image = global::UI.Properties.Resources.admin_panel_settings_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
+            this.btnAdministrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdministrar.Location = new System.Drawing.Point(0, 998);
+            this.btnAdministrar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAdministrar.Name = "btnAdministrar";
+            this.btnAdministrar.Size = new System.Drawing.Size(201, 59);
+            this.btnAdministrar.TabIndex = 18;
+            this.btnAdministrar.Text = "Administrar";
+            this.btnAdministrar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdministrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAdministrar.UseVisualStyleBackColor = true;
+            this.btnAdministrar.Visible = false;
+            // 
+            // btnNotasVersion
+            // 
+            this.btnNotasVersion.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnNotasVersion.FlatAppearance.BorderSize = 0;
+            this.btnNotasVersion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNotasVersion.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnNotasVersion.Image = global::UI.Properties.Resources.integration_instructions_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
+            this.btnNotasVersion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNotasVersion.Location = new System.Drawing.Point(0, 86);
+            this.btnNotasVersion.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnNotasVersion.Name = "btnNotasVersion";
+            this.btnNotasVersion.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnNotasVersion.Size = new System.Drawing.Size(201, 37);
+            this.btnNotasVersion.TabIndex = 2;
+            this.btnNotasVersion.Text = "Notas de la version";
+            this.btnNotasVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNotasVersion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNotasVersion.UseVisualStyleBackColor = true;
+            // 
+            // btnAbout
+            // 
+            this.btnAbout.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAbout.FlatAppearance.BorderSize = 0;
+            this.btnAbout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAbout.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAbout.Image = global::UI.Properties.Resources.info_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
+            this.btnAbout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAbout.Location = new System.Drawing.Point(0, 43);
+            this.btnAbout.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAbout.Name = "btnAbout";
+            this.btnAbout.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnAbout.Size = new System.Drawing.Size(201, 43);
+            this.btnAbout.TabIndex = 1;
+            this.btnAbout.Text = "About";
+            this.btnAbout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAbout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAbout.UseVisualStyleBackColor = true;
+            // 
+            // btnManualUsuario
+            // 
+            this.btnManualUsuario.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnManualUsuario.FlatAppearance.BorderSize = 0;
+            this.btnManualUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnManualUsuario.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnManualUsuario.Image = global::UI.Properties.Resources.menu_book_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
+            this.btnManualUsuario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnManualUsuario.Location = new System.Drawing.Point(0, 0);
+            this.btnManualUsuario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnManualUsuario.Name = "btnManualUsuario";
+            this.btnManualUsuario.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnManualUsuario.Size = new System.Drawing.Size(201, 43);
+            this.btnManualUsuario.TabIndex = 0;
+            this.btnManualUsuario.Text = "Manual de usuario";
+            this.btnManualUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnManualUsuario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnManualUsuario.UseVisualStyleBackColor = true;
+            // 
+            // btnHelp
+            // 
+            btnHelp.Dock = System.Windows.Forms.DockStyle.Top;
+            btnHelp.FlatAppearance.BorderSize = 0;
+            btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnHelp.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            btnHelp.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            btnHelp.Image = global::UI.Properties.Resources.help_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
+            btnHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnHelp.Location = new System.Drawing.Point(0, 811);
+            btnHelp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            btnHelp.Name = "btnHelp";
+            btnHelp.Size = new System.Drawing.Size(201, 59);
+            btnHelp.TabIndex = 16;
+            btnHelp.Text = "Help";
+            btnHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnHelp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            btnHelp.UseVisualStyleBackColor = true;
+            // 
+            // btnGestionarServicios
+            // 
+            this.btnGestionarServicios.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnGestionarServicios.FlatAppearance.BorderSize = 0;
+            this.btnGestionarServicios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGestionarServicios.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnGestionarServicios.Image = global::UI.Properties.Resources.concierge_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
+            this.btnGestionarServicios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGestionarServicios.Location = new System.Drawing.Point(0, 0);
+            this.btnGestionarServicios.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnGestionarServicios.Name = "btnGestionarServicios";
+            this.btnGestionarServicios.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnGestionarServicios.Size = new System.Drawing.Size(201, 43);
+            this.btnGestionarServicios.TabIndex = 0;
+            this.btnGestionarServicios.Text = "Gestionar Servicios";
+            this.btnGestionarServicios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGestionarServicios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGestionarServicios.UseVisualStyleBackColor = true;
+            // 
+            // btnServicios
+            // 
+            btnServicios.Dock = System.Windows.Forms.DockStyle.Top;
+            btnServicios.FlatAppearance.BorderSize = 0;
+            btnServicios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnServicios.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            btnServicios.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            btnServicios.Image = ((System.Drawing.Image)(resources.GetObject("btnServicios.Image")));
+            btnServicios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnServicios.Location = new System.Drawing.Point(0, 703);
+            btnServicios.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            btnServicios.Name = "btnServicios";
+            btnServicios.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            btnServicios.Size = new System.Drawing.Size(201, 59);
+            btnServicios.TabIndex = 14;
+            btnServicios.Text = "Servicios";
+            btnServicios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnServicios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            btnServicios.UseVisualStyleBackColor = true;
+            // 
+            // btnCuentaCliente
+            // 
+            this.btnCuentaCliente.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCuentaCliente.FlatAppearance.BorderSize = 0;
+            this.btnCuentaCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCuentaCliente.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnCuentaCliente.Image = global::UI.Properties.Resources.manage_accounts_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
+            this.btnCuentaCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCuentaCliente.Location = new System.Drawing.Point(0, 86);
+            this.btnCuentaCliente.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnCuentaCliente.Name = "btnCuentaCliente";
+            this.btnCuentaCliente.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnCuentaCliente.Size = new System.Drawing.Size(201, 43);
+            this.btnCuentaCliente.TabIndex = 2;
+            this.btnCuentaCliente.Text = "Cuenta";
+            this.btnCuentaCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCuentaCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCuentaCliente.UseVisualStyleBackColor = true;
+            // 
+            // btnFidelizacionCliente
+            // 
+            this.btnFidelizacionCliente.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnFidelizacionCliente.FlatAppearance.BorderSize = 0;
+            this.btnFidelizacionCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFidelizacionCliente.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnFidelizacionCliente.Image = global::UI.Properties.Resources.loyalty_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
+            this.btnFidelizacionCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFidelizacionCliente.Location = new System.Drawing.Point(0, 43);
+            this.btnFidelizacionCliente.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnFidelizacionCliente.Name = "btnFidelizacionCliente";
+            this.btnFidelizacionCliente.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnFidelizacionCliente.Size = new System.Drawing.Size(201, 43);
+            this.btnFidelizacionCliente.TabIndex = 1;
+            this.btnFidelizacionCliente.Text = "Fidelizacion";
+            this.btnFidelizacionCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFidelizacionCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnFidelizacionCliente.UseVisualStyleBackColor = true;
+            // 
+            // btnTurnosCliente
+            // 
+            this.btnTurnosCliente.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnTurnosCliente.FlatAppearance.BorderSize = 0;
+            this.btnTurnosCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTurnosCliente.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnTurnosCliente.Image = global::UI.Properties.Resources.inventory_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
+            this.btnTurnosCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTurnosCliente.Location = new System.Drawing.Point(0, 0);
+            this.btnTurnosCliente.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnTurnosCliente.Name = "btnTurnosCliente";
+            this.btnTurnosCliente.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnTurnosCliente.Size = new System.Drawing.Size(201, 43);
+            this.btnTurnosCliente.TabIndex = 0;
+            this.btnTurnosCliente.Text = "Mis Turnos";
+            this.btnTurnosCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTurnosCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnTurnosCliente.UseVisualStyleBackColor = true;
+            // 
+            // btnMenuCliente
+            // 
+            btnMenuCliente.Dock = System.Windows.Forms.DockStyle.Top;
+            btnMenuCliente.FlatAppearance.BorderSize = 0;
+            btnMenuCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnMenuCliente.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            btnMenuCliente.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            btnMenuCliente.Image = ((System.Drawing.Image)(resources.GetObject("btnMenuCliente.Image")));
+            btnMenuCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnMenuCliente.Location = new System.Drawing.Point(0, 509);
+            btnMenuCliente.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            btnMenuCliente.Name = "btnMenuCliente";
+            btnMenuCliente.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            btnMenuCliente.Size = new System.Drawing.Size(201, 59);
+            btnMenuCliente.TabIndex = 8;
+            btnMenuCliente.Text = "Menu";
+            btnMenuCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnMenuCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            btnMenuCliente.UseVisualStyleBackColor = true;
+            // 
+            // btnGestionarPromociones
+            // 
+            this.btnGestionarPromociones.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnGestionarPromociones.FlatAppearance.BorderSize = 0;
+            this.btnGestionarPromociones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGestionarPromociones.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnGestionarPromociones.Image = global::UI.Properties.Resources.campaign_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
+            this.btnGestionarPromociones.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGestionarPromociones.Location = new System.Drawing.Point(0, 0);
+            this.btnGestionarPromociones.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnGestionarPromociones.Name = "btnGestionarPromociones";
+            this.btnGestionarPromociones.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnGestionarPromociones.Size = new System.Drawing.Size(201, 43);
+            this.btnGestionarPromociones.TabIndex = 0;
+            this.btnGestionarPromociones.Text = "Gestionar Promociones Comerciales";
+            this.btnGestionarPromociones.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGestionarPromociones.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGestionarPromociones.UseVisualStyleBackColor = true;
+            // 
+            // btnPromociones
+            // 
+            btnPromociones.Dock = System.Windows.Forms.DockStyle.Top;
+            btnPromociones.FlatAppearance.BorderSize = 0;
+            btnPromociones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnPromociones.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            btnPromociones.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            btnPromociones.Image = global::UI.Properties.Resources.percent_discount_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
+            btnPromociones.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnPromociones.Location = new System.Drawing.Point(0, 401);
+            btnPromociones.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            btnPromociones.Name = "btnPromociones";
+            btnPromociones.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            btnPromociones.Size = new System.Drawing.Size(201, 59);
+            btnPromociones.TabIndex = 6;
+            btnPromociones.Text = "Promociones";
+            btnPromociones.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnPromociones.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            btnPromociones.UseVisualStyleBackColor = true;
             // 
             // btnSalir
             // 
@@ -264,366 +707,24 @@
             this.pictureBox3.TabIndex = 10;
             this.pictureBox3.TabStop = false;
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(50)))), ((int)(((byte)(30)))));
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 460);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(201, 49);
-            this.panel2.TabIndex = 7;
-            this.panel2.Visible = false;
-            // 
-            // button2
-            // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Image = global::UI.Properties.Resources.inventory_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(0, 0);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button2.Name = "button2";
-            this.button2.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.button2.Size = new System.Drawing.Size(201, 43);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Gestionar de Promociones";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            button3.Dock = System.Windows.Forms.DockStyle.Top;
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            button3.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            button3.Location = new System.Drawing.Point(0, 401);
-            button3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            button3.Name = "button3";
-            button3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            button3.Size = new System.Drawing.Size(201, 59);
-            button3.TabIndex = 6;
-            button3.Text = "Promociones";
-            button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            button3.UseVisualStyleBackColor = true;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(50)))), ((int)(((byte)(30)))));
-            this.panel3.Controls.Add(this.button1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 568);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(201, 49);
-            this.panel3.TabIndex = 9;
-            this.panel3.Visible = false;
-            // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Image = global::UI.Properties.Resources.inventory_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(201, 43);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Gestionar de Promociones";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            button4.Dock = System.Windows.Forms.DockStyle.Top;
-            button4.FlatAppearance.BorderSize = 0;
-            button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            button4.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            button4.Location = new System.Drawing.Point(0, 509);
-            button4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            button4.Name = "button4";
-            button4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            button4.Size = new System.Drawing.Size(201, 59);
-            button4.TabIndex = 8;
-            button4.Text = "Clientes";
-            button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            button4.UseVisualStyleBackColor = true;
-            // 
-            // pnlAdminSubMenu
-            // 
-            this.pnlAdminSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(50)))), ((int)(((byte)(30)))));
-            this.pnlAdminSubMenu.Controls.Add(this.btnControlCambios);
-            this.pnlAdminSubMenu.Controls.Add(this.btnIntegridad);
-            this.pnlAdminSubMenu.Controls.Add(this.btnBitacoras);
-            this.pnlAdminSubMenu.Controls.Add(this.btnIdiomas);
-            this.pnlAdminSubMenu.Controls.Add(this.btnPermisos);
-            this.pnlAdminSubMenu.Controls.Add(this.btnUusarios);
-            this.pnlAdminSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlAdminSubMenu.Location = new System.Drawing.Point(0, 863);
-            this.pnlAdminSubMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pnlAdminSubMenu.Name = "pnlAdminSubMenu";
-            this.pnlAdminSubMenu.Size = new System.Drawing.Size(201, 266);
-            this.pnlAdminSubMenu.TabIndex = 13;
-            this.pnlAdminSubMenu.Visible = false;
-            // 
-            // btnControlCambios
-            // 
-            this.btnControlCambios.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnControlCambios.FlatAppearance.BorderSize = 0;
-            this.btnControlCambios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnControlCambios.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnControlCambios.Image = global::UI.Properties.Resources.person_alert_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
-            this.btnControlCambios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnControlCambios.Location = new System.Drawing.Point(0, 215);
-            this.btnControlCambios.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnControlCambios.Name = "btnControlCambios";
-            this.btnControlCambios.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnControlCambios.Size = new System.Drawing.Size(201, 43);
-            this.btnControlCambios.TabIndex = 5;
-            this.btnControlCambios.Text = "Control de cambios";
-            this.btnControlCambios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnControlCambios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnControlCambios.UseVisualStyleBackColor = true;
-            // 
-            // btnIntegridad
-            // 
-            this.btnIntegridad.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnIntegridad.FlatAppearance.BorderSize = 0;
-            this.btnIntegridad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIntegridad.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnIntegridad.Image = global::UI.Properties.Resources.integration_instructions_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24__1_;
-            this.btnIntegridad.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIntegridad.Location = new System.Drawing.Point(0, 172);
-            this.btnIntegridad.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnIntegridad.Name = "btnIntegridad";
-            this.btnIntegridad.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnIntegridad.Size = new System.Drawing.Size(201, 43);
-            this.btnIntegridad.TabIndex = 4;
-            this.btnIntegridad.Text = "Integridad";
-            this.btnIntegridad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIntegridad.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnIntegridad.UseVisualStyleBackColor = true;
-            // 
-            // btnBitacoras
-            // 
-            this.btnBitacoras.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnBitacoras.FlatAppearance.BorderSize = 0;
-            this.btnBitacoras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBitacoras.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnBitacoras.Image = global::UI.Properties.Resources.book_2_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
-            this.btnBitacoras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBitacoras.Location = new System.Drawing.Point(0, 129);
-            this.btnBitacoras.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnBitacoras.Name = "btnBitacoras";
-            this.btnBitacoras.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnBitacoras.Size = new System.Drawing.Size(201, 43);
-            this.btnBitacoras.TabIndex = 3;
-            this.btnBitacoras.Text = "Bitacoras";
-            this.btnBitacoras.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBitacoras.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnBitacoras.UseVisualStyleBackColor = true;
-            // 
-            // btnIdiomas
-            // 
-            this.btnIdiomas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnIdiomas.FlatAppearance.BorderSize = 0;
-            this.btnIdiomas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIdiomas.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnIdiomas.Image = global::UI.Properties.Resources.language_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
-            this.btnIdiomas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIdiomas.Location = new System.Drawing.Point(0, 86);
-            this.btnIdiomas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnIdiomas.Name = "btnIdiomas";
-            this.btnIdiomas.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnIdiomas.Size = new System.Drawing.Size(201, 43);
-            this.btnIdiomas.TabIndex = 2;
-            this.btnIdiomas.Text = "Idiomas";
-            this.btnIdiomas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIdiomas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnIdiomas.UseVisualStyleBackColor = true;
-            // 
-            // btnPermisos
-            // 
-            this.btnPermisos.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnPermisos.FlatAppearance.BorderSize = 0;
-            this.btnPermisos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPermisos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnPermisos.Image = global::UI.Properties.Resources.approval_delegation_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
-            this.btnPermisos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPermisos.Location = new System.Drawing.Point(0, 43);
-            this.btnPermisos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnPermisos.Name = "btnPermisos";
-            this.btnPermisos.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnPermisos.Size = new System.Drawing.Size(201, 43);
-            this.btnPermisos.TabIndex = 1;
-            this.btnPermisos.Text = "Permisos";
-            this.btnPermisos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPermisos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnPermisos.UseVisualStyleBackColor = true;
-            // 
-            // btnUusarios
-            // 
-            this.btnUusarios.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnUusarios.FlatAppearance.BorderSize = 0;
-            this.btnUusarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUusarios.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnUusarios.Image = global::UI.Properties.Resources.groups_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
-            this.btnUusarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUusarios.Location = new System.Drawing.Point(0, 0);
-            this.btnUusarios.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnUusarios.Name = "btnUusarios";
-            this.btnUusarios.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnUusarios.Size = new System.Drawing.Size(201, 43);
-            this.btnUusarios.TabIndex = 0;
-            this.btnUusarios.Text = "Usuarios";
-            this.btnUusarios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUusarios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnUusarios.UseVisualStyleBackColor = true;
-            // 
-            // btnAdministrar
-            // 
-            this.btnAdministrar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAdministrar.FlatAppearance.BorderSize = 0;
-            this.btnAdministrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdministrar.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdministrar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAdministrar.Image = global::UI.Properties.Resources.admin_panel_settings_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
-            this.btnAdministrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdministrar.Location = new System.Drawing.Point(0, 804);
-            this.btnAdministrar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnAdministrar.Name = "btnAdministrar";
-            this.btnAdministrar.Size = new System.Drawing.Size(201, 59);
-            this.btnAdministrar.TabIndex = 12;
-            this.btnAdministrar.Text = "Administrar";
-            this.btnAdministrar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdministrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAdministrar.UseVisualStyleBackColor = true;
-            this.btnAdministrar.Visible = false;
-            // 
-            // pnlHelpSubMenu
-            // 
-            this.pnlHelpSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(50)))), ((int)(((byte)(30)))));
-            this.pnlHelpSubMenu.Controls.Add(this.btnNotasVersion);
-            this.pnlHelpSubMenu.Controls.Add(this.btnAbout);
-            this.pnlHelpSubMenu.Controls.Add(this.btnManualUsuario);
-            this.pnlHelpSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHelpSubMenu.Location = new System.Drawing.Point(0, 676);
-            this.pnlHelpSubMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pnlHelpSubMenu.Name = "pnlHelpSubMenu";
-            this.pnlHelpSubMenu.Size = new System.Drawing.Size(201, 128);
-            this.pnlHelpSubMenu.TabIndex = 11;
-            this.pnlHelpSubMenu.Visible = false;
-            // 
-            // btnNotasVersion
-            // 
-            this.btnNotasVersion.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnNotasVersion.FlatAppearance.BorderSize = 0;
-            this.btnNotasVersion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNotasVersion.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnNotasVersion.Image = global::UI.Properties.Resources.integration_instructions_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
-            this.btnNotasVersion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNotasVersion.Location = new System.Drawing.Point(0, 86);
-            this.btnNotasVersion.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnNotasVersion.Name = "btnNotasVersion";
-            this.btnNotasVersion.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnNotasVersion.Size = new System.Drawing.Size(201, 37);
-            this.btnNotasVersion.TabIndex = 2;
-            this.btnNotasVersion.Text = "Notas de la version";
-            this.btnNotasVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNotasVersion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnNotasVersion.UseVisualStyleBackColor = true;
-            // 
-            // btnAbout
-            // 
-            this.btnAbout.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAbout.FlatAppearance.BorderSize = 0;
-            this.btnAbout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAbout.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAbout.Image = global::UI.Properties.Resources.info_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
-            this.btnAbout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAbout.Location = new System.Drawing.Point(0, 43);
-            this.btnAbout.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnAbout.Name = "btnAbout";
-            this.btnAbout.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnAbout.Size = new System.Drawing.Size(201, 43);
-            this.btnAbout.TabIndex = 1;
-            this.btnAbout.Text = "About";
-            this.btnAbout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAbout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAbout.UseVisualStyleBackColor = true;
-            // 
-            // btnManualUsuario
-            // 
-            this.btnManualUsuario.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnManualUsuario.FlatAppearance.BorderSize = 0;
-            this.btnManualUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnManualUsuario.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnManualUsuario.Image = global::UI.Properties.Resources.menu_book_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
-            this.btnManualUsuario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnManualUsuario.Location = new System.Drawing.Point(0, 0);
-            this.btnManualUsuario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnManualUsuario.Name = "btnManualUsuario";
-            this.btnManualUsuario.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnManualUsuario.Size = new System.Drawing.Size(201, 43);
-            this.btnManualUsuario.TabIndex = 0;
-            this.btnManualUsuario.Text = "Manual de usuario";
-            this.btnManualUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnManualUsuario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnManualUsuario.UseVisualStyleBackColor = true;
-            // 
-            // btnHelp
-            // 
-            btnHelp.Dock = System.Windows.Forms.DockStyle.Top;
-            btnHelp.FlatAppearance.BorderSize = 0;
-            btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnHelp.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            btnHelp.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            btnHelp.Image = global::UI.Properties.Resources.help_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
-            btnHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnHelp.Location = new System.Drawing.Point(0, 617);
-            btnHelp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            btnHelp.Name = "btnHelp";
-            btnHelp.Size = new System.Drawing.Size(201, 59);
-            btnHelp.TabIndex = 10;
-            btnHelp.Text = "Help";
-            btnHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnHelp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            btnHelp.UseVisualStyleBackColor = true;
-            // 
             // BasePanelForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(566, 1675);
+            this.ClientSize = new System.Drawing.Size(271, 1675);
             this.Controls.Add(this.pnlMenuLateral);
             this.Name = "BasePanelForm";
             this.Text = "BasePanelForm";
             this.pnlMenuLateral.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.pnlStockSubMenu.ResumeLayout(false);
             this.pnlSubMenuCalendario.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.pnlAdminSubMenu.ResumeLayout(false);
             this.pnlHelpSubMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -639,9 +740,9 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnGestionarPromociones;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnTurnosCliente;
         private System.Windows.Forms.Panel pnlAdminSubMenu;
         private System.Windows.Forms.Button btnControlCambios;
         private System.Windows.Forms.Button btnIntegridad;
@@ -654,5 +755,9 @@
         private System.Windows.Forms.Button btnNotasVersion;
         private System.Windows.Forms.Button btnAbout;
         private System.Windows.Forms.Button btnManualUsuario;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button btnGestionarServicios;
+        private System.Windows.Forms.Button btnCuentaCliente;
+        private System.Windows.Forms.Button btnFidelizacionCliente;
     }
 }

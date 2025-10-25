@@ -4,9 +4,11 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using ABSTRACCION.Contracts;
+using UI;
 using UI.Interfaces.InicioSesion;
 using UI.Interfaces.Sesion.Administrar;
 using UI.Interfaces.Sesion.Stock.GestionarStock;
+using UI.Interfaces.Sesion.Servicios;
 
 namespace UI.Interfaces.Sesion
 {
@@ -231,7 +233,8 @@ namespace UI.Interfaces.Sesion
             if (_oSingletonSesion.IsLoggedIn())
             {
                 this.lblUsuarioNombre.Text = _oSingletonSesion.Usuario.Usuario;
-                if (_oSingletonSesion.Usuario.isAdmin) { btnAdministrar.Visible = true; btnHelp.Visible = true; }
+                if (_oSingletonSesion.Usuario.isAdmin)
+                { btnAdministrar.Visible = true;}
             }
         }
 
@@ -284,25 +287,7 @@ namespace UI.Interfaces.Sesion
 
         private void button2_Click(object sender, EventArgs e)
         {
-            try
-            {
-                var iIdProfesional = GeneralService.ObtenerProfesionalPorUsuarioID(_oSingletonSesion.Usuario.Id).ProfesionalID;
-
-                if (iIdProfesional != 0)
-                {
-                    OpenChildForm(new frmAgendaTurnos(GeneralService.ObtenerProfesionalPorUsuarioID(_oSingletonSesion.Usuario.Id).ProfesionalID));
-
-                    hideSubMenu(pnlSubMenuCalendario);
-                }
-                else
-                {
-                    MessageBox.Show("El usuario no es un profesional asociado. Por favor, contacte con el administrador.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MostrarMensajeError(ex);
-            }
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -443,6 +428,50 @@ namespace UI.Interfaces.Sesion
         {
             OpenChildForm(new frmGestionControlDeCambios());
             hideSubMenu(pnlAdminSubMenu);
+        }
+
+        private void btnAgendaTurnos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var iIdProfesional = GeneralService.ObtenerProfesionalPorUsuarioID(_oSingletonSesion.Usuario.Id).ProfesionalID;
+
+                if (iIdProfesional != 0)
+                {
+                    OpenChildForm(new frmAgendaTurnos(GeneralService.ObtenerProfesionalPorUsuarioID(_oSingletonSesion.Usuario.Id).ProfesionalID));
+
+                    hideSubMenu(pnlSubMenuCalendario);
+                }
+                else
+                {
+                    MessageBox.Show("El usuario no es un profesional asociado. Por favor, contacte con el administrador.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MostrarMensajeError(ex);
+            }
+        }
+
+        private void btnPromociones_Click(object sender, EventArgs e)
+        {
+            ShowSubMenu(pnlPromocionesSubMenu);
+        }
+
+        private void btnMenuCliente_Click(object sender, EventArgs e)
+        {
+            ShowSubMenu(pnlMenuClienteSubMenu);
+        }
+
+        private void btnServicios_Click(object sender, EventArgs e)
+        {
+            ShowSubMenu(pnlServiciosSubMenu);
+        }
+
+        private void btnGestionarServicios_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmGestionarServicios());
+            hideSubMenu(pnlServiciosSubMenu);
         }
     }
 }

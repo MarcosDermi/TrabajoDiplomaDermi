@@ -4,6 +4,7 @@ using SERVICES.Interfaces;
 using System;
 using System.Data;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace UI.Interfaces.Sesion.Stock.GestionarStock
@@ -79,7 +80,7 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
         {
             dgvResultadoBusqueda.DataSource = GestionStockService.BuscarInsumosPorFiltrosVarios(txtCodigoBusqueda.Text, txtNombreBusqueda.Text, (int)cmbProveedor.SelectedValue, (int)cmbSubCategoria.SelectedValue, (int)cmbPresentacion.SelectedValue);
             lblCantRegistros.Text = dgvResultadoBusqueda.Rows.Count.ToString();
-            if(dgvResultadoBusqueda.Rows.Count > 0)
+            if (dgvResultadoBusqueda.Rows.Count > 0)
             {
                 btnSerializar.Enabled = true;
             }
@@ -114,7 +115,7 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
 
         private void dgvResultadoBusqueda_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(dgvResultadoBusqueda.SelectedRows.Count == 1)
+            if (dgvResultadoBusqueda.SelectedRows.Count == 1)
             {
                 btnEliminarInsumo.Enabled = true;
                 btnModificarInsumo.Enabled = true;
@@ -125,27 +126,46 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
         {
             try
             {
-                var oSaveFileDialog = new SaveFileDialog();
-                oSaveFileDialog.Filter = "Archivos de texto (*.txt)";
-                if (oSaveFileDialog.ShowDialog() == DialogResult.OK)
+                using (var oSaveFileDialog = new SaveFileDialog())
                 {
-                    if (File.Exists(oSaveFileDialog.FileName))
+                    oSaveFileDialog.Filter = "Archivos JSON (*.json)|*.json";
+                    oSaveFileDialog.Title = "Guardar resultado de búsqueda";
+                    oSaveFileDialog.FileName = "ResultadoInsumos.json";
+
+                    if (oSaveFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                        string txt = oSaveFileDialog.FileName;
-
-                        FileStream fs = new FileStream("ResultadoInsumos.json", FileMode.Append, FileAccess.Write);
-
-                        var oJsonSerializer = new JsonSerializer();
-                        using (StreamWriter writer = new StreamWriter(fs))
+                        var oJsonSerializer = new JsonSerializer
                         {
-                            oJsonSerializer.Serialize(writer, dgvResultadoBusqueda.DataSource);
+                            Formatting = Formatting.Indented // para que quede legible
+                        };
+
+                        using (var fs = new FileStream(oSaveFileDialog.FileName, FileMode.Create, FileAccess.Write))
+                        using (var writer = new StreamWriter(fs))
+                        using (var jsonWriter = new JsonTextWriter(writer))
+                        {
+                            // Si el DataSource es un DataTable, lo convertimos a lista de objetos
+                            if (dgvResultadoBusqueda.DataSource is DataTable dt)
+                            {
+                                var rows = dt.AsEnumerable().Select(r => r.Table.Columns
+                                    .Cast<DataColumn>()
+                                    .ToDictionary(c => c.ColumnName, c => r[c]));
+                                oJsonSerializer.Serialize(jsonWriter, rows);
+                            }
+                            else
+                            {
+                                // Si es otro tipo de lista
+                                oJsonSerializer.Serialize(jsonWriter, dgvResultadoBusqueda.DataSource);
+                            }
                         }
 
-                        fs.Close();
+                        MessageBox.Show("Archivo guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
-            catch (Exception ex) { MostrarMensajeError(ex); }
+            catch (Exception ex)
+            {
+                MostrarMensajeError(ex);
+            }
         }
     }
 }
