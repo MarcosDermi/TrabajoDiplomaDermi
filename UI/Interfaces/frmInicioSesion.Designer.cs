@@ -206,7 +206,7 @@
             this.Controls.Add(this.chkMostrarContraseña);
             this.Controls.Add(this.txtClave);
             this.Font = new System.Drawing.Font("Ebrima", 11.25F);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmInicioSesion";

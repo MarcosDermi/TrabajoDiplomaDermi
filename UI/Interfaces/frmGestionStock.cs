@@ -1,8 +1,9 @@
 ﻿using BE;
-using BLL;
+using Newtonsoft.Json;
 using SERVICES.Interfaces;
 using System;
 using System.Data;
+using System.IO;
 using System.Windows.Forms;
 
 namespace UI.Interfaces
@@ -43,6 +44,10 @@ namespace UI.Interfaces
 
             dgvResultadoBusqueda.DataSource = GestionStockService.BuscarInsumosPorFiltrosVarios(string.Empty, string.Empty, 0, 0, 0);
             lblCantRegistros.Text = dgvResultadoBusqueda.Rows.Count.ToString();
+            if (dgvResultadoBusqueda.Rows.Count > 0)
+            {
+                btnSerializar.Enabled = true;
+            }
         }
 
         private void groupBox4_Enter(object sender, EventArgs e)
@@ -74,6 +79,10 @@ namespace UI.Interfaces
         {
             dgvResultadoBusqueda.DataSource = GestionStockService.BuscarInsumosPorFiltrosVarios(txtCodigoBusqueda.Text, txtNombreBusqueda.Text, (int)cmbProveedor.SelectedValue, (int)cmbSubCategoria.SelectedValue, (int)cmbPresentacion.SelectedValue);
             lblCantRegistros.Text = dgvResultadoBusqueda.Rows.Count.ToString();
+            if(dgvResultadoBusqueda.Rows.Count > 0)
+            {
+                btnSerializar.Enabled = true;
+            }
         }
 
         private void cmbCategoria_SelectedIndexChanged(object sender, EventArgs e)
@@ -110,6 +119,33 @@ namespace UI.Interfaces
                 btnEliminarInsumo.Enabled = true;
                 btnModificarInsumo.Enabled = true;
             }
+        }
+
+        private void btnSerializar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var oSaveFileDialog = new SaveFileDialog();
+                oSaveFileDialog.Filter = "Archivos de texto (*.txt)";
+                if (oSaveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    if (File.Exists(oSaveFileDialog.FileName))
+                    {
+                        string txt = oSaveFileDialog.FileName;
+
+                        FileStream fs = new FileStream("ResultadoInsumos.json", FileMode.Append, FileAccess.Write);
+
+                        var oJsonSerializer = new JsonSerializer();
+                        using (StreamWriter writer = new StreamWriter(fs))
+                        {
+                            oJsonSerializer.Serialize(writer, dgvResultadoBusqueda.DataSource);
+                        }
+
+                        fs.Close();
+                    }
+                }
+            }
+            catch (Exception ex) { MostrarMensajeError(ex); }
         }
     }
 }
