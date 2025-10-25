@@ -16,5 +16,24 @@ namespace UI.Interfaces.Sesion.Servicios
         {
             InitializeComponent();
         }
+
+        private void frmGestionarServicios_Load(object sender, EventArgs e)
+        {
+            cmbProfesional.DisplayMember = "Nombre";
+            cmbProfesional.ValueMember = "ProfesionalID";
+            cmbProfesional.DataSource = GeneralService.ListarProfesionales();
+        }
+
+        private void cmbProfesional_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+
+                dgvServiciosProfesional.ClearSelection();
+                dgvServiciosProfesional.DataSource = GestionServicioService.ObtenerServiciosPorProfesional((int)cmbProfesional.SelectedValue);
+                lblCantRegistrosServicios.Text = dgvServiciosProfesional.Rows.Count.ToString();
+            }
+            catch (Exception ex) { MostrarMensajeError(ex); }
+        }
     }
 }

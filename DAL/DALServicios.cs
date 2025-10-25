@@ -192,6 +192,24 @@ namespace DAL
                 throw ex;
             }
         }
+
+        public DataTable ObtenerServiciosPorProfesional(int ProfesionalID)
+        {
+            try
+            {
+                Hdatos = new Hashtable();
+                Hdatos.Add("@ProfesionalID", ProfesionalID);
+                return oDatos.Leer("ObtenerServiciosPorProfesional", Hdatos);
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 
 }

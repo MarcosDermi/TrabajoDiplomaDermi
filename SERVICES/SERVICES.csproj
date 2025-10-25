@@ -48,6 +48,7 @@
     <Compile Include="DigitoVerificadorService.cs" />
     <Compile Include="GeneralService.cs" />
     <Compile Include="AgendaService.cs" />
+    <Compile Include="GestionServiciosService.cs" />
     <Compile Include="GestionStockService.cs" />
     <Compile Include="Helpers\EmailHelper.cs" />
     <Compile Include="LogErrorsService.cs" />

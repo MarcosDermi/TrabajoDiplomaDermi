@@ -13,6 +13,7 @@ namespace UI
         private IGeneralService _generalService;
         private IAgendaService _agendaService;
         private IValidatorsService _validatorsService;
+        private IGestionServicioService _servicioService;
 
 
         public BaseForm()
@@ -102,6 +103,22 @@ namespace UI
             set
             {
                 _validatorsService = value;
+            }
+        }
+
+        public IGestionServicioService GestionServicioService
+        {
+            get
+            {
+                if (_servicioService == null && !DesignMode)
+                {
+                    _servicioService = new GestionServiciosService();
+                }
+                return _servicioService;
+            }
+            set
+            {
+                _servicioService = value;
             }
         }
 
