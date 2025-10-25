@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using UI.Interfaces;
+using UI.Interfaces.ReservasLogOut;
 
 namespace UI
 {

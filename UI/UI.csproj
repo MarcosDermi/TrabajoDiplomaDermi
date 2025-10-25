@@ -98,22 +98,28 @@
     <Compile Include="BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\frmAgendaTurnos.cs">
+    <Compile Include="BasePanelForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Interfaces\frmAgendaTurnos.Designer.cs">
+    <Compile Include="BasePanelForm.Designer.cs">
+      <DependentUpon>BasePanelForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sesion\Calendario\frmAgendaTurnos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sesion\Calendario\frmAgendaTurnos.Designer.cs">
       <DependentUpon>frmAgendaTurnos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\frmConfirmacionReserva.cs">
+    <Compile Include="Interfaces\ReservasLogOut\frmConfirmacionReserva.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Interfaces\frmConfirmacionReserva.Designer.cs">
+    <Compile Include="Interfaces\ReservasLogOut\frmConfirmacionReserva.Designer.cs">
       <DependentUpon>frmConfirmacionReserva.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\frmSesionNew.cs">
+    <Compile Include="Interfaces\Sesion\frmSesionNew.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Interfaces\frmSesionNew.Designer.cs">
+    <Compile Include="Interfaces\Sesion\frmSesionNew.Designer.cs">
       <DependentUpon>frmSesionNew.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -127,94 +133,94 @@
     <Compile Include="UserControls\CalendarioReservas.Designer.cs">
       <DependentUpon>CalendarioReservas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\frmGestionStock.cs">
+    <Compile Include="Interfaces\Sesion\Stock\GestionarStock\frmGestionStock.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Interfaces\frmGestionStock.Designer.cs">
+    <Compile Include="Interfaces\Sesion\Stock\GestionarStock\frmGestionStock.Designer.cs">
       <DependentUpon>frmGestionStock.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\frmGestionProveedores.cs">
+    <Compile Include="Interfaces\Sesion\Stock\Proveedores\frmGestionProveedores.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Interfaces\frmGestionProveedores.Designer.cs">
+    <Compile Include="Interfaces\Sesion\Stock\Proveedores\frmGestionProveedores.Designer.cs">
       <DependentUpon>frmGestionProveedores.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\frmGestionProveedoresEdit.cs">
+    <Compile Include="Interfaces\Sesion\Stock\Proveedores\frmGestionProveedoresEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Interfaces\frmGestionProveedoresEdit.Designer.cs">
+    <Compile Include="Interfaces\Sesion\Stock\Proveedores\frmGestionProveedoresEdit.Designer.cs">
       <DependentUpon>frmGestionProveedoresEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\frmGestionStockInsumosEdit.cs">
+    <Compile Include="Interfaces\Sesion\Stock\GestionarStock\frmGestionStockInsumosEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Interfaces\frmGestionStockInsumosEdit.Designer.cs">
+    <Compile Include="Interfaces\Sesion\Stock\GestionarStock\frmGestionStockInsumosEdit.Designer.cs">
       <DependentUpon>frmGestionStockInsumosEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\frmTurnosLogOut.cs">
+    <Compile Include="Interfaces\ReservasLogOut\frmTurnosLogOut.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Interfaces\frmTurnosLogOut.Designer.cs">
+    <Compile Include="Interfaces\ReservasLogOut\frmTurnosLogOut.Designer.cs">
       <DependentUpon>frmTurnosLogOut.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\frmGestionBitacoras.cs">
+    <Compile Include="Interfaces\Sesion\Administrar\frmGestionBitacoras.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Interfaces\frmGestionBitacoras.Designer.cs">
+    <Compile Include="Interfaces\Sesion\Administrar\frmGestionBitacoras.Designer.cs">
       <DependentUpon>frmGestionBitacoras.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\frmGestionControlDeCambios.cs">
+    <Compile Include="Interfaces\Sesion\Administrar\frmGestionControlDeCambios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Interfaces\frmGestionControlDeCambios.Designer.cs">
+    <Compile Include="Interfaces\Sesion\Administrar\frmGestionControlDeCambios.Designer.cs">
       <DependentUpon>frmGestionControlDeCambios.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\frmGestionIdiomas.cs">
+    <Compile Include="Interfaces\Sesion\Administrar\frmGestionIdiomas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Interfaces\frmGestionIdiomas.Designer.cs">
+    <Compile Include="Interfaces\Sesion\Administrar\frmGestionIdiomas.Designer.cs">
       <DependentUpon>frmGestionIdiomas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\frmGestionPermisos.cs">
+    <Compile Include="Interfaces\Sesion\Administrar\frmGestionPermisos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Interfaces\frmGestionPermisos.Designer.cs">
+    <Compile Include="Interfaces\Sesion\Administrar\frmGestionPermisos.Designer.cs">
       <DependentUpon>frmGestionPermisos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\frmSesion.cs">
+    <Compile Include="Interfaces\Sesion\frmSesion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Interfaces\frmSesion.Designer.cs">
+    <Compile Include="Interfaces\Sesion\frmSesion.Designer.cs">
       <DependentUpon>frmSesion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\frmInicioSesion.cs">
+    <Compile Include="Interfaces\InicioSesion\frmInicioSesion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Interfaces\frmInicioSesion.Designer.cs">
+    <Compile Include="Interfaces\InicioSesion\frmInicioSesion.Designer.cs">
       <DependentUpon>frmInicioSesion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\frmRegistrarUsuario.cs">
+    <Compile Include="Interfaces\InicioSesion\frmRegistrarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Interfaces\frmRegistrarUsuario.Designer.cs">
+    <Compile Include="Interfaces\InicioSesion\frmRegistrarUsuario.Designer.cs">
       <DependentUpon>frmRegistrarUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\frmGestionUsuarios.cs">
+    <Compile Include="Interfaces\Sesion\Administrar\frmGestionUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Interfaces\frmGestionUsuarios.Designer.cs">
+    <Compile Include="Interfaces\Sesion\Administrar\frmGestionUsuarios.Designer.cs">
       <DependentUpon>frmGestionUsuarios.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\frmGestionIntegridad.cs">
+    <Compile Include="Interfaces\Sesion\Administrar\frmGestionIntegridad.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Interfaces\frmGestionIntegridad.Designer.cs">
+    <Compile Include="Interfaces\Sesion\Administrar\frmGestionIntegridad.Designer.cs">
       <DependentUpon>frmGestionIntegridad.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\frmErrorDV.cs">
+    <Compile Include="Interfaces\Sesion\Administrar\frmErrorDV.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Interfaces\frmErrorDV.Designer.cs">
+    <Compile Include="Interfaces\Sesion\Administrar\frmErrorDV.Designer.cs">
       <DependentUpon>frmErrorDV.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -222,61 +228,64 @@
     <EmbeddedResource Include="BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Interfaces\frmAgendaTurnos.resx">
+    <EmbeddedResource Include="BasePanelForm.resx">
+      <DependentUpon>BasePanelForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sesion\Calendario\frmAgendaTurnos.resx">
       <DependentUpon>frmAgendaTurnos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Interfaces\frmConfirmacionReserva.resx">
+    <EmbeddedResource Include="Interfaces\ReservasLogOut\frmConfirmacionReserva.resx">
       <DependentUpon>frmConfirmacionReserva.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Interfaces\frmSesionNew.resx">
+    <EmbeddedResource Include="Interfaces\Sesion\frmSesionNew.resx">
       <DependentUpon>frmSesionNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\CalendarioReservas.resx">
       <DependentUpon>CalendarioReservas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Interfaces\frmGestionStock.resx">
+    <EmbeddedResource Include="Interfaces\Sesion\Stock\GestionarStock\frmGestionStock.resx">
       <DependentUpon>frmGestionStock.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Interfaces\frmGestionProveedores.resx">
+    <EmbeddedResource Include="Interfaces\Sesion\Stock\Proveedores\frmGestionProveedores.resx">
       <DependentUpon>frmGestionProveedores.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Interfaces\frmGestionProveedoresEdit.resx">
+    <EmbeddedResource Include="Interfaces\Sesion\Stock\Proveedores\frmGestionProveedoresEdit.resx">
       <DependentUpon>frmGestionProveedoresEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Interfaces\frmGestionStockInsumosEdit.resx">
+    <EmbeddedResource Include="Interfaces\Sesion\Stock\GestionarStock\frmGestionStockInsumosEdit.resx">
       <DependentUpon>frmGestionStockInsumosEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Interfaces\frmTurnosLogOut.resx">
+    <EmbeddedResource Include="Interfaces\ReservasLogOut\frmTurnosLogOut.resx">
       <DependentUpon>frmTurnosLogOut.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Interfaces\frmGestionBitacoras.resx">
+    <EmbeddedResource Include="Interfaces\Sesion\Administrar\frmGestionBitacoras.resx">
       <DependentUpon>frmGestionBitacoras.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Interfaces\frmGestionControlDeCambios.resx">
+    <EmbeddedResource Include="Interfaces\Sesion\Administrar\frmGestionControlDeCambios.resx">
       <DependentUpon>frmGestionControlDeCambios.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Interfaces\frmGestionIdiomas.resx">
+    <EmbeddedResource Include="Interfaces\Sesion\Administrar\frmGestionIdiomas.resx">
       <DependentUpon>frmGestionIdiomas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Interfaces\frmGestionPermisos.resx">
+    <EmbeddedResource Include="Interfaces\Sesion\Administrar\frmGestionPermisos.resx">
       <DependentUpon>frmGestionPermisos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Interfaces\frmSesion.resx">
+    <EmbeddedResource Include="Interfaces\Sesion\frmSesion.resx">
       <DependentUpon>frmSesion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Interfaces\frmInicioSesion.resx">
+    <EmbeddedResource Include="Interfaces\InicioSesion\frmInicioSesion.resx">
       <DependentUpon>frmInicioSesion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Interfaces\frmRegistrarUsuario.resx">
+    <EmbeddedResource Include="Interfaces\InicioSesion\frmRegistrarUsuario.resx">
       <DependentUpon>frmRegistrarUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Interfaces\frmGestionUsuarios.resx">
+    <EmbeddedResource Include="Interfaces\Sesion\Administrar\frmGestionUsuarios.resx">
       <DependentUpon>frmGestionUsuarios.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Interfaces\frmGestionIntegridad.resx">
+    <EmbeddedResource Include="Interfaces\Sesion\Administrar\frmGestionIntegridad.resx">
       <DependentUpon>frmGestionIntegridad.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Interfaces\frmErrorDV.resx">
+    <EmbeddedResource Include="Interfaces\Sesion\Administrar\frmErrorDV.resx">
       <DependentUpon>frmErrorDV.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
