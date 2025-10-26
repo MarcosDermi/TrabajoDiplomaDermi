@@ -33,5 +33,16 @@ namespace SERVICES
             catch (Exception ex) 
             { throw new Exception(); };
         }
+
+        public DataTable ObtenerObtenerInsumosPorServicio(int ServicioID)
+        {
+            try
+            {
+                return oBLLServicios.ObtenerObtenerInsumosPorServicio(ServicioID);
+            }
+            catch (Exception ex)
+            { throw new Exception(); }
+            ;
+        }
     }
 }

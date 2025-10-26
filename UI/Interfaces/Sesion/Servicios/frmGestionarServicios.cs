@@ -35,5 +35,20 @@ namespace UI.Interfaces.Sesion.Servicios
             }
             catch (Exception ex) { MostrarMensajeError(ex); }
         }
+
+        private void dgvServiciosProfesional_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                dgvInsumosServicios.ClearSelection();
+                dgvInsumosServicios.DataSource = GestionServicioService.ObtenerObtenerInsumosPorServicio((int)dgvServiciosProfesional.Rows[e.RowIndex].Cells["ServicioID"].Value);
+                lblCantRegistrosServiciosInsumos.Text = dgvInsumosServicios.Rows.Count.ToString();
+
+            }
+            catch (Exception ex)
+            {
+                MostrarMensajeError(ex);
+            }
+        }
     }
 }

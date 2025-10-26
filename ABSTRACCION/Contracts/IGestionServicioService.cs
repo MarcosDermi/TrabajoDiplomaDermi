@@ -8,5 +8,6 @@ namespace ABSTRACCION.Contracts
     public interface IGestionServicioService
     {
         DataTable ObtenerServiciosPorProfesional(int ProfesionalID);
+        DataTable ObtenerObtenerInsumosPorServicio(int ServicioID);
     }
 }

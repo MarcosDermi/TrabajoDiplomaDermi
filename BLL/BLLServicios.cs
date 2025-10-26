@@ -60,5 +60,10 @@ namespace BLL
         {
             return oDALServicio.ObtenerServiciosPorProfesional(ProfesionalID);
         }
+
+        public DataTable ObtenerObtenerInsumosPorServicio(int ServicioID)
+        {
+            return oDALServicio.ObtenerObtenerInsumosPorServicio(ServicioID);
+        }
     }
 }
