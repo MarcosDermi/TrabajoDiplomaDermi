@@ -109,14 +109,16 @@ namespace UI.Interfaces.Sesion.Servicios
 
         private void btnCrearInsumo_Click(object sender, EventArgs e)
         {
-            try
-            {
-                var resultado = MessageBox.Show("¿Está seguro que desea crear el servicio?",
-                "Confirmar nuevo servicio",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
 
-                if (resultado != DialogResult.Yes)
+            var resultado = MessageBox.Show("¿Está seguro que desea crear el servicio?",
+            "Confirmar nuevo servicio",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question);
+
+            if (resultado != DialogResult.Yes)
+            {
+
+                try
                 {
                     var oServicio = new BEServicio
                     {
@@ -135,12 +137,12 @@ namespace UI.Interfaces.Sesion.Servicios
 
                     GestionServicioService.GuardarInsumosServicio(oServicio, _insumosServicio, oLstProfesionalesAsignados);
                     MessageBox.Show("El servicio se ha creado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
 
-            }
-            catch (Exception ex)
-            {
-                MostrarMensajeError(ex);
+                }
+                catch (Exception ex)
+                {
+                    MostrarMensajeError(ex);
+                }
             }
         }
     }
