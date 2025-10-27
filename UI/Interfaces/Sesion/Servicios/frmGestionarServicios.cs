@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UI.Interfaces.Sesion.Stock.GestionarStock;
 
 namespace UI.Interfaces.Sesion.Servicios
 {
@@ -49,6 +50,21 @@ namespace UI.Interfaces.Sesion.Servicios
             {
                 MostrarMensajeError(ex);
             }
+        }
+
+        private void btnCrearInsumo_Click(object sender, EventArgs e)
+        {
+            frmGestionarServiciosServicioEdit ofrmGestionarServiciosServicioEdit = new frmGestionarServiciosServicioEdit();
+
+            this.Hide();
+
+            if (ofrmGestionarServiciosServicioEdit.ShowDialog() == DialogResult.OK)
+            {
+                // El registro fue exitoso, podés hacer algo
+            }
+
+            // Opcional: restaurás la ventana si estaba minimizada
+            this.Show();
         }
     }
 }

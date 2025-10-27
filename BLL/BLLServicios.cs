@@ -65,5 +65,10 @@ namespace BLL
         {
             return oDALServicio.ObtenerObtenerInsumosPorServicio(ServicioID);
         }
+
+        public void GuardarInsumosServicio(BEServicio oBEServicio, List<InsumoSeleccionado> oLstInsumos, List<BEProfesional> oLstProfesionales)
+        {
+            oDALServicio.GuardarInsumosServicio(oBEServicio, oLstInsumos, oLstProfesionales);
+        }
     }
 }

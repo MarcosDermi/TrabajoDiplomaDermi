@@ -31,4 +31,13 @@ namespace BE
         cajas = 3,
         unidades = 4
     }
+
+    public class InsumoSeleccionado
+    {
+        public int InsumoID { get; set; }
+        public string Codigo { get; set; }
+        public string Nombre { get; set; }
+        public decimal CantidadStock { get; set; }
+        public decimal CantidadUsar { get; set; }
+    }
 }

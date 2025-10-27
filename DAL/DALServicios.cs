@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Xml.Linq;
 
 namespace DAL
 {
@@ -225,6 +226,39 @@ namespace DAL
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        public void GuardarInsumosServicio(BEServicio oBEServicio, List<InsumoSeleccionado> oLstInsumos, List<BEProfesional> oLstProfesionales)
+        {
+            try
+            {
+                var xmlProfesionales = new XElement("Profesionales",
+                    oLstProfesionales.Select(p => new XElement("ID", p.ProfesionalID))
+                );
+
+                var xmlInsumos = new XElement("Insumos",
+                    oLstInsumos.Select(i => new XElement("Insumo",
+                        new XElement("InsumoID", i.InsumoID),
+                        new XElement("CantidadUtilizada", i.CantidadUsar)
+                    ))
+                );
+
+                Hdatos = new Hashtable
+        {
+            { "@Nombre", oBEServicio.Nombre },
+            { "@DuracionMin", oBEServicio.DuracionMin },
+            { "@BufferMin", oBEServicio.BufferMin },
+            { "@Precio", oBEServicio.Precio },
+            { "@Profesionales", xmlProfesionales.ToString() },
+            { "@Insumos", xmlInsumos.ToString() }
+        };
+
+                oDatos.Escribir("stpServicios_I_Completo", Hdatos);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al guardar el servicio con sus insumos y profesionales.", ex);
             }
         }
 

@@ -1,11 +1,9 @@
 ﻿using ABSTRACCION.Contracts;
 using BE;
 using BLL;
-using SERVICES.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Runtime.Remoting.Messaging;
 
 namespace SERVICES
 {
@@ -30,8 +28,9 @@ namespace SERVICES
             {
                 return oBLLServicios.ObtenerServiciosPorProfesional(ProfesionalID);
             }
-            catch (Exception ex) 
-            { throw new Exception(); };
+            catch (Exception ex)
+            { throw new Exception(); }
+            ;
         }
 
         public DataTable ObtenerObtenerInsumosPorServicio(int ServicioID)
@@ -39,6 +38,17 @@ namespace SERVICES
             try
             {
                 return oBLLServicios.ObtenerObtenerInsumosPorServicio(ServicioID);
+            }
+            catch (Exception ex)
+            { throw new Exception(); }
+            ;
+        }
+
+        public void GuardarInsumosServicio(BEServicio oBEServicio, List<InsumoSeleccionado> oLstInsumos, List<BEProfesional> oLstProfesionales)
+        {
+            try
+            {
+                oBLLServicios.GuardarInsumosServicio(oBEServicio, oLstInsumos, oLstProfesionales);
             }
             catch (Exception ex)
             { throw new Exception(); }

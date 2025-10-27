@@ -11,7 +11,6 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
 {
     public partial class frmGestionStock : BaseForm
     {
-        IGestionStockService IgestionService { get; set; }
         DataTable _oDtSubcategorias = new DataTable();
         BEInsumo oBEInsumo;
 

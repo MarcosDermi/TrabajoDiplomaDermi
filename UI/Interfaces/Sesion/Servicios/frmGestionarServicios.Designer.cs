@@ -277,6 +277,7 @@
             this.btnCrearInsumo.TabIndex = 3;
             this.btnCrearInsumo.Text = "Crear";
             this.btnCrearInsumo.UseVisualStyleBackColor = false;
+            this.btnCrearInsumo.Click += new System.EventHandler(this.btnCrearInsumo_Click);
             // 
             // frmGestionarServicios
             // 
