@@ -14,6 +14,7 @@ namespace UI
         private IAgendaService _agendaService;
         private IValidatorsService _validatorsService;
         private IGestionServicioService _servicioService;
+        private IGestionPromocionesService _promocionesService;
 
 
         public BaseForm()
@@ -119,6 +120,22 @@ namespace UI
             set
             {
                 _servicioService = value;
+            }
+        }
+
+        public IGestionPromocionesService GestionPromocionesService
+        {
+            get
+            {
+                if (_promocionesService == null && !DesignMode)
+                {
+                    _promocionesService = new GestionPromocionesService();
+                }
+                return _promocionesService;
+            }
+            set
+            {
+                _promocionesService = value;
             }
         }
 

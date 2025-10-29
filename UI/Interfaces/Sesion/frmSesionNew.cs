@@ -9,6 +9,7 @@ using UI.Interfaces.InicioSesion;
 using UI.Interfaces.Sesion.Administrar;
 using UI.Interfaces.Sesion.Stock.GestionarStock;
 using UI.Interfaces.Sesion.Servicios;
+using UI.Interfaces.Sesion.Promociones;
 
 namespace UI.Interfaces.Sesion
 {
@@ -472,6 +473,12 @@ namespace UI.Interfaces.Sesion
         {
             OpenChildForm(new frmGestionarServicios());
             hideSubMenu(pnlServiciosSubMenu);
+        }
+
+        private void btnGestionarPromociones_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmGestionarPromociones());
+            hideSubMenu(pnlPromocionesSubMenu);
         }
     }
 }

@@ -216,6 +216,26 @@
             btnCalendario.UseVisualStyleBackColor = true;
             btnCalendario.Click += new System.EventHandler(this.btnCalendario_Click);
             // 
+            // btnHelp
+            // 
+            btnHelp.Dock = System.Windows.Forms.DockStyle.Top;
+            btnHelp.FlatAppearance.BorderSize = 0;
+            btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnHelp.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            btnHelp.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            btnHelp.Image = global::UI.Properties.Resources.help_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
+            btnHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnHelp.Location = new System.Drawing.Point(0, 811);
+            btnHelp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            btnHelp.Name = "btnHelp";
+            btnHelp.Size = new System.Drawing.Size(184, 59);
+            btnHelp.TabIndex = 16;
+            btnHelp.Text = "Help";
+            btnHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnHelp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            btnHelp.UseVisualStyleBackColor = true;
+            btnHelp.Click += new System.EventHandler(this.btnHelp_Click_1);
+            // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(102)))), ((int)(((byte)(113)))));
@@ -533,26 +553,6 @@
             this.btnManualUsuario.UseVisualStyleBackColor = true;
             this.btnManualUsuario.Click += new System.EventHandler(this.btnManualUsuario_Click);
             // 
-            // btnHelp
-            // 
-            btnHelp.Dock = System.Windows.Forms.DockStyle.Top;
-            btnHelp.FlatAppearance.BorderSize = 0;
-            btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnHelp.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            btnHelp.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            btnHelp.Image = global::UI.Properties.Resources.help_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
-            btnHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnHelp.Location = new System.Drawing.Point(0, 811);
-            btnHelp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            btnHelp.Name = "btnHelp";
-            btnHelp.Size = new System.Drawing.Size(184, 59);
-            btnHelp.TabIndex = 16;
-            btnHelp.Text = "Help";
-            btnHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnHelp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            btnHelp.UseVisualStyleBackColor = true;
-            btnHelp.Click += new System.EventHandler(this.btnHelp_Click_1);
-            // 
             // pnlServiciosSubMenu
             // 
             this.pnlServiciosSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(50)))), ((int)(((byte)(30)))));
@@ -686,6 +686,7 @@
             this.btnGestionarPromociones.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnGestionarPromociones.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGestionarPromociones.UseVisualStyleBackColor = true;
+            this.btnGestionarPromociones.Click += new System.EventHandler(this.btnGestionarPromociones_Click);
             // 
             // pnlStockSubMenu
             // 

@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DALBitacora.cs" />
+    <Compile Include="DALPromocion.cs" />
     <Compile Include="DALLogsError.cs" />
     <Compile Include="DALDV.cs" />
     <Compile Include="DALMedioDePago.cs" />
