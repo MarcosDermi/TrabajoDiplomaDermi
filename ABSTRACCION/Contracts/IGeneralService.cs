@@ -16,5 +16,6 @@ namespace ABSTRACCION.Contracts
         DataTable ObtenerMediosDePago();
         List<BEProfesional> ListarProfesionales();
         BEProfesional ObtenerProfesionalPorUsuarioID(int UsuarioID);
+        BEUsuario ObtenerUsuarioPorUsuarioID(int UsuarioID);
     }
 }

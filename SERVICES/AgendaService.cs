@@ -62,5 +62,29 @@ namespace SERVICES
             BLLAgenda oBLLAgenda = new BLLAgenda();
             return oBLLAgenda.ObtenerReserva(idReserva);
         }
+
+        public List<int> ObtenerIDsServiciosPorReservaID(int ReservaID)
+        {
+            BLLAgenda oBLLAgenda = new BLLAgenda();
+            return oBLLAgenda.ObtenerIDsServiciosPorReservaID(ReservaID);
+        }
+
+        public List<DateTime> ObtenerFechasConReservasCliente(string Mail, DateTime dtFecha)
+        {
+            BLLAgenda oBLLAgenda = new BLLAgenda();
+            return oBLLAgenda.ObtenerFechasConReservasCliente(Mail, dtFecha);
+        }
+
+        public List<BETurnoTomado> ListarReservasClientesPorFechayMail(string sMail, DateTime fecha)
+        {
+            BLLAgenda oBLLAgenda = new BLLAgenda();
+            return oBLLAgenda.ListarReservasClientesPorFechayMail(sMail, fecha);
+        }
+
+        public DataTable ObtenerReservaDiaPorFechayMail(string sMail, DateTime dtFecha)
+        {
+            BLLAgenda oBLLAgenda = new BLLAgenda();
+            return oBLLAgenda.ObtenerReservaDiaPorFechayMail(sMail, dtFecha);
+        }
     }
 }

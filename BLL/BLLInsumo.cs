@@ -60,5 +60,10 @@ namespace BLL
         {
             return oDAlInsumo.BajaID(iId);
         }
+
+        public void ActualizarStockInsumoPorServicioID(List<int> oLstServicioID)
+        {
+            oDAlInsumo.ActualizarStockInsumoPorServicioID(oLstServicioID);
+        }
     }
 }

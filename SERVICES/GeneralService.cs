@@ -11,16 +11,18 @@ using System.Windows.Forms;
 
 namespace SERVICES
 {
-    public class GeneralService: IGeneralService
+    public class GeneralService : IGeneralService
     {
-
+        IDigitoVerificadorService DigitoVerificadorService = new DigitoVerificadorService();
         BLLMedioDePago oBLLMedioDePago;
         BLLProfesional oBLLProfesional;
+        BLLUsuario oBLLUsuario;
 
         public GeneralService()
         {
             oBLLMedioDePago = new BLLMedioDePago();
             oBLLProfesional = new BLLProfesional();
+            oBLLUsuario = new BLLUsuario(DigitoVerificadorService);
         }
 
         public DataTable LimpiarDataTable(DataTable oDt)
@@ -59,6 +61,11 @@ namespace SERVICES
         public BEProfesional ObtenerProfesionalPorUsuarioID(int UsuarioID)
         {
             return oBLLProfesional.ObtenerProfesionalPorUsuarioID(UsuarioID);
+        }
+
+        public BEUsuario ObtenerUsuarioPorUsuarioID(int UsuarioID)
+        {
+            return oBLLUsuario.GetOne(UsuarioID);
         }
     }
 }

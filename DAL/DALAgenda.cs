@@ -189,6 +189,26 @@ namespace DAL
             return oLstFechasReserva;
         }
 
+        public List<DateTime> ObtenerFechasConReservasCliente(string Mail, DateTime mes)
+        {
+            var inicioMes = new DateTime(mes.Year, mes.Month, 1);
+            var finMes = inicioMes.AddMonths(1).AddDays(-1);
+
+            var oDtFechasReservasPorProfesional = oDatos.Leer("ObtenerFechasReservasPorMailRegistro", new Hashtable
+                {
+                    { "@Mail", Mail },
+                    { "@FechaDesde", inicioMes },
+                    { "@FechaHasta", finMes }
+                });
+
+            var oLstFechasReserva = oDtFechasReservasPorProfesional.AsEnumerable()
+                .Select(r => ((DateTime)r["FechaReserva"]).Date)
+                .Distinct()
+                .ToList();
+
+            return oLstFechasReserva;
+        }
+
         public DataTable ObtenerReservaDiaPorFechayProfesional(int idProfesional, DateTime dtFecha)
         {
             try
@@ -255,6 +275,74 @@ namespace DAL
                     PrecioTotal = (decimal)row["PrecioTotal"]
                 };
                 return oReserva;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<int> ObtenerIDsServiciosPorReservaID(int ReservaID)
+        {
+            try
+            {
+                var oDtServicios = oDatos.Leer("ObtenerServiciosPorReservaID", new Hashtable
+                {
+                    { "@ReservaID", ReservaID }
+                });
+                return oDtServicios.AsEnumerable()
+                    .Select(x => (int)x["ServicioID"])
+                    .ToList();
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<BETurnoTomado> ListarReservasClientesPorFechayMail(string sMail, DateTime fecha)
+        {
+            try
+            {
+                var oDtReservas = oDatos.Leer("ObtenerReservasPorFechayMail", new Hashtable
+                {
+                    { "@Mail", sMail },
+                    { "@Fecha", fecha.Date } });
+
+                return oDtReservas.AsEnumerable()
+                    .Select(row => new BETurnoTomado
+                    {
+                        ProfesionalID = (int)row["ProfesionalID"],
+                        Inicio = (DateTime)row["FechaInicio"],
+                        Fin = (DateTime)row["FechaFin"]
+                    }).ToList();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+
+        public DataTable ObtenerReservaDiaPorFechayMail(string sMail, DateTime dtFecha)
+        {
+            try
+            {
+                return oDatos.Leer("ObtenerReservaDiaPorFechayMail", new Hashtable
+                {
+                    { "@Mail", sMail },
+                    { "@Fecha", dtFecha }
+                });
+
             }
             catch (SqlException ex)
             {

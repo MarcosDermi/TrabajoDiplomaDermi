@@ -9,19 +9,19 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace UI.Interfaces.Sesion.Calendario
+namespace UI.Interfaces.Sesion.Menu
 {
-    public partial class frmAgendaTurnos : BaseForm
+    public partial class frmMisTurnos : BaseForm
     {
-        private int _IdProfesionalSeleccionado;
+        private BEUsuario _oUsuario;
         private readonly BLLAgenda _bllAgenda = new BLLAgenda();
         private DateTime _fechaSeleccionada = DateTime.MinValue;
         private List<DateTime> _fechasConReservas = new List<DateTime>();
         private int _IdReservaSeleccionada = 0;
 
-        public frmAgendaTurnos(int iIdProfesionalSeleccionado)
+        public frmMisTurnos(int iIdUsuario)
         {
-            _IdProfesionalSeleccionado = iIdProfesionalSeleccionado;
+            _oUsuario = new BEUsuario { Id = iIdUsuario };
             InitializeComponent();
         }
 
@@ -29,7 +29,9 @@ namespace UI.Interfaces.Sesion.Calendario
         {
             ucCalendario.DiaSeleccionado += ucCalendario_DiaSeleccionado;
 
-            _fechasConReservas = AgendaService.ObtenerFechasConReservas(_IdProfesionalSeleccionado, ucCalendario.FechaActual);
+            _oUsuario = GeneralService.ObtenerUsuarioPorUsuarioID(_oUsuario.Id);
+
+            _fechasConReservas = AgendaService.ObtenerFechasConReservasCliente(_oUsuario.Mail, ucCalendario.FechaActual);
 
             ucCalendario.MarcarFechasConReservas(_fechasConReservas);
             dataGridViewHorarios.Columns.Add("Hora", "Hora");
@@ -53,11 +55,11 @@ namespace UI.Interfaces.Sesion.Calendario
         private void RefrescarHorariosInteligentes()
         {
             if (_fechaSeleccionada == DateTime.MinValue) return;
-            if (_IdProfesionalSeleccionado <= 0) return; // Validación extra
+            if (_oUsuario.Id <= 0) return; // Validación extra
 
             dataGridViewHorarios.Rows.Clear();
 
-            var reservasOcupadas = AgendaService.ObtenerTurnosTomados(_IdProfesionalSeleccionado, _fechaSeleccionada);
+            var reservasOcupadas = AgendaService.ListarReservasClientesPorFechayMail(_oUsuario.Mail, _fechaSeleccionada);
 
             if (reservasOcupadas == null || reservasOcupadas.Count == 0)
             {
@@ -82,36 +84,35 @@ namespace UI.Interfaces.Sesion.Calendario
 
         private void dataGridViewHorarios_CellContentClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
         {
-            try { 
             grpTurnoSeleccionado.Visible = true;
             var fechaActual = _fechaSeleccionada;
             var oHorarioSeleccionado = dataGridViewHorarios.SelectedCells[0].Value.ToString();
 
             var fechaSeleccionadaConHora = DateTime.Parse($"{fechaActual.ToShortDateString()} {oHorarioSeleccionado}");
-            var oDtReserva = AgendaService.ObtenerReservaDiaPorFechayProfesional(_IdProfesionalSeleccionado, fechaSeleccionadaConHora);
+            var oDtReserva = AgendaService.ObtenerReservaDiaPorFechayMail(_oUsuario.Mail, fechaSeleccionadaConHora);
 
             _IdReservaSeleccionada = Convert.ToInt32(oDtReserva.Rows[0]["ReservaID"]);
             lblMontoTotal.Text = oDtReserva.Rows[0]["PrecioTotal"].ToString();
 
             if (oDtReserva.Rows[0]["AccionesEnum"] != DBNull.Value)
             {
-                    foreach (DataRow oDr in oDtReserva.AsEnumerable()) 
+                foreach (DataRow oDr in oDtReserva.AsEnumerable())
+                {
+                    var eReservaAccion = (ReservaAcciones)(int)oDtReserva.Rows[0]["AccionesEnum"];
+
+                    if ((ReservaAcciones)oDr["AccionesEnum"] == ReservaAcciones.Cancelada)
                     {
-                        var eReservaAccion = (ReservaAcciones)(int)oDtReserva.Rows[0]["AccionesEnum"];
-                        
-                        if ((ReservaAcciones)oDr["AccionesEnum"] == ReservaAcciones.Atendida || (ReservaAcciones)oDr["AccionesEnum"] == ReservaAcciones.Cancelada)
-                        {
-                            btnAtendido.Enabled = false;
-                        }
-                        else
-                        {
-                            btnAtendido.Enabled = true;
-                        }
+                        btnCancelarTurno.Enabled = false;
                     }
+                    else
+                    {
+                        btnCancelarTurno.Enabled = true;
+                    }
+                }
             }
             else
             {
-                btnAtendido.Enabled = true;
+                btnCancelarTurno.Enabled = true;
             }
 
             foreach (DataColumn col in oDtReserva.Columns.Cast<DataColumn>().ToList())
@@ -122,22 +123,18 @@ namespace UI.Interfaces.Sesion.Calendario
             oDtReserva.Columns["NombreServicio"].ColumnName = "Servicios";
 
             dgvDetalleTurno.DataSource = oDtReserva;
-            }catch(Exception ex)
-            {
-                MostrarMensajeError(ex);
-            }
         }
 
         private void btnMesSiguiente_Click(object sender, EventArgs e)
         {
             ucCalendario.CambiarMes(+1);
-            ucCalendario.MarcarFechasConReservas(AgendaService.ObtenerFechasConReservas(_IdProfesionalSeleccionado, ucCalendario.FechaActual));
+            ucCalendario.MarcarFechasConReservas(AgendaService.ObtenerFechasConReservasCliente(_oUsuario.Mail, ucCalendario.FechaActual));
         }
 
         private void btnMesAnterior_Click(object sender, EventArgs e)
         {
             ucCalendario.CambiarMes(-1);
-            ucCalendario.MarcarFechasConReservas(AgendaService.ObtenerFechasConReservas(_IdProfesionalSeleccionado, ucCalendario.FechaActual));
+            ucCalendario.MarcarFechasConReservas(AgendaService.ObtenerFechasConReservasCliente(_oUsuario.Mail, ucCalendario.FechaActual));
         }
 
         private void ucCalendario_Load(object sender, EventArgs e)
@@ -156,11 +153,7 @@ namespace UI.Interfaces.Sesion.Calendario
 
             if (Resultado == DialogResult.OK)
             {
-                var oLstServiciosID = AgendaService.ObtenerIDsServiciosPorReservaID(_IdReservaSeleccionada);
-                GestionStockService.ActualizarStockInsumoPorServicioID(oLstServiciosID);
-
                 AgendaService.ReservaAcciones(_IdReservaSeleccionada, ReservaAcciones.Atendida);
-
                 MessageBox.Show("Turno confirmado.", "Exito", MessageBoxButtons.OK);
             }
 

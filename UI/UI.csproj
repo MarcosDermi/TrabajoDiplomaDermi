@@ -122,6 +122,12 @@
     <Compile Include="Interfaces\Sesion\frmSesionNew.Designer.cs">
       <DependentUpon>frmSesionNew.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\Sesion\Menu\frmMisTurnos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sesion\Menu\frmMisTurnos.Designer.cs">
+      <DependentUpon>frmMisTurnos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\Sesion\Promociones\frmGestionarPromociones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -263,6 +269,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\Sesion\frmSesionNew.resx">
       <DependentUpon>frmSesionNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sesion\Menu\frmMisTurnos.resx">
+      <DependentUpon>frmMisTurnos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\Sesion\Promociones\frmGestionarPromociones.resx">
       <DependentUpon>frmGestionarPromociones.cs</DependentUpon>

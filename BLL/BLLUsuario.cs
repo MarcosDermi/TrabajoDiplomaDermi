@@ -61,7 +61,7 @@ namespace BLL
 
         public BEUsuario GetOne(int iId)
         {
-            throw new NotImplementedException();
+            return oDALUsuario.GetOne(iId);
         }
 
         public List<BEUsuario> ListarTodo(bool EsControlCambio, int iIdUsuario)

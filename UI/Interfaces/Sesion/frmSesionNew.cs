@@ -4,12 +4,13 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using ABSTRACCION.Contracts;
-using UI;
 using UI.Interfaces.InicioSesion;
 using UI.Interfaces.Sesion.Administrar;
 using UI.Interfaces.Sesion.Stock.GestionarStock;
 using UI.Interfaces.Sesion.Servicios;
 using UI.Interfaces.Sesion.Promociones;
+using UI.Interfaces.Sesion.Calendario;
+using UI.Interfaces.Sesion.Menu;
 
 namespace UI.Interfaces.Sesion
 {
@@ -479,6 +480,12 @@ namespace UI.Interfaces.Sesion
         {
             OpenChildForm(new frmGestionarPromociones());
             hideSubMenu(pnlPromocionesSubMenu);
+        }
+
+        private void btnTurnosCliente_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmMisTurnos(_oSingletonSesion.Usuario.Id));
+            hideSubMenu(pnlMenuClienteSubMenu);
         }
     }
 }

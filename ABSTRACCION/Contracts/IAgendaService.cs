@@ -13,7 +13,12 @@ namespace SERVICES.Interfaces
         List<DateTime> CalcularSlotsDisponibles(int iProfesionalID, DateTime dtFecha, IEnumerable<int> serviciosSeleccionados);
         List<DateTime> ObtenerFechasConReservas(int iProfesionalID, DateTime dtMes);
         DataTable ObtenerReservaDiaPorFechayProfesional(int iProfesionalID, DateTime dtFecha);
+        DataTable ObtenerReservaDiaPorFechayMail(string sMail, DateTime dtFecha);
         void ReservaAcciones(int iReservaID, ReservaAcciones AccionEnum);
         BEReserva ObtenerReserva(int idReserva);
+        List<int> ObtenerIDsServiciosPorReservaID(int ReservaID);
+        List<DateTime> ObtenerFechasConReservasCliente(string Mail, DateTime dtFecha);
+
+        List<BETurnoTomado> ListarReservasClientesPorFechayMail(string sMail, DateTime fecha);
     }
 }

@@ -164,5 +164,10 @@ namespace SERVICES
         {
             return oBLLInsumo.BajaID(iInsumoID);
         }
+
+        public void ActualizarStockInsumoPorServicioID(List<int> oLstServicioID)
+        {
+            oBLLInsumo.ActualizarStockInsumoPorServicioID(oLstServicioID);
+        }
     }
 }

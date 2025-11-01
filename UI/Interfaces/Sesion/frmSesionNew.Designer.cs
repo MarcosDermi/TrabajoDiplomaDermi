@@ -655,6 +655,7 @@
             this.btnTurnosCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTurnosCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnTurnosCliente.UseVisualStyleBackColor = true;
+            this.btnTurnosCliente.Click += new System.EventHandler(this.btnTurnosCliente_Click);
             // 
             // pnlPromocionesSubMenu
             // 

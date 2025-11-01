@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace DAL
 {
@@ -213,6 +214,48 @@ namespace DAL
             }
         }
 
+        public BEUsuario GetOne(int iId)
+        {
+            try
+            {
+                string stpNombre = "GetOneUsuario";
+                hDatos = new Hashtable();
+                hDatos.Add("@UserID", iId);
+
+                BEUsuario oUsuario = new BEUsuario();
+
+                oDatos = new Datos();
+                DataTable oDt = oDatos.Leer(stpNombre, hDatos);
+
+                if (oDt.Rows.Count > 0)
+                {
+                    foreach (DataRow row in oDt.Rows)
+                    {
+                        oUsuario.Id = Convert.ToInt32(row["Id"]);
+                        oUsuario.Usuario = row["Usuario"].ToString();
+                        oUsuario.Nombre = row["Nombre"].ToString();
+                        oUsuario.Apellido = row["Apellido"].ToString();
+                        oUsuario.Mail = row["Mail"].ToString();
+                        oUsuario.FechaNac = Convert.ToDateTime(row["FechaNac"]);
+                        oUsuario.DNI = Convert.ToInt32(row["DNI"]);
+                        oUsuario.isAdmin = Convert.ToBoolean(row["isAdmin"]);
+                        oUsuario.EsProfesional = Convert.ToBoolean(row["EsProfesional"]);
+                        oUsuario.Clave = row["Clave"].ToString();
+                        oUsuario.DV = row["DV"]?.ToString() ?? "";
+                    }
+                }
+                else
+                {
+                    oUsuario = null;
+                }
+                return oUsuario;
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
     }
 }

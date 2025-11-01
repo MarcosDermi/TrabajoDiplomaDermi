@@ -18,5 +18,6 @@ namespace SERVICES.Interfaces
         bool GuardarInsumo(BEInsumo oInsumo);
         DataTable BuscarInsumosPorFiltrosVarios(string sCodigo, string sNombre, int ProveedorID, int CategoriaID, int PresentacionID);
         bool EliminarInsumo(int iInsumoID);
+        void ActualizarStockInsumoPorServicioID(List<int> oLstServicioID);
     }
 }

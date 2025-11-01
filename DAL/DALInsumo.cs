@@ -116,5 +116,22 @@ namespace DAL
                 return false;
             }
         }
+
+        public void ActualizarStockInsumoPorServicioID(List<int> oLstServicioID)
+        {
+            try { 
+                foreach (var idServicio in oLstServicioID)
+                {
+                    oDatos.Escribir("ActualizarStockPorServicioID", new Hashtable
+                    {
+                        { "@ServicioID", idServicio }
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

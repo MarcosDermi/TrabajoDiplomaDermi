@@ -140,5 +140,24 @@ namespace BLL
             return oDALAgenda.ObtenerReserva(idReserva);
         }
 
+        public List<int> ObtenerIDsServiciosPorReservaID(int ReservaID)
+        {
+            return oDALAgenda.ObtenerIDsServiciosPorReservaID(ReservaID);
+        }
+
+        public List<DateTime> ObtenerFechasConReservasCliente(string Mail, DateTime dtFecha)
+        {
+            return oDALAgenda.ObtenerFechasConReservasCliente(Mail, dtFecha);
+        }
+
+        public List<BETurnoTomado> ListarReservasClientesPorFechayMail(string sMail, DateTime fecha)
+        {
+            return oDALAgenda.ListarReservasClientesPorFechayMail(sMail, fecha);
+        }
+
+        public DataTable ObtenerReservaDiaPorFechayMail(string sMail, DateTime dtFecha)
+        {
+            return oDALAgenda.ObtenerReservaDiaPorFechayMail(sMail, dtFecha);
+        }
     }
 }
