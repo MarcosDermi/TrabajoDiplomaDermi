@@ -48,7 +48,7 @@ namespace DAL
                 oDatos.Escribir(stpNombre, hDatos);
 
                 stpNombre = "AltaUsuarioHistorial";
-
+                hDatos.Add("@EsProfesional", oUsuario.EsProfesional);
                 return oDatos.Escribir(stpNombre, hDatos);
             }
             else
