@@ -178,6 +178,9 @@ namespace UI.Interfaces.ReservasLogOut
                 // 5️ Crear todas las filas, marcando ocupadas en rojo
                 foreach (var oDtSlot in oLstSlotsDisponibles)
                 {
+                    if (_fechaSeleccionada.Date == DateTime.Today && oDtSlot <= DateTime.Now)
+                        continue;
+
                     var oDtFinSlot = oDtSlot.Add(tsDuracionMin);
                     bool esOcupado = oLstReservasOcupadas.Any(r => oDtSlot < r.Fin && r.Inicio < oDtFinSlot);
 
