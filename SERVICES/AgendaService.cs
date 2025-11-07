@@ -16,13 +16,49 @@ namespace SERVICES
             oBLLProfesional = new BLLProfesional();
         }
 
+        private int CalcularPuntosPorReserva(List<BEServicio> oLstServicios)
+        {
+            int puntosTotales = 0;
+            foreach (var servicio in oLstServicios)
+            {
+                // Ejemplo: 10 puntos por cada $100 gastados
+                puntosTotales += (int)(servicio.Precio / 10);
+            }
+            return puntosTotales;
+        }
+
         public List<BETurnoTomado> ObtenerTurnosTomados(int iProfesionalID, DateTime dtFecha)
         {
             return oBLLProfesional.GetTurnosTomados(iProfesionalID, dtFecha);
         }
 
-        public int ConfirmarReserva(BEReserva oReserva)
+        public int ConfirmarReserva(BEReserva oReserva, int iIdUsuario)
         {
+            BLLFidelizacion oFid = new BLLFidelizacion();
+            var puntosGanados = CalcularPuntosPorReserva(oReserva.Servicios);
+
+            if (iIdUsuario != 0)
+            {
+                var dtDesc = oFid.ObtenerDescuentoPendiente(iIdUsuario);
+
+                if (dtDesc.Rows.Count > 0)
+                {
+                    var descuentoID = (int)dtDesc.Rows[0]["DescuentoID"];
+                    var porcentaje = (decimal)dtDesc.Rows[0]["PorcentajeDescuento"];
+
+                    decimal totalOriginal = oReserva.PrecioTotal;
+                    oReserva.PrecioTotal = totalOriginal - (totalOriginal * (porcentaje / 100));
+
+                    oFid.MarcarDescuentoUsado(descuentoID);
+                }
+
+                oFid.ActualizarPuntos(iIdUsuario, puntosGanados);
+            }
+            else
+            {
+                oFid.ActualizarPuntosPorEmail(oReserva.Cliente.Mail, puntosGanados);
+            }
+
             BLLAgenda oBLLAgenda = new BLLAgenda();
             return oBLLAgenda.ConfirmarReserva(oReserva);
         }

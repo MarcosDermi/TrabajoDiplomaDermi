@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using UI.Interfaces.ReservasLogOut;
 
 namespace UI.Interfaces.Sesion.Menu
 {
@@ -182,6 +183,21 @@ namespace UI.Interfaces.Sesion.Menu
             }
 
             return;
+        }
+
+        private void btnAgendarNuevoTurno_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Hide();
+                frmTurnosLogOut ofrmTurnosLogOut = new frmTurnosLogOut(true);
+                ofrmTurnosLogOut.ShowDialog();
+                this.Show();
+            }
+            catch (Exception ex)
+            {
+                MostrarMensajeError(ex);
+            }
         }
     }
 }

@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BEFidelizacionCanje.cs" />
     <Compile Include="BEPromocion.cs" />
     <Compile Include="BECategoria.cs" />
     <Compile Include="BEJornadaLaboral.cs" />
@@ -50,6 +51,7 @@
     <Compile Include="BEMedioDePago.cs" />
     <Compile Include="BEFranja.cs" />
     <Compile Include="BEProfesionalServicio.cs" />
+    <Compile Include="BEFidelizacionCliente.cs" />
     <Compile Include="BETurnoTomado.cs" />
     <Compile Include="BEServicio.cs" />
     <Compile Include="BEProfesional.cs" />

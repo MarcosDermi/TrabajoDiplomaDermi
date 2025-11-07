@@ -13,11 +13,14 @@ namespace UI.Interfaces.ReservasLogOut
 {
     public partial class frmTurnosLogOut : BaseForm
     {
+        private bool IsLogin = false;
         private int _IdProfesionalSeleccionado = 0;
         private readonly BLLAgenda _bllAgenda = new BLLAgenda();
         private DateTime _fechaSeleccionada = DateTime.MinValue;
-        public frmTurnosLogOut()
-        {
+
+        public frmTurnosLogOut(bool IsLogin)
+        {   
+            this.IsLogin = IsLogin;
             InitializeComponent();
         }
 
@@ -25,6 +28,11 @@ namespace UI.Interfaces.ReservasLogOut
         {
             try
             {
+                if(IsLogin)
+                {
+                    btnIniciarSesion.Visible = false;
+                }
+
                 ucCalendario.DiaSeleccionado += ucCalendario_DiaSeleccionado;
 
                 dataGridViewHorarios.Columns.Add("Hora", "Hora");
@@ -291,7 +299,7 @@ namespace UI.Interfaces.ReservasLogOut
                     MedioDePagoID = MedioDePagoSeleccionado(),
                     PrecioTotal = oLstServicios.Sum(x => x.Precio)
                 };
-                var frmConfirmacion = new frmConfirmacionReserva(oNuevaReserva);
+                var frmConfirmacion = new frmConfirmacionReserva(oNuevaReserva, IsLogin);
 
                 this.Hide();
                 var resultado = frmConfirmacion.ShowDialog();

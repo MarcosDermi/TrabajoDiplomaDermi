@@ -8,7 +8,7 @@ namespace SERVICES.Interfaces
     public interface IAgendaService
     {
         List<BETurnoTomado> ObtenerTurnosTomados(int iProfesionalID, DateTime dtFecha);
-        int ConfirmarReserva(BEReserva oReserva);
+        int ConfirmarReserva(BEReserva oReserva, int iIdUsuario);
         int DuracionTotalSeleccionadaMin(IEnumerable<int> serviciosSeleccionados);
         List<DateTime> CalcularSlotsDisponibles(int iProfesionalID, DateTime dtFecha, IEnumerable<int> serviciosSeleccionados);
         List<DateTime> ObtenerFechasConReservas(int iProfesionalID, DateTime dtMes);

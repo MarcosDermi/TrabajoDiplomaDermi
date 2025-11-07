@@ -15,7 +15,7 @@ namespace UI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new frmInicioSesion());
-            Application.Run(new frmTurnosLogOut());
+            Application.Run(new frmTurnosLogOut(false));
             //Application.Run(new frmGestionIntegridad());
             //Application.Run(new frmSesionNew());
         }

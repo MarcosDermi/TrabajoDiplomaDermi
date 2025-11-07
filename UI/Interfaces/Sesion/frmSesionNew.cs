@@ -526,5 +526,11 @@ namespace UI.Interfaces.Sesion
             //OpenChildForm();
             hideSubMenu(pnlReporteriaSubMenu);
         }
+
+        private void btnFidelizacionCliente_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmFidelizacionCliente(_oSingletonSesion.Usuario.Id));
+            hideSubMenu(pnlMenuClienteSubMenu);
+        }
     }
 }

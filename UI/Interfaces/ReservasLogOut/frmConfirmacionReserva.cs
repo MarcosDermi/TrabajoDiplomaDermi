@@ -10,22 +10,22 @@ namespace UI.Interfaces.ReservasLogOut
 {
     public partial class frmConfirmacionReserva : BaseForm
     {
-
+        private bool IsLogin;
         BEReserva _oReserva;
 
-        public frmConfirmacionReserva(BEReserva oReserva)
+        public frmConfirmacionReserva(BEReserva oReserva, bool IsLogin)
         {
             InitializeComponent();
             _oReserva = oReserva;
+            this.IsLogin = IsLogin;
         }
 
         private void frmGestionProveedoresEdit_Load(object sender, EventArgs e)
         {
-
             lblDia.Text = _oReserva.FechaInicio.ToString("dddd, dd 'de' MMMM 'de' yyyy", new System.Globalization.CultureInfo("es-ES"));
             lblHorario.Text = _oReserva.FechaInicio.Hour.ToString();
             lblProfesional.Text = GeneralService.ListarProfesionales().FirstOrDefault(x => x.ProfesionalID == _oReserva.ProfesionalID).Nombre;
-            
+
             lstServicios.Items.Clear();
             foreach (var servicio in _oReserva.Servicios)
             {
@@ -34,6 +34,12 @@ namespace UI.Interfaces.ReservasLogOut
 
             lblTotal.Text = "$ " + _oReserva.PrecioTotal.ToString("F2");
             lblMedioDePago.Text = GeneralService.ObtenerMediosDePago().AsEnumerable().FirstOrDefault(x => x.Field<int>("MedioPagoID") == _oReserva.MedioDePagoID).Field<string>("Nombre");
+
+            if (IsLogin)
+            {
+                txtEmail.Enabled = false;
+                txtEmail.Text = SingletonSesionService.Usuario.Mail;
+            }
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -52,22 +58,23 @@ namespace UI.Interfaces.ReservasLogOut
 
         private void txtConfirmarReserva_Click(object sender, EventArgs e)
         {
-            if (ValidatorsService.validarMail(txtEmail.Text))
+            if (!IsLogin)
             {
-                _oReserva.Cliente.Mail = txtEmail.Text;
-                var idReserva = AgendaService.ConfirmarReserva(_oReserva);
-                var oEmailHelper = new EmailHelper();
-                oEmailHelper.EnviarConfirmacionTurno(_oReserva, idReserva);
-
-                MessageBox.Show($"La reserva se ha confirmado exitosamente. Su número de reserva es: {idReserva}", "Reserva Confirmada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Por favor, ingrese un correo electrónico válido.", "Correo Inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (!ValidatorsService.validarMail(txtEmail.Text))
+                {
+                    MessageBox.Show("Por favor, ingrese un correo electrónico válido.", "Correo Inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
 
+            _oReserva.Cliente.Mail = txtEmail.Text;
+            var Id = IsLogin == true ? SingletonSesionService.Usuario.Id : 0;
+            var idReserva = AgendaService.ConfirmarReserva(_oReserva, Id);
 
+            var oEmailHelper = new EmailHelper();
+            oEmailHelper.EnviarConfirmacionTurno(_oReserva, idReserva);
+
+            MessageBox.Show($"La reserva se ha confirmado exitosamente. Su número de reserva es: {idReserva}", "Reserva Confirmada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using ABSTRACCION.Contracts;
+using BLL;
 using SERVICES;
 using SERVICES.Interfaces;
 using System;
@@ -15,6 +16,7 @@ namespace UI
         private IValidatorsService _validatorsService;
         private IGestionServicioService _servicioService;
         private IGestionPromocionesService _promocionesService;
+        private ISingletonSesionService _singletonsesionService;
 
 
         public BaseForm()
@@ -136,6 +138,22 @@ namespace UI
             set
             {
                 _promocionesService = value;
+            }
+        }
+
+        public ISingletonSesionService SingletonSesionService
+        {
+            get
+            {
+                if (_singletonsesionService == null && !DesignMode)
+                {
+                    _singletonsesionService = BLLSingletonSesion.Instancia;
+                }
+                return _singletonsesionService;
+            }
+            set
+            {
+                _singletonsesionService = value;
             }
         }
 

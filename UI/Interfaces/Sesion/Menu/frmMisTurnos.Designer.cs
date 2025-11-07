@@ -292,6 +292,7 @@
             this.btnAgendarNuevoTurno.TabIndex = 30;
             this.btnAgendarNuevoTurno.Text = "Agendar nuevo turno";
             this.btnAgendarNuevoTurno.UseVisualStyleBackColor = true;
+            this.btnAgendarNuevoTurno.Click += new System.EventHandler(this.btnAgendarNuevoTurno_Click);
             // 
             // frmMisTurnos
             // 
