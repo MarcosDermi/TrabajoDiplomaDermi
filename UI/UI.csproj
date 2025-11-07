@@ -372,6 +372,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\LogoNuevo.png" />
+    <None Include="Resources\finance_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
     <None Include="Resources\self_care_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
     <None Include="Resources\manage_accounts_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
     <None Include="Resources\loyalty_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />

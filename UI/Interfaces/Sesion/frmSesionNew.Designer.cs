@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.Button btnReporteria;
+            System.Windows.Forms.Button btnHelp;
             System.Windows.Forms.Button btnServicios;
             System.Windows.Forms.Button btnMenuCliente;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSesionNew));
@@ -35,14 +37,21 @@
             System.Windows.Forms.Button btnSalir;
             System.Windows.Forms.Button btnStock;
             System.Windows.Forms.Button btnCalendario;
-            System.Windows.Forms.Button btnHelp;
             this.panel5 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.lblUsuarioNombre = new System.Windows.Forms.Label();
             this.pnlChildForm = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pnlMenuLateral = new System.Windows.Forms.Panel();
             this.pnlAdminSubMenu = new System.Windows.Forms.Panel();
+            this.pnlHelpSubMenu = new System.Windows.Forms.Panel();
+            this.pnlServiciosSubMenu = new System.Windows.Forms.Panel();
+            this.pnlMenuClienteSubMenu = new System.Windows.Forms.Panel();
+            this.pnlPromocionesSubMenu = new System.Windows.Forms.Panel();
+            this.pnlStockSubMenu = new System.Windows.Forms.Panel();
+            this.pnlSubMenuCalendario = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlReporteriaSubMenu = new System.Windows.Forms.Panel();
+            this.btnReportes = new System.Windows.Forms.Button();
             this.btnControlCambios = new System.Windows.Forms.Button();
             this.btnIntegridad = new System.Windows.Forms.Button();
             this.btnBitacoras = new System.Windows.Forms.Button();
@@ -50,35 +59,29 @@
             this.btnPermisos = new System.Windows.Forms.Button();
             this.btnUusarios = new System.Windows.Forms.Button();
             this.btnAdministrar = new System.Windows.Forms.Button();
-            this.pnlHelpSubMenu = new System.Windows.Forms.Panel();
             this.btnNotasVersion = new System.Windows.Forms.Button();
             this.btnAbout = new System.Windows.Forms.Button();
             this.btnManualUsuario = new System.Windows.Forms.Button();
-            this.pnlServiciosSubMenu = new System.Windows.Forms.Panel();
             this.btnGestionarServicios = new System.Windows.Forms.Button();
-            this.pnlMenuClienteSubMenu = new System.Windows.Forms.Panel();
             this.btnCuentaCliente = new System.Windows.Forms.Button();
             this.btnFidelizacionCliente = new System.Windows.Forms.Button();
             this.btnTurnosCliente = new System.Windows.Forms.Button();
-            this.pnlPromocionesSubMenu = new System.Windows.Forms.Panel();
             this.btnGestionarPromociones = new System.Windows.Forms.Button();
-            this.pnlStockSubMenu = new System.Windows.Forms.Panel();
             this.btnProveedores = new System.Windows.Forms.Button();
             this.btnGestionStock = new System.Windows.Forms.Button();
-            this.pnlSubMenuCalendario = new System.Windows.Forms.Panel();
             this.btnAgendaTurnos = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            btnReporteria = new System.Windows.Forms.Button();
+            btnHelp = new System.Windows.Forms.Button();
             btnServicios = new System.Windows.Forms.Button();
             btnMenuCliente = new System.Windows.Forms.Button();
             btnPromociones = new System.Windows.Forms.Button();
             btnSalir = new System.Windows.Forms.Button();
             btnStock = new System.Windows.Forms.Button();
             btnCalendario = new System.Windows.Forms.Button();
-            btnHelp = new System.Windows.Forms.Button();
             this.panel5.SuspendLayout();
             this.pnlChildForm.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.pnlMenuLateral.SuspendLayout();
             this.pnlAdminSubMenu.SuspendLayout();
             this.pnlHelpSubMenu.SuspendLayout();
@@ -88,153 +91,10 @@
             this.pnlStockSubMenu.SuspendLayout();
             this.pnlSubMenuCalendario.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.pnlReporteriaSubMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnServicios
-            // 
-            btnServicios.Dock = System.Windows.Forms.DockStyle.Top;
-            btnServicios.FlatAppearance.BorderSize = 0;
-            btnServicios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnServicios.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            btnServicios.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            btnServicios.Image = global::UI.Properties.Resources.self_care_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
-            btnServicios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnServicios.Location = new System.Drawing.Point(0, 703);
-            btnServicios.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            btnServicios.Name = "btnServicios";
-            btnServicios.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            btnServicios.Size = new System.Drawing.Size(184, 59);
-            btnServicios.TabIndex = 14;
-            btnServicios.Text = "Servicios";
-            btnServicios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnServicios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            btnServicios.UseVisualStyleBackColor = true;
-            btnServicios.Click += new System.EventHandler(this.btnServicios_Click);
-            // 
-            // btnMenuCliente
-            // 
-            btnMenuCliente.Dock = System.Windows.Forms.DockStyle.Top;
-            btnMenuCliente.FlatAppearance.BorderSize = 0;
-            btnMenuCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnMenuCliente.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            btnMenuCliente.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            btnMenuCliente.Image = ((System.Drawing.Image)(resources.GetObject("btnMenuCliente.Image")));
-            btnMenuCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnMenuCliente.Location = new System.Drawing.Point(0, 509);
-            btnMenuCliente.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            btnMenuCliente.Name = "btnMenuCliente";
-            btnMenuCliente.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            btnMenuCliente.Size = new System.Drawing.Size(184, 59);
-            btnMenuCliente.TabIndex = 8;
-            btnMenuCliente.Text = "Menu";
-            btnMenuCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnMenuCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            btnMenuCliente.UseVisualStyleBackColor = true;
-            btnMenuCliente.Click += new System.EventHandler(this.btnMenuCliente_Click);
-            // 
-            // btnPromociones
-            // 
-            btnPromociones.Dock = System.Windows.Forms.DockStyle.Top;
-            btnPromociones.FlatAppearance.BorderSize = 0;
-            btnPromociones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnPromociones.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            btnPromociones.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            btnPromociones.Image = global::UI.Properties.Resources.percent_discount_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
-            btnPromociones.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnPromociones.Location = new System.Drawing.Point(0, 401);
-            btnPromociones.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            btnPromociones.Name = "btnPromociones";
-            btnPromociones.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            btnPromociones.Size = new System.Drawing.Size(184, 59);
-            btnPromociones.TabIndex = 6;
-            btnPromociones.Text = "Promociones";
-            btnPromociones.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnPromociones.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            btnPromociones.UseVisualStyleBackColor = true;
-            btnPromociones.Click += new System.EventHandler(this.btnPromociones_Click);
-            // 
-            // btnSalir
-            // 
-            btnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(50)))), ((int)(((byte)(30)))));
-            btnSalir.Dock = System.Windows.Forms.DockStyle.Bottom;
-            btnSalir.FlatAppearance.BorderSize = 0;
-            btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnSalir.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            btnSalir.Image = global::UI.Properties.Resources.login_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
-            btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnSalir.Location = new System.Drawing.Point(0, 1323);
-            btnSalir.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            btnSalir.Name = "btnSalir";
-            btnSalir.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            btnSalir.Size = new System.Drawing.Size(184, 45);
-            btnSalir.TabIndex = 5;
-            btnSalir.Text = "Salir";
-            btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            btnSalir.UseVisualStyleBackColor = false;
-            btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
-            // btnStock
-            // 
-            btnStock.Dock = System.Windows.Forms.DockStyle.Top;
-            btnStock.FlatAppearance.BorderSize = 0;
-            btnStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnStock.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            btnStock.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            btnStock.Image = ((System.Drawing.Image)(resources.GetObject("btnStock.Image")));
-            btnStock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnStock.Location = new System.Drawing.Point(0, 251);
-            btnStock.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            btnStock.Name = "btnStock";
-            btnStock.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            btnStock.Size = new System.Drawing.Size(184, 59);
-            btnStock.TabIndex = 3;
-            btnStock.Text = "Stock";
-            btnStock.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnStock.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            btnStock.UseVisualStyleBackColor = true;
-            btnStock.Click += new System.EventHandler(this.btnStock_Click_1);
-            // 
-            // btnCalendario
-            // 
-            btnCalendario.Dock = System.Windows.Forms.DockStyle.Top;
-            btnCalendario.FlatAppearance.BorderSize = 0;
-            btnCalendario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnCalendario.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            btnCalendario.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            btnCalendario.Image = global::UI.Properties.Resources.calendar_month_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
-            btnCalendario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnCalendario.Location = new System.Drawing.Point(0, 142);
-            btnCalendario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            btnCalendario.Name = "btnCalendario";
-            btnCalendario.Size = new System.Drawing.Size(184, 59);
-            btnCalendario.TabIndex = 1;
-            btnCalendario.Text = "Calendario";
-            btnCalendario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnCalendario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            btnCalendario.UseVisualStyleBackColor = true;
-            btnCalendario.Click += new System.EventHandler(this.btnCalendario_Click);
-            // 
-            // btnHelp
-            // 
-            btnHelp.Dock = System.Windows.Forms.DockStyle.Top;
-            btnHelp.FlatAppearance.BorderSize = 0;
-            btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnHelp.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            btnHelp.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            btnHelp.Image = global::UI.Properties.Resources.help_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
-            btnHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnHelp.Location = new System.Drawing.Point(0, 811);
-            btnHelp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            btnHelp.Name = "btnHelp";
-            btnHelp.Size = new System.Drawing.Size(184, 59);
-            btnHelp.TabIndex = 16;
-            btnHelp.Text = "Help";
-            btnHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnHelp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            btnHelp.UseVisualStyleBackColor = true;
-            btnHelp.Click += new System.EventHandler(this.btnHelp_Click_1);
             // 
             // panel5
             // 
@@ -282,22 +142,12 @@
             this.pnlChildForm.Size = new System.Drawing.Size(1015, 996);
             this.pnlChildForm.TabIndex = 11;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox2.Image = global::UI.Properties.Resources.LogoNuevo;
-            this.pictureBox2.Location = new System.Drawing.Point(407, 385);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(200, 200);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox2.TabIndex = 10;
-            this.pictureBox2.TabStop = false;
-            // 
             // pnlMenuLateral
             // 
             this.pnlMenuLateral.AutoScroll = true;
             this.pnlMenuLateral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(102)))), ((int)(((byte)(113)))));
+            this.pnlMenuLateral.Controls.Add(this.pnlReporteriaSubMenu);
+            this.pnlMenuLateral.Controls.Add(btnReporteria);
             this.pnlMenuLateral.Controls.Add(this.pnlAdminSubMenu);
             this.pnlMenuLateral.Controls.Add(this.btnAdministrar);
             this.pnlMenuLateral.Controls.Add(this.pnlHelpSubMenu);
@@ -337,6 +187,146 @@
             this.pnlAdminSubMenu.Size = new System.Drawing.Size(184, 266);
             this.pnlAdminSubMenu.TabIndex = 19;
             this.pnlAdminSubMenu.Visible = false;
+            // 
+            // pnlHelpSubMenu
+            // 
+            this.pnlHelpSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(50)))), ((int)(((byte)(30)))));
+            this.pnlHelpSubMenu.Controls.Add(this.btnNotasVersion);
+            this.pnlHelpSubMenu.Controls.Add(this.btnAbout);
+            this.pnlHelpSubMenu.Controls.Add(this.btnManualUsuario);
+            this.pnlHelpSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlHelpSubMenu.Location = new System.Drawing.Point(0, 870);
+            this.pnlHelpSubMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pnlHelpSubMenu.Name = "pnlHelpSubMenu";
+            this.pnlHelpSubMenu.Size = new System.Drawing.Size(184, 128);
+            this.pnlHelpSubMenu.TabIndex = 17;
+            this.pnlHelpSubMenu.Visible = false;
+            // 
+            // pnlServiciosSubMenu
+            // 
+            this.pnlServiciosSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(50)))), ((int)(((byte)(30)))));
+            this.pnlServiciosSubMenu.Controls.Add(this.btnGestionarServicios);
+            this.pnlServiciosSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlServiciosSubMenu.Location = new System.Drawing.Point(0, 762);
+            this.pnlServiciosSubMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pnlServiciosSubMenu.Name = "pnlServiciosSubMenu";
+            this.pnlServiciosSubMenu.Size = new System.Drawing.Size(184, 49);
+            this.pnlServiciosSubMenu.TabIndex = 15;
+            this.pnlServiciosSubMenu.Visible = false;
+            // 
+            // pnlMenuClienteSubMenu
+            // 
+            this.pnlMenuClienteSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(50)))), ((int)(((byte)(30)))));
+            this.pnlMenuClienteSubMenu.Controls.Add(this.btnCuentaCliente);
+            this.pnlMenuClienteSubMenu.Controls.Add(this.btnFidelizacionCliente);
+            this.pnlMenuClienteSubMenu.Controls.Add(this.btnTurnosCliente);
+            this.pnlMenuClienteSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlMenuClienteSubMenu.Location = new System.Drawing.Point(0, 568);
+            this.pnlMenuClienteSubMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pnlMenuClienteSubMenu.Name = "pnlMenuClienteSubMenu";
+            this.pnlMenuClienteSubMenu.Size = new System.Drawing.Size(184, 135);
+            this.pnlMenuClienteSubMenu.TabIndex = 9;
+            this.pnlMenuClienteSubMenu.Visible = false;
+            // 
+            // pnlPromocionesSubMenu
+            // 
+            this.pnlPromocionesSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(50)))), ((int)(((byte)(30)))));
+            this.pnlPromocionesSubMenu.Controls.Add(this.btnGestionarPromociones);
+            this.pnlPromocionesSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlPromocionesSubMenu.Location = new System.Drawing.Point(0, 460);
+            this.pnlPromocionesSubMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pnlPromocionesSubMenu.Name = "pnlPromocionesSubMenu";
+            this.pnlPromocionesSubMenu.Size = new System.Drawing.Size(184, 49);
+            this.pnlPromocionesSubMenu.TabIndex = 7;
+            this.pnlPromocionesSubMenu.Visible = false;
+            // 
+            // pnlStockSubMenu
+            // 
+            this.pnlStockSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(50)))), ((int)(((byte)(30)))));
+            this.pnlStockSubMenu.Controls.Add(this.btnProveedores);
+            this.pnlStockSubMenu.Controls.Add(this.btnGestionStock);
+            this.pnlStockSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlStockSubMenu.Location = new System.Drawing.Point(0, 310);
+            this.pnlStockSubMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pnlStockSubMenu.Name = "pnlStockSubMenu";
+            this.pnlStockSubMenu.Size = new System.Drawing.Size(184, 91);
+            this.pnlStockSubMenu.TabIndex = 4;
+            this.pnlStockSubMenu.Visible = false;
+            // 
+            // pnlSubMenuCalendario
+            // 
+            this.pnlSubMenuCalendario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(50)))), ((int)(((byte)(30)))));
+            this.pnlSubMenuCalendario.Controls.Add(this.btnAgendaTurnos);
+            this.pnlSubMenuCalendario.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlSubMenuCalendario.Location = new System.Drawing.Point(0, 201);
+            this.pnlSubMenuCalendario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pnlSubMenuCalendario.Name = "pnlSubMenuCalendario";
+            this.pnlSubMenuCalendario.Size = new System.Drawing.Size(184, 50);
+            this.pnlSubMenuCalendario.TabIndex = 2;
+            this.pnlSubMenuCalendario.Visible = false;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.pictureBox3);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(184, 142);
+            this.panel1.TabIndex = 0;
+            // 
+            // pnlReporteriaSubMenu
+            // 
+            this.pnlReporteriaSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(50)))), ((int)(((byte)(30)))));
+            this.pnlReporteriaSubMenu.Controls.Add(this.btnReportes);
+            this.pnlReporteriaSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlReporteriaSubMenu.Location = new System.Drawing.Point(0, 1382);
+            this.pnlReporteriaSubMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pnlReporteriaSubMenu.Name = "pnlReporteriaSubMenu";
+            this.pnlReporteriaSubMenu.Size = new System.Drawing.Size(184, 49);
+            this.pnlReporteriaSubMenu.TabIndex = 21;
+            this.pnlReporteriaSubMenu.Visible = false;
+            // 
+            // btnReportes
+            // 
+            this.btnReportes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReportes.FlatAppearance.BorderSize = 0;
+            this.btnReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReportes.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnReportes.Image = global::UI.Properties.Resources.finance_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
+            this.btnReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReportes.Location = new System.Drawing.Point(0, 0);
+            this.btnReportes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnReportes.Name = "btnReportes";
+            this.btnReportes.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnReportes.Size = new System.Drawing.Size(184, 43);
+            this.btnReportes.TabIndex = 0;
+            this.btnReportes.Text = "Reportes";
+            this.btnReportes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReportes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnReportes.UseVisualStyleBackColor = true;
+            this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
+            // 
+            // btnReporteria
+            // 
+            btnReporteria.Dock = System.Windows.Forms.DockStyle.Top;
+            btnReporteria.FlatAppearance.BorderSize = 0;
+            btnReporteria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnReporteria.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            btnReporteria.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            btnReporteria.Image = global::UI.Properties.Resources.finance_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
+            btnReporteria.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnReporteria.Location = new System.Drawing.Point(0, 1323);
+            btnReporteria.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            btnReporteria.Name = "btnReporteria";
+            btnReporteria.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            btnReporteria.Size = new System.Drawing.Size(184, 59);
+            btnReporteria.TabIndex = 20;
+            btnReporteria.Text = "Reporteria";
+            btnReporteria.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnReporteria.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            btnReporteria.UseVisualStyleBackColor = true;
+            btnReporteria.Click += new System.EventHandler(this.btnReporteria_Click);
             // 
             // btnControlCambios
             // 
@@ -479,20 +469,6 @@
             this.btnAdministrar.Visible = false;
             this.btnAdministrar.Click += new System.EventHandler(this.btnAdministar_Click);
             // 
-            // pnlHelpSubMenu
-            // 
-            this.pnlHelpSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(50)))), ((int)(((byte)(30)))));
-            this.pnlHelpSubMenu.Controls.Add(this.btnNotasVersion);
-            this.pnlHelpSubMenu.Controls.Add(this.btnAbout);
-            this.pnlHelpSubMenu.Controls.Add(this.btnManualUsuario);
-            this.pnlHelpSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHelpSubMenu.Location = new System.Drawing.Point(0, 870);
-            this.pnlHelpSubMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pnlHelpSubMenu.Name = "pnlHelpSubMenu";
-            this.pnlHelpSubMenu.Size = new System.Drawing.Size(184, 128);
-            this.pnlHelpSubMenu.TabIndex = 17;
-            this.pnlHelpSubMenu.Visible = false;
-            // 
             // btnNotasVersion
             // 
             this.btnNotasVersion.Dock = System.Windows.Forms.DockStyle.Top;
@@ -553,17 +529,25 @@
             this.btnManualUsuario.UseVisualStyleBackColor = true;
             this.btnManualUsuario.Click += new System.EventHandler(this.btnManualUsuario_Click);
             // 
-            // pnlServiciosSubMenu
+            // btnHelp
             // 
-            this.pnlServiciosSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(50)))), ((int)(((byte)(30)))));
-            this.pnlServiciosSubMenu.Controls.Add(this.btnGestionarServicios);
-            this.pnlServiciosSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlServiciosSubMenu.Location = new System.Drawing.Point(0, 762);
-            this.pnlServiciosSubMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pnlServiciosSubMenu.Name = "pnlServiciosSubMenu";
-            this.pnlServiciosSubMenu.Size = new System.Drawing.Size(184, 49);
-            this.pnlServiciosSubMenu.TabIndex = 15;
-            this.pnlServiciosSubMenu.Visible = false;
+            btnHelp.Dock = System.Windows.Forms.DockStyle.Top;
+            btnHelp.FlatAppearance.BorderSize = 0;
+            btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnHelp.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            btnHelp.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            btnHelp.Image = global::UI.Properties.Resources.help_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
+            btnHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnHelp.Location = new System.Drawing.Point(0, 811);
+            btnHelp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            btnHelp.Name = "btnHelp";
+            btnHelp.Size = new System.Drawing.Size(184, 59);
+            btnHelp.TabIndex = 16;
+            btnHelp.Text = "Help";
+            btnHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnHelp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            btnHelp.UseVisualStyleBackColor = true;
+            btnHelp.Click += new System.EventHandler(this.btnHelp_Click_1);
             // 
             // btnGestionarServicios
             // 
@@ -585,19 +569,26 @@
             this.btnGestionarServicios.UseVisualStyleBackColor = true;
             this.btnGestionarServicios.Click += new System.EventHandler(this.btnGestionarServicios_Click);
             // 
-            // pnlMenuClienteSubMenu
+            // btnServicios
             // 
-            this.pnlMenuClienteSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(50)))), ((int)(((byte)(30)))));
-            this.pnlMenuClienteSubMenu.Controls.Add(this.btnCuentaCliente);
-            this.pnlMenuClienteSubMenu.Controls.Add(this.btnFidelizacionCliente);
-            this.pnlMenuClienteSubMenu.Controls.Add(this.btnTurnosCliente);
-            this.pnlMenuClienteSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlMenuClienteSubMenu.Location = new System.Drawing.Point(0, 568);
-            this.pnlMenuClienteSubMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pnlMenuClienteSubMenu.Name = "pnlMenuClienteSubMenu";
-            this.pnlMenuClienteSubMenu.Size = new System.Drawing.Size(184, 135);
-            this.pnlMenuClienteSubMenu.TabIndex = 9;
-            this.pnlMenuClienteSubMenu.Visible = false;
+            btnServicios.Dock = System.Windows.Forms.DockStyle.Top;
+            btnServicios.FlatAppearance.BorderSize = 0;
+            btnServicios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnServicios.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            btnServicios.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            btnServicios.Image = global::UI.Properties.Resources.self_care_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
+            btnServicios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnServicios.Location = new System.Drawing.Point(0, 703);
+            btnServicios.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            btnServicios.Name = "btnServicios";
+            btnServicios.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            btnServicios.Size = new System.Drawing.Size(184, 59);
+            btnServicios.TabIndex = 14;
+            btnServicios.Text = "Servicios";
+            btnServicios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnServicios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            btnServicios.UseVisualStyleBackColor = true;
+            btnServicios.Click += new System.EventHandler(this.btnServicios_Click);
             // 
             // btnCuentaCliente
             // 
@@ -657,17 +648,26 @@
             this.btnTurnosCliente.UseVisualStyleBackColor = true;
             this.btnTurnosCliente.Click += new System.EventHandler(this.btnTurnosCliente_Click);
             // 
-            // pnlPromocionesSubMenu
+            // btnMenuCliente
             // 
-            this.pnlPromocionesSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(50)))), ((int)(((byte)(30)))));
-            this.pnlPromocionesSubMenu.Controls.Add(this.btnGestionarPromociones);
-            this.pnlPromocionesSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlPromocionesSubMenu.Location = new System.Drawing.Point(0, 460);
-            this.pnlPromocionesSubMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pnlPromocionesSubMenu.Name = "pnlPromocionesSubMenu";
-            this.pnlPromocionesSubMenu.Size = new System.Drawing.Size(184, 49);
-            this.pnlPromocionesSubMenu.TabIndex = 7;
-            this.pnlPromocionesSubMenu.Visible = false;
+            btnMenuCliente.Dock = System.Windows.Forms.DockStyle.Top;
+            btnMenuCliente.FlatAppearance.BorderSize = 0;
+            btnMenuCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnMenuCliente.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            btnMenuCliente.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            btnMenuCliente.Image = ((System.Drawing.Image)(resources.GetObject("btnMenuCliente.Image")));
+            btnMenuCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnMenuCliente.Location = new System.Drawing.Point(0, 509);
+            btnMenuCliente.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            btnMenuCliente.Name = "btnMenuCliente";
+            btnMenuCliente.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            btnMenuCliente.Size = new System.Drawing.Size(184, 59);
+            btnMenuCliente.TabIndex = 8;
+            btnMenuCliente.Text = "Menu";
+            btnMenuCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnMenuCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            btnMenuCliente.UseVisualStyleBackColor = true;
+            btnMenuCliente.Click += new System.EventHandler(this.btnMenuCliente_Click);
             // 
             // btnGestionarPromociones
             // 
@@ -689,18 +689,47 @@
             this.btnGestionarPromociones.UseVisualStyleBackColor = true;
             this.btnGestionarPromociones.Click += new System.EventHandler(this.btnGestionarPromociones_Click);
             // 
-            // pnlStockSubMenu
+            // btnPromociones
             // 
-            this.pnlStockSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(50)))), ((int)(((byte)(30)))));
-            this.pnlStockSubMenu.Controls.Add(this.btnProveedores);
-            this.pnlStockSubMenu.Controls.Add(this.btnGestionStock);
-            this.pnlStockSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlStockSubMenu.Location = new System.Drawing.Point(0, 310);
-            this.pnlStockSubMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pnlStockSubMenu.Name = "pnlStockSubMenu";
-            this.pnlStockSubMenu.Size = new System.Drawing.Size(184, 91);
-            this.pnlStockSubMenu.TabIndex = 4;
-            this.pnlStockSubMenu.Visible = false;
+            btnPromociones.Dock = System.Windows.Forms.DockStyle.Top;
+            btnPromociones.FlatAppearance.BorderSize = 0;
+            btnPromociones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnPromociones.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            btnPromociones.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            btnPromociones.Image = global::UI.Properties.Resources.percent_discount_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
+            btnPromociones.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnPromociones.Location = new System.Drawing.Point(0, 401);
+            btnPromociones.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            btnPromociones.Name = "btnPromociones";
+            btnPromociones.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            btnPromociones.Size = new System.Drawing.Size(184, 59);
+            btnPromociones.TabIndex = 6;
+            btnPromociones.Text = "Promociones";
+            btnPromociones.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnPromociones.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            btnPromociones.UseVisualStyleBackColor = true;
+            btnPromociones.Click += new System.EventHandler(this.btnPromociones_Click);
+            // 
+            // btnSalir
+            // 
+            btnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(50)))), ((int)(((byte)(30)))));
+            btnSalir.Dock = System.Windows.Forms.DockStyle.Bottom;
+            btnSalir.FlatAppearance.BorderSize = 0;
+            btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnSalir.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            btnSalir.Image = global::UI.Properties.Resources.login_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
+            btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnSalir.Location = new System.Drawing.Point(0, 1431);
+            btnSalir.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            btnSalir.Size = new System.Drawing.Size(184, 45);
+            btnSalir.TabIndex = 5;
+            btnSalir.Text = "Salir";
+            btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            btnSalir.UseVisualStyleBackColor = false;
+            btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // btnProveedores
             // 
@@ -742,17 +771,26 @@
             this.btnGestionStock.UseVisualStyleBackColor = true;
             this.btnGestionStock.Click += new System.EventHandler(this.btnGestionStock_Click);
             // 
-            // pnlSubMenuCalendario
+            // btnStock
             // 
-            this.pnlSubMenuCalendario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(50)))), ((int)(((byte)(30)))));
-            this.pnlSubMenuCalendario.Controls.Add(this.btnAgendaTurnos);
-            this.pnlSubMenuCalendario.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlSubMenuCalendario.Location = new System.Drawing.Point(0, 201);
-            this.pnlSubMenuCalendario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pnlSubMenuCalendario.Name = "pnlSubMenuCalendario";
-            this.pnlSubMenuCalendario.Size = new System.Drawing.Size(184, 50);
-            this.pnlSubMenuCalendario.TabIndex = 2;
-            this.pnlSubMenuCalendario.Visible = false;
+            btnStock.Dock = System.Windows.Forms.DockStyle.Top;
+            btnStock.FlatAppearance.BorderSize = 0;
+            btnStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnStock.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            btnStock.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            btnStock.Image = ((System.Drawing.Image)(resources.GetObject("btnStock.Image")));
+            btnStock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnStock.Location = new System.Drawing.Point(0, 251);
+            btnStock.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            btnStock.Name = "btnStock";
+            btnStock.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            btnStock.Size = new System.Drawing.Size(184, 59);
+            btnStock.TabIndex = 3;
+            btnStock.Text = "Stock";
+            btnStock.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnStock.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            btnStock.UseVisualStyleBackColor = true;
+            btnStock.Click += new System.EventHandler(this.btnStock_Click_1);
             // 
             // btnAgendaTurnos
             // 
@@ -774,15 +812,25 @@
             this.btnAgendaTurnos.UseVisualStyleBackColor = true;
             this.btnAgendaTurnos.Click += new System.EventHandler(this.btnAgendaTurnos_Click);
             // 
-            // panel1
+            // btnCalendario
             // 
-            this.panel1.Controls.Add(this.pictureBox3);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(184, 142);
-            this.panel1.TabIndex = 0;
+            btnCalendario.Dock = System.Windows.Forms.DockStyle.Top;
+            btnCalendario.FlatAppearance.BorderSize = 0;
+            btnCalendario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnCalendario.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            btnCalendario.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            btnCalendario.Image = global::UI.Properties.Resources.calendar_month_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
+            btnCalendario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnCalendario.Location = new System.Drawing.Point(0, 142);
+            btnCalendario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            btnCalendario.Name = "btnCalendario";
+            btnCalendario.Size = new System.Drawing.Size(184, 59);
+            btnCalendario.TabIndex = 1;
+            btnCalendario.Text = "Calendario";
+            btnCalendario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnCalendario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            btnCalendario.UseVisualStyleBackColor = true;
+            btnCalendario.Click += new System.EventHandler(this.btnCalendario_Click);
             // 
             // pictureBox3
             // 
@@ -795,6 +843,18 @@
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 10;
             this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox2.Image = global::UI.Properties.Resources.LogoNuevo;
+            this.pictureBox2.Location = new System.Drawing.Point(407, 385);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(200, 200);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox2.TabIndex = 10;
+            this.pictureBox2.TabStop = false;
             // 
             // frmSesionNew
             // 
@@ -818,7 +878,6 @@
             this.panel5.PerformLayout();
             this.pnlChildForm.ResumeLayout(false);
             this.pnlChildForm.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.pnlMenuLateral.ResumeLayout(false);
             this.pnlAdminSubMenu.ResumeLayout(false);
             this.pnlHelpSubMenu.ResumeLayout(false);
@@ -828,7 +887,9 @@
             this.pnlStockSubMenu.ResumeLayout(false);
             this.pnlSubMenuCalendario.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.pnlReporteriaSubMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -867,6 +928,8 @@
         private System.Windows.Forms.Button btnAgendaTurnos;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Panel pnlReporteriaSubMenu;
+        private System.Windows.Forms.Button btnReportes;
     }
 }
 

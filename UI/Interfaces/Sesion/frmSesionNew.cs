@@ -11,10 +11,11 @@ using UI.Interfaces.Sesion.Servicios;
 using UI.Interfaces.Sesion.Promociones;
 using UI.Interfaces.Sesion.Calendario;
 using UI.Interfaces.Sesion.Menu;
+using System.Linq;
 
 namespace UI.Interfaces.Sesion
 {
-    public partial class frmSesionNew: BaseForm
+    public partial class frmSesionNew : BaseForm
     {
         private Form ActiveForm = null;
         public frmGestionUsuarios oGestionUsuarios;
@@ -232,11 +233,38 @@ namespace UI.Interfaces.Sesion
 
         public void ValidarForm()
         {
-            if (_oSingletonSesion.IsLoggedIn())
+            try
             {
-                this.lblUsuarioNombre.Text = _oSingletonSesion.Usuario.Usuario;
-                if (_oSingletonSesion.Usuario.isAdmin)
-                { btnAdministrar.Visible = true;}
+                if (_oSingletonSesion.IsLoggedIn())
+                {
+                    this.lblUsuarioNombre.Text = _oSingletonSesion.Usuario.Usuario;
+                    if (_oSingletonSesion.Usuario.isAdmin)
+                    { btnAdministrar.Visible = true; }
+
+                    if (!_oSingletonSesion.Usuario.isAdmin && !_oSingletonSesion.Usuario.EsProfesional)
+                    {
+                        foreach (Object oObject in pnlMenuLateral.Controls)
+                        {
+                            if (oObject is Button oBtn)
+                            {
+                                if (oBtn.Name.Contains("btnMenuCliente") || oBtn.Name.Contains("btnHelp") || oBtn.Name.Contains("btnSalir"))
+                                {
+                                    oBtn.Visible = true;
+                                }
+                                else
+                                {
+                                    oBtn.Visible = false;
+                                }
+                            }
+                            continue;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _oSingletonSesion.Logout();
+                MostrarMensajeError(ex);
             }
         }
 
@@ -246,7 +274,7 @@ namespace UI.Interfaces.Sesion
             {
                 if (ctl is MdiClient mdiClient)
                 {
-                    mdiClient.BackColor = Color.FromArgb(73,73,73);
+                    mdiClient.BackColor = Color.FromArgb(73, 73, 73);
 
                     break;
                 }
@@ -280,7 +308,7 @@ namespace UI.Interfaces.Sesion
             }
         }
 
-        
+
 
         private void btnCalendario_Click(object sender, EventArgs e)
         {
@@ -289,7 +317,7 @@ namespace UI.Interfaces.Sesion
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -313,7 +341,7 @@ namespace UI.Interfaces.Sesion
 
         private void panel16_Paint(object sender, PaintEventArgs e)
         {
-                 }
+        }
 
         private void panel37_Paint(object sender, PaintEventArgs e)
         {
@@ -330,8 +358,8 @@ namespace UI.Interfaces.Sesion
             ShowSubMenu(pnlHelpSubMenu);
         }
 
-        
-        
+
+
 
         private void btnGestionStock_Click(object sender, EventArgs e)
         {
@@ -486,6 +514,17 @@ namespace UI.Interfaces.Sesion
         {
             OpenChildForm(new frmMisTurnos(_oSingletonSesion.Usuario.Id));
             hideSubMenu(pnlMenuClienteSubMenu);
+        }
+
+        private void btnReporteria_Click(object sender, EventArgs e)
+        {
+            ShowSubMenu(pnlReporteriaSubMenu);
+        }
+
+        private void btnReportes_Click(object sender, EventArgs e)
+        {
+            //OpenChildForm();
+            hideSubMenu(pnlReporteriaSubMenu);
         }
     }
 }
