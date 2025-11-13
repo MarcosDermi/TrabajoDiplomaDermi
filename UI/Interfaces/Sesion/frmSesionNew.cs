@@ -11,7 +11,7 @@ using UI.Interfaces.Sesion.Servicios;
 using UI.Interfaces.Sesion.Promociones;
 using UI.Interfaces.Sesion.Calendario;
 using UI.Interfaces.Sesion.Menu;
-using System.Linq;
+using UI.Interfaces.Sesion.Reporteria;
 
 namespace UI.Interfaces.Sesion
 {
@@ -523,7 +523,7 @@ namespace UI.Interfaces.Sesion
 
         private void btnReportes_Click(object sender, EventArgs e)
         {
-            //OpenChildForm();
+            OpenChildForm(new frmReporteria());
             hideSubMenu(pnlReporteriaSubMenu);
         }
 

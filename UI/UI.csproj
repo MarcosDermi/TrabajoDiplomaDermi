@@ -140,6 +140,12 @@
     <Compile Include="Interfaces\Sesion\Promociones\frmGestionarPromociones.Designer.cs">
       <DependentUpon>frmGestionarPromociones.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\Sesion\Reporteria\frmReporteria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sesion\Reporteria\frmReporteria.Designer.cs">
+      <DependentUpon>frmReporteria.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\Sesion\Servicios\frmGestionarServicios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -284,6 +290,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\Sesion\Promociones\frmGestionarPromociones.resx">
       <DependentUpon>frmGestionarPromociones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sesion\Reporteria\frmReporteria.resx">
+      <DependentUpon>frmReporteria.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\Sesion\Servicios\frmGestionarServicios.resx">
       <DependentUpon>frmGestionarServicios.cs</DependentUpon>

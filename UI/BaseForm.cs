@@ -17,6 +17,7 @@ namespace UI
         private IGestionServicioService _servicioService;
         private IGestionPromocionesService _promocionesService;
         private ISingletonSesionService _singletonsesionService;
+        private IReporteriaService _reporteriaService;
 
 
         public BaseForm()
@@ -154,6 +155,22 @@ namespace UI
             set
             {
                 _singletonsesionService = value;
+            }
+        }
+
+        public IReporteriaService ReporteriaService
+        {
+            get
+            {
+                if (_reporteriaService == null && !DesignMode)
+                {
+                    _reporteriaService = new ReporteriaService();
+                }
+                return _reporteriaService;
+            }
+            set
+            {
+                _reporteriaService = value;
             }
         }
 

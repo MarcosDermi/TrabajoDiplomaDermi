@@ -45,6 +45,7 @@
     <Compile Include="Contracts\IDigitoVerificadorService.cs" />
     <Compile Include="Contracts\IGestionPromocionesService.cs" />
     <Compile Include="Contracts\IGestionServicioService.cs" />
+    <Compile Include="Contracts\IReporteriaService.cs" />
     <Compile Include="Contracts\ILogErrorsService.cs" />
     <Compile Include="Contracts\IValidatorsService.cs" />
     <Compile Include="Contracts\IGeneralService.cs" />

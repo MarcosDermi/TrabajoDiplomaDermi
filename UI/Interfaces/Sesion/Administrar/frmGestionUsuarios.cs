@@ -1,16 +1,9 @@
-﻿using ABSTRACCION;
-using ABSTRACCION.Contracts;
+﻿using ABSTRACCION.Contracts;
 using BE;
 using BLL;
 using SERVICES;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UI.Interfaces.Sesion.Administrar

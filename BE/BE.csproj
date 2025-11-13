@@ -52,6 +52,7 @@
     <Compile Include="BEFranja.cs" />
     <Compile Include="BEProfesionalServicio.cs" />
     <Compile Include="BEFidelizacionCliente.cs" />
+    <Compile Include="BEReporte.cs" />
     <Compile Include="BETurnoTomado.cs" />
     <Compile Include="BEServicio.cs" />
     <Compile Include="BEProfesional.cs" />
