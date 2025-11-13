@@ -909,7 +909,6 @@
         private System.Windows.Forms.Button btnIdiomas;
         private System.Windows.Forms.Button btnPermisos;
         private System.Windows.Forms.Button btnUusarios;
-        private System.Windows.Forms.Button btnAdministrar;
         private System.Windows.Forms.Panel pnlHelpSubMenu;
         private System.Windows.Forms.Button btnNotasVersion;
         private System.Windows.Forms.Button btnAbout;
@@ -931,6 +930,7 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Panel pnlReporteriaSubMenu;
         private System.Windows.Forms.Button btnReportes;
+        public System.Windows.Forms.Button btnAdministrar;
     }
 }
 

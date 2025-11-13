@@ -92,23 +92,32 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
 
         private void btnEliminarInsumo_Click(object sender, EventArgs e)
         {
-            var drv = (DataRowView)dgvResultadoBusqueda.CurrentRow.DataBoundItem;
-            int insumoId = (int)drv["InsumoID"];
-            string nombre = (string)drv["Nombre"];
+            var resultado = MessageBox.Show("¿Está seguro que desea eliminar el insumo seleccionado?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-            if (dgvResultadoBusqueda.SelectedRows.Count == 1)
+            if (resultado != DialogResult.Yes)
             {
-                GestionStockService.EliminarInsumo(insumoId);
-                MessageBox.Show(string.Format("El insumo {0} con ID: {1} se elimino correctamente.", nombre, insumoId), "Exito", MessageBoxButtons.OK);
-                btnModificarInsumo.Enabled = false;
-                btnEliminarInsumo.Enabled = false;
-
-                dgvResultadoBusqueda.DataSource = GestionStockService.BuscarInsumosPorFiltrosVarios(string.Empty, string.Empty, 0, 0, 0);
-                lblCantRegistros.Text = dgvResultadoBusqueda.Rows.Count.ToString();
+                return;
             }
             else
             {
-                MessageBox.Show("Seleccione un insumo para eliminar.");
+                var drv = (DataRowView)dgvResultadoBusqueda.CurrentRow.DataBoundItem;
+                int insumoId = (int)drv["InsumoID"];
+                string nombre = (string)drv["Nombre"];
+
+                if (dgvResultadoBusqueda.SelectedRows.Count == 1)
+                {
+                    GestionStockService.EliminarInsumo(insumoId);
+                    MessageBox.Show(string.Format("El insumo {0} con ID: {1} se elimino correctamente.", nombre, insumoId), "Exito", MessageBoxButtons.OK);
+                    btnModificarInsumo.Enabled = false;
+                    btnEliminarInsumo.Enabled = false;
+
+                    dgvResultadoBusqueda.DataSource = GestionStockService.BuscarInsumosPorFiltrosVarios(string.Empty, string.Empty, 0, 0, 0);
+                    lblCantRegistros.Text = dgvResultadoBusqueda.Rows.Count.ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione un insumo para eliminar.");
+                }
             }
         }
 

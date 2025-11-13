@@ -169,6 +169,7 @@ namespace DAL
                     oUsuario.isAdmin = Convert.ToBoolean(row["isAdmin"]);
                     oUsuario.Clave = row["Clave"].ToString();
                     oUsuario.DV = row["DV"]?.ToString() ?? "";
+                    oUsuario.EsProfesional = Convert.ToBoolean(row["EsProfesional"]);
                 }
             }
             else

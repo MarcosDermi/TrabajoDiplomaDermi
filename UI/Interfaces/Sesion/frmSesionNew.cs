@@ -1,17 +1,18 @@
-﻿using BLL;
+﻿using ABSTRACCION.Contracts;
+using BE;
+using BLL;
 using SERVICES;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using ABSTRACCION.Contracts;
 using UI.Interfaces.InicioSesion;
 using UI.Interfaces.Sesion.Administrar;
-using UI.Interfaces.Sesion.Stock.GestionarStock;
-using UI.Interfaces.Sesion.Servicios;
-using UI.Interfaces.Sesion.Promociones;
 using UI.Interfaces.Sesion.Calendario;
 using UI.Interfaces.Sesion.Menu;
+using UI.Interfaces.Sesion.Promociones;
 using UI.Interfaces.Sesion.Reporteria;
+using UI.Interfaces.Sesion.Servicios;
+using UI.Interfaces.Sesion.Stock.GestionarStock;
 
 namespace UI.Interfaces.Sesion
 {
@@ -287,24 +288,44 @@ namespace UI.Interfaces.Sesion
         {
             if (_oSingletonSesion.IsLoggedIn())
             {
-                //this.ToolStripMenuItem.Visible = _oSingletonSesion.IsInRole(TipoPermiso.Leer);
-                //this.crearToolStripMenuItem.Visible = _oSingletonSesion.IsInRole(TipoPermiso.Crear);
-                //this.editarToolStripMenuItem.Visible = _oSingletonSesion.IsInRole(TipoPermiso.Editar);
-                //this.eliminarToolStripMenuItem.Visible = _oSingletonSesion.IsInRole(TipoPermiso.Eliminar);
-                //this.verToolStripMenuItem.Visible = _oSingletonSesion.IsInRole(TipoPermiso.Leer);
-                //this.administrarToolStripMenuItem.Visible = _oSingletonSesion.IsInRole(TipoPermiso.ConfigurarSistema);
-                //this.controlDeCambiosToolStripMenuItem.Visible = _oSingletonSesion.IsInRole(TipoPermiso.ConfigurarSistema);
-                //this.gestionDeProovedoresToolStripMenuItem.Visible = _oSingletonSesion.IsInRole(TipoPermiso.Crear);
-                //this.gestionDeStocksToolStripMenuItem.Visible = _oSingletonSesion.IsInRole(TipoPermiso.Crear);
+                if (_oSingletonSesion.Usuario.isAdmin)
+                {
+                    btnAdministrar.Visible = _oSingletonSesion.IsInRole(TipoPermiso.ConfigurarSistema);
+                }
+
+                if (_oSingletonSesion.Usuario.EsProfesional)
+                {
+                    foreach (Object oObject in pnlMenuLateral.Controls)
+                    {
+                        if (oObject is Button oBtn)
+                        {
+                            if (oBtn.Name.Contains("btnCalendario") ||
+                                oBtn.Name.Contains("btnStock") ||
+                                oBtn.Name.Contains("btnPromociones") ||
+                                oBtn.Name.Contains("btnServicios") ||
+                                oBtn.Name.Contains("btnReporteria"))
+                            {
+                                if (_oSingletonSesion.IsInRole(TipoPermiso.Crear)) oBtn.Visible = true;
+                            }
+                            else
+                            {
+                                oBtn.Visible = false;
+                            }
+
+                            if(oBtn.Name.Contains("btnSalir") || oBtn.Name.Contains("btnHelp"))
+                            {
+                                oBtn.Visible = true;
+                            }
+                        }
+                        continue;
+                    }
+                }
             }
             else
             {
-                //this.ToolStripMenuItem.Enabled = false;
-                //this.crearToolStripMenuItem.Enabled = false;
-                //this.editarToolStripMenuItem.Enabled = false;
-                //this.eliminarToolStripMenuItem.Enabled = false;
-                //this.verToolStripMenuItem.Enabled = false;
-
+                this.pnlMenuLateral.Enabled = false;
+                this.panel5.Enabled = false;
+                this.pnlChildForm.Enabled = false;
             }
         }
 
