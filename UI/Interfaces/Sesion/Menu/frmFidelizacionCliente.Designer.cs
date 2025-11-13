@@ -184,6 +184,7 @@
             // 
             // frmFidelizacionCliente
             // 
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(630, 520);
             this.Controls.Add(this.dgvHistorial);
             this.Controls.Add(this.lblHistorial);

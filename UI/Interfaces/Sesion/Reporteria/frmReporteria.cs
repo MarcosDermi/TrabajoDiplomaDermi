@@ -1,6 +1,8 @@
 ﻿using BE;
 using System;
+using System.Data;
 using System.Linq;
+using System.Windows.Forms;
 using static BE.BEReporte;
 
 namespace UI.Interfaces.Sesion.Reporteria
@@ -44,6 +46,39 @@ namespace UI.Interfaces.Sesion.Reporteria
             catch (Exception ex)
             {
                 MostrarMensajeError(ex);
+            }
+        }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            if (dgvResultados.DataSource == null)
+            {
+                MessageBox.Show("No hay datos para exportar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Excel (*.xlsx)|*.xlsx";
+            saveFileDialog.FileName = "Reporte_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".xlsx";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    using (var wb = new ClosedXML.Excel.XLWorkbook())
+                    {
+                        var dt = (DataTable)dgvResultados.DataSource;
+                        wb.Worksheets.Add(dt, "Reporte");
+
+                        wb.SaveAs(saveFileDialog.FileName);
+                    }
+
+                    MessageBox.Show("Reporte exportado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al exportar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }
