@@ -96,6 +96,7 @@
   <ItemGroup>
     <None Include=".bak\12-10-2025\TrabajoDiplomaLocal.bak" />
     <None Include=".bak\13-11-2025\TrabajoDiplomaLocal.bak" />
+    <None Include=".bak\14-11-2025\TrabajoDiplomaLocal.bak" />
     <None Include=".bak\30-10-2025\TrabajoDiplomaLocal.bak" />
     <None Include=".bak\DB_IngSoft.bak" />
     <None Include="App.config" />
