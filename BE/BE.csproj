@@ -46,7 +46,6 @@
     <Compile Include="BEPromocion.cs" />
     <Compile Include="BECategoria.cs" />
     <Compile Include="BEJornadaLaboral.cs" />
-    <Compile Include="BEHorario.cs" />
     <Compile Include="BEInsumo.cs" />
     <Compile Include="BEMedioDePago.cs" />
     <Compile Include="BEFranja.cs" />
