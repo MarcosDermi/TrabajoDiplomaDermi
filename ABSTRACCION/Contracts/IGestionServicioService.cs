@@ -10,5 +10,7 @@ namespace ABSTRACCION.Contracts
         DataTable ObtenerServiciosPorProfesional(int ProfesionalID);
         DataTable ObtenerObtenerInsumosPorServicio(int ServicioID);
         void GuardarInsumosServicio(BEServicio oBEServicio, List<InsumoSeleccionado> oLstInsumos, List<BEProfesional> oLstProfesionales);
+        BEServicio ObtenerServicio(int ServicioID);
+        DataTable ObtenerProfesionalServicioPorServicioID(int ServicioID);
     }
 }

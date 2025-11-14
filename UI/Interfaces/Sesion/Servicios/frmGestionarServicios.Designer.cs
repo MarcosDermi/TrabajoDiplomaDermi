@@ -45,9 +45,9 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cmbProfesional = new System.Windows.Forms.ComboBox();
-            this.btnEliminarInsumo = new System.Windows.Forms.Button();
-            this.btnModificarInsumo = new System.Windows.Forms.Button();
-            this.btnCrearInsumo = new System.Windows.Forms.Button();
+            this.btnEliminarServicio = new System.Windows.Forms.Button();
+            this.btnModificarServicio = new System.Windows.Forms.Button();
+            this.btnCrearServicio = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInsumosServicios)).BeginInit();
@@ -75,9 +75,9 @@
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.groupBox5);
             this.groupBox1.Controls.Add(this.groupBox4);
-            this.groupBox1.Controls.Add(this.btnEliminarInsumo);
-            this.groupBox1.Controls.Add(this.btnModificarInsumo);
-            this.groupBox1.Controls.Add(this.btnCrearInsumo);
+            this.groupBox1.Controls.Add(this.btnEliminarServicio);
+            this.groupBox1.Controls.Add(this.btnModificarServicio);
+            this.groupBox1.Controls.Add(this.btnCrearServicio);
             this.groupBox1.Location = new System.Drawing.Point(10, 48);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1064, 557);
@@ -244,40 +244,41 @@
             this.cmbProfesional.TabIndex = 12;
             this.cmbProfesional.SelectedIndexChanged += new System.EventHandler(this.cmbProfesional_SelectedIndexChanged);
             // 
-            // btnEliminarInsumo
+            // btnEliminarServicio
             // 
-            this.btnEliminarInsumo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(55)))), ((int)(((byte)(62)))));
-            this.btnEliminarInsumo.Enabled = false;
-            this.btnEliminarInsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnEliminarInsumo.Location = new System.Drawing.Point(615, 70);
-            this.btnEliminarInsumo.Name = "btnEliminarInsumo";
-            this.btnEliminarInsumo.Size = new System.Drawing.Size(171, 25);
-            this.btnEliminarInsumo.TabIndex = 5;
-            this.btnEliminarInsumo.Text = "Eliminar";
-            this.btnEliminarInsumo.UseVisualStyleBackColor = false;
+            this.btnEliminarServicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(55)))), ((int)(((byte)(62)))));
+            this.btnEliminarServicio.Enabled = false;
+            this.btnEliminarServicio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnEliminarServicio.Location = new System.Drawing.Point(615, 70);
+            this.btnEliminarServicio.Name = "btnEliminarServicio";
+            this.btnEliminarServicio.Size = new System.Drawing.Size(171, 25);
+            this.btnEliminarServicio.TabIndex = 5;
+            this.btnEliminarServicio.Text = "Eliminar";
+            this.btnEliminarServicio.UseVisualStyleBackColor = false;
             // 
-            // btnModificarInsumo
+            // btnModificarServicio
             // 
-            this.btnModificarInsumo.BackColor = System.Drawing.Color.Khaki;
-            this.btnModificarInsumo.Enabled = false;
-            this.btnModificarInsumo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnModificarInsumo.Location = new System.Drawing.Point(436, 70);
-            this.btnModificarInsumo.Name = "btnModificarInsumo";
-            this.btnModificarInsumo.Size = new System.Drawing.Size(173, 25);
-            this.btnModificarInsumo.TabIndex = 4;
-            this.btnModificarInsumo.Text = "Modificar";
-            this.btnModificarInsumo.UseVisualStyleBackColor = false;
+            this.btnModificarServicio.BackColor = System.Drawing.Color.Khaki;
+            this.btnModificarServicio.Enabled = false;
+            this.btnModificarServicio.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnModificarServicio.Location = new System.Drawing.Point(436, 70);
+            this.btnModificarServicio.Name = "btnModificarServicio";
+            this.btnModificarServicio.Size = new System.Drawing.Size(173, 25);
+            this.btnModificarServicio.TabIndex = 4;
+            this.btnModificarServicio.Text = "Modificar";
+            this.btnModificarServicio.UseVisualStyleBackColor = false;
+            this.btnModificarServicio.Click += new System.EventHandler(this.btnModificarInsumo_Click);
             // 
-            // btnCrearInsumo
+            // btnCrearServicio
             // 
-            this.btnCrearInsumo.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.btnCrearInsumo.Location = new System.Drawing.Point(436, 37);
-            this.btnCrearInsumo.Name = "btnCrearInsumo";
-            this.btnCrearInsumo.Size = new System.Drawing.Size(350, 25);
-            this.btnCrearInsumo.TabIndex = 3;
-            this.btnCrearInsumo.Text = "Crear";
-            this.btnCrearInsumo.UseVisualStyleBackColor = false;
-            this.btnCrearInsumo.Click += new System.EventHandler(this.btnCrearInsumo_Click);
+            this.btnCrearServicio.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnCrearServicio.Location = new System.Drawing.Point(436, 37);
+            this.btnCrearServicio.Name = "btnCrearServicio";
+            this.btnCrearServicio.Size = new System.Drawing.Size(350, 25);
+            this.btnCrearServicio.TabIndex = 3;
+            this.btnCrearServicio.Text = "Crear";
+            this.btnCrearServicio.UseVisualStyleBackColor = false;
+            this.btnCrearServicio.Click += new System.EventHandler(this.btnCrearInsumo_Click);
             // 
             // frmGestionarServicios
             // 
@@ -309,9 +310,9 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnEliminarInsumo;
-        private System.Windows.Forms.Button btnModificarInsumo;
-        private System.Windows.Forms.Button btnCrearInsumo;
+        private System.Windows.Forms.Button btnEliminarServicio;
+        private System.Windows.Forms.Button btnModificarServicio;
+        private System.Windows.Forms.Button btnCrearServicio;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label lblCantRegistrosServicios;
         private System.Windows.Forms.Label label8;

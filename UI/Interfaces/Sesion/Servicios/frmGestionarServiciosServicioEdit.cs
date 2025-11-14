@@ -1,22 +1,20 @@
 ﻿using BE;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UI.Interfaces.Sesion.Servicios
 {
     public partial class frmGestionarServiciosServicioEdit : BaseForm
     {
+        int ServicioID = 0;
         private List<InsumoSeleccionado> _insumosServicio = new List<InsumoSeleccionado>();
 
-        public frmGestionarServiciosServicioEdit()
+        public frmGestionarServiciosServicioEdit(int ServicioID)
         {
+            this.ServicioID = ServicioID;
             InitializeComponent();
         }
 
@@ -65,7 +63,63 @@ namespace UI.Interfaces.Sesion.Servicios
                 chkLstProfesional.Items.Add(Profesional, false);
             }
             chkLstProfesional.DisplayMember = "Nombre";
+
+            CargarServicio(ServicioID);
         }
+
+        private void CargarServicio(int ServicioID)
+        {
+            try
+            {
+                var oBEServicio = GestionServicioService.ObtenerServicio(ServicioID);
+                var oDtProfesional = GestionServicioService.ObtenerProfesionalServicioPorServicioID(ServicioID);
+                var oDtInsumosServicios = GestionServicioService.ObtenerObtenerInsumosPorServicio(ServicioID);
+
+                if (oDtProfesional.Rows.Count > 0)
+                {
+                    foreach (DataRow oDr in oDtProfesional.AsEnumerable())
+                    {
+                        var profesionalID = (int)oDr["ProfesionalID"];
+                        for (int i = 0; i < chkLstProfesional.Items.Count; i++)
+                        {
+                            var profesional = (BEProfesional)chkLstProfesional.Items[i];
+                            if (profesional.ProfesionalID == profesionalID)
+                            {
+                                chkLstProfesional.SetItemChecked(i, true);
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (oDtInsumosServicios.Rows.Count > 0)
+                {
+                    foreach (DataRow oDr in oDtInsumosServicios.AsEnumerable())
+                    {
+                        var oBEInsumo = new InsumoSeleccionado();
+
+                        
+                        oBEInsumo.InsumoID = (int)oDr["InsumoID"];
+                        oBEInsumo.Codigo = (string)oDr["Codigo"];
+                        oBEInsumo.Nombre = (string)oDr["Nombre"];
+                        oBEInsumo.CantidadStock = Convert.ToDecimal(oDr["CantidadStock"]);
+                        oBEInsumo.CantidadUsar = (decimal)oDr["CantidadUsar"];
+
+                        _insumosServicio.Add(oBEInsumo);
+                    }
+                    RefrescarGridInsumos();
+                }
+
+                txtNombre.Text = oBEServicio.Nombre;
+                txtPrecio.Text = Convert.ToString(oBEServicio.Precio);
+                txtDuracion.Text = Convert.ToString(oBEServicio.DuracionMin);
+                txtBuffer.Text = Convert.ToString(oBEServicio.BufferMin);
+            }
+            catch (Exception ex)
+            {
+                MostrarMensajeError(ex);
+            }
+        }
+
         private void RefrescarGridInsumos()
         {
             dgvInsumosServicio.DataSource = null;

@@ -43,7 +43,7 @@ namespace BLL
 
         public BEServicio GetOne(int iId)
         {
-            throw new NotImplementedException();
+            return oDALServicio.ObtenerServicio(iId);
         }
 
         public bool Guardar(BEServicio Objeto)
@@ -64,6 +64,11 @@ namespace BLL
         public DataTable ObtenerObtenerInsumosPorServicio(int ServicioID)
         {
             return oDALServicio.ObtenerObtenerInsumosPorServicio(ServicioID);
+        }
+
+        public DataTable ObtenerProfesionalServicioPorServicioID(int ServicioID)
+        {
+            return oDALServicio.ObtenerProfesionalServicioPorServicioID(ServicioID);
         }
 
         public void GuardarInsumosServicio(BEServicio oBEServicio, List<InsumoSeleccionado> oLstInsumos, List<BEProfesional> oLstProfesionales)

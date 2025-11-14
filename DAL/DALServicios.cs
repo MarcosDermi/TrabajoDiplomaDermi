@@ -211,6 +211,25 @@ namespace DAL
                 throw ex;
             }
         }
+
+        public DataTable ObtenerProfesionalServicioPorServicioID(int ServicioID)
+        {
+            try
+            {
+                Hdatos = new Hashtable();
+                Hdatos.Add("@ServicioID", ServicioID);
+                return oDatos.Leer("ObtenerProfesionalServicioPorServicioID", Hdatos);
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public DataTable ObtenerObtenerInsumosPorServicio(int ServicioID)
         {
             try

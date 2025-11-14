@@ -54,5 +54,15 @@ namespace SERVICES
             { throw new Exception(); }
             ;
         }
+
+        public BEServicio ObtenerServicio(int ServicioID)
+        {
+            return oBLLServicios.GetOne(ServicioID);
+        }
+
+        public DataTable ObtenerProfesionalServicioPorServicioID(int ServicioID)
+        {
+            return oBLLServicios.ObtenerProfesionalServicioPorServicioID(ServicioID);
+        }
     }
 }

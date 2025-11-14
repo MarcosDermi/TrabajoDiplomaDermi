@@ -108,7 +108,7 @@ namespace UI.Interfaces.Sesion.Servicios
                         Codigo = row.Cells["Codigo"].Value?.ToString(),
                         Nombre = row.Cells["Nombre"].Value?.ToString(),
                         CantidadStock = Convert.ToDecimal(row.Cells["Stock"].Value),
-                        CantidadUsar = Convert.ToDecimal(row.Cells["Cantidad"].Value ?? 0)
+                        CantidadUsar = Convert.ToDecimal(row.Cells["Cantidad"].Value)
                     };
                     InsumosSeleccionados.Add(insumo);
                 }
