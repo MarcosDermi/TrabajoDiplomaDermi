@@ -48,13 +48,6 @@
             this.btnMesSiguiente = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGridViewHorarios = new System.Windows.Forms.DataGridView();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label12 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ucCalendario = new UI.ProyectoDiploma.CalendarioReservas();
             this.grpTurnoSeleccionado.SuspendLayout();
@@ -62,7 +55,6 @@
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHorarios)).BeginInit();
-            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,9 +76,9 @@
             this.grpTurnoSeleccionado.Controls.Add(this.btnCancelarTurno);
             this.grpTurnoSeleccionado.Controls.Add(this.btnAtendido);
             this.grpTurnoSeleccionado.Controls.Add(this.dgvDetalleTurno);
-            this.grpTurnoSeleccionado.Location = new System.Drawing.Point(727, 193);
+            this.grpTurnoSeleccionado.Location = new System.Drawing.Point(725, 85);
             this.grpTurnoSeleccionado.Name = "grpTurnoSeleccionado";
-            this.grpTurnoSeleccionado.Size = new System.Drawing.Size(163, 361);
+            this.grpTurnoSeleccionado.Size = new System.Drawing.Size(163, 364);
             this.grpTurnoSeleccionado.TabIndex = 36;
             this.grpTurnoSeleccionado.TabStop = false;
             this.grpTurnoSeleccionado.Text = "Detalle turno:";
@@ -161,9 +153,9 @@
             this.groupBox4.Controls.Add(this.label8);
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.label6);
-            this.groupBox4.Location = new System.Drawing.Point(17, 192);
+            this.groupBox4.Location = new System.Drawing.Point(15, 84);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(483, 34);
+            this.groupBox4.Size = new System.Drawing.Size(483, 37);
             this.groupBox4.TabIndex = 35;
             this.groupBox4.TabStop = false;
             // 
@@ -232,9 +224,9 @@
             // 
             // btnMesAnterior
             // 
-            this.btnMesAnterior.Location = new System.Drawing.Point(17, 159);
+            this.btnMesAnterior.Location = new System.Drawing.Point(15, 51);
             this.btnMesAnterior.Name = "btnMesAnterior";
-            this.btnMesAnterior.Size = new System.Drawing.Size(32, 27);
+            this.btnMesAnterior.Size = new System.Drawing.Size(32, 30);
             this.btnMesAnterior.TabIndex = 34;
             this.btnMesAnterior.Text = "<";
             this.btnMesAnterior.UseVisualStyleBackColor = true;
@@ -243,7 +235,7 @@
             // lblMes
             // 
             this.lblMes.AutoSize = true;
-            this.lblMes.Location = new System.Drawing.Point(67, 164);
+            this.lblMes.Location = new System.Drawing.Point(65, 56);
             this.lblMes.Name = "lblMes";
             this.lblMes.Size = new System.Drawing.Size(11, 13);
             this.lblMes.TabIndex = 32;
@@ -251,9 +243,9 @@
             // 
             // btnMesSiguiente
             // 
-            this.btnMesSiguiente.Location = new System.Drawing.Point(162, 159);
+            this.btnMesSiguiente.Location = new System.Drawing.Point(160, 51);
             this.btnMesSiguiente.Name = "btnMesSiguiente";
-            this.btnMesSiguiente.Size = new System.Drawing.Size(32, 27);
+            this.btnMesSiguiente.Size = new System.Drawing.Size(32, 30);
             this.btnMesSiguiente.TabIndex = 33;
             this.btnMesSiguiente.Text = ">";
             this.btnMesSiguiente.UseVisualStyleBackColor = true;
@@ -262,9 +254,9 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.dataGridViewHorarios);
-            this.groupBox3.Location = new System.Drawing.Point(512, 193);
+            this.groupBox3.Location = new System.Drawing.Point(510, 85);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(209, 362);
+            this.groupBox3.Size = new System.Drawing.Size(209, 365);
             this.groupBox3.TabIndex = 31;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Horarios:";
@@ -284,77 +276,12 @@
             this.dataGridViewHorarios.TabIndex = 24;
             this.dataGridViewHorarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewHorarios_CellContentClick);
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Controls.Add(this.dateTimePicker1);
-            this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Location = new System.Drawing.Point(12, 53);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(488, 104);
-            this.groupBox2.TabIndex = 30;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Filtros Busqueda:";
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(95)))), ((int)(((byte)(170)))));
-            this.button1.Location = new System.Drawing.Point(248, 65);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(119, 33);
-            this.button1.TabIndex = 25;
-            this.button1.Text = "Buscar";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(127, 67);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 21);
-            this.textBox2.TabIndex = 24;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(124, 50);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 13);
-            this.label2.TabIndex = 23;
-            this.label2.Text = "Apellido:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(21, 67);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 21);
-            this.textBox1.TabIndex = 22;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(16, 20);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(211, 21);
-            this.dateTimePicker1.TabIndex = 21;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(18, 50);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(48, 13);
-            this.label12.TabIndex = 13;
-            this.label12.Text = "Nombre:";
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.ucCalendario);
-            this.groupBox1.Location = new System.Drawing.Point(17, 224);
+            this.groupBox1.Location = new System.Drawing.Point(15, 116);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(483, 333);
+            this.groupBox1.Size = new System.Drawing.Size(483, 336);
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
             // 
@@ -363,7 +290,7 @@
             this.ucCalendario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucCalendario.Location = new System.Drawing.Point(3, 17);
             this.ucCalendario.Name = "ucCalendario";
-            this.ucCalendario.Size = new System.Drawing.Size(477, 313);
+            this.ucCalendario.Size = new System.Drawing.Size(477, 316);
             this.ucCalendario.TabIndex = 0;
             this.ucCalendario.Load += new System.EventHandler(this.ucCalendario_Load);
             this.ucCalendario.Click += new System.EventHandler(this.ucCalendario_Click);
@@ -372,14 +299,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1084, 620);
+            this.ClientSize = new System.Drawing.Size(897, 462);
             this.Controls.Add(this.grpTurnoSeleccionado);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.btnMesAnterior);
             this.Controls.Add(this.lblMes);
             this.Controls.Add(this.btnMesSiguiente);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Name = "frmAgendaTurnos";
@@ -392,8 +318,6 @@
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHorarios)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -417,16 +341,9 @@
         private System.Windows.Forms.Button btnMesSiguiente;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dataGridViewHorarios;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox groupBox1;
         private ProyectoDiploma.CalendarioReservas ucCalendario;
         private System.Windows.Forms.DataGridView dgvDetalleTurno;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnCancelarTurno;
         private System.Windows.Forms.Button btnAtendido;
         private System.Windows.Forms.Label label4;
