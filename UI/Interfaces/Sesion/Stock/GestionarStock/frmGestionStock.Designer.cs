@@ -127,6 +127,7 @@
             this.btnModificarInsumo.TabIndex = 4;
             this.btnModificarInsumo.Text = "Modificar";
             this.btnModificarInsumo.UseVisualStyleBackColor = false;
+            this.btnModificarInsumo.Click += new System.EventHandler(this.btnModificarInsumo_Click);
             // 
             // btnCrearInsumo
             // 

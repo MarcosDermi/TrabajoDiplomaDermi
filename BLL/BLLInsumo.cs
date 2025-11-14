@@ -48,7 +48,7 @@ namespace BLL
 
         public BEInsumo GetOne(int iId)
         {
-            throw new NotImplementedException();
+            return oDAlInsumo.GetOne(iId);
         }
 
         public DataTable BuscarInsumosPorFiltrosVarios(string sCodigo, string sNombre, int ProveedorID, int CategoriaID, int PresentacionID)

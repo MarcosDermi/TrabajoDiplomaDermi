@@ -169,5 +169,10 @@ namespace SERVICES
         {
             oBLLInsumo.ActualizarStockInsumoPorServicioID(oLstServicioID);
         }
+
+        public BEInsumo ObtenerInsumo(int InsumoID)
+        {
+           return oBLLInsumo.GetOne(InsumoID);
+        }
     }
 }

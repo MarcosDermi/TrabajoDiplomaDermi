@@ -85,7 +85,39 @@ namespace DAL
 
         public BEInsumo GetOne(int iId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                hDatos = new Hashtable();
+                hDatos.Add("@InsumoID", iId);
+
+                DataTable oDt = oDatos.Leer("Insumo_S_PorID", hDatos);
+
+                var oBEInsumo = new BEInsumo();
+
+                foreach (DataRow oDr in oDt.AsEnumerable())
+                {
+                    oBEInsumo.IDInsumo = Convert.ToInt32(oDr["InsumoID"]);
+                    oBEInsumo.Codigo = oDr["Codigo"].ToString();
+                    oBEInsumo.Nombre = oDr["Nombre"].ToString();
+                    oBEInsumo.Presentacion = (UnidadesEnum)oDr["Presentacion"];
+                    oBEInsumo.PrecioCompra = Convert.ToDecimal(oDr["PrecioCompra"]);
+                    oBEInsumo.Descuento = Convert.ToDecimal(oDr["Descuento"]);
+                    oBEInsumo.Cantidad = Convert.ToDecimal(oDr["Cantidad"]);
+                    oBEInsumo.Proveedor.IdProveedor = Convert.ToInt32(oDr["ProveedorID"]);
+                    oBEInsumo.PrecioFinal = Convert.ToDecimal(oDr["PrecioFinal"]);
+                    oBEInsumo.FechaVencimiento = Convert.ToDateTime(oDr["FechaVencimiento"]);
+                    oBEInsumo.Categoria.IdCategoria = Convert.ToInt32(oDr["CategoriaID"]);
+                    oBEInsumo.Categoria.IdCategoriaPadre = Convert.ToInt32(oDr["CategoriaPadreID"]);
+                    oBEInsumo.Stock = Convert.ToDecimal(oDr["Stock"]);
+                    oBEInsumo.StockMinimo = Convert.ToDecimal(oDr["StockMinimo"]);
+                }
+
+                return oBEInsumo;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
         }
 
         public DataTable BuscarInsumosPorFiltrosVarios(string sCodigo, string sNombre, int ProveedorID, int CategoriaID, int PresentacionID)
@@ -119,7 +151,8 @@ namespace DAL
 
         public void ActualizarStockInsumoPorServicioID(List<int> oLstServicioID)
         {
-            try { 
+            try
+            {
                 foreach (var idServicio in oLstServicioID)
                 {
                     oDatos.Escribir("ActualizarStockPorServicioID", new Hashtable

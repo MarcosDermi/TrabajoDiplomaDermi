@@ -62,7 +62,7 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
 
         private void btnCrearInsumo_Click(object sender, EventArgs e)
         {
-            frmGestionStockInsumosEdit ofrmGestionStockInsumosEdit = new frmGestionStockInsumosEdit();
+            frmGestionStockInsumosEdit ofrmGestionStockInsumosEdit = new frmGestionStockInsumosEdit(0);
 
             this.Hide();
 
@@ -173,6 +173,22 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
             {
                 MostrarMensajeError(ex);
             }
+        }
+
+        private void btnModificarInsumo_Click(object sender, EventArgs e)
+        {
+            var Insumo = (DataRowView)dgvResultadoBusqueda.CurrentRow.DataBoundItem;
+            frmGestionStockInsumosEdit ofrmGestionStockInsumosEdit = new frmGestionStockInsumosEdit((int)Insumo.Row["InsumoID"]);
+
+            this.Hide();
+
+            if (ofrmGestionStockInsumosEdit.ShowDialog() == DialogResult.OK)
+            {
+                // El registro fue exitoso, podés hacer algo
+            }
+
+            // Opcional: restaurás la ventana si estaba minimizada
+            this.Show();
         }
     }
 }

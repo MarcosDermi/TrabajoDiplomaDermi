@@ -7,6 +7,7 @@ namespace SERVICES.Interfaces
 {
     public interface IGestionStockService
     {
+        BEInsumo ObtenerInsumo(int InsumoID);
         DataTable ObtenerProveedores(bool EsLista);
         void ActualizarStock(int productoId, int cantidad);
         DataTable BuscarProveedoresPorFiltrosVarios(string sCodigo, string sNombre, string sRazonSocial);

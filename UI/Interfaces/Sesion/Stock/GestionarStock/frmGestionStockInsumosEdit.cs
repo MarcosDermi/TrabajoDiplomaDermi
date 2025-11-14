@@ -13,11 +13,14 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
 {
     public partial class frmGestionStockInsumosEdit : BaseForm
     {
+        int insumoID = 0;
         DataTable _oDtSubcategorias = new DataTable();
 
-        public frmGestionStockInsumosEdit()
+        public frmGestionStockInsumosEdit(int insumoID)
         {
+
             InitializeComponent();
+            this.insumoID = insumoID;
         }
 
         private void frmGestionStockInsumosEdit_Load(object sender, EventArgs e)
@@ -36,6 +39,36 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
             cmbSubCategorias.DisplayMember = "SubcategoriaNombre";
             cmbSubCategorias.ValueMember = "CategoriaID";
             cmbSubCategorias.DataSource = GestionStockService.OrdenarSubcategoriasPorCategoria(_oDtSubcategorias, cmbCategorias.SelectedValue.ToString());
+        
+            if(insumoID != 0)
+            {
+                CargarInsumo(insumoID);
+            }
+        }
+
+        private void CargarInsumo(int insumoID)
+        {
+            try
+            {
+                var oBEInsumo = GestionStockService.ObtenerInsumo(insumoID);
+                txtCodigo.Text = oBEInsumo.Codigo;
+                txtNombre.Text = oBEInsumo.Nombre;
+                cmbPresentacion.SelectedItem = oBEInsumo.Presentacion;
+                cmbProveedores.SelectedValue = oBEInsumo.Proveedor.IdProveedor;
+                cmbCategorias.SelectedValue = oBEInsumo.Categoria.IdCategoriaPadre;
+                cmbSubCategorias.SelectedValue = oBEInsumo.Categoria.IdCategoria;
+                txtCantidad.Text = oBEInsumo.Cantidad.ToString();
+                txtStock.Text = oBEInsumo.Stock.ToString();
+                txtStockMinimoAlerta.Text = oBEInsumo.StockMinimo.ToString();
+                txtPrecioCompra.Text = oBEInsumo.PrecioCompra.ToString();
+                txtDescuento.Text = oBEInsumo.Descuento.ToString();
+                txtPrecioFinal.Text = oBEInsumo.PrecioFinal.ToString();
+                dtpFechaVencimiento.Value = oBEInsumo.FechaVencimiento;
+            }
+            catch (Exception Ex)
+            {
+                MostrarMensajeError(Ex);
+            }
         }
 
         private void chkAlertaStockMinimo_CheckedChanged(object sender, EventArgs e)
@@ -95,12 +128,13 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
             {
                 var oBEInsumo = new BEInsumo()
                 {
+                    IDInsumo = insumoID,
                     Codigo = txtCodigo.Text,
                     Nombre = txtNombre.Text,
                     Presentacion = (UnidadesEnum)cmbPresentacion.SelectedItem,
                     Proveedor = { IdProveedor = Convert.ToInt32(cmbProveedores.SelectedValue) },
                     Categoria = { IdCategoria = Convert.ToInt32(cmbSubCategorias.SelectedValue),
-                IdCategoriaPadre = Convert.ToInt32(cmbCategorias.SelectedValue)},
+                    IdCategoriaPadre = Convert.ToInt32(cmbCategorias.SelectedValue)},
                     Cantidad = Convert.ToDecimal(txtCantidad.Text),
                     Stock = Convert.ToInt32(txtStock.Text),
                     StockMinimo = Convert.ToDecimal(txtStockMinimoAlerta.Text),
