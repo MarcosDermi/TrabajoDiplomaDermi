@@ -8,7 +8,7 @@ namespace ABSTRACCION.Contracts
     public interface IGestionPromocionesService
     {
         void GuardarPromocion(BEPromocion oBEPromocion);
-
+        void EliminarPromocion(int PromocionID);
         DataTable BuscarPromocionesPorFiltrosVarios(string sNombre, DateTime FechaDesde, DateTime FechaHasta, bool IncluirInactivos);
     }
 }

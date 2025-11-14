@@ -67,5 +67,10 @@ namespace SERVICES
             { throw new Exception(); }
             ;
         }
+
+        public void EliminarPromocion(int PromocionID)
+        {
+            oBLLPromocion.EliminarPromocion(PromocionID);
+        }
     }
 }

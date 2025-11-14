@@ -13,6 +13,8 @@ namespace UI.Interfaces.Sesion.Promociones
 {
     public partial class frmGestionarPromociones : BaseForm
     {
+        int PromocionID = 0;
+
         public frmGestionarPromociones()
         {
             InitializeComponent();
@@ -29,6 +31,7 @@ namespace UI.Interfaces.Sesion.Promociones
 
                     var oBEPromocion = new BEPromocion()
                     {
+                        IdPromocion = PromocionID,
                         Nombre = txtNombre.Text,
                         FechaDesde = dtpFechaDesde.Value,
                         FechaHasta = dtpFechaHasta.Value,
@@ -62,6 +65,45 @@ namespace UI.Interfaces.Sesion.Promociones
             catch (Exception ex)
             {
                 MostrarMensajeError(ex);
+            }
+        }
+
+        private void dgvPromociones_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvPromociones.SelectedRows.Count == 1)
+            {
+                var Insumo = (DataRowView)dgvPromociones.CurrentRow.DataBoundItem;
+
+                PromocionID = Convert.ToInt32(Insumo.Row["PromocionID"]);
+                txtNombre.Text = Insumo.Row["Nombre"].ToString();
+                txtDescuento.Text = Insumo.Row["Descuento"].ToString();
+                chkActivo.Checked = Convert.ToBoolean(Insumo.Row["Activo"]);
+                dtpFechaDesde.Value = Convert.ToDateTime(Insumo.Row["FechaDesde"]);
+                dtpFechaHasta.Value = Convert.ToDateTime(Insumo.Row["FechaHasta"]);
+
+                btnEliminarPromocion.Enabled = true;
+            }
+        }
+
+        private void btnEliminarPromocion_Click(object sender, EventArgs e)
+        {
+            var resultado = MessageBox.Show("¿Está seguro que desea eliminar la promocion seleccionado?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (resultado != DialogResult.Yes)
+            {
+                return;
+            }
+            else
+            {
+                try
+                {
+                    GestionPromocionesService.EliminarPromocion(PromocionID);
+                    MessageBox.Show("Promocion eliminada con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MostrarMensajeError(ex);
+                }
             }
         }
     }

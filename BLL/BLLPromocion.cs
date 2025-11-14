@@ -35,5 +35,10 @@ namespace BLL
             { throw new Exception(); }
             ;
         }
+
+        public void EliminarPromocion(int PromocionID)
+        {
+            oDALPromocion.EliminarPromocion(PromocionID);
+        }
     }
 }

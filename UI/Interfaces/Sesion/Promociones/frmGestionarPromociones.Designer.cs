@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -43,7 +43,6 @@
             this.dtpFechaDesde = new System.Windows.Forms.DateTimePicker();
             this.btnEliminarPromocion = new System.Windows.Forms.Button();
             this.btnCrearPromocion = new System.Windows.Forms.Button();
-            this.btnModificarPromocion = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.dgvPromociones = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -102,10 +101,9 @@
             this.groupBox2.Controls.Add(this.dtpFechaDesde);
             this.groupBox2.Controls.Add(this.btnEliminarPromocion);
             this.groupBox2.Controls.Add(this.btnCrearPromocion);
-            this.groupBox2.Controls.Add(this.btnModificarPromocion);
             this.groupBox2.Location = new System.Drawing.Point(412, 104);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(255, 359);
+            this.groupBox2.Size = new System.Drawing.Size(255, 310);
             this.groupBox2.TabIndex = 23;
             this.groupBox2.TabStop = false;
             // 
@@ -188,12 +186,13 @@
             this.btnEliminarPromocion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(55)))), ((int)(((byte)(62)))));
             this.btnEliminarPromocion.Enabled = false;
             this.btnEliminarPromocion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnEliminarPromocion.Location = new System.Drawing.Point(34, 302);
+            this.btnEliminarPromocion.Location = new System.Drawing.Point(32, 269);
             this.btnEliminarPromocion.Name = "btnEliminarPromocion";
             this.btnEliminarPromocion.Size = new System.Drawing.Size(198, 25);
             this.btnEliminarPromocion.TabIndex = 5;
             this.btnEliminarPromocion.Text = "Eliminar";
             this.btnEliminarPromocion.UseVisualStyleBackColor = false;
+            this.btnEliminarPromocion.Click += new System.EventHandler(this.btnEliminarPromocion_Click);
             // 
             // btnCrearPromocion
             // 
@@ -205,18 +204,6 @@
             this.btnCrearPromocion.Text = "Crear";
             this.btnCrearPromocion.UseVisualStyleBackColor = false;
             this.btnCrearPromocion.Click += new System.EventHandler(this.btnCrearPromocion_Click);
-            // 
-            // btnModificarPromocion
-            // 
-            this.btnModificarPromocion.BackColor = System.Drawing.Color.Khaki;
-            this.btnModificarPromocion.Enabled = false;
-            this.btnModificarPromocion.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnModificarPromocion.Location = new System.Drawing.Point(32, 271);
-            this.btnModificarPromocion.Name = "btnModificarPromocion";
-            this.btnModificarPromocion.Size = new System.Drawing.Size(200, 25);
-            this.btnModificarPromocion.TabIndex = 4;
-            this.btnModificarPromocion.Text = "Modificar";
-            this.btnModificarPromocion.UseVisualStyleBackColor = false;
             // 
             // groupBox5
             // 
@@ -238,14 +225,14 @@
             this.dgvPromociones.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvPromociones.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvPromociones.CausesValidation = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPromociones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPromociones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPromociones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPromociones.Location = new System.Drawing.Point(15, 21);
             this.dgvPromociones.MultiSelect = false;
@@ -254,6 +241,7 @@
             this.dgvPromociones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPromociones.Size = new System.Drawing.Size(350, 302);
             this.dgvPromociones.TabIndex = 0;
+            this.dgvPromociones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPromociones_CellContentClick);
             // 
             // groupBox3
             // 
@@ -406,7 +394,6 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnEliminarPromocion;
-        private System.Windows.Forms.Button btnModificarPromocion;
         private System.Windows.Forms.Button btnCrearPromocion;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtDescuento;

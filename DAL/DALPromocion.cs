@@ -52,5 +52,21 @@ namespace DAL
                 throw ex;
             }
         }
+
+        public void EliminarPromocion(int PromocionID)
+        {
+            try
+            {
+                Hdatos = new Hashtable();
+                Hdatos.Add("@IdPromocion", PromocionID);
+
+                oDatos.Escribir("BajaPromocion", Hdatos);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
     }
 }
