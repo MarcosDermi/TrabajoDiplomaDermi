@@ -130,9 +130,17 @@ namespace BLL
             return oDALAgenda.ObtenerReservaDiaPorFechayProfesional(iProfesionalID, oDtFecha);
         }
 
-        public void ReservaAcciones(int idReserva, ReservaAcciones AccionEnum)
+        public void ReservaAcciones(int iIdReserva, ReservaAcciones AccionEnum)
         {
-            oDALAgenda.ReservaAcciones(idReserva, AccionEnum);
+            if (AccionEnum == BE.ReservaAcciones.Atendida) 
+            {
+                var oReserva = oDALAgenda.ObtenerReserva(iIdReserva);
+
+                var oBLLFidelizacion = new BLLFidelizacion();
+                oBLLFidelizacion.ProcesarPuntosDeAsistencia(oReserva, oReserva.Cliente.Id);
+            }
+
+            oDALAgenda.ReservaAcciones(iIdReserva, AccionEnum);
         }
 
         public BEReserva ObtenerReserva(int idReserva)

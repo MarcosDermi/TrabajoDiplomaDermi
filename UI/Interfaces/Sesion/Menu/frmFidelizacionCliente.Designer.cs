@@ -24,9 +24,12 @@
             this.btnAplicarDescuento = new System.Windows.Forms.Button();
             this.dgvHistorial = new System.Windows.Forms.DataGridView();
             this.lblHistorial = new System.Windows.Forms.Label();
+            this.dgvPendientes = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
             this.grpDescuento.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numPuntosCanje)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistorial)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPendientes)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitulo
@@ -166,7 +169,7 @@
             this.dgvHistorial.AllowUserToDeleteRows = false;
             this.dgvHistorial.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvHistorial.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvHistorial.Location = new System.Drawing.Point(25, 295);
+            this.dgvHistorial.Location = new System.Drawing.Point(26, 427);
             this.dgvHistorial.Name = "dgvHistorial";
             this.dgvHistorial.ReadOnly = true;
             this.dgvHistorial.Size = new System.Drawing.Size(580, 200);
@@ -176,16 +179,40 @@
             // 
             this.lblHistorial.AutoSize = true;
             this.lblHistorial.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblHistorial.Location = new System.Drawing.Point(22, 270);
+            this.lblHistorial.Location = new System.Drawing.Point(23, 402);
             this.lblHistorial.Name = "lblHistorial";
             this.lblHistorial.Size = new System.Drawing.Size(136, 19);
             this.lblHistorial.TabIndex = 1;
             this.lblHistorial.Text = "Historial de canjes:";
             // 
+            // dgvPendientes
+            // 
+            this.dgvPendientes.AllowUserToAddRows = false;
+            this.dgvPendientes.AllowUserToDeleteRows = false;
+            this.dgvPendientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvPendientes.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvPendientes.Location = new System.Drawing.Point(27, 289);
+            this.dgvPendientes.Name = "dgvPendientes";
+            this.dgvPendientes.ReadOnly = true;
+            this.dgvPendientes.Size = new System.Drawing.Size(580, 110);
+            this.dgvPendientes.TabIndex = 7;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(24, 264);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(133, 19);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Canjes Pendientes:";
+            // 
             // frmFidelizacionCliente
             // 
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(630, 520);
+            this.ClientSize = new System.Drawing.Size(690, 656);
+            this.Controls.Add(this.dgvPendientes);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvHistorial);
             this.Controls.Add(this.lblHistorial);
             this.Controls.Add(this.grpDescuento);
@@ -200,6 +227,7 @@
             this.grpDescuento.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numPuntosCanje)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistorial)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPendientes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -217,5 +245,7 @@
         private System.Windows.Forms.Button btnAplicarDescuento;
         private System.Windows.Forms.DataGridView dgvHistorial;
         private System.Windows.Forms.Label lblHistorial;
+        private System.Windows.Forms.DataGridView dgvPendientes;
+        private System.Windows.Forms.Label label1;
     }
 }

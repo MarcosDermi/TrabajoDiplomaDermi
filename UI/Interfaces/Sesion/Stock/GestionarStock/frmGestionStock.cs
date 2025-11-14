@@ -144,14 +144,14 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
                     {
                         var oJsonSerializer = new JsonSerializer
                         {
-                            Formatting = Formatting.Indented // para que quede legible
+                            Formatting = Formatting.Indented
                         };
 
                         using (var fs = new FileStream(oSaveFileDialog.FileName, FileMode.Create, FileAccess.Write))
                         using (var writer = new StreamWriter(fs))
                         using (var jsonWriter = new JsonTextWriter(writer))
                         {
-                            // Si el DataSource es un DataTable, lo convertimos a lista de objetos
+                           
                             if (dgvResultadoBusqueda.DataSource is DataTable dt)
                             {
                                 var rows = dt.AsEnumerable().Select(r => r.Table.Columns
@@ -161,7 +161,6 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
                             }
                             else
                             {
-                                // Si es otro tipo de lista
                                 oJsonSerializer.Serialize(jsonWriter, dgvResultadoBusqueda.DataSource);
                             }
                         }

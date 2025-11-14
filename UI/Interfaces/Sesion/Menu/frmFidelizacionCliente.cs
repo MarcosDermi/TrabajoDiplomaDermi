@@ -40,6 +40,7 @@ namespace UI.Interfaces.Sesion.Menu
             }
 
             dgvHistorial.DataSource = _bll.ObtenerHistorialCanjes(_clienteId);
+            dgvPendientes.DataSource = _bll.ObtenerDescuentoPendiente(_clienteId);
         }
 
         private void numPuntosCanje_ValueChanged(object sender, EventArgs e)

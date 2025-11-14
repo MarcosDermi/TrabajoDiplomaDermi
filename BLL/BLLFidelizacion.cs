@@ -1,5 +1,7 @@
-﻿using System.Data;
+﻿using BE;
 using DAL;
+using System.Collections.Generic;
+using System.Data;
 
 public class BLLFidelizacion
 {
@@ -45,5 +47,30 @@ public class BLLFidelizacion
     public void ActualizarPuntosPorEmail(string EmailCliente, int Puntos)
     {
         oDal.ActualizarPuntosPorEmail(EmailCliente, Puntos);
+    }
+
+    public void ProcesarPuntosDeAsistencia(BEReserva oReserva, int iIdUsuario)
+    {
+        BLLFidelizacion oFid = new BLLFidelizacion();
+        var puntosGanados = CalcularPuntosPorReserva(oReserva.Servicios);
+
+        if (iIdUsuario != 0)
+        {
+            oFid.ActualizarPuntos(iIdUsuario, puntosGanados);
+        }
+        else
+        {
+            oFid.ActualizarPuntosPorEmail(oReserva.Cliente.Mail, puntosGanados);
+        }
+    }
+
+    private int CalcularPuntosPorReserva(List<BEServicio> oLstServicios)
+    {
+        int puntosTotales = 0;
+        var dCantServicios = oLstServicios.Count;
+
+        puntosTotales = dCantServicios * 2;
+
+        return puntosTotales;
     }
 }
