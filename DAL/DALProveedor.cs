@@ -22,14 +22,25 @@ namespace DAL
         {
             try
             {
-
-                var stpNombre = "AltaProveedor";
-                Hdatos = new Hashtable();
-                Hdatos.Add("@Codigo", Objeto.Codigo);
-                Hdatos.Add("@Nombre", Objeto.Nombre);
-                Hdatos.Add("@RazonSocial", Objeto.RazonSocial);
-                return oDatos.Escribir(stpNombre, Hdatos);
-
+                if (Objeto.IdProveedor != 0)
+                {
+                    var stpNombreUpdate = "ModificarProveedor";
+                    Hdatos = new Hashtable();
+                    Hdatos.Add("@ProveedorID", Objeto.IdProveedor);
+                    Hdatos.Add("@Codigo", Objeto.Codigo);
+                    Hdatos.Add("@Nombre", Objeto.Nombre);
+                    Hdatos.Add("@RazonSocial", Objeto.RazonSocial);
+                    return oDatos.Escribir(stpNombreUpdate, Hdatos);
+                }
+                else
+                {
+                    var stpNombre = "AltaProveedor";
+                    Hdatos = new Hashtable();
+                    Hdatos.Add("@Codigo", Objeto.Codigo);
+                    Hdatos.Add("@Nombre", Objeto.Nombre);
+                    Hdatos.Add("@RazonSocial", Objeto.RazonSocial);
+                    return oDatos.Escribir(stpNombre, Hdatos);
+                }
             }
             catch (SqlException ex)
             {
@@ -101,7 +112,22 @@ namespace DAL
 
         public bool BajaID(int iId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var stpNombre = "BajaProveedor";
+                Hdatos = new Hashtable();
+                Hdatos.Add("@ProveedorID", iId);
+
+                return oDatos.Escribir(stpNombre, Hdatos);
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 

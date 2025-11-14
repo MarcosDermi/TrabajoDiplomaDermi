@@ -38,7 +38,7 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
 
         private void button2_Click(object sender, EventArgs e)
         {
-            frmGestionProveedoresEdit ofrmGestionProveedoresEdit = new frmGestionProveedoresEdit();
+            frmGestionProveedoresEdit ofrmGestionProveedoresEdit = new frmGestionProveedoresEdit(0);
             this.Hide();
 
             if (ofrmGestionProveedoresEdit.ShowDialog() == DialogResult.OK)
@@ -55,6 +55,40 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
             BuscarProveedorers(true);
         }
 
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            var oDrProveedor = (DataRowView)dgvProveedores.CurrentRow.DataBoundItem;
 
+            frmGestionProveedoresEdit ofrmGestionProveedoresEdit = new frmGestionProveedoresEdit((int)oDrProveedor.Row["ProveedorID"]);
+            this.Hide();
+
+            if (ofrmGestionProveedoresEdit.ShowDialog() == DialogResult.OK)
+            {
+                BuscarProveedorers(false);
+            }
+
+            this.Show();
+            ofrmGestionProveedoresEdit.FormClosed += (s, args) => this.Show();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            var oDrProveedor = (DataRowView)dgvProveedores.CurrentRow.DataBoundItem;
+
+            var Resultado = MessageBox.Show("¿Está seguro que desea eliminar el proveedor seleccionado?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (Resultado == DialogResult.Yes)
+            {
+                try
+                {
+                    GestionStockService.EliminarProveedor((int)oDrProveedor.Row["ProveedorID"]);
+                    MessageBox.Show("Proveedor eliminado correctamente.", "Confirmacion", MessageBoxButtons.OK);
+                }
+                catch (Exception ex)
+                {
+                    MostrarMensajeError(ex);
+                }
+            }
+        }
     }
 }

@@ -53,7 +53,7 @@ namespace BLL
 
         public bool BajaID(int iId)
         {
-            throw new NotImplementedException();
+            return oDALProveedor.BajaID(iId);
         }
     }
 }

@@ -174,5 +174,10 @@ namespace SERVICES
         {
            return oBLLInsumo.GetOne(InsumoID);
         }
+
+        public void EliminarProveedor(int ProveedorID)
+        {
+            oBLLProovedor.BajaID(ProveedorID);
+        }
     }
 }
