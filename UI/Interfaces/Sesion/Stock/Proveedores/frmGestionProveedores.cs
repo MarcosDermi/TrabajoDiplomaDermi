@@ -83,6 +83,7 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
                 {
                     GestionStockService.EliminarProveedor((int)oDrProveedor.Row["ProveedorID"]);
                     MessageBox.Show("Proveedor eliminado correctamente.", "Confirmacion", MessageBoxButtons.OK);
+                    BuscarProveedorers(false);
                 }
                 catch (Exception ex)
                 {
