@@ -63,6 +63,7 @@ namespace UI
                             continue;
                         }
 
+
                         DateTime fecha = new DateTime(fechaActual.Year, fechaActual.Month, dia);
 
                         Label lblDia = new Label
@@ -96,6 +97,10 @@ namespace UI
                                         panelAnterior.BackColor = Color.LightGreen;
                                         lblDiaSeleccionado.ForeColor = Color.Black;
                                     }
+                                    else if (_fechasConPromociones.Contains(fechaAnterior.Date))
+                                    {
+                                        panelAnterior.BackColor = Color.FromArgb(255, 200, 100); // Promoción
+                                    }
                                     else
                                     {
                                         panelAnterior.BackColor = Color.White;
@@ -111,7 +116,25 @@ namespace UI
                             };
                         }
 
+                        if (_fechasConPromociones.Contains(fecha.Date))
+                        {
+                            panelDia.BackColor = Color.FromArgb(255, 200, 100); // Amarillo/naranja
+                        }
+
                         panelDia.Tag = fecha;
+
+                        // 🔥 Marcar días con PROMOCIÓN
+                        if (_fechasConPromociones.Contains(fecha.Date))
+                        {
+                            panelDia.BackColor = Color.FromArgb(255, 200, 100);
+                        }
+
+                        // 🔥 Marcar días con RESERVAS (ya lo hacés luego también)
+                        if (_fechasConReservas.Contains(fecha.Date))
+                        {
+                            panelDia.BackColor = Color.LightGreen;
+                        }
+
                         panelDia.Controls.Add(lblDia);
                         layout.Controls.Add(panelDia, col, fila);
                         dia++;
@@ -161,6 +184,29 @@ namespace UI
                 }
             }
 
+            private List<DateTime> _fechasConPromociones = new List<DateTime>();
+
+            public void MarcarFechasConPromociones(List<DateTime> fechas)
+            {
+                _fechasConPromociones = fechas ?? new List<DateTime>();
+
+                foreach (Control control in this.Controls)
+                {
+                    if (control is TableLayoutPanel layout)
+                    {
+                        foreach (Control panel in layout.Controls)
+                        {
+                            if (panel.Tag is DateTime fechaPanel)
+                            {
+                                if (_fechasConPromociones.Contains(fechaPanel.Date))
+                                {
+                                    panel.BackColor = Color.FromArgb(255, 200, 100); // 🔥 Amarillo/naranja
+                                }
+                            }
+                        }
+                    }
+                }
+            }
 
             public DateTime FechaActual
             {

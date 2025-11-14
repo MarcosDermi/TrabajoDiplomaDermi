@@ -29,6 +29,12 @@ namespace UI.Interfaces.Sesion.Promociones
                 if (respuesta == DialogResult.Yes)
                 {
 
+                    if(ValidatorsService.validarDecimal(txtDescuento.Text) == false)
+                    {
+                        MessageBox.Show("El campo descuento solo acepta valores numericos.", "Error de validacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
                     var oBEPromocion = new BEPromocion()
                     {
                         IdPromocion = PromocionID,

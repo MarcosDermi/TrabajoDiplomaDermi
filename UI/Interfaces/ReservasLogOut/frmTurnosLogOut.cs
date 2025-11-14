@@ -1,6 +1,7 @@
 ﻿using BE;
 using BLL;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -8,6 +9,7 @@ using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using UI.Interfaces.InicioSesion;
+using UI.ProyectoDiploma;
 
 namespace UI.Interfaces.ReservasLogOut
 {
@@ -46,6 +48,11 @@ namespace UI.Interfaces.ReservasLogOut
                 {
                     lblMes.Text = mesTexto;
                 };
+
+                BLLPromocion bll = new BLLPromocion();
+                List<DateTime> fechasPromo = bll.ObtenerFechasConPromociones();
+
+                ucCalendario.MarcarFechasConPromociones(fechasPromo);
 
                 lblMes.Text = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(DateTime.Today.ToString("MMMM yyyy", new System.Globalization.CultureInfo("es-ES")));
             }
@@ -104,6 +111,10 @@ namespace UI.Interfaces.ReservasLogOut
             try
             {
                 ucCalendario.CambiarMes(+1);
+                BLLPromocion bll = new BLLPromocion();
+                List<DateTime> fechasPromo = bll.ObtenerFechasConPromociones();
+
+                ucCalendario.MarcarFechasConPromociones(fechasPromo);
             }
             catch (Exception ex)
             {
@@ -116,6 +127,10 @@ namespace UI.Interfaces.ReservasLogOut
             try
             {
                 ucCalendario.CambiarMes(-1);
+                BLLPromocion bll = new BLLPromocion();
+                List<DateTime> fechasPromo = bll.ObtenerFechasConPromociones();
+
+                ucCalendario.MarcarFechasConPromociones(fechasPromo);
             }
             catch (Exception ex)
             {
@@ -153,12 +168,9 @@ namespace UI.Interfaces.ReservasLogOut
         {
             try
             {
-
-                //Validaciones
                 if (_fechaSeleccionada == DateTime.MinValue) return;
                 if (cmbProfesional.SelectedItem == null) return;
 
-                // Servicios elegidos
                 var oLstServiciosSeleccionados = checkedListBoxServicios.CheckedItems
                     .Cast<BEServicio>()
                     .Select(s => s.ServicioID)
@@ -166,11 +178,14 @@ namespace UI.Interfaces.ReservasLogOut
 
                 dataGridViewHorarios.Rows.Clear();
 
-                // 2️ Slots disponibles desde AgendaService/BLL en base a profesional, fecha y servicios
-                var oLstSlotsDisponibles = AgendaService.CalcularSlotsDisponibles(_IdProfesionalSeleccionado, _fechaSeleccionada, oLstServiciosSeleccionados);
+                var oLstSlotsDisponibles = AgendaService.CalcularSlotsDisponibles(
+                    _IdProfesionalSeleccionado,
+                    _fechaSeleccionada,
+                    oLstServiciosSeleccionados);
 
-                // 3️ Turnos ocupados (reservas ya tomadas)
-                var oLstReservasOcupadas = AgendaService.ObtenerTurnosTomados(_IdProfesionalSeleccionado, _fechaSeleccionada);
+                var oLstReservasOcupadas = AgendaService.ObtenerTurnosTomados(
+                    _IdProfesionalSeleccionado,
+                    _fechaSeleccionada);
 
                 if (oLstSlotsDisponibles.Count == 0)
                 {
@@ -179,22 +194,26 @@ namespace UI.Interfaces.ReservasLogOut
                     return;
                 }
 
-                // 4️ Duracion de la reserva actual
-                var iDuracionMin = AgendaService.DuracionTotalSeleccionadaMin(oLstServiciosSeleccionados);
-                var tsDuracionMin = TimeSpan.FromMinutes(iDuracionMin);
+                BLLPromocion oBLLPromos = new BLLPromocion();
+                bool diaConPromo = oBLLPromos.HayPromocionEnFecha(_fechaSeleccionada);
 
-                // 5️ Crear todas las filas, marcando ocupadas en rojo
+                var tsDuracionMin = TimeSpan.FromMinutes(
+                    AgendaService.DuracionTotalSeleccionadaMin(oLstServiciosSeleccionados));
+
                 foreach (var oDtSlot in oLstSlotsDisponibles)
                 {
                     if (_fechaSeleccionada.Date == DateTime.Today && oDtSlot <= DateTime.Now)
                         continue;
 
                     var oDtFinSlot = oDtSlot.Add(tsDuracionMin);
-                    bool esOcupado = oLstReservasOcupadas.Any(r => oDtSlot < r.Fin && r.Inicio < oDtFinSlot);
+                    bool esOcupado = oLstReservasOcupadas.Any(
+                        r => oDtSlot < r.Fin && r.Inicio < oDtFinSlot);
 
-                    int iRowIndex = dataGridViewHorarios.Rows.Add(oDtSlot.ToString("HH:mm"), esOcupado ? "Ocupado" : "Disponible");
+                    int iRowIndex = dataGridViewHorarios.Rows.Add(
+                        oDtSlot.ToString("HH:mm"), esOcupado ? "Ocupado" : "Disponible");
 
                     var oRow = dataGridViewHorarios.Rows[iRowIndex];
+
                     if (esOcupado)
                     {
                         oRow.DefaultCellStyle.BackColor = Color.LightCoral;
@@ -203,13 +222,11 @@ namespace UI.Interfaces.ReservasLogOut
                     }
                     else
                     {
-                        oRow.DefaultCellStyle.BackColor = Color.LightGreen;
+                            oRow.DefaultCellStyle.BackColor = Color.LightGreen;
                     }
                 }
 
-                // 6️ Ordenar por hora
                 dataGridViewHorarios.Sort(dataGridViewHorarios.Columns["Hora"], ListSortDirection.Ascending);
-
             }
             catch (Exception ex)
             {
@@ -335,5 +352,6 @@ namespace UI.Interfaces.ReservasLogOut
                 MostrarMensajeError(ex);
             }
         }
+
     }
 }

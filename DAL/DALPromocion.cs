@@ -68,5 +68,18 @@ namespace DAL
             }
 
         }
+
+        public DataTable ObtenerPromocionesActivas()
+        {
+            try
+            {
+                Hdatos = new Hashtable();
+                return oDatos.Leer("stpPromocion_S_Activas", Hdatos);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
