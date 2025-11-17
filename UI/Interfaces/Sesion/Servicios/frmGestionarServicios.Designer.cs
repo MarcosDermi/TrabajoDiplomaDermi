@@ -43,6 +43,7 @@
             this.lblCantRegistrosServicios = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.chkVerServicios = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cmbProfesional = new System.Windows.Forms.ComboBox();
             this.btnEliminarServicio = new System.Windows.Forms.Button();
@@ -217,6 +218,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.chkVerServicios);
             this.groupBox4.Controls.Add(this.label5);
             this.groupBox4.Controls.Add(this.cmbProfesional);
             this.groupBox4.Location = new System.Drawing.Point(20, 20);
@@ -226,10 +228,21 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Filtrar:";
             // 
+            // chkVerServicios
+            // 
+            this.chkVerServicios.AutoSize = true;
+            this.chkVerServicios.Location = new System.Drawing.Point(90, 50);
+            this.chkVerServicios.Name = "chkVerServicios";
+            this.chkVerServicios.Size = new System.Drawing.Size(157, 17);
+            this.chkVerServicios.TabIndex = 14;
+            this.chkVerServicios.Text = "Mostrar todos los servicios.";
+            this.chkVerServicios.UseVisualStyleBackColor = true;
+            this.chkVerServicios.CheckedChanged += new System.EventHandler(this.chkVerServicios_CheckedChanged);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(27, 36);
+            this.label5.Location = new System.Drawing.Point(20, 24);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(64, 13);
             this.label5.TabIndex = 13;
@@ -238,7 +251,7 @@
             // cmbProfesional
             // 
             this.cmbProfesional.FormattingEnabled = true;
-            this.cmbProfesional.Location = new System.Drawing.Point(97, 33);
+            this.cmbProfesional.Location = new System.Drawing.Point(90, 21);
             this.cmbProfesional.Name = "cmbProfesional";
             this.cmbProfesional.Size = new System.Drawing.Size(156, 21);
             this.cmbProfesional.TabIndex = 12;
@@ -255,6 +268,7 @@
             this.btnEliminarServicio.TabIndex = 5;
             this.btnEliminarServicio.Text = "Eliminar";
             this.btnEliminarServicio.UseVisualStyleBackColor = false;
+            this.btnEliminarServicio.Click += new System.EventHandler(this.btnEliminarServicio_Click);
             // 
             // btnModificarServicio
             // 
@@ -326,5 +340,6 @@
         private System.Windows.Forms.Label lblCantRegistrosServiciosInsumos;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.CheckBox chkVerServicios;
     }
 }

@@ -11,8 +11,6 @@ namespace BE
 
         public string Apellido { get; set; }
 
-        public string Telefono { get; set; }
-
         public string Email { get; set; }
 
         public List<BEServicio> Servicios { get; set; } = new List<BEServicio>();

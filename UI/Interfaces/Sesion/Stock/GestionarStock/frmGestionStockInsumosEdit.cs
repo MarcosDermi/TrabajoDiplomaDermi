@@ -67,7 +67,7 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
             }
             catch (Exception Ex)
             {
-                MostrarMensajeError(Ex);
+                MostrarMensajeError(Ex.Message);
             }
         }
 
@@ -118,7 +118,7 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
             }
             catch (Exception Ex)
             {
-                MostrarMensajeError(Ex);
+                MostrarMensajeError(Ex.Message);
             }
         }
 
@@ -156,7 +156,7 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
             }
             catch (Exception Ex)
             {
-                MostrarMensajeError(Ex);
+                MostrarMensajeError(Ex.Message);
             }
         }
     }

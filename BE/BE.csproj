@@ -62,6 +62,7 @@
     <Compile Include="ClasesMultiLenguaje\IdiomaObserver.cs" />
     <Compile Include="ClasesMultiLenguaje\Palabra.cs" />
     <Compile Include="ClasesMultiLenguaje\Traduccion.cs" />
+    <Compile Include="Exceptions\IngreseMailException.cs" />
     <Compile Include="Exceptions\ServicioNoEncontradoException.cs" />
     <Compile Include="Exceptions\LoginException.cs" />
     <Compile Include="HashCrypto.cs" />

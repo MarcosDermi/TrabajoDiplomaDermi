@@ -40,25 +40,24 @@ namespace UI.Interfaces.ReservasLogOut
                 dataGridViewHorarios.Columns.Add("Hora", "Hora");
                 dataGridViewHorarios.Columns.Add("Estado", "Estado");
 
+                cmbProfesional.DataSource = GeneralService.ListarProfesionales();
                 cmbProfesional.DisplayMember = "Nombre";
                 cmbProfesional.ValueMember = "ProfesionalID";
-                cmbProfesional.DataSource = GeneralService.ListarProfesionales();
 
                 ucCalendario.MesCambiado += (mesTexto) =>
                 {
                     lblMes.Text = mesTexto;
                 };
 
-                BLLPromocion bll = new BLLPromocion();
-                List<DateTime> fechasPromo = bll.ObtenerFechasConPromociones();
-
-                ucCalendario.MarcarFechasConPromociones(fechasPromo);
+                var oBLLPromocion = new BLLPromocion();
+                var oLstFechasPromo = oBLLPromocion.ObtenerFechasConPromociones();
+                ucCalendario.MarcarFechasConPromociones(oLstFechasPromo);
 
                 lblMes.Text = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(DateTime.Today.ToString("MMMM yyyy", new System.Globalization.CultureInfo("es-ES")));
             }
             catch (Exception ex)
             {
-                MostrarMensajeError(ex);
+                MostrarMensajeError(ex.Message);
             }
         }
 
@@ -70,7 +69,7 @@ namespace UI.Interfaces.ReservasLogOut
             }
             catch (Exception ex)
             {
-                MostrarMensajeError(ex);
+                MostrarMensajeError(ex.Message);
             }
         }
 
@@ -102,7 +101,7 @@ namespace UI.Interfaces.ReservasLogOut
             }
             catch (Exception ex)
             {
-                MostrarMensajeError(ex);
+                MostrarMensajeError(ex.Message);
             }
         }
 
@@ -118,7 +117,7 @@ namespace UI.Interfaces.ReservasLogOut
             }
             catch (Exception ex)
             {
-                MostrarMensajeError(ex);
+                MostrarMensajeError(ex.Message);
             }
         }
 
@@ -134,7 +133,7 @@ namespace UI.Interfaces.ReservasLogOut
             }
             catch (Exception ex)
             {
-                MostrarMensajeError(ex);
+                MostrarMensajeError(ex.Message);
             }
         }
 
@@ -150,7 +149,7 @@ namespace UI.Interfaces.ReservasLogOut
             }
             catch (Exception ex)
             {
-                MostrarMensajeError(ex);
+                MostrarMensajeError(ex.Message);
             }
         }
 
@@ -230,7 +229,7 @@ namespace UI.Interfaces.ReservasLogOut
             }
             catch (Exception ex)
             {
-                MostrarMensajeError(ex);
+                MostrarMensajeError(ex.Message);
             }
         }
 
@@ -242,7 +241,7 @@ namespace UI.Interfaces.ReservasLogOut
             }
             catch (Exception ex)
             {
-                MostrarMensajeError(ex);
+                MostrarMensajeError(ex.Message);
             }
         }
 
@@ -265,7 +264,7 @@ namespace UI.Interfaces.ReservasLogOut
             }
             catch (Exception ex)
             {
-                MostrarMensajeError(ex);
+                MostrarMensajeError(ex.Message);
             }
         }
 
@@ -325,7 +324,7 @@ namespace UI.Interfaces.ReservasLogOut
             }
             catch (Exception ex)
             {
-                MostrarMensajeError(ex);
+                throw new Exception(ex.Message);
             }
         }
 
@@ -349,7 +348,7 @@ namespace UI.Interfaces.ReservasLogOut
             }
             catch (Exception ex)
             {
-                MostrarMensajeError(ex);
+                MostrarMensajeError(ex.Message);
             }
         }
 

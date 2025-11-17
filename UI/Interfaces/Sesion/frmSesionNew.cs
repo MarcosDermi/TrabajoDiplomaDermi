@@ -9,6 +9,7 @@ using UI.Interfaces.InicioSesion;
 using UI.Interfaces.Sesion.Administrar;
 using UI.Interfaces.Sesion.Calendario;
 using UI.Interfaces.Sesion.Menu;
+using UI.Interfaces.Sesion.Profesionales;
 using UI.Interfaces.Sesion.Promociones;
 using UI.Interfaces.Sesion.Reporteria;
 using UI.Interfaces.Sesion.Servicios;
@@ -265,7 +266,7 @@ namespace UI.Interfaces.Sesion
             catch (Exception ex)
             {
                 _oSingletonSesion.Logout();
-                MostrarMensajeError(ex);
+                MostrarMensajeError(ex.Message);
             }
         }
 
@@ -303,7 +304,8 @@ namespace UI.Interfaces.Sesion
                                 oBtn.Name.Contains("btnStock") ||
                                 oBtn.Name.Contains("btnPromociones") ||
                                 oBtn.Name.Contains("btnServicios") ||
-                                oBtn.Name.Contains("btnReporteria"))
+                                oBtn.Name.Contains("btnReporteria") || 
+                                oBtn.Name.Contains("btnProfesionales"))
                             {
                                 if (_oSingletonSesion.IsInRole(TipoPermiso.Crear)) oBtn.Visible = true;
                             }
@@ -500,7 +502,7 @@ namespace UI.Interfaces.Sesion
             }
             catch (Exception ex)
             {
-                MostrarMensajeError(ex);
+                MostrarMensajeError(ex.Message);
             }
         }
 
@@ -552,6 +554,17 @@ namespace UI.Interfaces.Sesion
         {
             OpenChildForm(new frmFidelizacionCliente(_oSingletonSesion.Usuario.Id));
             hideSubMenu(pnlMenuClienteSubMenu);
+        }
+
+        private void btnProfesionales_Click(object sender, EventArgs e)
+        {
+            ShowSubMenu(pnlProfesionalesSubMenu);
+        }
+
+        private void btnFranjasHorarias_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmJornadasLaborales());
+            hideSubMenu(pnlProfesionalesSubMenu);
         }
     }
 }

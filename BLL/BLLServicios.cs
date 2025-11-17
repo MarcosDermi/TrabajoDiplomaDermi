@@ -32,7 +32,7 @@ namespace BLL
 
         public bool BajaID(int iId)
         {
-            throw new NotImplementedException();
+            return oDALServicio.EliminarServicio(iId);
         }
 
         public DataTable GetAll()
@@ -71,9 +71,16 @@ namespace BLL
             return oDALServicio.ObtenerProfesionalServicioPorServicioID(ServicioID);
         }
 
-        public void GuardarInsumosServicio(BEServicio oBEServicio, List<InsumoSeleccionado> oLstInsumos, List<BEProfesional> oLstProfesionales)
+        public void GuardarInsumosServicio(BEServicio oBEServicio, List<InsumoSeleccionado> oLstInsumos, List<int> oLstProfesionalesAsignadosIds)
         {
-            oDALServicio.GuardarInsumosServicio(oBEServicio, oLstInsumos, oLstProfesionales);
+            oDALServicio.GuardarInsumosServicio(oBEServicio, oLstInsumos, oLstProfesionalesAsignadosIds);
         }
+
+        public DataTable ObtenerServicios()
+        {
+            return oDALServicio.ObtenerServicios();
+        }
+
+
     }
 }

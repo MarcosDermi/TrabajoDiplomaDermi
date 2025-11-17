@@ -160,7 +160,7 @@
             this.btnCrearInsumo.Name = "btnCrearInsumo";
             this.btnCrearInsumo.Size = new System.Drawing.Size(231, 47);
             this.btnCrearInsumo.TabIndex = 48;
-            this.btnCrearInsumo.Text = "Crear nuevo servicio";
+            this.btnCrearInsumo.Text = "Guardar";
             this.btnCrearInsumo.UseVisualStyleBackColor = false;
             this.btnCrearInsumo.Click += new System.EventHandler(this.btnCrearInsumo_Click);
             // 

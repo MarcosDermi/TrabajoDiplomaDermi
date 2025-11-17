@@ -35,6 +35,12 @@ namespace UI.Interfaces.Sesion.Promociones
                         return;
                     }
 
+                    if (Convert.ToDecimal(txtDescuento.Text) > 100)
+                    {
+                        MessageBox.Show("El descuento no puede ser mayor a 100%.", "Error de validacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
                     var oBEPromocion = new BEPromocion()
                     {
                         IdPromocion = PromocionID,
@@ -51,7 +57,7 @@ namespace UI.Interfaces.Sesion.Promociones
             }
             catch (Exception ex)
             {
-                MostrarMensajeError(ex);
+                MostrarMensajeError(ex.Message);
             }
         }
 
@@ -70,7 +76,7 @@ namespace UI.Interfaces.Sesion.Promociones
             }
             catch (Exception ex)
             {
-                MostrarMensajeError(ex);
+                MostrarMensajeError(ex.Message);
             }
         }
 
@@ -108,7 +114,7 @@ namespace UI.Interfaces.Sesion.Promociones
                 }
                 catch (Exception ex)
                 {
-                    MostrarMensajeError(ex);
+                    MostrarMensajeError(ex.Message);
                 }
             }
         }

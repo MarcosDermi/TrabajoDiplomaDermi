@@ -14,7 +14,7 @@ namespace BE
         public BEUsuario Cliente { get; set; }
         public int ProfesionalID { get; set; }
         public int MedioDePagoID { get; set; }
-        public List<BEServicio> Servicios { get; set; }
+        public List<BEServicio> Servicios { get; set; } = new List<BEServicio>();
         public decimal PrecioTotal { get; set; }
     }
 

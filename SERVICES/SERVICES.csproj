@@ -49,6 +49,7 @@
     <Compile Include="GeneralService.cs" />
     <Compile Include="AgendaService.cs" />
     <Compile Include="GestionPromocionesService.cs" />
+    <Compile Include="ProfesionalService.cs" />
     <Compile Include="GestionServiciosService.cs" />
     <Compile Include="GestionStockService.cs" />
     <Compile Include="Helpers\EmailHelper.cs" />

@@ -18,6 +18,7 @@ namespace UI
         private IGestionPromocionesService _promocionesService;
         private ISingletonSesionService _singletonsesionService;
         private IReporteriaService _reporteriaService;
+        private IProfesionalService _profesionalService;
 
 
         public BaseForm()
@@ -174,10 +175,26 @@ namespace UI
             }
         }
 
-        public void MostrarMensajeError(Exception ex)
+        public IProfesionalService ProfesionalService
+        {
+            get
+            {
+                if (_profesionalService == null && !DesignMode)
+                {
+                    _profesionalService = new ProfesionalService();
+                }
+                return _profesionalService;
+            }
+            set
+            {
+                _profesionalService = value;
+            }
+        }
+
+        public void MostrarMensajeError(string sMensaje)
         {
 
-            MessageBox.Show("Ocurrio un error inesperado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(sMensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

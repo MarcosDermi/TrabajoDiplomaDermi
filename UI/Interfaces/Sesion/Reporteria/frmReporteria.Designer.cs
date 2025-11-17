@@ -31,6 +31,9 @@ namespace UI.Interfaces.Sesion.Reporteria
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.cmbTipoReporte = new System.Windows.Forms.ComboBox();
             this.dtpDesde = new System.Windows.Forms.DateTimePicker();
             this.dtpHasta = new System.Windows.Forms.DateTimePicker();
@@ -45,10 +48,12 @@ namespace UI.Interfaces.Sesion.Reporteria
             this.lblCantRegistros = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.btnExportar = new System.Windows.Forms.Button();
+            this.ChartReport = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultados)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ChartReport)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbTipoReporte
@@ -98,10 +103,10 @@ namespace UI.Interfaces.Sesion.Reporteria
             this.dgvResultados.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvResultados.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dgvResultados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvResultados.Location = new System.Drawing.Point(17, 158);
+            this.dgvResultados.Location = new System.Drawing.Point(17, 512);
             this.dgvResultados.Name = "dgvResultados";
             this.dgvResultados.ReadOnly = true;
-            this.dgvResultados.Size = new System.Drawing.Size(435, 300);
+            this.dgvResultados.Size = new System.Drawing.Size(732, 278);
             this.dgvResultados.TabIndex = 4;
             // 
             // label1
@@ -204,10 +209,30 @@ namespace UI.Interfaces.Sesion.Reporteria
             this.btnExportar.UseVisualStyleBackColor = false;
             this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
+            // ChartReport
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.ChartReport.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.ChartReport.Legends.Add(legend1);
+            this.ChartReport.Location = new System.Drawing.Point(17, 158);
+            this.ChartReport.MinimumSize = new System.Drawing.Size(300, 300);
+            this.ChartReport.Name = "ChartReport";
+            this.ChartReport.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
+            this.ChartReport.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.ChartReport.Series.Add(series1);
+            this.ChartReport.Size = new System.Drawing.Size(732, 300);
+            this.ChartReport.TabIndex = 11;
+            this.ChartReport.Text = "chart1";
+            // 
             // frmReporteria
             // 
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(468, 522);
+            this.ClientSize = new System.Drawing.Size(761, 802);
+            this.Controls.Add(this.ChartReport);
             this.Controls.Add(this.btnExportar);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -223,6 +248,7 @@ namespace UI.Interfaces.Sesion.Reporteria
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ChartReport)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -244,5 +270,6 @@ namespace UI.Interfaces.Sesion.Reporteria
         private Label lblCantRegistros;
         private Label label8;
         private Button btnExportar;
+        private System.Windows.Forms.DataVisualization.Charting.Chart ChartReport;
     }
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace DAL
 {
@@ -43,7 +44,6 @@ namespace DAL
                         ProfesionalID = g.Key.ProfesionalID,
                         Nombre = g.Key.Nombre,
                         Apellido = g.Key.Apellido,
-                        Telefono = g.Key.Telefono,
                         Email = g.Key.Email,
                         Servicios = g.Select(s => new BEServicio
                         {
@@ -133,7 +133,7 @@ namespace DAL
             var stpNombre = "ConfirmarReserva";
             Hdatos = new Hashtable
             {
-                { "@ClienteID", oReserva.Cliente.Id },
+                { "@UserID", null },
                 { "@ProfesionalID", oReserva.ProfesionalID },
                 { "@FechaInicio", oReserva.FechaInicio },
                 { "@FechaFin", oReserva.FechaFin },
@@ -141,6 +141,11 @@ namespace DAL
                 { "@PrecioTotal", oReserva.PrecioTotal },
                 { "@EmailConfirmacion", oReserva.Cliente.Mail }
             };
+
+            if (oReserva.Cliente.Id != 0)
+            {
+                Hdatos.Add("@UserID", oReserva.Cliente.Id);
+            }
 
             try
             {
@@ -234,11 +239,24 @@ namespace DAL
         {
             try
             {
-                oDatos.Escribir("InsertReservaAcciones", new Hashtable
+                string stpNombre;
+                Hdatos = new Hashtable
                 {
                     { "@ReservaID", idReserva },
                     { "@Accion", (int)AccionEnum }
-                });
+                };
+
+                if (AccionEnum == BE.ReservaAcciones.Confirmada)
+                {
+                    stpNombre = "InsertReservaEstado";
+                }
+                else
+                {
+                    stpNombre = "UpdateReservaEstado";
+                }
+
+                oDatos.Escribir(stpNombre, Hdatos);
+
             }
             catch (SqlException ex)
             {
@@ -260,20 +278,39 @@ namespace DAL
                 });
                 if (oDtReserva.Rows.Count == 0)
                     throw new Exception("No se encontró la reserva solicitada.");
-                var row = oDtReserva.Rows[0];
+                var oDr = oDtReserva.Rows[0];
                 var oReserva = new BEReserva
                 {
-                    ReservaID = (int)row["ReservaID"],
+                    ReservaID = (int)oDr["ReservaID"],
                     Cliente = new BEUsuario
                     {
-                        Mail = (string)row["EmailConfirmacion"]
+                        Mail = (string)oDr["EmailConfirmacion"]
                     },
-                    ProfesionalID = (int)row["ProfesionalID"],
-                    FechaInicio = (DateTime)row["FechaInicio"],
-                    FechaFin = (DateTime)row["FechaFin"],
-                    MedioDePagoID = (int)row["MedioDePagoID"],
-                    PrecioTotal = (decimal)row["PrecioTotal"]
+                    ProfesionalID = (int)oDr["ProfesionalID"],
+                    FechaInicio = (DateTime)oDr["FechaInicio"],
+                    FechaFin = (DateTime)oDr["FechaFin"],
+                    MedioDePagoID = (int)oDr["MedioDePagoID"],
+                    PrecioTotal = (decimal)oDr["PrecioTotal"]
                 };
+
+                var oDtServicios = oDatos.Leer("ObtenerServiciosPorReservaID", new Hashtable
+                {
+                    { "@ReservaID", idReserva }
+                });
+
+                foreach (DataRow oDrServicios in oDtServicios.Rows)
+                {
+                    var oServicio = new BEServicio
+                    {
+                        ServicioID = (int)oDrServicios["ServicioID"],
+                        Nombre = (string)oDrServicios["Nombre"],
+                        DuracionMin = (int)oDrServicios["DuracionMin"],
+                        BufferMin = (int)oDrServicios["BufferMin"],
+                        Precio = (decimal)oDrServicios["Precio"]
+                    };
+
+                    oReserva.Servicios.Add(oServicio);
+                }
                 return oReserva;
             }
             catch (SqlException ex)
@@ -343,6 +380,30 @@ namespace DAL
                     { "@Fecha", dtFecha }
                 });
 
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable ObtenerReservasAfectadasPorCambioJornada(int ProfesionalID, List<int> oLstDiasSemanasEliminados)
+        {
+            try
+            {
+                var xmlDias = new XElement("Dias", oLstDiasSemanasEliminados.Select(d => new XElement("Dia", d)));
+
+                var hdatos = new Hashtable
+                    {
+                        { "@ProfesionalID", ProfesionalID },
+                        { "@DiasSemana", xmlDias.ToString() }
+                    };
+
+                return oDatos.Leer("stpReservas_S_AfectadasPorCambioJornada", hdatos);
             }
             catch (SqlException ex)
             {

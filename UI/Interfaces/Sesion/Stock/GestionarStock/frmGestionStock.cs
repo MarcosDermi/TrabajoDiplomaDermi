@@ -171,7 +171,7 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
             }
             catch (Exception ex)
             {
-                MostrarMensajeError(ex);
+                MostrarMensajeError(ex.Message);
             }
         }
 

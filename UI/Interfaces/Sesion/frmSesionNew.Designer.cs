@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.Button btnProfesionales;
             System.Windows.Forms.Button btnReporteria;
             System.Windows.Forms.Button btnHelp;
             System.Windows.Forms.Button btnServicios;
@@ -43,6 +44,8 @@
             this.pnlChildForm = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pnlMenuLateral = new System.Windows.Forms.Panel();
+            this.pnlProfesionalesSubMenu = new System.Windows.Forms.Panel();
+            this.btnFranjasHorarias = new System.Windows.Forms.Button();
             this.pnlReporteriaSubMenu = new System.Windows.Forms.Panel();
             this.btnReportes = new System.Windows.Forms.Button();
             this.pnlAdminSubMenu = new System.Windows.Forms.Panel();
@@ -72,6 +75,7 @@
             this.btnAgendaTurnos = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            btnProfesionales = new System.Windows.Forms.Button();
             btnReporteria = new System.Windows.Forms.Button();
             btnHelp = new System.Windows.Forms.Button();
             btnServicios = new System.Windows.Forms.Button();
@@ -84,6 +88,7 @@
             this.pnlChildForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.pnlMenuLateral.SuspendLayout();
+            this.pnlProfesionalesSubMenu.SuspendLayout();
             this.pnlReporteriaSubMenu.SuspendLayout();
             this.pnlAdminSubMenu.SuspendLayout();
             this.pnlHelpSubMenu.SuspendLayout();
@@ -95,6 +100,27 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnProfesionales
+            // 
+            btnProfesionales.Dock = System.Windows.Forms.DockStyle.Top;
+            btnProfesionales.FlatAppearance.BorderSize = 0;
+            btnProfesionales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnProfesionales.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            btnProfesionales.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            btnProfesionales.Image = global::UI.Properties.Resources.person_apron_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
+            btnProfesionales.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnProfesionales.Location = new System.Drawing.Point(0, 1431);
+            btnProfesionales.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            btnProfesionales.Name = "btnProfesionales";
+            btnProfesionales.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            btnProfesionales.Size = new System.Drawing.Size(184, 59);
+            btnProfesionales.TabIndex = 22;
+            btnProfesionales.Text = "Profesionales";
+            btnProfesionales.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnProfesionales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            btnProfesionales.UseVisualStyleBackColor = true;
+            btnProfesionales.Click += new System.EventHandler(this.btnProfesionales_Click);
             // 
             // btnReporteria
             // 
@@ -209,7 +235,7 @@
             btnSalir.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             btnSalir.Image = global::UI.Properties.Resources.login_24dp_E3E3E3_FILL0_wght300_GRAD0_opsz24;
             btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnSalir.Location = new System.Drawing.Point(0, 1431);
+            btnSalir.Location = new System.Drawing.Point(0, 1539);
             btnSalir.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             btnSalir.Name = "btnSalir";
             btnSalir.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
@@ -324,6 +350,8 @@
             // 
             this.pnlMenuLateral.AutoScroll = true;
             this.pnlMenuLateral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(102)))), ((int)(((byte)(113)))));
+            this.pnlMenuLateral.Controls.Add(this.pnlProfesionalesSubMenu);
+            this.pnlMenuLateral.Controls.Add(btnProfesionales);
             this.pnlMenuLateral.Controls.Add(this.pnlReporteriaSubMenu);
             this.pnlMenuLateral.Controls.Add(btnReporteria);
             this.pnlMenuLateral.Controls.Add(this.pnlAdminSubMenu);
@@ -348,6 +376,38 @@
             this.pnlMenuLateral.Name = "pnlMenuLateral";
             this.pnlMenuLateral.Size = new System.Drawing.Size(201, 998);
             this.pnlMenuLateral.TabIndex = 12;
+            // 
+            // pnlProfesionalesSubMenu
+            // 
+            this.pnlProfesionalesSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(50)))), ((int)(((byte)(30)))));
+            this.pnlProfesionalesSubMenu.Controls.Add(this.btnFranjasHorarias);
+            this.pnlProfesionalesSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlProfesionalesSubMenu.Location = new System.Drawing.Point(0, 1490);
+            this.pnlProfesionalesSubMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pnlProfesionalesSubMenu.Name = "pnlProfesionalesSubMenu";
+            this.pnlProfesionalesSubMenu.Size = new System.Drawing.Size(184, 49);
+            this.pnlProfesionalesSubMenu.TabIndex = 23;
+            this.pnlProfesionalesSubMenu.Visible = false;
+            // 
+            // btnFranjasHorarias
+            // 
+            this.btnFranjasHorarias.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnFranjasHorarias.FlatAppearance.BorderSize = 0;
+            this.btnFranjasHorarias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFranjasHorarias.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnFranjasHorarias.Image = global::UI.Properties.Resources.view_week_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
+            this.btnFranjasHorarias.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFranjasHorarias.Location = new System.Drawing.Point(0, 0);
+            this.btnFranjasHorarias.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnFranjasHorarias.Name = "btnFranjasHorarias";
+            this.btnFranjasHorarias.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnFranjasHorarias.Size = new System.Drawing.Size(184, 43);
+            this.btnFranjasHorarias.TabIndex = 0;
+            this.btnFranjasHorarias.Text = "Gestionar Jornadas y Franjas horarias";
+            this.btnFranjasHorarias.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFranjasHorarias.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnFranjasHorarias.UseVisualStyleBackColor = true;
+            this.btnFranjasHorarias.Click += new System.EventHandler(this.btnFranjasHorarias_Click);
             // 
             // pnlReporteriaSubMenu
             // 
@@ -881,6 +941,7 @@
             this.pnlChildForm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.pnlMenuLateral.ResumeLayout(false);
+            this.pnlProfesionalesSubMenu.ResumeLayout(false);
             this.pnlReporteriaSubMenu.ResumeLayout(false);
             this.pnlAdminSubMenu.ResumeLayout(false);
             this.pnlHelpSubMenu.ResumeLayout(false);
@@ -931,6 +992,8 @@
         private System.Windows.Forms.Panel pnlReporteriaSubMenu;
         private System.Windows.Forms.Button btnReportes;
         public System.Windows.Forms.Button btnAdministrar;
+        private System.Windows.Forms.Panel pnlProfesionalesSubMenu;
+        private System.Windows.Forms.Button btnFranjasHorarias;
     }
 }
 

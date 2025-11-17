@@ -107,7 +107,7 @@ namespace UI.Interfaces.InicioSesion
             }
             catch (Exception ex)
             {
-                MostrarMensajeError(ex);
+                MostrarMensajeError(ex.Message);
             }
         }
 
@@ -309,7 +309,7 @@ namespace UI.Interfaces.InicioSesion
             }
             catch (Exception ex)
             {
-                MostrarMensajeError(ex);
+                MostrarMensajeError(ex.Message);
             }
             
         }

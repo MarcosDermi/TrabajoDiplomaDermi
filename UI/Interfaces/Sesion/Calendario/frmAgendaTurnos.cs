@@ -82,49 +82,54 @@ namespace UI.Interfaces.Sesion.Calendario
 
         private void dataGridViewHorarios_CellContentClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
         {
-            try { 
-            grpTurnoSeleccionado.Visible = true;
-            var fechaActual = _fechaSeleccionada;
-            var oHorarioSeleccionado = dataGridViewHorarios.SelectedCells[0].Value.ToString();
-
-            var fechaSeleccionadaConHora = DateTime.Parse($"{fechaActual.ToShortDateString()} {oHorarioSeleccionado}");
-            var oDtReserva = AgendaService.ObtenerReservaDiaPorFechayProfesional(_IdProfesionalSeleccionado, fechaSeleccionadaConHora);
-
-            _IdReservaSeleccionada = Convert.ToInt32(oDtReserva.Rows[0]["ReservaID"]);
-            lblMontoTotal.Text = oDtReserva.Rows[0]["PrecioTotal"].ToString();
-
-            if (oDtReserva.Rows[0]["AccionesEnum"] != DBNull.Value)
+            try
             {
-                    foreach (DataRow oDr in oDtReserva.AsEnumerable()) 
+                grpTurnoSeleccionado.Visible = true;
+                var fechaActual = _fechaSeleccionada;
+                var oHorarioSeleccionado = dataGridViewHorarios.SelectedCells[0].Value.ToString();
+
+                var fechaSeleccionadaConHora = DateTime.Parse($"{fechaActual.ToShortDateString()} {oHorarioSeleccionado}");
+                var oDtReserva = AgendaService.ObtenerReservaDiaPorFechayProfesional(_IdProfesionalSeleccionado, fechaSeleccionadaConHora);
+
+                _IdReservaSeleccionada = Convert.ToInt32(oDtReserva.Rows[0]["ReservaID"]);
+                lblMontoTotal.Text = oDtReserva.Rows[0]["PrecioTotal"].ToString();
+
+                if (oDtReserva.Rows[0]["ReservaAccionID"] != DBNull.Value)
+                {
+                    foreach (DataRow oDr in oDtReserva.AsEnumerable())
                     {
-                        var eReservaAccion = (ReservaAcciones)(int)oDtReserva.Rows[0]["AccionesEnum"];
-                        
-                        if ((ReservaAcciones)oDr["AccionesEnum"] == ReservaAcciones.Atendida || (ReservaAcciones)oDr["AccionesEnum"] == ReservaAcciones.Cancelada)
+                        var eReservaAccion = (ReservaAcciones)(int)oDtReserva.Rows[0]["ReservaAccionID"];
+
+                        if ((ReservaAcciones)oDr["ReservaAccionID"] == ReservaAcciones.Atendida || (ReservaAcciones)oDr["ReservaAccionID"] == ReservaAcciones.Cancelada)
                         {
                             btnAtendido.Enabled = false;
+                            btnCancelarTurno.Enabled = false;
                         }
                         else
                         {
                             btnAtendido.Enabled = true;
+                            btnCancelarTurno.Enabled = true;
                         }
                     }
-            }
-            else
-            {
-                btnAtendido.Enabled = true;
-            }
+                }
+                else
+                {
+                    btnAtendido.Enabled = true;
+                    btnCancelarTurno.Enabled = true;
+                }
 
-            foreach (DataColumn col in oDtReserva.Columns.Cast<DataColumn>().ToList())
-            {
-                if (col.ColumnName != "NombreServicio")
-                    oDtReserva.Columns.Remove(col);
-            }
-            oDtReserva.Columns["NombreServicio"].ColumnName = "Servicios";
+                foreach (DataColumn col in oDtReserva.Columns.Cast<DataColumn>().ToList())
+                {
+                    if (col.ColumnName != "NombreServicio")
+                        oDtReserva.Columns.Remove(col);
+                }
+                oDtReserva.Columns["NombreServicio"].ColumnName = "Servicios";
 
-            dgvDetalleTurno.DataSource = oDtReserva;
-            }catch(Exception ex)
+                dgvDetalleTurno.DataSource = oDtReserva;
+            }
+            catch (Exception ex)
             {
-                MostrarMensajeError(ex);
+                MostrarMensajeError(ex.Message);
             }
         }
 
@@ -161,7 +166,9 @@ namespace UI.Interfaces.Sesion.Calendario
 
                 AgendaService.ReservaAcciones(_IdReservaSeleccionada, ReservaAcciones.Atendida);
 
-                MessageBox.Show("Turno confirmado.", "Exito", MessageBoxButtons.OK);
+                MessageBox.Show("Turno marcado como atendido.", "Exito", MessageBoxButtons.OK);
+
+                RefrescarHorariosInteligentes();
             }
 
             return;
@@ -174,21 +181,30 @@ namespace UI.Interfaces.Sesion.Calendario
 
         private void btnCancelarTurno_Click(object sender, EventArgs e)
         {
-            var Resultado = MessageBox.Show("Desea marcar como cancelado el turno?.", "Confirmar cancelar turno", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-
-            if (Resultado == DialogResult.OK)
+            try
             {
-                AgendaService.ReservaAcciones(_IdReservaSeleccionada, ReservaAcciones.Cancelada);
+                var Resultado = MessageBox.Show("Desea marcar como cancelado el turno?.", "Confirmar cancelar turno", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
-                var oReserva = AgendaService.ObtenerReserva(_IdReservaSeleccionada);
+                if (Resultado == DialogResult.OK)
+                {
+                    AgendaService.ReservaAcciones(_IdReservaSeleccionada, ReservaAcciones.Cancelada);
 
-                var oEmailHelper = new EmailHelper();
-                oEmailHelper.EnviarCancelacionTurno(new BEReserva { ReservaID = _IdReservaSeleccionada }, _IdReservaSeleccionada);
+                    var oReserva = AgendaService.ObtenerReserva(_IdReservaSeleccionada);
 
-                MessageBox.Show("Turno cancelado.", "Exito", MessageBoxButtons.OK);
+                    var oEmailHelper = new EmailHelper();
+                    oEmailHelper.EnviarCancelacionTurno(oReserva, _IdReservaSeleccionada);
+
+                    MessageBox.Show("Turno cancelado.", "Exito", MessageBoxButtons.OK);
+
+                    RefrescarHorariosInteligentes();
+                }
+
             }
-
-            return;
+            catch (Exception ex)
+            {
+                MostrarMensajeError(ex.Message);
+            }
+             
         }
     }
 }

@@ -110,6 +110,13 @@ namespace UI.Interfaces.Sesion.Servicios
                         CantidadStock = Convert.ToDecimal(row.Cells["Stock"].Value),
                         CantidadUsar = Convert.ToDecimal(row.Cells["Cantidad"].Value)
                     };
+
+                    if(insumo.CantidadUsar <= 0)
+                    {
+                        MessageBox.Show($"La cantidad a usar del insumo '{insumo.Nombre}' debe ser mayor a cero.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
                     InsumosSeleccionados.Add(insumo);
                 }
             }

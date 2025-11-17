@@ -49,7 +49,7 @@ namespace UI.Interfaces.Sesion.Servicios
                     this.Show();
                 }
             }
-            catch (Exception ex) { MostrarMensajeError(ex); }
+            catch (Exception ex) { MostrarMensajeError(ex.Message); }
         }
 
 
@@ -64,7 +64,10 @@ namespace UI.Interfaces.Sesion.Servicios
             }
             chkLstProfesional.DisplayMember = "Nombre";
 
-            CargarServicio(ServicioID);
+            if (ServicioID != 0)
+            {
+                CargarServicio(ServicioID);
+            }
         }
 
         private void CargarServicio(int ServicioID)
@@ -97,7 +100,7 @@ namespace UI.Interfaces.Sesion.Servicios
                     {
                         var oBEInsumo = new InsumoSeleccionado();
 
-                        
+
                         oBEInsumo.InsumoID = (int)oDr["InsumoID"];
                         oBEInsumo.Codigo = (string)oDr["Codigo"];
                         oBEInsumo.Nombre = (string)oDr["Nombre"];
@@ -116,7 +119,7 @@ namespace UI.Interfaces.Sesion.Servicios
             }
             catch (Exception ex)
             {
-                MostrarMensajeError(ex);
+                MostrarMensajeError(ex.Message);
             }
         }
 
@@ -164,38 +167,38 @@ namespace UI.Interfaces.Sesion.Servicios
         private void btnCrearInsumo_Click(object sender, EventArgs e)
         {
 
-            var resultado = MessageBox.Show("¿Está seguro que desea crear el servicio?",
+            var resultado = MessageBox.Show("¿Está seguro que desea guardar el servicio?",
             "Confirmar nuevo servicio",
             MessageBoxButtons.YesNo,
             MessageBoxIcon.Question);
 
-            if (resultado != DialogResult.Yes)
+            if (resultado == DialogResult.Yes)
             {
-
                 try
                 {
                     var oServicio = new BEServicio
                     {
+                        ServicioID = ServicioID != 0 ? ServicioID : 0,
                         Nombre = txtNombre.Text,
                         DuracionMin = Convert.ToInt32(txtDuracion.Text),
                         BufferMin = Convert.ToInt32(txtBuffer.Text),
                         Precio = Convert.ToDecimal(txtPrecio.Text),
                     };
 
-                    var oLstProfesionalesAsignados = new List<BEProfesional>();
+                    var oLstProfesionalesAsignadosIds = new List<int>();
 
-                    foreach (var item in chkLstProfesional.CheckedItems)
+                    foreach (BEProfesional oBEProfesional in chkLstProfesional.CheckedItems)
                     {
-                        oLstProfesionalesAsignados.Add((BEProfesional)item);
+                        oLstProfesionalesAsignadosIds.Add(oBEProfesional.ProfesionalID);
                     }
 
-                    GestionServicioService.GuardarInsumosServicio(oServicio, _insumosServicio, oLstProfesionalesAsignados);
-                    MessageBox.Show("El servicio se ha creado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                    GestionServicioService.GuardarInsumosServicio(oServicio, _insumosServicio, oLstProfesionalesAsignadosIds);
+                    MessageBox.Show("El servicio se ha guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
                 }
                 catch (Exception ex)
                 {
-                    MostrarMensajeError(ex);
+                    MostrarMensajeError(ex.Message);
                 }
             }
         }

@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Contracts\IDigitoVerificadorService.cs" />
     <Compile Include="Contracts\IGestionPromocionesService.cs" />
+    <Compile Include="Contracts\IProfesionalService.cs" />
     <Compile Include="Contracts\IGestionServicioService.cs" />
     <Compile Include="Contracts\IReporteriaService.cs" />
     <Compile Include="Contracts\ILogErrorsService.cs" />

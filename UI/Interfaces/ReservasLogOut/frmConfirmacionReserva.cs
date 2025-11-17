@@ -1,5 +1,7 @@
 ﻿using BE;
+using BE.Exceptions;
 using BLL;
+using DocumentFormat.OpenXml.Office2010.Excel;
 using SERVICES.Helpers;
 using System;
 using System.Data;
@@ -58,23 +60,32 @@ namespace UI.Interfaces.ReservasLogOut
 
         private void txtConfirmarReserva_Click(object sender, EventArgs e)
         {
-            if (!IsLogin)
+            try
             {
                 if (!ValidatorsService.validarMail(txtEmail.Text))
                 {
-                    MessageBox.Show("Por favor, ingrese un correo electrónico válido.", "Correo Inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MostrarMensajeError("Debe ingresar un mail valido.");
+                    return;
+                }
+                else
+                {
+                    _oReserva.Cliente.Mail = txtEmail.Text;
+                    var Id = IsLogin == true ? SingletonSesionService.Usuario.Id : 0;
+                    var idReserva = AgendaService.ConfirmarReserva(_oReserva, Id);
+
+                    AgendaService.ReservaAcciones(idReserva, ReservaAcciones.Confirmada);
+
+                    var oEmailHelper = new EmailHelper();
+                    oEmailHelper.EnviarConfirmacionTurno(_oReserva, idReserva);
+
+                    MessageBox.Show($"La reserva se ha confirmado exitosamente. Su número de reserva es: {idReserva}", "Reserva Confirmada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
                 }
             }
-
-            _oReserva.Cliente.Mail = txtEmail.Text;
-            var Id = IsLogin == true ? SingletonSesionService.Usuario.Id : 0;
-            var idReserva = AgendaService.ConfirmarReserva(_oReserva, Id);
-
-            var oEmailHelper = new EmailHelper();
-            oEmailHelper.EnviarConfirmacionTurno(_oReserva, idReserva);
-
-            MessageBox.Show($"La reserva se ha confirmado exitosamente. Su número de reserva es: {idReserva}", "Reserva Confirmada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close();
+            catch (Exception ex)
+            {
+                MostrarMensajeError(ex.Message);
+            }
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace DAL
 {
@@ -54,6 +55,24 @@ namespace DAL
             throw new NotImplementedException();
         }
 
+        public DataTable TraerListadoProfesionalesSinServicios()
+        {
+            try
+            {
+                var stpNombre = "GetProfesionalesSinServicios";
+                Hdatos = new Hashtable();
+                return oDatos.Leer(stpNombre, Hdatos);
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public List<BEProfesional> ListarTodo(bool EsControlCambio, int iIdUsuario)
         {
             var oLstProfesionales = new List<BEProfesional>();
@@ -64,33 +83,33 @@ namespace DAL
 
                 var oDtProfesionales = oDatos.Leer(stpNombre, Hdatos);
 
-                oLstProfesionales = oDtProfesionales.AsEnumerable()
-                    .GroupBy(row => new
+                foreach (DataRow oDr in oDtProfesionales.AsEnumerable())
+                {
+                    var oBEProfesional = new BEProfesional
                     {
-                        ProfesionalID = (int)row["ProfesionalID"],
-                        Nombre = (string)row["Nombre"],
-                        Apellido = (string)row["Apellido"],
-                        Telefono = (string)row["Telefono"],
-                        Email = (string)row["Email"]
-                    })
-                    .Select(g => new BEProfesional
-                    {
-                        ProfesionalID = g.Key.ProfesionalID,
-                        Nombre = g.Key.Nombre,
-                        Apellido = g.Key.Apellido,
-                        Telefono = g.Key.Telefono,
-                        Email = g.Key.Email,
-                        Servicios = g.Select(s => new BEServicio
-                        {
-                            ServicioID = (int)s["ServicioID"],
-                            Nombre = (string)s["NombreServicio"],
-                            Precio = (decimal)s["PrecioServicio"],
-                            DuracionMin = (int)s["DuracionMin"],
-                            BufferMin = (int)s["BufferMin"]
-                        }).ToList()
-                    })
-                    .ToList();
+                        ProfesionalID = (int)oDr["Id"],
+                        Nombre = (string)oDr["Nombre"],
+                        Apellido = (string)oDr["Apellido"],
+                        Email = (string)oDr["Mail"]
+                    };
 
+                    var oDtServicios = oDatos.Leer("ObtenerServiciosPorProfesional", new Hashtable() { { "@ProfesionalID", oBEProfesional.ProfesionalID } });
+
+                    foreach (DataRow oDrServicio in oDtServicios.AsEnumerable())
+                    {
+                        var oBEServicio = new BEServicio
+                        {
+                            ServicioID = (int)oDrServicio["ServicioID"],
+                            Nombre = (string)oDrServicio["Nombre"],
+                            Precio = (decimal)oDrServicio["Precio"],
+                            DuracionMin = (int)oDrServicio["DuracionMin"],
+                            BufferMin = (int)oDrServicio["BufferMin"]
+                        };
+                        oBEProfesional.Servicios.Add(oBEServicio);
+                    }
+
+                    oLstProfesionales.Add(oBEProfesional);
+                }
 
                 return oLstProfesionales;
 
@@ -140,16 +159,130 @@ namespace DAL
             {
                 return new BEProfesional
                 {
-                    ProfesionalID = (int)row["ProfesionalID"],
+                    ProfesionalID = (int)row["Id"],
                     Nombre = (string)row["Nombre"],
                     Apellido = (string)row["Apellido"],
-                    Telefono = (string)row["Telefono"],
-                    Email = (string)row["Email"]
+                    Email = (string)row["Mail"]
                 };
             }
 
             return new BEProfesional();
         }
-    }
 
+        public DataTable ObtenerJornadasLaboralesPorProfesionalID(int ProfesionalID)
+        {
+            try
+            {
+
+                Hdatos = new Hashtable();
+                Hdatos.Add("@ProfesionalID", ProfesionalID);
+                return oDatos.Leer("stpJornadaLaboral_S_X_ProfesionalID", Hdatos);
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable ObtenerFranjaHorariaPorJornadaID(int JornadaID)
+        {
+            try
+            {
+                Hdatos = new Hashtable();
+                Hdatos.Add("@JornadaID", JornadaID);
+                return oDatos.Leer("stpFranjaHoraria_S_X_JornadaID", Hdatos);
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<int> ObtenerDiasSemanaPorProfesional(int profesionalID)
+        {
+            var oLstDiasSemana = new List<int>();
+
+            Hdatos = new Hashtable();
+            Hdatos.Add("@ProfesionalID", profesionalID);
+
+            var oDtDiasSemana = oDatos.Leer("stpProfesionalDiaSemana_S_X_ProfesionalID", Hdatos);
+
+            foreach (DataRow row in oDtDiasSemana.Rows)
+            {
+                oLstDiasSemana.Add((int)row["DiaSemanaID"]);
+            }
+            return oLstDiasSemana;
+        }
+
+        public void ActualizarJornadasProfesional(int profesionalID, List<int> oLstDiasSemana)
+        {
+            var xmlDias = new XElement("Dias", oLstDiasSemana.Select(d => new XElement("Dia", d)));
+
+            var hdatos = new Hashtable
+    {
+        { "@ProfesionalID", profesionalID },
+        { "@DiasSemana", xmlDias.ToString() }
+    };
+
+            oDatos.Escribir("stpJornadaLaboral_U_Completo", hdatos);
+        }
+
+        public void GuardarFranjaHoraria(int JornadaID, TimeSpan HoraInicio, TimeSpan HoraFin)
+        {
+            var hdatos = new Hashtable
+            {
+                { "@JornadaID", JornadaID },
+                { "@HoraInicio", HoraInicio },
+                { "@HoraFin", HoraFin }
+            };
+
+            oDatos.Escribir("stpFranjaHoraria_I", hdatos);
+        }
+
+        public void EliminarFranjaHoraria(int FranjaHorariaID)
+        {
+            try
+            {
+                var hdatos = new Hashtable
+            {
+                { "@FranjaHorariaID", FranjaHorariaID }
+            };
+                oDatos.Escribir("stpFranjaHoraria_D", hdatos);
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable ObtenerReservasAfectadasPorCambioFranja(int FranjaHorariaID)
+        {
+            try
+            {
+                Hdatos = new Hashtable();
+                Hdatos.Add("@FranjaID", FranjaHorariaID);
+                return oDatos.Leer("stpReservas_S_AfectadasPorFranjaEliminada", Hdatos);
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+    }
 }

@@ -103,6 +103,7 @@
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.1.2\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -127,6 +128,24 @@
     </Compile>
     <Compile Include="BasePanelForm.Designer.cs">
       <DependentUpon>BasePanelForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sesion\Profesionales\frmJornadaLaboralEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sesion\Profesionales\frmJornadaLaboralEdit.Designer.cs">
+      <DependentUpon>frmJornadaLaboralEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sesion\Profesionales\frmFranjaNueva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sesion\Profesionales\frmFranjaNueva.Designer.cs">
+      <DependentUpon>frmFranjaNueva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sesion\Profesionales\frmJornadasLaborales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sesion\Profesionales\frmJornadasLaborales.Designer.cs">
+      <DependentUpon>frmJornadasLaborales.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\Sesion\Calendario\frmAgendaTurnos.cs">
       <SubType>Form</SubType>
@@ -297,6 +316,15 @@
     <EmbeddedResource Include="BasePanelForm.resx">
       <DependentUpon>BasePanelForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sesion\Profesionales\frmJornadaLaboralEdit.resx">
+      <DependentUpon>frmJornadaLaboralEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sesion\Profesionales\frmFranjaNueva.resx">
+      <DependentUpon>frmFranjaNueva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sesion\Profesionales\frmJornadasLaborales.resx">
+      <DependentUpon>frmJornadasLaborales.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\Sesion\Calendario\frmAgendaTurnos.resx">
       <DependentUpon>frmAgendaTurnos.cs</DependentUpon>
     </EmbeddedResource>
@@ -414,6 +442,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\LogoNuevo.png" />
+    <None Include="Resources\view_week_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
+    <None Include="Resources\person_apron_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
     <None Include="Resources\finance_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
     <None Include="Resources\self_care_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
     <None Include="Resources\manage_accounts_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />

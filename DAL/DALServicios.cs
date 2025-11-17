@@ -80,7 +80,6 @@ namespace DAL
                         ProfesionalID = g.Key.ProfesionalID,
                         Nombre = g.Key.Nombre,
                         Apellido = g.Key.Apellido,
-                        Telefono = g.Key.Telefono,
                         Email = g.Key.Email,
                         Servicios = g.Select(s => new BEServicio
                         {
@@ -248,39 +247,162 @@ namespace DAL
             }
         }
 
-        public void GuardarInsumosServicio(BEServicio oBEServicio, List<InsumoSeleccionado> oLstInsumos, List<BEProfesional> oLstProfesionales)
+        public void GuardarInsumosServicio(BEServicio oBEServicio, List<InsumoSeleccionado> oLstInsumos, List<int> oLstProfesionalesSeleccionadosIds)
         {
             try
             {
-                var xmlProfesionales = new XElement("Profesionales",
-                    oLstProfesionales.Select(p => new XElement("ID", p.ProfesionalID))
-                );
+                if (oBEServicio.ServicioID == 0)
+                {
+                    Hdatos = new Hashtable
+            {
+                { "@Nombre", oBEServicio.Nombre },
+                { "@DuracionMin", oBEServicio.DuracionMin },
+                { "@BufferMin", oBEServicio.BufferMin },
+                { "@Precio", oBEServicio.Precio }
+            };
 
-                var xmlInsumos = new XElement("Insumos",
-                    oLstInsumos.Select(i => new XElement("Insumo",
-                        new XElement("InsumoID", i.InsumoID),
-                        new XElement("CantidadUtilizada", i.CantidadUsar)
-                    ))
-                );
+                    var dt = oDatos.Leer("stpServicios_I_Basico", Hdatos);
+                    oBEServicio.ServicioID = Convert.ToInt32(dt.Rows[0]["NuevoServicioID"]);
+                }
+                else
+                {
+                    Hdatos = new Hashtable
+            {
+                { "@ServicioID", oBEServicio.ServicioID },
+                { "@Nombre", oBEServicio.Nombre },
+                { "@DuracionMin", oBEServicio.DuracionMin },
+                { "@BufferMin", oBEServicio.BufferMin },
+                { "@Precio", oBEServicio.Precio }
+            };
+                    oDatos.Escribir("stpServicios_U_Basico", Hdatos);
+                }
 
-                Hdatos = new Hashtable
-        {
-            { "@Nombre", oBEServicio.Nombre },
-            { "@DuracionMin", oBEServicio.DuracionMin },
-            { "@BufferMin", oBEServicio.BufferMin },
-            { "@Precio", oBEServicio.Precio },
-            { "@Profesionales", xmlProfesionales.ToString() },
-            { "@Insumos", xmlInsumos.ToString() }
-        };
+                Hdatos = new Hashtable { { "@ServicioID", oBEServicio.ServicioID } };
+                var oDtProfesionalesActuales = oDatos.Leer("ObtenerProfesionalIDPorServicioID", Hdatos);
+                var oLstProfesionalesActualesIds = oDtProfesionalesActuales.AsEnumerable().Select(x => (int)x["ProfesionalID"]).ToList();
 
-                oDatos.Escribir("stpServicios_I_Completo", Hdatos);
+                // a) Eliminar los que ya no están
+                foreach (var iProfesionalID in oLstProfesionalesActualesIds.Except(oLstProfesionalesSeleccionadosIds))
+                {
+                    Hdatos = new Hashtable
+                    {
+                        { "@ProfesionalID", iProfesionalID },
+                        { "@ServicioID", oBEServicio.ServicioID }
+                    };
+
+                    oDatos.Escribir("stpProfesionalesServicios_D_X_ServicioID_ProfesionalID", Hdatos);
+                }
+
+
+                // b) Insertar los nuevos
+                foreach (var iProfesionalID in oLstProfesionalesSeleccionadosIds.Except(oLstProfesionalesActualesIds))
+                {
+                    Hdatos = new Hashtable
+                    {
+                        { "@ProfesionalID", iProfesionalID },
+                        { "@ServicioID", oBEServicio.ServicioID }
+                    };
+
+                    oDatos.Escribir("stpProfesionalesServicios_I_X_ServicioID_ProfesionalID", Hdatos);
+                }
+
+
+                // 3️⃣ Actualizar relaciones INSUMOS
+                // Construimos el diccionario a partir de la lista
+                var oDicInsumos = oLstInsumos
+                    .GroupBy(i => i.InsumoID)
+                    .ToDictionary(g => g.Key, g => g.Sum(i => Convert.ToDecimal(i.CantidadUsar)));
+
+                // Leemos los insumos actuales del servicio
+                Hdatos = new Hashtable { { "@ServicioID", oBEServicio.ServicioID } };
+                var oDtInsumosActuales = oDatos.Leer("ObtenerInsumosServicioPorServicioID", Hdatos);
+                var oDicInsumosActuales = oDtInsumosActuales.AsEnumerable().ToDictionary(r => (int)r["InsumoID"], r => Convert.ToDecimal(r["CantidadUtilizada"]));
+
+                // a) Eliminar los que ya no están
+                foreach (var iInsumoID in oDicInsumosActuales.Keys.Except(oDicInsumos.Keys))
+                {
+                    Hdatos = new Hashtable
+                    {
+                        { "@ServicioID", oBEServicio.ServicioID },
+                        { "@InsumoID", iInsumoID }
+                    };
+                    oDatos.Escribir("stpServiciosInsumos_D_X_ServicioID_InsumoID", Hdatos);
+                }
+
+                // b) Actualizar o insertar según corresponda
+                foreach (var oKvp in oDicInsumos)
+                {
+                    if (oDicInsumosActuales.ContainsKey(oKvp.Key))
+                    {
+                        // Solo actualizamos si cambió la cantidad
+                        if (oDicInsumosActuales[oKvp.Key] != oKvp.Value)
+                        {
+                            Hdatos = new Hashtable
+                            {
+                                { "@ServicioID", oBEServicio.ServicioID },
+                                { "@InsumoID", oKvp.Key },
+                                { "@CantidadUtilizada", oKvp.Value }
+                            };
+
+                            oDatos.Escribir("stpServiciosInsumos_U_X_ServicioID_InsumoID_CantidadUtilizada", Hdatos);
+                        }
+
+                    }
+                    else
+                    {
+                        Hdatos = new Hashtable
+                            {
+                                { "@ServicioID", oBEServicio.ServicioID },
+                                { "@InsumoID", oKvp.Key },
+                                { "@CantidadUtilizada", oKvp.Value }
+                            };
+
+                        oDatos.Escribir("stpServiciosInsumos_I_X_ServicioID_InsumoID_CantidadUtilizada", Hdatos);
+                    }
+                }
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al guardar el servicio con sus insumos y profesionales.", ex);
+                throw new Exception("Error al guardar o actualizar el servicio con sus insumos y profesionales.", ex);
             }
         }
 
+        public DataTable ObtenerServicios()
+        {
+            try
+            {
+                Hdatos = new Hashtable();
+                return oDatos.Leer("ObtenerServicios", Hdatos);
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public bool EliminarServicio(int ServicioID)
+        {
+            try
+            {
+                Hdatos = new Hashtable
+                {
+                    { "@ServicioID", ServicioID }
+                };
+                return oDatos.Escribir("BajaServicio", Hdatos);
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 
 }
