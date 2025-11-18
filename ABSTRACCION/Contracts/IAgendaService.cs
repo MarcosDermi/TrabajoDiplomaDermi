@@ -18,7 +18,7 @@ namespace SERVICES.Interfaces
         BEReserva ObtenerReserva(int idReserva);
         List<int> ObtenerIDsServiciosPorReservaID(int ReservaID);
         List<DateTime> ObtenerFechasConReservasCliente(string Mail, DateTime dtFecha);
-
         List<BETurnoTomado> ListarReservasClientesPorFechayMail(string sMail, DateTime fecha);
+        void RegistrarMedioDePagoReserva(int IdReservaSeleccionada, MedioDePagoEnum MedioDePagoSeleccionado);
     }
 }

@@ -49,5 +49,10 @@ namespace BLL
         {
             throw new NotImplementedException();
         }
+
+        public void RegistrarMedioDePagoReserva(int IdReservaSeleccionada, MedioDePagoEnum MedioDePagoSeleccionado)
+        {
+            oDALMedioDePago.RegistrarMedioDePagoReserva(IdReservaSeleccionada, MedioDePagoSeleccionado);
+        }
     }
 }

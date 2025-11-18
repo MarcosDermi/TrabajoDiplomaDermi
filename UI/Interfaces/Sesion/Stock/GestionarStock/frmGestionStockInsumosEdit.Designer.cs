@@ -40,7 +40,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.txtStock = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,7 +47,6 @@
             this.txtStockMinimoAlerta = new System.Windows.Forms.TextBox();
             this.btnCrearInsumo = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtCantidad = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtPrecioCompra = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -172,21 +170,12 @@
             this.txtNombre.Size = new System.Drawing.Size(127, 21);
             this.txtNombre.TabIndex = 21;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 13);
-            this.label1.TabIndex = 34;
-            this.label1.Text = "Cantidad:";
-            // 
             // txtStock
             // 
             this.txtStock.Enabled = false;
-            this.txtStock.Location = new System.Drawing.Point(93, 33);
+            this.txtStock.Location = new System.Drawing.Point(15, 33);
             this.txtStock.Name = "txtStock";
-            this.txtStock.Size = new System.Drawing.Size(72, 21);
+            this.txtStock.Size = new System.Drawing.Size(111, 21);
             this.txtStock.TabIndex = 33;
             // 
             // groupBox1
@@ -244,19 +233,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(90, 16);
+            this.label3.Location = new System.Drawing.Point(12, 16);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 13);
             this.label3.TabIndex = 38;
             this.label3.Text = "Stock:";
-            // 
-            // txtCantidad
-            // 
-            this.txtCantidad.Location = new System.Drawing.Point(10, 33);
-            this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(77, 21);
-            this.txtCantidad.TabIndex = 37;
-            this.txtCantidad.Leave += new System.EventHandler(this.textBox5_Leave);
             // 
             // label4
             // 
@@ -313,10 +294,8 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
-            this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.txtStock);
             this.groupBox2.Controls.Add(this.groupBox1);
-            this.groupBox2.Controls.Add(this.txtCantidad);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Location = new System.Drawing.Point(12, 167);
             this.groupBox2.Name = "groupBox2";
@@ -421,7 +400,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtStock;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label2;
@@ -429,7 +407,6 @@
         private System.Windows.Forms.TextBox txtStockMinimoAlerta;
         private System.Windows.Forms.Button btnCrearInsumo;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtCantidad;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtPrecioCompra;
         private System.Windows.Forms.Label label5;

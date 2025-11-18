@@ -65,5 +65,10 @@ namespace BLL
         {
             oDAlInsumo.ActualizarStockInsumoPorServicioID(oLstServicioID);
         }
+
+        public List<int> ObtenerIdsInsumosConStockBajo()
+        {
+            return oDAlInsumo.ObtenerIdsInsumosConStockBajo();
+        }
     }
 }

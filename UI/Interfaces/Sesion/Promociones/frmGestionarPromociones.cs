@@ -24,23 +24,49 @@ namespace UI.Interfaces.Sesion.Promociones
         {
             try
             {
+                if (ValidatorsService.validarDecimal(txtDescuento.Text) == false)
+                {
+                    MessageBox.Show("El campo descuento solo acepta valores numericos.", "Error de validacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (Convert.ToDecimal(txtDescuento.Text) > 100)
+                {
+                    MessageBox.Show("El descuento no puede ser mayor a 100%.", "Error de validacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (dtpFechaDesde.Value > dtpFechaHasta.Value)
+                {
+                    MessageBox.Show("La fecha desde no puede ser mayor a la fecha hasta.", "Error de validacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var oDtPromocionesActivas = GestionPromocionesService.ObtenerPromocionesActivas();
+
+                if (oDtPromocionesActivas.Rows.Count > 0)
+                {
+                    foreach (DataRow row in oDtPromocionesActivas.Rows)
+                    {
+                        DateTime fechaDesdeExistente = Convert.ToDateTime(row["FechaDesde"]);
+                        DateTime fechaHastaExistente = Convert.ToDateTime(row["FechaHasta"]);
+                        if ((dtpFechaDesde.Value <= fechaHastaExistente) && (dtpFechaHasta.Value >= fechaDesdeExistente))
+                        {
+                            var dDescuento = Convert.ToDecimal(row["Descuento"]);
+                            var dDescuentoTotal = dDescuento + Convert.ToDecimal(txtDescuento.Text);
+                            if (dDescuentoTotal > 100)
+                            {
+                                MessageBox.Show("La suma de los descuentos de las promociones activas en el mismo periodo no puede superar el 100%.", "Error de validacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return;
+                            }
+                        }
+                    }
+                }
+
                 var respuesta = MessageBox.Show("Desea crear la promocion?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (respuesta == DialogResult.Yes)
                 {
-
-                    if(ValidatorsService.validarDecimal(txtDescuento.Text) == false)
-                    {
-                        MessageBox.Show("El campo descuento solo acepta valores numericos.", "Error de validacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-
-                    if (Convert.ToDecimal(txtDescuento.Text) > 100)
-                    {
-                        MessageBox.Show("El descuento no puede ser mayor a 100%.", "Error de validacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-
                     var oBEPromocion = new BEPromocion()
                     {
                         IdPromocion = PromocionID,

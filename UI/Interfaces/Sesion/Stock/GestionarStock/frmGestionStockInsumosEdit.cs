@@ -57,7 +57,6 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
                 cmbProveedores.SelectedValue = oBEInsumo.Proveedor.IdProveedor;
                 cmbCategorias.SelectedValue = oBEInsumo.Categoria.IdCategoriaPadre;
                 cmbSubCategorias.SelectedValue = oBEInsumo.Categoria.IdCategoria;
-                txtCantidad.Text = oBEInsumo.Cantidad.ToString();
                 txtStock.Text = oBEInsumo.Stock.ToString();
                 txtStockMinimoAlerta.Text = oBEInsumo.StockMinimo.ToString();
                 txtPrecioCompra.Text = oBEInsumo.PrecioCompra.ToString();
@@ -89,10 +88,6 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
             cmbSubCategorias.DataSource = GestionStockService.OrdenarSubcategoriasPorCategoria(_oDtSubcategorias, cmbCategorias.SelectedValue.ToString());
         }
 
-        private void textBox5_Leave(object sender, EventArgs e)
-        {
-            txtStock.Text = txtCantidad.Text;
-        }
 
         private void txtDescuento_Leave(object sender, EventArgs e)
         {
@@ -135,7 +130,6 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
                     Proveedor = { IdProveedor = Convert.ToInt32(cmbProveedores.SelectedValue) },
                     Categoria = { IdCategoria = Convert.ToInt32(cmbSubCategorias.SelectedValue),
                     IdCategoriaPadre = Convert.ToInt32(cmbCategorias.SelectedValue)},
-                    Cantidad = Convert.ToDecimal(txtCantidad.Text),
                     Stock = Convert.ToInt32(txtStock.Text),
                     StockMinimo = Convert.ToDecimal(txtStockMinimoAlerta.Text),
                     PrecioCompra = Convert.ToDecimal(txtPrecioCompra.Text),

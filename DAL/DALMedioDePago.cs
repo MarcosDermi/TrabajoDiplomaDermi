@@ -46,6 +46,26 @@ namespace DAL
             }
         }
 
+        public void RegistrarMedioDePagoReserva(int IdReservaSeleccionada, MedioDePagoEnum MedioDePagoSeleccionado)
+        {
+            try
+            {
+                var stpNombre = "RegistrarMedioDePagoReserva";
+                Hdatos = new Hashtable();
+                Hdatos.Add("@ReservaID", IdReservaSeleccionada);
+                Hdatos.Add("@MedioDePagoID", (int)MedioDePagoSeleccionado);
+                oDatos.Escribir(stpNombre, Hdatos);
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public BEProveedor GetOne(int iId)
         {
             throw new NotImplementedException();

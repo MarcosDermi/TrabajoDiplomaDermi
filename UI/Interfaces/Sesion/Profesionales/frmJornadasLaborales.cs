@@ -111,7 +111,7 @@ namespace UI.Interfaces.Sesion.Profesionales
         {
             try
             {
-                if (dgvJornadas.CurrentRow == null) return;
+                if (dgvJornadas.CurrentRow == null) { MessageBox.Show("Debe seleccionar una jornada para agregar una franja horaria.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return; };
 
                 var JornadaID = (int)dgvJornadas.CurrentRow.Cells["JornadaID"].Value;
                 var ProfesionalID = (int)cboProfesional.SelectedValue;

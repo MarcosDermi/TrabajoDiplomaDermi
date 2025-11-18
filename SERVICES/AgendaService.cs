@@ -106,5 +106,11 @@ namespace SERVICES
             BLLAgenda oBLLAgenda = new BLLAgenda();
             return oBLLAgenda.ObtenerReservaDiaPorFechayMail(sMail, dtFecha);
         }
+
+        public void RegistrarMedioDePagoReserva(int IdReservaSeleccionada, MedioDePagoEnum MedioDePagoSeleccionado)
+        {
+            BLLMedioDePago oBLLMedioDePago = new BLLMedioDePago();
+            oBLLMedioDePago.RegistrarMedioDePagoReserva(IdReservaSeleccionada, MedioDePagoSeleccionado);
+        }
     }
 }

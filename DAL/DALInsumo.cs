@@ -3,9 +3,7 @@ using BE;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
 
 namespace DAL
 {
@@ -38,7 +36,6 @@ namespace DAL
                 hDatos.Add("@Categoria", oBEInsumo.Categoria.IdCategoria);
                 hDatos.Add("@Presentacion", oBEInsumo.Presentacion);
                 hDatos.Add("@Descuento", oBEInsumo.Descuento);
-                hDatos.Add("@Cantidad", oBEInsumo.Cantidad);
                 hDatos.Add("@Stock", oBEInsumo.Stock);
                 hDatos.Add("@PrecioCompra", oBEInsumo.PrecioCompra);
                 hDatos.Add("@ProveedorID", oBEInsumo.Proveedor.IdProveedor);
@@ -56,7 +53,6 @@ namespace DAL
                 hDatos.Add("@Categoria", oBEInsumo.Categoria.IdCategoria);
                 hDatos.Add("@Presentacion", oBEInsumo.Presentacion);
                 hDatos.Add("@Descuento", oBEInsumo.Descuento);
-                hDatos.Add("@Cantidad", oBEInsumo.Cantidad);
                 hDatos.Add("@Stock", oBEInsumo.Stock);
                 hDatos.Add("@ProveedorID", oBEInsumo.Proveedor.IdProveedor);
                 hDatos.Add("@StockMinimo", oBEInsumo.StockMinimo);
@@ -102,7 +98,6 @@ namespace DAL
                     oBEInsumo.Presentacion = (UnidadesEnum)oDr["Presentacion"];
                     oBEInsumo.PrecioCompra = Convert.ToDecimal(oDr["PrecioCompra"]);
                     oBEInsumo.Descuento = Convert.ToDecimal(oDr["Descuento"]);
-                    oBEInsumo.Cantidad = Convert.ToDecimal(oDr["Cantidad"]);
                     oBEInsumo.Proveedor.IdProveedor = Convert.ToInt32(oDr["ProveedorID"]);
                     oBEInsumo.PrecioFinal = Convert.ToDecimal(oDr["PrecioFinal"]);
                     oBEInsumo.FechaVencimiento = Convert.ToDateTime(oDr["FechaVencimiento"]);
@@ -160,6 +155,28 @@ namespace DAL
                         { "@ServicioID", idServicio }
                     });
                 }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<int> ObtenerIdsInsumosConStockBajo()
+        {
+            var oLstInsumosConStockBajo = new List<int>();
+
+            try
+            {
+                hDatos = new Hashtable();
+                var oDt = oDatos.Leer("ObtenerIdsInsumosConStockBajo", hDatos);
+
+                foreach (DataRow oDr in oDt.AsEnumerable())
+                {
+                    oLstInsumosConStockBajo.Add(Convert.ToInt32(oDr["InsumoID"]));
+                }
+
+                return oLstInsumosConStockBajo;
             }
             catch (Exception ex)
             {

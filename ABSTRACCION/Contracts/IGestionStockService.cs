@@ -21,5 +21,6 @@ namespace SERVICES.Interfaces
         bool EliminarInsumo(int iInsumoID);
         void ActualizarStockInsumoPorServicioID(List<int> oLstServicioID);
         void EliminarProveedor(int ProveedorID);
+        List<int>ObtenerIdsInsumosConStockBajo();
     }
 }

@@ -31,6 +31,7 @@
             this.btnConfirmarReserva = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lblPrecioPromo = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblTotal = new System.Windows.Forms.Label();
@@ -72,6 +73,7 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.White;
+            this.groupBox3.Controls.Add(this.lblPrecioPromo);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.txtEmail);
             this.groupBox3.Controls.Add(this.lblTotal);
@@ -93,6 +95,16 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Resumen:";
             // 
+            // lblPrecioPromo
+            // 
+            this.lblPrecioPromo.AutoSize = true;
+            this.lblPrecioPromo.Location = new System.Drawing.Point(23, 270);
+            this.lblPrecioPromo.Name = "lblPrecioPromo";
+            this.lblPrecioPromo.Size = new System.Drawing.Size(11, 13);
+            this.lblPrecioPromo.TabIndex = 38;
+            this.lblPrecioPromo.Text = "-";
+            this.lblPrecioPromo.Visible = false;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -112,7 +124,7 @@
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(21, 271);
+            this.lblTotal.Location = new System.Drawing.Point(84, 249);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(11, 13);
             this.lblTotal.TabIndex = 35;
@@ -219,6 +231,7 @@
             this.btnCancelar.TabIndex = 47;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // frmConfirmacionReserva
             // 
@@ -256,5 +269,6 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label lblPrecioPromo;
     }
 }

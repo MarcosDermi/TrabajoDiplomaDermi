@@ -1,10 +1,8 @@
 ﻿using BE;
-using BE.Exceptions;
-using BLL;
-using DocumentFormat.OpenXml.Office2010.Excel;
 using SERVICES.Helpers;
 using System;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -41,6 +39,54 @@ namespace UI.Interfaces.ReservasLogOut
             {
                 txtEmail.Enabled = false;
                 txtEmail.Text = SingletonSesionService.Usuario.Mail;
+            }
+
+            var oPrecioTotalDescuento = CalcularDescuentoPromocion(_oReserva.FechaInicio, _oReserva.PrecioTotal);
+            if (oPrecioTotalDescuento > 0)
+            {
+                _oReserva.PrecioTotal = oPrecioTotalDescuento;
+                lblPrecioPromo.Visible = true;
+                lblPrecioPromo.Text = "- $ " + oPrecioTotalDescuento.ToString("F2") + " (Descuento Promoción)";
+                lblTotal.Font = new Font(lblTotal.Font, FontStyle.Strikeout);
+            }
+        }
+
+        private decimal CalcularDescuentoPromocion(DateTime dtReservaFechaInicio, decimal precioTotal)
+        {
+            try
+            {
+                var dDescuentoAcumulado = 0m;
+
+                if (!GestionPromocionesService.VerificarPromocionVigenteParaFecha(dtReservaFechaInicio))
+                {
+                    return 0;
+                }
+
+                var oDtPromocionesActivas = GestionPromocionesService.ObtenerPromocionesActivas();
+
+                if (oDtPromocionesActivas.Rows.Count > 0)
+                {
+                    foreach (DataRow row in oDtPromocionesActivas.Rows)
+                    {
+                        DateTime desde = ((DateTime)row["FechaDesde"]).Date;
+                        DateTime hasta = ((DateTime)row["FechaHasta"]).Date;
+
+                        if (dtReservaFechaInicio.Date >= desde && dtReservaFechaInicio.Date <= hasta)
+                        {
+                            dDescuentoAcumulado += (decimal)row["Descuento"];
+                        }
+                    }
+                    return precioTotal - ((precioTotal * dDescuentoAcumulado) / 100);
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MostrarMensajeError(ex.Message);
+                return 0;
             }
         }
 
@@ -85,6 +131,16 @@ namespace UI.Interfaces.ReservasLogOut
             catch (Exception ex)
             {
                 MostrarMensajeError(ex.Message);
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("¿Está seguro que desea cancelar la reserva?", "Confirmar Cancelación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
             }
         }
     }

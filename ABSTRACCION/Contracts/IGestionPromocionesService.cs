@@ -10,5 +10,7 @@ namespace ABSTRACCION.Contracts
         void GuardarPromocion(BEPromocion oBEPromocion);
         void EliminarPromocion(int PromocionID);
         DataTable BuscarPromocionesPorFiltrosVarios(string sNombre, DateTime FechaDesde, DateTime FechaHasta, bool IncluirInactivos);
+        bool VerificarPromocionVigenteParaFecha(DateTime dtReservaFechaInicio);
+        DataTable ObtenerPromocionesActivas();
     }
 }

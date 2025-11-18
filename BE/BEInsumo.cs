@@ -17,7 +17,6 @@ namespace BE
         public decimal PrecioCompra { get; set; }
         public decimal Descuento { get; set; }
         public decimal PrecioFinal { get; set; }
-        public decimal Cantidad { get; set; }
         public BEProveedor Proveedor { get; set; } = new BEProveedor();
         public decimal Stock { get; set; }
         public decimal StockMinimo { get; set; }

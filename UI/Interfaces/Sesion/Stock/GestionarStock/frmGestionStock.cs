@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using SERVICES.Interfaces;
 using System;
 using System.Data;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -42,12 +43,20 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
             cmbSubCategoria.ValueMember = "CategoriaID";
             cmbSubCategoria.DataSource = GestionStockService.OrdenarSubcategoriasPorCategoria(_oDtSubcategorias, cmbCategoria.SelectedValue.ToString());
 
+            CargarDGV();
+        }
+
+        private void CargarDGV()
+        {
             dgvResultadoBusqueda.DataSource = GestionStockService.BuscarInsumosPorFiltrosVarios(string.Empty, string.Empty, 0, 0, 0);
+
             lblCantRegistros.Text = dgvResultadoBusqueda.Rows.Count.ToString();
             if (dgvResultadoBusqueda.Rows.Count > 0)
             {
                 btnSerializar.Enabled = true;
             }
+
+            dgvResultadoBusqueda.Refresh();
         }
 
         private void groupBox4_Enter(object sender, EventArgs e)
@@ -68,20 +77,27 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
 
             if (ofrmGestionStockInsumosEdit.ShowDialog() == DialogResult.OK)
             {
-                // El registro fue exitoso, podés hacer algo
             }
 
-            // Opcional: restaurás la ventana si estaba minimizada
             this.Show();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            dgvResultadoBusqueda.DataSource = GestionStockService.BuscarInsumosPorFiltrosVarios(txtCodigoBusqueda.Text, txtNombreBusqueda.Text, (int)cmbProveedor.SelectedValue, (int)cmbSubCategoria.SelectedValue, (int)cmbPresentacion.SelectedValue);
-            lblCantRegistros.Text = dgvResultadoBusqueda.Rows.Count.ToString();
-            if (dgvResultadoBusqueda.Rows.Count > 0)
+            if (chkMostrarTodosLosInsumos.Checked)
             {
-                btnSerializar.Enabled = true;
+                CargarDGV();
+                return;
+            }
+            else
+            {
+                dgvResultadoBusqueda.DataSource = GestionStockService.BuscarInsumosPorFiltrosVarios(txtCodigoBusqueda.Text, txtNombreBusqueda.Text, (int)cmbProveedor.SelectedValue, (int)cmbSubCategoria.SelectedValue, (int)cmbPresentacion.SelectedValue);
+                lblCantRegistros.Text = dgvResultadoBusqueda.Rows.Count.ToString();
+                if (dgvResultadoBusqueda.Rows.Count > 0)
+                {
+                    btnSerializar.Enabled = true;
+                }
+                dgvResultadoBusqueda.Refresh();
             }
         }
 
@@ -151,7 +167,7 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
                         using (var writer = new StreamWriter(fs))
                         using (var jsonWriter = new JsonTextWriter(writer))
                         {
-                           
+
                             if (dgvResultadoBusqueda.DataSource is DataTable dt)
                             {
                                 var rows = dt.AsEnumerable().Select(r => r.Table.Columns
@@ -189,6 +205,48 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
 
             // Opcional: restaurás la ventana si estaba minimizada
             this.Show();
+        }
+
+        private void dgvResultadoBusqueda_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            var IdsStockBajo = GestionStockService.ObtenerIdsInsumosConStockBajo();
+
+            foreach (DataGridViewRow row in dgvResultadoBusqueda.Rows)
+            {
+                if (!row.IsNewRow &&
+                    row.Cells["InsumoID"].Value != null &&
+                    int.TryParse(row.Cells["InsumoID"].Value.ToString(), out int insumoId))
+                {
+                    if (IdsStockBajo.Contains(insumoId))
+                    {
+                        row.Cells["Stock"].Style.BackColor = Color.Red;
+                        row.Cells["Stock"].Style.ForeColor = Color.White;
+                        row.Cells["Stock"].Style.Font = new Font(dgvResultadoBusqueda.Font, FontStyle.Bold);
+                    }
+                }
+            }
+        }
+
+        private void chkMostrarTodosLosInsumos_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkMostrarTodosLosInsumos.Checked)
+            {
+                txtCodigoBusqueda.Enabled = false;
+                txtNombreBusqueda.Enabled = false;
+                cmbProveedor.Enabled = false;
+                cmbCategoria.Enabled = false;
+                cmbSubCategoria.Enabled = false;
+                cmbPresentacion.Enabled = false;
+            }
+            else
+            {
+                txtCodigoBusqueda.Enabled = true;
+                txtNombreBusqueda.Enabled = true;
+                cmbProveedor.Enabled = true;
+                cmbCategoria.Enabled = true;
+                cmbSubCategoria.Enabled = true;
+                cmbPresentacion.Enabled = true;
+            }
         }
     }
 }

@@ -82,6 +82,11 @@ namespace UI.Interfaces.Sesion.Calendario
 
         private void dataGridViewHorarios_CellContentClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
         {
+            MostrarDetalleReserva();
+        }
+
+        private void MostrarDetalleReserva()
+        {
             try
             {
                 grpTurnoSeleccionado.Visible = true;
@@ -132,7 +137,6 @@ namespace UI.Interfaces.Sesion.Calendario
                 MostrarMensajeError(ex.Message);
             }
         }
-
         private void btnMesSiguiente_Click(object sender, EventArgs e)
         {
             ucCalendario.CambiarMes(+1);
@@ -161,6 +165,20 @@ namespace UI.Interfaces.Sesion.Calendario
 
             if (Resultado == DialogResult.OK)
             {
+                using(var ofrmMedioPago = new frmMedioDePagoReservaAtendida())
+                {
+                    var dialogResult = ofrmMedioPago.ShowDialog();
+                    if (dialogResult != DialogResult.OK)
+                    {
+                        MessageBox.Show("Debe completar el pago para marcar el turno como atendido.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    else
+                    {
+                        AgendaService.RegistrarMedioDePagoReserva(_IdReservaSeleccionada, ofrmMedioPago.MedioDePagoSeleccionado);
+                    }
+                }
+
                 var oLstServiciosID = AgendaService.ObtenerIDsServiciosPorReservaID(_IdReservaSeleccionada);
                 GestionStockService.ActualizarStockInsumoPorServicioID(oLstServiciosID);
 
@@ -168,7 +186,7 @@ namespace UI.Interfaces.Sesion.Calendario
 
                 MessageBox.Show("Turno marcado como atendido.", "Exito", MessageBoxButtons.OK);
 
-                RefrescarHorariosInteligentes();
+                MostrarDetalleReserva();
             }
 
             return;

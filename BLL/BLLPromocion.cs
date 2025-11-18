@@ -76,7 +76,9 @@ namespace BLL
             return fechas;
         }
 
-
-
+        public DataTable ObtenerPromocionesActivas()
+        {
+            return oDALPromocion.ObtenerPromocionesActivas();
+        }
     }
 }

@@ -179,5 +179,10 @@ namespace SERVICES
         {
             oBLLProovedor.BajaID(ProveedorID);
         }
+
+        public List<int> ObtenerIdsInsumosConStockBajo()
+        {
+            return oBLLInsumo.ObtenerIdsInsumosConStockBajo();
+        }
     }
 }

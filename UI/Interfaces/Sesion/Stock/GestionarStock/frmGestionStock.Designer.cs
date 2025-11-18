@@ -54,6 +54,7 @@
             this.txtNombreBusqueda = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.chkMostrarTodosLosInsumos = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultadoBusqueda)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -86,6 +87,7 @@
             this.dgvResultadoBusqueda.Size = new System.Drawing.Size(1020, 350);
             this.dgvResultadoBusqueda.TabIndex = 0;
             this.dgvResultadoBusqueda.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvResultadoBusqueda_CellContentClick);
+            this.dgvResultadoBusqueda.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvResultadoBusqueda_DataBindingComplete);
             // 
             // groupBox1
             // 
@@ -194,6 +196,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.chkMostrarTodosLosInsumos);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.cmbSubCategoria);
             this.groupBox2.Controls.Add(this.label14);
@@ -320,7 +323,7 @@
             // 
             this.btnBuscar.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(95)))), ((int)(((byte)(170)))));
-            this.btnBuscar.Location = new System.Drawing.Point(428, 45);
+            this.btnBuscar.Location = new System.Drawing.Point(449, 30);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(189, 50);
             this.btnBuscar.TabIndex = 2;
@@ -338,6 +341,17 @@
             this.label1.Size = new System.Drawing.Size(190, 30);
             this.label1.TabIndex = 2;
             this.label1.Text = "Gestion de stock";
+            // 
+            // chkMostrarTodosLosInsumos
+            // 
+            this.chkMostrarTodosLosInsumos.AutoSize = true;
+            this.chkMostrarTodosLosInsumos.Location = new System.Drawing.Point(449, 87);
+            this.chkMostrarTodosLosInsumos.Name = "chkMostrarTodosLosInsumos";
+            this.chkMostrarTodosLosInsumos.Size = new System.Drawing.Size(99, 18);
+            this.chkMostrarTodosLosInsumos.TabIndex = 20;
+            this.chkMostrarTodosLosInsumos.Text = "Mostrar todos";
+            this.chkMostrarTodosLosInsumos.UseVisualStyleBackColor = true;
+            this.chkMostrarTodosLosInsumos.CheckedChanged += new System.EventHandler(this.chkMostrarTodosLosInsumos_CheckedChanged);
             // 
             // frmGestionStock
             // 
@@ -389,5 +403,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox cmbSubCategoria;
         private System.Windows.Forms.Button btnSerializar;
+        private System.Windows.Forms.CheckBox chkMostrarTodosLosInsumos;
     }
 }

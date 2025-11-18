@@ -72,5 +72,15 @@ namespace SERVICES
         {
             oBLLPromocion.EliminarPromocion(PromocionID);
         }
+
+        public bool VerificarPromocionVigenteParaFecha(DateTime dtReservaFechaInicio)
+        {
+            return oBLLPromocion.HayPromocionEnFecha(dtReservaFechaInicio);
+        }
+
+        public DataTable ObtenerPromocionesActivas()
+        {
+            return oBLLPromocion.ObtenerPromocionesActivas();
+        }
     }
 }
