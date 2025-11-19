@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnModificarPromocion = new System.Windows.Forms.Button();
             this.chkActivo = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtDescuento = new System.Windows.Forms.TextBox();
@@ -57,6 +58,8 @@
             this.dtpFechaDesdeBusqueda = new System.Windows.Forms.DateTimePicker();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.txtID = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -84,12 +87,15 @@
             this.groupBox1.Controls.Add(this.groupBox4);
             this.groupBox1.Location = new System.Drawing.Point(12, 49);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(685, 502);
+            this.groupBox1.Size = new System.Drawing.Size(893, 502);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.txtID);
+            this.groupBox2.Controls.Add(this.btnModificarPromocion);
             this.groupBox2.Controls.Add(this.chkActivo);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.txtDescuento);
@@ -101,11 +107,23 @@
             this.groupBox2.Controls.Add(this.dtpFechaDesde);
             this.groupBox2.Controls.Add(this.btnEliminarPromocion);
             this.groupBox2.Controls.Add(this.btnCrearPromocion);
-            this.groupBox2.Location = new System.Drawing.Point(412, 104);
+            this.groupBox2.Location = new System.Drawing.Point(632, 104);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(255, 310);
+            this.groupBox2.Size = new System.Drawing.Size(255, 337);
             this.groupBox2.TabIndex = 23;
             this.groupBox2.TabStop = false;
+            // 
+            // btnModificarPromocion
+            // 
+            this.btnModificarPromocion.BackColor = System.Drawing.Color.Khaki;
+            this.btnModificarPromocion.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnModificarPromocion.Location = new System.Drawing.Point(30, 269);
+            this.btnModificarPromocion.Name = "btnModificarPromocion";
+            this.btnModificarPromocion.Size = new System.Drawing.Size(202, 25);
+            this.btnModificarPromocion.TabIndex = 13;
+            this.btnModificarPromocion.Text = "Modificar";
+            this.btnModificarPromocion.UseVisualStyleBackColor = false;
+            this.btnModificarPromocion.Click += new System.EventHandler(this.btnModificarPromocion_Click);
             // 
             // chkActivo
             // 
@@ -184,11 +202,10 @@
             // btnEliminarPromocion
             // 
             this.btnEliminarPromocion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(55)))), ((int)(((byte)(62)))));
-            this.btnEliminarPromocion.Enabled = false;
             this.btnEliminarPromocion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnEliminarPromocion.Location = new System.Drawing.Point(32, 269);
+            this.btnEliminarPromocion.Location = new System.Drawing.Point(30, 298);
             this.btnEliminarPromocion.Name = "btnEliminarPromocion";
-            this.btnEliminarPromocion.Size = new System.Drawing.Size(198, 25);
+            this.btnEliminarPromocion.Size = new System.Drawing.Size(202, 25);
             this.btnEliminarPromocion.TabIndex = 5;
             this.btnEliminarPromocion.Text = "Eliminar";
             this.btnEliminarPromocion.UseVisualStyleBackColor = false;
@@ -211,7 +228,7 @@
             this.groupBox5.Controls.Add(this.groupBox3);
             this.groupBox5.Location = new System.Drawing.Point(20, 104);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(386, 382);
+            this.groupBox5.Size = new System.Drawing.Size(606, 382);
             this.groupBox5.TabIndex = 22;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Resultados Busqueda:";
@@ -225,21 +242,21 @@
             this.dgvPromociones.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvPromociones.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvPromociones.CausesValidation = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPromociones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPromociones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvPromociones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPromociones.Location = new System.Drawing.Point(15, 21);
             this.dgvPromociones.MultiSelect = false;
             this.dgvPromociones.Name = "dgvPromociones";
             this.dgvPromociones.ReadOnly = true;
             this.dgvPromociones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPromociones.Size = new System.Drawing.Size(350, 302);
+            this.dgvPromociones.Size = new System.Drawing.Size(585, 302);
             this.dgvPromociones.TabIndex = 0;
             this.dgvPromociones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPromociones_CellContentClick);
             // 
@@ -283,7 +300,7 @@
             this.groupBox4.Controls.Add(this.label5);
             this.groupBox4.Location = new System.Drawing.Point(20, 20);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(647, 78);
+            this.groupBox4.Size = new System.Drawing.Size(867, 78);
             this.groupBox4.TabIndex = 20;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Filtrar:";
@@ -301,7 +318,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(168, 45);
+            this.label9.Location = new System.Drawing.Point(405, 18);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(39, 13);
             this.label9.TabIndex = 16;
@@ -309,7 +326,7 @@
             // 
             // dtpFechaHastaBusqueda
             // 
-            this.dtpFechaHastaBusqueda.Location = new System.Drawing.Point(213, 40);
+            this.dtpFechaHastaBusqueda.Location = new System.Drawing.Point(408, 32);
             this.dtpFechaHastaBusqueda.Name = "dtpFechaHastaBusqueda";
             this.dtpFechaHastaBusqueda.Size = new System.Drawing.Size(214, 21);
             this.dtpFechaHastaBusqueda.TabIndex = 15;
@@ -332,7 +349,7 @@
             // 
             // dtpFechaDesdeBusqueda
             // 
-            this.dtpFechaDesdeBusqueda.Location = new System.Drawing.Point(213, 13);
+            this.dtpFechaDesdeBusqueda.Location = new System.Drawing.Point(171, 32);
             this.dtpFechaDesdeBusqueda.Name = "dtpFechaDesdeBusqueda";
             this.dtpFechaDesdeBusqueda.Size = new System.Drawing.Size(214, 21);
             this.dtpFechaDesdeBusqueda.TabIndex = 12;
@@ -341,9 +358,9 @@
             // 
             this.btnBuscar.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(95)))), ((int)(((byte)(170)))));
-            this.btnBuscar.Location = new System.Drawing.Point(468, 24);
+            this.btnBuscar.Location = new System.Drawing.Point(644, 24);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(156, 36);
+            this.btnBuscar.Size = new System.Drawing.Size(200, 36);
             this.btnBuscar.TabIndex = 14;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
@@ -358,11 +375,28 @@
             this.label5.TabIndex = 13;
             this.label5.Text = "Nombre:";
             // 
+            // txtID
+            // 
+            this.txtID.Enabled = false;
+            this.txtID.Location = new System.Drawing.Point(202, 46);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(30, 21);
+            this.txtID.TabIndex = 14;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(199, 30);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(21, 13);
+            this.label10.TabIndex = 15;
+            this.label10.Text = "Id:";
+            // 
             // frmGestionarPromociones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(710, 557);
+            this.ClientSize = new System.Drawing.Size(917, 557);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmGestionarPromociones";
@@ -411,5 +445,8 @@
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.CheckBox chkActivo;
         private System.Windows.Forms.CheckBox chkIncluirInactivos;
+        private System.Windows.Forms.Button btnModificarPromocion;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtID;
     }
 }

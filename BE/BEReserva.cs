@@ -11,7 +11,7 @@ namespace BE
         public int ReservaID { get; set; }
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin { get; set; }
-        public BEUsuario Cliente { get; set; }
+        public BEUsuario Cliente { get; set; } = new BEUsuario();
         public int ProfesionalID { get; set; }
         public int MedioDePagoID { get; set; }
         public List<BEServicio> Servicios { get; set; } = new List<BEServicio>();

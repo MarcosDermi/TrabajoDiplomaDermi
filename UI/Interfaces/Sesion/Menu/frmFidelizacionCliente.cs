@@ -29,7 +29,10 @@ namespace UI.Interfaces.Sesion.Menu
 
         private void CargarDatosCliente()
         {
-            var dt = _bll.ObtenerPorCliente(_clienteId);
+            var oUsuario = GeneralService.ObtenerUsuarioPorUsuarioID(_clienteId);
+
+            var dt = _bll.ObtenerPorCliente(_clienteId, oUsuario.Mail);
+
             if (dt.Rows.Count > 0)
             {
                 lblPuntos.Text = dt.Rows[0]["PuntosAcumulados"].ToString();

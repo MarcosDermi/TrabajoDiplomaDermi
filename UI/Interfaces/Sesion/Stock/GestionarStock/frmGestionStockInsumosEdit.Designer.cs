@@ -172,7 +172,6 @@
             // 
             // txtStock
             // 
-            this.txtStock.Enabled = false;
             this.txtStock.Location = new System.Drawing.Point(15, 33);
             this.txtStock.Name = "txtStock";
             this.txtStock.Size = new System.Drawing.Size(111, 21);
@@ -226,7 +225,7 @@
             this.btnCrearInsumo.Name = "btnCrearInsumo";
             this.btnCrearInsumo.Size = new System.Drawing.Size(231, 47);
             this.btnCrearInsumo.TabIndex = 36;
-            this.btnCrearInsumo.Text = "Crear";
+            this.btnCrearInsumo.Text = "Guardar";
             this.btnCrearInsumo.UseVisualStyleBackColor = false;
             this.btnCrearInsumo.Click += new System.EventHandler(this.btnCrearInsumo_Click);
             // 

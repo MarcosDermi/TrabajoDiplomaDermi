@@ -36,8 +36,7 @@ namespace SERVICES
                     var descuentoID = (int)dtDesc.Rows[0]["DescuentoID"];
                     var porcentaje = (decimal)dtDesc.Rows[0]["PorcentajeDescuento"];
 
-                    decimal totalOriginal = oReserva.PrecioTotal;
-                    oReserva.PrecioTotal = totalOriginal - (totalOriginal * (porcentaje / 100));
+                    oReserva.PrecioTotal = oReserva.PrecioTotal - (oReserva.PrecioTotal * (porcentaje / 100));
 
                     oBLLFidelizacion.MarcarDescuentoUsado(descuentoID);
                 }

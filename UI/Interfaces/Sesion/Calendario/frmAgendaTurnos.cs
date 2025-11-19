@@ -165,7 +165,7 @@ namespace UI.Interfaces.Sesion.Calendario
 
             if (Resultado == DialogResult.OK)
             {
-                using(var ofrmMedioPago = new frmMedioDePagoReservaAtendida())
+                using (var ofrmMedioPago = new frmMedioDePagoReservaAtendida())
                 {
                     var dialogResult = ofrmMedioPago.ShowDialog();
                     if (dialogResult != DialogResult.OK)
@@ -176,17 +176,17 @@ namespace UI.Interfaces.Sesion.Calendario
                     else
                     {
                         AgendaService.RegistrarMedioDePagoReserva(_IdReservaSeleccionada, ofrmMedioPago.MedioDePagoSeleccionado);
+
+                        var oLstServiciosID = AgendaService.ObtenerIDsServiciosPorReservaID(_IdReservaSeleccionada);
+                        GestionStockService.ActualizarStockInsumoPorServicioID(oLstServiciosID);
+
+                        AgendaService.ReservaAcciones(_IdReservaSeleccionada, ReservaAcciones.Atendida);
+
+                        MessageBox.Show("Turno marcado como atendido.", "Exito", MessageBoxButtons.OK);
+
+                        MostrarDetalleReserva();
                     }
                 }
-
-                var oLstServiciosID = AgendaService.ObtenerIDsServiciosPorReservaID(_IdReservaSeleccionada);
-                GestionStockService.ActualizarStockInsumoPorServicioID(oLstServiciosID);
-
-                AgendaService.ReservaAcciones(_IdReservaSeleccionada, ReservaAcciones.Atendida);
-
-                MessageBox.Show("Turno marcado como atendido.", "Exito", MessageBoxButtons.OK);
-
-                MostrarDetalleReserva();
             }
 
             return;
@@ -214,7 +214,7 @@ namespace UI.Interfaces.Sesion.Calendario
 
                     MessageBox.Show("Turno cancelado.", "Exito", MessageBoxButtons.OK);
 
-                    RefrescarHorariosInteligentes();
+                    MostrarDetalleReserva();
                 }
 
             }
@@ -222,7 +222,7 @@ namespace UI.Interfaces.Sesion.Calendario
             {
                 MostrarMensajeError(ex.Message);
             }
-             
+
         }
     }
 }

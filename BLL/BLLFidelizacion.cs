@@ -7,9 +7,9 @@ public class BLLFidelizacion
 {
     private readonly DALFidelizacion oDal = new DALFidelizacion();
 
-    public DataTable ObtenerPorCliente(int ClienteID)
+    public DataTable ObtenerPorCliente(int ClienteID, string EmailCliente)
     {
-        return oDal.ObtenerFidelizacionPorCliente(ClienteID);
+        return oDal.ObtenerFidelizacionPorCliente(ClienteID, EmailCliente);
     }
 
     public void ActualizarPuntos(int ClienteID, int Puntos)

@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace UI.Interfaces.InicioSesion
 {
-    public partial class frmRegistrarUsuario : BaseForm,IdiomaObserver
+    public partial class frmRegistrarUsuario : BaseForm, IdiomaObserver
     {
-        
-        
-        
+
+
+
         ISingletonSesionService SingletonSesionService = BLLSingletonSesion.Instancia;
         IDigitoVerificadorService IDigitoVerificadorService = new DigitoVerificadorService();
 
@@ -24,7 +24,7 @@ namespace UI.Interfaces.InicioSesion
 
         public frmRegistrarUsuario()
         {
-            
+
             InitializeComponent();
             oBLLUsuario = new BLLUsuario(IDigitoVerificadorService);
         }
@@ -72,54 +72,54 @@ namespace UI.Interfaces.InicioSesion
                         return;
                     }
 
-                  
+
                     if (chkMostrarContraseña.Tag != null && traducciones.ContainsKey(chkMostrarContraseña.Tag.ToString()))
-                        {
-                            this.chkMostrarContraseña.Text = traducciones[chkMostrarContraseña.Tag.ToString()].texto;
-                        }
-                        if (btnRegistrarse.Tag != null && traducciones.ContainsKey(btnRegistrarse.Tag.ToString()))
-                        {
-                            this.btnRegistrarse.Text = traducciones[btnRegistrarse.Tag.ToString()].texto;
-                        }
-                        if (lblIdiomaIS.Tag != null && traducciones.ContainsKey(lblIdiomaIS.Tag.ToString()))
-                        {
-                            this.lblIdiomaIS.Text = traducciones[lblIdiomaIS.Tag.ToString()].texto;
-                        }
+                    {
+                        this.chkMostrarContraseña.Text = traducciones[chkMostrarContraseña.Tag.ToString()].texto;
+                    }
+                    if (btnRegistrarse.Tag != null && traducciones.ContainsKey(btnRegistrarse.Tag.ToString()))
+                    {
+                        this.btnRegistrarse.Text = traducciones[btnRegistrarse.Tag.ToString()].texto;
+                    }
+                    if (lblIdiomaIS.Tag != null && traducciones.ContainsKey(lblIdiomaIS.Tag.ToString()))
+                    {
+                        this.lblIdiomaIS.Text = traducciones[lblIdiomaIS.Tag.ToString()].texto;
+                    }
 
-                        if (txtUsuario.Tag!=null && traducciones.ContainsKey(txtUsuario.Tag.ToString()))
-                        {
-                            this.txtUsuario.Text = traducciones[txtUsuario.Tag.ToString()].texto;
-                        }
+                    if (txtUsuario.Tag != null && traducciones.ContainsKey(txtUsuario.Tag.ToString()))
+                    {
+                        this.txtUsuario.Text = traducciones[txtUsuario.Tag.ToString()].texto;
+                    }
 
-                        if (txtNombre.Tag != null && traducciones.ContainsKey(txtNombre.Tag.ToString()))
-                        {
-                            this.txtNombre.Text = traducciones[txtNombre.Tag.ToString()].texto;
-                        }
+                    if (txtNombre.Tag != null && traducciones.ContainsKey(txtNombre.Tag.ToString()))
+                    {
+                        this.txtNombre.Text = traducciones[txtNombre.Tag.ToString()].texto;
+                    }
 
-                        if (txtApellido.Tag != null && traducciones.ContainsKey(txtApellido.Tag.ToString()))
-                        {
-                            this.txtApellido.Text = traducciones[txtApellido.Tag.ToString()].texto;
-                        }
-                        if (txtMail.Tag != null && traducciones.ContainsKey(txtMail.Tag.ToString()))
-                        {
-                            this.txtMail.Text = traducciones[txtMail.Tag.ToString()].texto;
-                        }
-                        if (lblFechaNac.Tag != null && traducciones.ContainsKey(lblFechaNac.Tag.ToString()))
-                        {
-                            this.lblFechaNac.Text = traducciones[lblFechaNac.Tag.ToString()].texto;
-                        }
-                        if (txtDNI.Tag != null && traducciones.ContainsKey(txtDNI.Tag.ToString()))
-                        {
-                            this.txtDNI.Text = traducciones[txtDNI.Tag.ToString()].texto;
-                        }
-                        if (txtClave.Tag != null && traducciones.ContainsKey(txtClave.Tag.ToString()))
-                        {
-                            this.txtClave.Text = traducciones[txtClave.Tag.ToString()].texto;
-                        }
-                        if (txtClaveConfirmada.Tag != null && traducciones.ContainsKey(txtClaveConfirmada.Tag.ToString()))
-                        {
-                            this.txtClaveConfirmada.Text = traducciones[txtClaveConfirmada.Tag.ToString()].texto;
-                        }
+                    if (txtApellido.Tag != null && traducciones.ContainsKey(txtApellido.Tag.ToString()))
+                    {
+                        this.txtApellido.Text = traducciones[txtApellido.Tag.ToString()].texto;
+                    }
+                    if (txtMail.Tag != null && traducciones.ContainsKey(txtMail.Tag.ToString()))
+                    {
+                        this.txtMail.Text = traducciones[txtMail.Tag.ToString()].texto;
+                    }
+                    if (lblFechaNac.Tag != null && traducciones.ContainsKey(lblFechaNac.Tag.ToString()))
+                    {
+                        this.lblFechaNac.Text = traducciones[lblFechaNac.Tag.ToString()].texto;
+                    }
+                    if (txtDNI.Tag != null && traducciones.ContainsKey(txtDNI.Tag.ToString()))
+                    {
+                        this.txtDNI.Text = traducciones[txtDNI.Tag.ToString()].texto;
+                    }
+                    if (txtClave.Tag != null && traducciones.ContainsKey(txtClave.Tag.ToString()))
+                    {
+                        this.txtClave.Text = traducciones[txtClave.Tag.ToString()].texto;
+                    }
+                    if (txtClaveConfirmada.Tag != null && traducciones.ContainsKey(txtClaveConfirmada.Tag.ToString()))
+                    {
+                        this.txtClaveConfirmada.Text = traducciones[txtClaveConfirmada.Tag.ToString()].texto;
+                    }
 
                 }
 
@@ -178,7 +178,7 @@ namespace UI.Interfaces.InicioSesion
                     string traduccion = palabras.Find(p => p.Equals(txtApellido.Tag.ToString()));
                     this.txtApellido.Text = traduccion;
                 }
-                if(txtMail.Tag != null && palabras.Contains(txtMail.Tag.ToString()))
+                if (txtMail.Tag != null && palabras.Contains(txtMail.Tag.ToString()))
                 {
                     string traduccion = palabras.Find(p => p.Equals(txtMail.Tag.ToString()));
                     this.txtMail.Text = traduccion;
@@ -237,7 +237,7 @@ namespace UI.Interfaces.InicioSesion
                         break;
                     }
                 }
-                
+
                 // Aplicar traducciones del idioma seleccionado
                 Idioma idiomaActual = (Idioma)cbIdioma.SelectedItem;
                 if (idiomaActual != null)
@@ -258,9 +258,9 @@ namespace UI.Interfaces.InicioSesion
 
             try
             {
-                if (txtUsuario.Text.Contains("Ingrese") || txtNombre.Text.Contains("Ingrese") || txtApellido.Text.Contains("apellido") || txtClave.Text.Contains("Ingrese")|| txtMail.Text.Contains("Ingrese") || txtDNI.Text.Contains("Ingrese"))
+                if (txtUsuario.Text.Contains("Ingrese") || txtNombre.Text.Contains("Ingrese") || txtApellido.Text.Contains("apellido") || txtClave.Text.Contains("Ingrese") || txtMail.Text.Contains("Ingrese") || txtDNI.Text.Contains("Ingrese"))
                 {
-                  
+
                     validacion = true;
                     throw new Exception("Debe completar todos los campos");
 
@@ -280,7 +280,7 @@ namespace UI.Interfaces.InicioSesion
 
             }
             return validacion;
-           
+
 
         }
 
@@ -291,7 +291,7 @@ namespace UI.Interfaces.InicioSesion
             try
             {
 
-               if (!ValidarCamposVacios())
+                if (!ValidarCamposVacios())
                 {
                     oBEUsuario.Usuario = txtUsuario.Text;
                     oBEUsuario.Nombre = txtNombre.Text;
@@ -310,9 +310,9 @@ namespace UI.Interfaces.InicioSesion
                     {
                         throw new ArgumentException("Menor de 18 años");
                     }
-                    
+
                     oBEUsuario.FechaNac = dtpFechaNac.Value.Date;
-                    
+
                     oBEUsuario.Clave = txtClave.Text;
                     oBEUsuario.Id = 0;
 
@@ -335,7 +335,14 @@ namespace UI.Interfaces.InicioSesion
                     {
                         if (!ValidatorsService.validarPassword(oBEUsuario.Clave))
                         {
-                            throw new Exception("Su contraseña debe contener:\n\t•Minimo 8 caracteres\n\t•Minimo 1 Mayuscula\n\t•Minimo 1 numero");
+                            throw new Exception(
+                                "Su contraseña debe contener:\n" +
+                                "\t• Mínimo 8 caracteres\n" +
+                                "\t• Mínimo 1 letra mayúscula\n" +
+                                "\t• Mínimo 1 letra minúscula\n" +
+                                "\t• Mínimo 1 número\n" +
+                                "\t• Mínimo 1 caracter especial (ej: !@#$%^&*)"
+                                );
                         }
                     }
 
@@ -366,7 +373,7 @@ namespace UI.Interfaces.InicioSesion
                     this.Close();
                 }
 
-               
+
 
             }
             catch (ArgumentException ex)
@@ -384,12 +391,12 @@ namespace UI.Interfaces.InicioSesion
         {
             if (chkMostrarContraseña.Checked) { txtClave.PasswordChar = '\0'; txtClaveConfirmada.PasswordChar = '\0'; }
             else { txtClave.PasswordChar = '\u2022'; txtClaveConfirmada.PasswordChar = '\u2022'; }
-           
+
         }
 
         private void CargarTextBoxs()
         {
-            
+
             txtUsuario.ForeColor = Color.Gray;
 
             txtNombre.ForeColor = Color.Gray;
@@ -410,7 +417,7 @@ namespace UI.Interfaces.InicioSesion
 
         private void txtUsuario_Enter(object sender, EventArgs e)
         {
-            
+
             if (txtUsuario.Text == "Ingrese nombre de usuario")
             {
                 txtUsuario.Text = "";
@@ -421,13 +428,13 @@ namespace UI.Interfaces.InicioSesion
                 txtUsuario.Text = "";
                 txtUsuario.ForeColor = Color.Black;
             }
-            
+
         }
 
         private void txtUsuario_Leave(object sender, EventArgs e)
-      
+
         {
-        
+
         }
 
 
@@ -465,7 +472,7 @@ namespace UI.Interfaces.InicioSesion
 
         private void txtApellido_Leave(object sender, EventArgs e)
         {
-           
+
         }
 
         private void txtMail_Enter(object sender, EventArgs e)
@@ -484,7 +491,7 @@ namespace UI.Interfaces.InicioSesion
 
         private void txtMail_Leave(object sender, EventArgs e)
         {
-            
+
         }
 
         private void txtDNI_Enter(object sender, EventArgs e)
@@ -503,7 +510,7 @@ namespace UI.Interfaces.InicioSesion
 
         private void txtDNI_Leave(object sender, EventArgs e)
         {
-            
+
         }
 
         private void txtContraseña_Enter(object sender, EventArgs e)
@@ -526,7 +533,7 @@ namespace UI.Interfaces.InicioSesion
 
         private void txtContraseña_Leave(object sender, EventArgs e)
         {
-           
+
         }
 
         private void txtConfirmarContraseña_Enter(object sender, EventArgs e)
@@ -552,7 +559,7 @@ namespace UI.Interfaces.InicioSesion
 
         private void AltaExitosa(BEUsuario oBEUsuario)
         {
-            MessageBox.Show(string.Format("El usuario: '{0}' fue guardado exitosamente.", oBEUsuario.Nombre, MessageBoxButtons.OK));
+            MessageBox.Show(string.Format("El usuario: '{0}' fue guardado exitosamente.", oBEUsuario.Usuario, MessageBoxButtons.OK));
         }
 
         private void cbIdioma_SelectedIndexChanged(object sender, EventArgs e)

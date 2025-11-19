@@ -199,7 +199,7 @@ namespace UI.Interfaces.Sesion.Menu
                     var oReserva = AgendaService.ObtenerReserva(_IdReservaSeleccionada);
 
                     var oEmailHelper = new EmailHelper();
-                    oEmailHelper.EnviarCancelacionTurno(new BEReserva { ReservaID = _IdReservaSeleccionada }, _IdReservaSeleccionada);
+                    oEmailHelper.EnviarCancelacionTurno(oReserva, _IdReservaSeleccionada);
 
                     MessageBox.Show("Turno cancelado.", "Exito", MessageBoxButtons.OK);
                 }

@@ -18,10 +18,11 @@ namespace DAL
         /// <summary>
         /// Obtiene los datos de fidelización de un cliente (puntos acumulados).
         /// </summary>
-        public DataTable ObtenerFidelizacionPorCliente(int ClienteID)
+        public DataTable ObtenerFidelizacionPorCliente(int ClienteID, string EmailCliente)
         {
             Hdatos = new Hashtable();
             Hdatos.Add("@ClienteID", ClienteID);
+            Hdatos.Add("@EmailCliente", EmailCliente);
             return oDatos.Leer("Fidelizacion_S_PorCliente", Hdatos);
         }
 
