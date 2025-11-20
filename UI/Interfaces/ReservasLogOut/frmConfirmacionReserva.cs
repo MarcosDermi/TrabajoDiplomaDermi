@@ -129,7 +129,7 @@ namespace UI.Interfaces.ReservasLogOut
 
                             var dPrecioConDesuento = _oReserva.PrecioTotal - (_oReserva.PrecioTotal * (porcentaje / 100));
 
-                            MessageBox.Show($"Se ha aplicado un descuento del {porcentaje}% a su reserva. El nuevo precio total es: $ {dPrecioConDesuento.ToString("F2")}", "Descuento Aplicado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show($"Se ha aplicado un descuento del {porcentaje}% a su reserva. El nuevo precio total es: $ {dPrecioConDesuento.ToString("F2")}", "Descuento Aplicado por Fidelizacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
 
