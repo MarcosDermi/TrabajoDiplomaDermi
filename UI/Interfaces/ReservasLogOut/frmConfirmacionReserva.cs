@@ -117,6 +117,22 @@ namespace UI.Interfaces.ReservasLogOut
                 {
                     _oReserva.Cliente.Mail = txtEmail.Text;
                     var Id = IsLogin == true ? SingletonSesionService.Usuario.Id : 0;
+
+                    if (IsLogin)
+                    {
+                        var dtDesc = FidelizacionService.ObtenerDescuentoPendiente(SingletonSesionService.Usuario.Id);
+
+                        if (dtDesc.Rows.Count > 0)
+                        {
+                            var descuentoID = (int)dtDesc.Rows[0]["DescuentoID"];
+                            var porcentaje = (decimal)dtDesc.Rows[0]["PorcentajeDescuento"];
+
+                            var dPrecioConDesuento = _oReserva.PrecioTotal - (_oReserva.PrecioTotal * (porcentaje / 100));
+
+                            MessageBox.Show($"Se ha aplicado un descuento del {porcentaje}% a su reserva. El nuevo precio total es: $ {dPrecioConDesuento.ToString("F2")}", "Descuento Aplicado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+
                     var idReserva = AgendaService.ConfirmarReserva(_oReserva, Id);
 
                     AgendaService.ReservaAcciones(idReserva, ReservaAcciones.Confirmada);
@@ -125,6 +141,7 @@ namespace UI.Interfaces.ReservasLogOut
                     oEmailHelper.EnviarConfirmacionTurno(_oReserva, idReserva);
 
                     MessageBox.Show($"La reserva se ha confirmado exitosamente. Su número de reserva es: {idReserva}", "Reserva Confirmada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     this.Close();
                 }
             }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BE;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -97,6 +98,22 @@ namespace DAL
             Hdatos.Add("@EmailCliente", EmailCliente);
             Hdatos.Add("@Puntos", Puntos);
             oDatos.Escribir("Fidelizacion_U_AgregarPuntosPorEmail", Hdatos);
+        }
+
+        public void RegistrarNuevaFidelizacion(BEReserva oBEReserva)
+        {
+            Hdatos = new Hashtable();
+            Hdatos.Add("@ClienteID", oBEReserva.Cliente.Id == 0 ? null : oBEReserva.Cliente.Id.ToString());
+            Hdatos.Add("@Email", oBEReserva.Cliente.Mail);
+            oDatos.Escribir("Fidelizacion_I_RegistrarNuevaFidelizacion", Hdatos);
+        }
+
+        public void ActualizarFidelizacionConClienteID(int ClienteID, string EmailCliente)
+        {
+            Hdatos = new Hashtable();
+            Hdatos.Add("@ClienteID", ClienteID);
+            Hdatos.Add("@EmailCliente", EmailCliente);
+            oDatos.Escribir("Fidelizacion_U_ActualizarFidelizacion", Hdatos);
         }
     }
 }

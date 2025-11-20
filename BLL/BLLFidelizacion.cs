@@ -73,4 +73,14 @@ public class BLLFidelizacion
 
         return puntosTotales;
     }
+
+    public void RegistrarNuevaFidelizacion(BEReserva oBEReserva)
+    {
+        oDal.RegistrarNuevaFidelizacion(oBEReserva);
+    }
+
+    public void ActualizarFidelizacionConClienteID(int ClienteID, string EmailCliente)
+    {
+        oDal.ActualizarFidelizacionConClienteID(ClienteID, EmailCliente);
+    }
 }

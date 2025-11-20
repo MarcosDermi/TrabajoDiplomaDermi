@@ -392,7 +392,7 @@ namespace UI.Interfaces.Sesion
 
         private void btnStock_Click_1(object sender, EventArgs e)
         {
-            ShowSubMenu(pnlStockSubMenu);
+            hideSubMenu(pnlHelpSubMenu);
         }
 
         private void btnAdministar_Click(object sender, EventArgs e)

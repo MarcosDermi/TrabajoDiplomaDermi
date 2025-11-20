@@ -19,7 +19,7 @@ namespace UI
         private ISingletonSesionService _singletonsesionService;
         private IReporteriaService _reporteriaService;
         private IProfesionalService _profesionalService;
-
+        private IFidelizacionService _fidelizacionService;
 
         public BaseForm()
         {
@@ -185,6 +185,22 @@ namespace UI
             set
             {
                 _profesionalService = value;
+            }
+        }
+
+        public IFidelizacionService FidelizacionService
+        {
+            get
+            {
+                if (_fidelizacionService == null && !DesignMode)
+                {
+                    _fidelizacionService = new FidelizacionService();
+                }
+                return _fidelizacionService;
+            }
+            set
+            {
+                _fidelizacionService = value;
             }
         }
 

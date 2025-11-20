@@ -53,6 +53,7 @@
     <Compile Include="GestionServiciosService.cs" />
     <Compile Include="GestionStockService.cs" />
     <Compile Include="Helpers\EmailHelper.cs" />
+    <Compile Include="FidelizacionService.cs" />
     <Compile Include="ReporteriaService.cs" />
     <Compile Include="LogErrorsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

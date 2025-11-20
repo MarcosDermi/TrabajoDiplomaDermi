@@ -107,7 +107,8 @@ namespace UI.Interfaces.Sesion.Menu
                     {
                         var eReservaAccion = (ReservaAcciones)(int)oDtReserva.Rows[0]["ReservaAccionID"];
 
-                        if ((ReservaAcciones)oDr["ReservaAccionID"] == ReservaAcciones.Cancelada || (ReservaAcciones)oDr["ReservaAccionID"] == ReservaAcciones.CanceladaPorUsuario)
+                        if ((ReservaAcciones)oDr["ReservaAccionID"] == ReservaAcciones.Cancelada || (ReservaAcciones)oDr["ReservaAccionID"] == ReservaAcciones.CanceladaPorUsuario
+                            || (ReservaAcciones)oDr["ReservaAccionID"] == ReservaAcciones.Atendida)
                         {
                             btnCancelarTurno.Enabled = false;
                         }

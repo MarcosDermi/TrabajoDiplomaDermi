@@ -132,11 +132,21 @@ namespace BLL
 
         public void ReservaAcciones(int iIdReserva, ReservaAcciones AccionEnum)
         {
-            if (AccionEnum == BE.ReservaAcciones.Atendida) 
-            {
-                var oReserva = oDALAgenda.ObtenerReserva(iIdReserva);
+            var oBLLFidelizacion = new BLLFidelizacion();
+            var oReserva = oDALAgenda.ObtenerReserva(iIdReserva);
 
-                var oBLLFidelizacion = new BLLFidelizacion();
+            if (AccionEnum == BE.ReservaAcciones.Confirmada)
+            {
+                var oDtFidelizacion = oBLLFidelizacion.ObtenerPorCliente(oReserva.Cliente.Id, oReserva.Cliente.Mail);
+
+                if(oDtFidelizacion.Rows.Count == 0)
+                {
+                    oBLLFidelizacion.RegistrarNuevaFidelizacion(oReserva);
+                }
+            }
+
+            if (AccionEnum == BE.ReservaAcciones.Atendida)
+            {
                 oBLLFidelizacion.ProcesarPuntosDeAsistencia(oReserva, oReserva.Cliente.Id);
             }
 

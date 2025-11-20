@@ -35,6 +35,10 @@ namespace UI.Interfaces.Sesion.Menu
 
             if (dt.Rows.Count > 0)
             {
+                if (dt.Rows[0].IsNull("ClienteID"))
+                {
+                    _bll.ActualizarFidelizacionConClienteID(_clienteId, oUsuario.Mail);
+                }
                 lblPuntos.Text = dt.Rows[0]["PuntosAcumulados"].ToString();
             }
             else
