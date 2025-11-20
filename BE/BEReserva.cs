@@ -22,6 +22,7 @@ namespace BE
     {
         Confirmada = 1,
         Atendida = 2,
-        Cancelada = 3
+        Cancelada = 3,
+        CanceladaPorUsuario = 4
     }
 }

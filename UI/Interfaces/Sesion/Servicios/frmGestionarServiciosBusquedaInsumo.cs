@@ -56,7 +56,7 @@ namespace UI.Interfaces.Sesion.Servicios
 
         private void PrepararDataGridView(DataGridView oDGV)
         {
-            if (dgvResultadoBusqueda.Rows.Count > 0)
+            if (dgvResultadoBusqueda.Rows.Count > 0 && !dgvResultadoBusqueda.Columns.Contains("Seleccionar"))
             {
                 DataGridViewCheckBoxColumn chk = new DataGridViewCheckBoxColumn();
                 chk.HeaderText = "Seleccionar";
@@ -123,6 +123,46 @@ namespace UI.Interfaces.Sesion.Servicios
 
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void chkMostrarTodosLosInsumos_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkMostrarTodosLosInsumos.Checked)
+            {
+                txtCodigoBusqueda.Enabled = false;
+                txtNombreBusqueda.Enabled = false;
+                cmbProveedor.Enabled = false;
+                cmbCategoria.Enabled = false;
+                cmbSubCategoria.Enabled = false;
+                cmbPresentacion.Enabled = false;
+            }
+            else
+            {
+                txtCodigoBusqueda.Enabled = true;
+                txtNombreBusqueda.Enabled = true;
+                cmbProveedor.Enabled = true;
+                cmbCategoria.Enabled = true;
+                cmbSubCategoria.Enabled = true;
+                cmbPresentacion.Enabled = true;
+            }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            dgvResultadoBusqueda.DataSource = null;
+
+            if (chkMostrarTodosLosInsumos.Checked)
+            {
+                dgvResultadoBusqueda.DataSource = GestionStockService.BuscarInsumosPorFiltrosVarios(string.Empty, string.Empty, 0, 0, 0);
+                PrepararDataGridView(dgvResultadoBusqueda);
+                return;
+            }
+            else
+            {
+                dgvResultadoBusqueda.DataSource = GestionStockService.BuscarInsumosPorFiltrosVarios(txtCodigoBusqueda.Text, txtNombreBusqueda.Text, (int)cmbProveedor.SelectedValue, (int)cmbSubCategoria.SelectedValue, (int)cmbPresentacion.SelectedValue);
+                PrepararDataGridView(dgvResultadoBusqueda);
+                dgvResultadoBusqueda.Refresh();
+            }
         }
     }
     

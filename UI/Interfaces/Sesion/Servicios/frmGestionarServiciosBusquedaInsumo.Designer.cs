@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnCrearInsumo = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -46,6 +46,7 @@
             this.txtNombreBusqueda = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dgvResultadoBusqueda = new System.Windows.Forms.DataGridView();
+            this.chkMostrarTodosLosInsumos = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultadoBusqueda)).BeginInit();
@@ -77,6 +78,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.chkMostrarTodosLosInsumos);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.cmbSubCategoria);
             this.groupBox2.Controls.Add(this.label14);
@@ -201,12 +203,13 @@
             // 
             this.btnBuscar.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(95)))), ((int)(((byte)(170)))));
-            this.btnBuscar.Location = new System.Drawing.Point(428, 45);
+            this.btnBuscar.Location = new System.Drawing.Point(428, 29);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(189, 50);
             this.btnBuscar.TabIndex = 2;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // dgvResultadoBusqueda
             // 
@@ -217,14 +220,14 @@
             this.dgvResultadoBusqueda.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvResultadoBusqueda.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvResultadoBusqueda.CausesValidation = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvResultadoBusqueda.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvResultadoBusqueda.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvResultadoBusqueda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvResultadoBusqueda.Location = new System.Drawing.Point(28, 144);
             this.dgvResultadoBusqueda.MultiSelect = false;
@@ -232,6 +235,17 @@
             this.dgvResultadoBusqueda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvResultadoBusqueda.Size = new System.Drawing.Size(664, 243);
             this.dgvResultadoBusqueda.TabIndex = 0;
+            // 
+            // chkMostrarTodosLosInsumos
+            // 
+            this.chkMostrarTodosLosInsumos.AutoSize = true;
+            this.chkMostrarTodosLosInsumos.Location = new System.Drawing.Point(428, 87);
+            this.chkMostrarTodosLosInsumos.Name = "chkMostrarTodosLosInsumos";
+            this.chkMostrarTodosLosInsumos.Size = new System.Drawing.Size(93, 17);
+            this.chkMostrarTodosLosInsumos.TabIndex = 21;
+            this.chkMostrarTodosLosInsumos.Text = "Mostrar todos";
+            this.chkMostrarTodosLosInsumos.UseVisualStyleBackColor = true;
+            this.chkMostrarTodosLosInsumos.CheckedChanged += new System.EventHandler(this.chkMostrarTodosLosInsumos_CheckedChanged);
             // 
             // frmGestionarServiciosBusquedaInsumo
             // 
@@ -268,5 +282,6 @@
         private System.Windows.Forms.TextBox txtNombreBusqueda;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.DataGridView dgvResultadoBusqueda;
+        private System.Windows.Forms.CheckBox chkMostrarTodosLosInsumos;
     }
 }

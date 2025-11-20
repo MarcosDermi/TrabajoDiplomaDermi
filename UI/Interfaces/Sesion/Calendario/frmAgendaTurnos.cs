@@ -201,7 +201,16 @@ namespace UI.Interfaces.Sesion.Calendario
         {
             try
             {
-                var Resultado = MessageBox.Show("Desea marcar como cancelado el turno?.", "Confirmar cancelar turno", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                var Resultado = MessageBox.Show(
+                                    "¿Desea cancelar este turno?\n\n" +
+                                    "⚠ Esta cancelación será registrada como realizada por el profesional.\n" +
+                                    "❗ El horario NO volverá a estar disponible para nuevos turnos.\n" +
+                                    "❗ Se asume que la cancelación es por motivos de fuerza mayor.\n" +
+                                    "✔ El cliente recibirá una notificación informando la cancelación.\n\n" +
+                                    "¿Confirmar cancelación del turno?",
+                                    "Cancelar turno (Profesional)",
+                                    MessageBoxButtons.OKCancel,
+                                    MessageBoxIcon.Warning);
 
                 if (Resultado == DialogResult.OK)
                 {

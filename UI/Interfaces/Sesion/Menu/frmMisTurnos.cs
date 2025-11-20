@@ -107,7 +107,7 @@ namespace UI.Interfaces.Sesion.Menu
                     {
                         var eReservaAccion = (ReservaAcciones)(int)oDtReserva.Rows[0]["ReservaAccionID"];
 
-                        if ((ReservaAcciones)oDr["ReservaAccionID"] == ReservaAcciones.Cancelada)
+                        if ((ReservaAcciones)oDr["ReservaAccionID"] == ReservaAcciones.Cancelada || (ReservaAcciones)oDr["ReservaAccionID"] == ReservaAcciones.CanceladaPorUsuario)
                         {
                             btnCancelarTurno.Enabled = false;
                         }
@@ -190,11 +190,14 @@ namespace UI.Interfaces.Sesion.Menu
                     return;
                 }
 
-                var Resultado = MessageBox.Show("Desea marcar como cancelado el turno?.", "Confirmar cancelar turno", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                var Resultado = MessageBox.Show(
+                                    "¿Desea cancelar este turno?\n\n" +
+                                    "✔ El horario volverá a estar disponible para que otro cliente lo reserve.\n" +
+                                    "✔ Se enviará un email notificando la cancelación.\n\n" + "¿Confirmar cancelación?", "Cancelar turno", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
                 if (Resultado == DialogResult.OK)
                 {
-                    AgendaService.ReservaAcciones(_IdReservaSeleccionada, ReservaAcciones.Cancelada);
+                    AgendaService.ReservaAcciones(_IdReservaSeleccionada, ReservaAcciones.CanceladaPorUsuario);
 
                     var oReserva = AgendaService.ObtenerReserva(_IdReservaSeleccionada);
 
@@ -202,6 +205,8 @@ namespace UI.Interfaces.Sesion.Menu
                     oEmailHelper.EnviarCancelacionTurno(oReserva, _IdReservaSeleccionada);
 
                     MessageBox.Show("Turno cancelado.", "Exito", MessageBoxButtons.OK);
+
+                    RefrescarHorariosInteligentes();
                 }
 
             }

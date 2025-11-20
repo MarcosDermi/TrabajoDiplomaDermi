@@ -60,6 +60,7 @@
             this.rbTarjCredito = new System.Windows.Forms.RadioButton();
             this.rbEfectivo = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -84,7 +85,7 @@
             this.ucCalendario.Location = new System.Drawing.Point(3, 17);
             this.ucCalendario.Name = "ucCalendario";
             this.ucCalendario.Size = new System.Drawing.Size(477, 313);
-            this.ucCalendario.TabIndex = 0;
+            this.ucCalendario.TabIndex = 7;
             this.ucCalendario.DiaSeleccionado += new System.EventHandler<System.DateTime>(this.ucCalendario_DiaSeleccionado);
             this.ucCalendario.Load += new System.EventHandler(this.ucCalendario_Load);
             this.ucCalendario.Click += new System.EventHandler(this.ucCalendario_Click);
@@ -106,12 +107,13 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.cmbProfesional);
+            this.groupBox2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(17, 66);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(364, 104);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Profesional:";
+            this.groupBox2.Text = "1 - Profesional:";
             // 
             // checkedListBoxServicios
             // 
@@ -119,7 +121,7 @@
             this.checkedListBoxServicios.Location = new System.Drawing.Point(172, 26);
             this.checkedListBoxServicios.Name = "checkedListBoxServicios";
             this.checkedListBoxServicios.Size = new System.Drawing.Size(178, 68);
-            this.checkedListBoxServicios.TabIndex = 20;
+            this.checkedListBoxServicios.TabIndex = 2;
             this.checkedListBoxServicios.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBoxServicios_ItemCheck);
             this.checkedListBoxServicios.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             // 
@@ -128,9 +130,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(169, 10);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 13);
+            this.label2.Size = new System.Drawing.Size(69, 13);
             this.label2.TabIndex = 19;
-            this.label2.Text = "Servicios:";
+            this.label2.Text = "2 - Servicios:";
             // 
             // label12
             // 
@@ -147,7 +149,7 @@
             this.cmbProfesional.Location = new System.Drawing.Point(16, 43);
             this.cmbProfesional.Name = "cmbProfesional";
             this.cmbProfesional.Size = new System.Drawing.Size(150, 21);
-            this.cmbProfesional.TabIndex = 12;
+            this.cmbProfesional.TabIndex = 1;
             this.cmbProfesional.SelectedIndexChanged += new System.EventHandler(this.cmbProfesional_SelectedIndexChanged);
             // 
             // lblTotal
@@ -186,8 +188,8 @@
             this.btnReservar.Location = new System.Drawing.Point(70, 588);
             this.btnReservar.Name = "btnReservar";
             this.btnReservar.Size = new System.Drawing.Size(559, 37);
-            this.btnReservar.TabIndex = 2;
-            this.btnReservar.Text = "Reservar";
+            this.btnReservar.TabIndex = 9;
+            this.btnReservar.Text = "6 - Reservar";
             this.btnReservar.UseVisualStyleBackColor = false;
             this.btnReservar.Click += new System.EventHandler(this.btnReservar_Click);
             // 
@@ -200,7 +202,7 @@
             this.btnIniciarSesion.Margin = new System.Windows.Forms.Padding(4);
             this.btnIniciarSesion.Name = "btnIniciarSesion";
             this.btnIniciarSesion.Size = new System.Drawing.Size(116, 30);
-            this.btnIniciarSesion.TabIndex = 5;
+            this.btnIniciarSesion.TabIndex = 12;
             this.btnIniciarSesion.Tag = "Iniciar sesión";
             this.btnIniciarSesion.Text = "Ingresar";
             this.btnIniciarSesion.UseVisualStyleBackColor = true;
@@ -214,7 +216,7 @@
             this.groupBox3.Size = new System.Drawing.Size(209, 362);
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Horarios:";
+            this.groupBox3.Text = "5 - Horarios:";
             // 
             // dataGridViewHorarios
             // 
@@ -224,14 +226,14 @@
             this.dataGridViewHorarios.Location = new System.Drawing.Point(14, 20);
             this.dataGridViewHorarios.Name = "dataGridViewHorarios";
             this.dataGridViewHorarios.Size = new System.Drawing.Size(189, 336);
-            this.dataGridViewHorarios.TabIndex = 24;
+            this.dataGridViewHorarios.TabIndex = 8;
             // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(162, 181);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(32, 27);
-            this.button2.TabIndex = 24;
+            this.button2.TabIndex = 11;
             this.button2.Text = ">";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -250,7 +252,7 @@
             this.button3.Location = new System.Drawing.Point(17, 181);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(32, 27);
-            this.button3.TabIndex = 25;
+            this.button3.TabIndex = 10;
             this.button3.Text = "<";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -345,9 +347,9 @@
             this.groupBox5.Location = new System.Drawing.Point(387, 66);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(242, 104);
-            this.groupBox5.TabIndex = 27;
+            this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Medio de Pago:";
+            this.groupBox5.Text = "3 - Medio de Pago:";
             // 
             // rbTarjDebito
             // 
@@ -355,7 +357,7 @@
             this.rbTarjDebito.Location = new System.Drawing.Point(21, 78);
             this.rbTarjDebito.Name = "rbTarjDebito";
             this.rbTarjDebito.Size = new System.Drawing.Size(108, 17);
-            this.rbTarjDebito.TabIndex = 25;
+            this.rbTarjDebito.TabIndex = 6;
             this.rbTarjDebito.Text = "Tarjeta de debito";
             this.rbTarjDebito.UseVisualStyleBackColor = true;
             // 
@@ -365,7 +367,7 @@
             this.rbTarjCredito.Location = new System.Drawing.Point(21, 55);
             this.rbTarjCredito.Name = "rbTarjCredito";
             this.rbTarjCredito.Size = new System.Drawing.Size(111, 17);
-            this.rbTarjCredito.TabIndex = 24;
+            this.rbTarjCredito.TabIndex = 5;
             this.rbTarjCredito.Text = "Tarjeta de credito";
             this.rbTarjCredito.UseVisualStyleBackColor = true;
             // 
@@ -375,7 +377,7 @@
             this.rbEfectivo.Location = new System.Drawing.Point(21, 32);
             this.rbEfectivo.Name = "rbEfectivo";
             this.rbEfectivo.Size = new System.Drawing.Size(64, 17);
-            this.rbEfectivo.TabIndex = 23;
+            this.rbEfectivo.TabIndex = 4;
             this.rbEfectivo.Text = "Efectivo";
             this.rbEfectivo.UseVisualStyleBackColor = true;
             // 
@@ -389,12 +391,22 @@
             this.panel1.Size = new System.Drawing.Size(815, 146);
             this.panel1.TabIndex = 28;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(200, 188);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(94, 13);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "4 - Seleccione dia:";
+            // 
             // frmTurnosLogOut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(244)))), ((int)(((byte)(245)))));
             this.ClientSize = new System.Drawing.Size(744, 637);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -459,5 +471,6 @@
         private System.Windows.Forms.RadioButton rbTarjDebito;
         private System.Windows.Forms.RadioButton rbTarjCredito;
         private System.Windows.Forms.RadioButton rbEfectivo;
+        private System.Windows.Forms.Label label4;
     }
 }

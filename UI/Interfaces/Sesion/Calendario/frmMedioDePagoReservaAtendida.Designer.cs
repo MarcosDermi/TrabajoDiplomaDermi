@@ -32,8 +32,6 @@
             this.rbTarjDebito = new System.Windows.Forms.RadioButton();
             this.rbTarjCredito = new System.Windows.Forms.RadioButton();
             this.rbEfectivo = new System.Windows.Forms.RadioButton();
-            this.lblTotal = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.groupBox5.SuspendLayout();
             this.SuspendLayout();
@@ -43,11 +41,9 @@
             this.groupBox5.Controls.Add(this.rbTarjDebito);
             this.groupBox5.Controls.Add(this.rbTarjCredito);
             this.groupBox5.Controls.Add(this.rbEfectivo);
-            this.groupBox5.Controls.Add(this.lblTotal);
-            this.groupBox5.Controls.Add(this.label3);
             this.groupBox5.Location = new System.Drawing.Point(12, 12);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(259, 104);
+            this.groupBox5.Size = new System.Drawing.Size(153, 104);
             this.groupBox5.TabIndex = 28;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Medio de Pago:";
@@ -82,25 +78,6 @@
             this.rbEfectivo.Text = "Efectivo";
             this.rbEfectivo.UseVisualStyleBackColor = true;
             // 
-            // lblTotal
-            // 
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(153, 44);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(11, 13);
-            this.lblTotal.TabIndex = 22;
-            this.lblTotal.Text = "-";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(143, 26);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(75, 13);
-            this.label3.TabIndex = 21;
-            this.label3.Text = "Precio total:";
-            // 
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.MediumSeaGreen;
@@ -109,7 +86,7 @@
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
             this.btnGuardar.Location = new System.Drawing.Point(12, 122);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(259, 35);
+            this.btnGuardar.Size = new System.Drawing.Size(153, 35);
             this.btnGuardar.TabIndex = 29;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
@@ -119,9 +96,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(283, 172);
+            this.ClientSize = new System.Drawing.Size(173, 163);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.groupBox5);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmMedioDePagoReservaAtendida";
             this.Text = "Medio de pago";
             this.Load += new System.EventHandler(this.frmMedioDePagoReservaAtendida_Load);
@@ -137,8 +115,6 @@
         private System.Windows.Forms.RadioButton rbTarjDebito;
         private System.Windows.Forms.RadioButton rbTarjCredito;
         private System.Windows.Forms.RadioButton rbEfectivo;
-        private System.Windows.Forms.Label lblTotal;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnGuardar;
     }
 }
