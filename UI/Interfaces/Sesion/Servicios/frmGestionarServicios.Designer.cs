@@ -281,7 +281,7 @@
             this.btnModificarServicio.TabIndex = 4;
             this.btnModificarServicio.Text = "Modificar";
             this.btnModificarServicio.UseVisualStyleBackColor = false;
-            this.btnModificarServicio.Click += new System.EventHandler(this.btnModificarInsumo_Click);
+            this.btnModificarServicio.Click += new System.EventHandler(this.btnModificarServicio_Click);
             // 
             // btnCrearServicio
             // 

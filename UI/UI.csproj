@@ -135,6 +135,18 @@
     <Compile Include="Interfaces\Sesion\Calendario\frmMedioDePagoReservaAtendida.Designer.cs">
       <DependentUpon>frmMedioDePagoReservaAtendida.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\Sesion\Help\frmNotasVersion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sesion\Help\frmNotasVersion.Designer.cs">
+      <DependentUpon>frmNotasVersion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Sesion\Help\frmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Sesion\Help\frmAbout.Designer.cs">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\Sesion\Profesionales\frmJornadaLaboralEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -324,6 +336,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\Sesion\Calendario\frmMedioDePagoReservaAtendida.resx">
       <DependentUpon>frmMedioDePagoReservaAtendida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sesion\Help\frmNotasVersion.resx">
+      <DependentUpon>frmNotasVersion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Sesion\Help\frmAbout.resx">
+      <DependentUpon>frmAbout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\Sesion\Profesionales\frmJornadaLaboralEdit.resx">
       <DependentUpon>frmJornadaLaboralEdit.cs</DependentUpon>

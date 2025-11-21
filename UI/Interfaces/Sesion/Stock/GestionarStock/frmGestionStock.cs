@@ -200,7 +200,7 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
 
             if (ofrmGestionStockInsumosEdit.ShowDialog() == DialogResult.OK)
             {
-                // El registro fue exitoso, podés hacer algo
+                CargarDGV();
             }
 
             // Opcional: restaurás la ventana si estaba minimizada

@@ -58,8 +58,11 @@ namespace BLL
 
             //Si existe la clave iProfesionalID, oLstJornadasProfesional va a contener la lista de franjas laborales
             if (!_dicAgenda.TryGetValue(iProfesionalID, out var oLstJornadasProfesional)) return new List<BEFranja>();
+            
+            int dia = oDtFecha.DayOfWeek == DayOfWeek.Sunday ? 7 : (int)oDtFecha.DayOfWeek;
 
-            var oJornadaLaboral = oLstJornadasProfesional.FirstOrDefault(x => x.Dia == oDtFecha.DayOfWeek);
+            var oJornadaLaboral = oLstJornadasProfesional
+                .FirstOrDefault(x => (int)x.Dia == dia);
 
             if (oJornadaLaboral == null) return new List<BEFranja>();
 

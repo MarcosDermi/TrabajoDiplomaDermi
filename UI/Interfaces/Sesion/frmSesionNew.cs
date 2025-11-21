@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using UI.Interfaces.InicioSesion;
 using UI.Interfaces.Sesion.Administrar;
 using UI.Interfaces.Sesion.Calendario;
+using UI.Interfaces.Sesion.Help;
 using UI.Interfaces.Sesion.Menu;
 using UI.Interfaces.Sesion.Profesionales;
 using UI.Interfaces.Sesion.Promociones;
@@ -392,6 +393,7 @@ namespace UI.Interfaces.Sesion
 
         private void btnStock_Click_1(object sender, EventArgs e)
         {
+            OpenChildForm(new frmAbout());
             hideSubMenu(pnlHelpSubMenu);
         }
 
@@ -443,7 +445,7 @@ namespace UI.Interfaces.Sesion
 
         private void btnNotasVersion_Click(object sender, EventArgs e)
         {
-            //OpenChildForm(new frmGestionProveedores());
+            OpenChildForm(new frmNotasVersion());
             hideSubMenu(pnlHelpSubMenu);
         }
 

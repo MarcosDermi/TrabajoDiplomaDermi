@@ -266,7 +266,7 @@
             btnStock.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             btnStock.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             btnStock.UseVisualStyleBackColor = true;
-            btnStock.Click += new System.EventHandler(this.btnStock_Click_1);
+            btnStock.Click += new System.EventHandler(this.btnStock_Click);
             // 
             // btnCalendario
             // 
@@ -656,6 +656,7 @@
             // btnManualUsuario
             // 
             this.btnManualUsuario.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnManualUsuario.Enabled = false;
             this.btnManualUsuario.FlatAppearance.BorderSize = 0;
             this.btnManualUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnManualUsuario.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -737,6 +738,7 @@
             this.btnCuentaCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCuentaCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCuentaCliente.UseVisualStyleBackColor = true;
+            this.btnCuentaCliente.Visible = false;
             // 
             // btnFidelizacionCliente
             // 
@@ -928,7 +930,6 @@
             this.Controls.Add(this.pnlChildForm);
             this.Controls.Add(this.panel5);
             this.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MinimumSize = new System.Drawing.Size(1106, 718);

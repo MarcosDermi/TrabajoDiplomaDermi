@@ -67,21 +67,6 @@ namespace UI.Interfaces.Sesion.Servicios
             this.Show();
         }
 
-        private void btnModificarInsumo_Click(object sender, EventArgs e)
-        {
-            frmGestionarServiciosServicioEdit ofrmGestionarServiciosServicioEdit = new frmGestionarServiciosServicioEdit(ServicioID);
-
-            this.Hide();
-
-            if (ofrmGestionarServiciosServicioEdit.ShowDialog() == DialogResult.OK)
-            {
-                // El registro fue exitoso, podés hacer algo
-            }
-
-            // Opcional: restaurás la ventana si estaba minimizada
-            this.Show();
-        }
-
         private void chkVerServicios_CheckedChanged(object sender, EventArgs e)
         {
             if (chkVerServicios.Checked)
@@ -119,6 +104,29 @@ namespace UI.Interfaces.Sesion.Servicios
             {
                 MostrarMensajeError(ex.Message);
             }
+        }
+
+        private void btnModificarServicio_Click(object sender, EventArgs e)
+        {
+            frmGestionarServiciosServicioEdit ofrmGestionarServiciosServicioEdit = new frmGestionarServiciosServicioEdit(ServicioID);
+
+            this.Hide();
+
+            ofrmGestionarServiciosServicioEdit.ShowDialog();
+
+            if (ofrmGestionarServiciosServicioEdit.DialogResult == DialogResult.OK)
+            {
+                dgvInsumosServicios.DataSource = GestionServicioService.ObtenerObtenerInsumosPorServicio(ServicioID);
+                lblCantRegistrosServiciosInsumos.Text = dgvInsumosServicios.Rows.Count.ToString();
+
+                var ServicioProfesional = (DataRowView)dgvServiciosProfesional.CurrentRow.DataBoundItem;
+                ServicioID = Convert.ToInt32(ServicioProfesional.Row["ServicioID"]);
+
+                btnModificarServicio.Enabled = true;
+                btnEliminarServicio.Enabled = true;
+            }
+
+            this.Show();
         }
     }
 }

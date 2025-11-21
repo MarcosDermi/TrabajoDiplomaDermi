@@ -194,6 +194,8 @@ namespace UI.Interfaces.Sesion.Servicios
 
                     GestionServicioService.GuardarInsumosServicio(oServicio, _insumosServicio, oLstProfesionalesAsignadosIds);
                     MessageBox.Show("El servicio se ha guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                    DialogResult = DialogResult.OK;
                     this.Close();
                 }
                 catch (Exception ex)
