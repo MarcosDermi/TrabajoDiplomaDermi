@@ -1,6 +1,7 @@
 ﻿
 using ABSTRACCION.Contracts;
 using BE;
+using BLL;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,9 +12,9 @@ using System.Windows.Forms;
 
 namespace SERVICES
 {
-    public class ValidatorsService: IValidatorsService
+    public class ValidatorsService : IValidatorsService
     {
-        public ValidatorsService() {  }
+        public ValidatorsService() { }
 
         #region Regexs
 
@@ -41,7 +42,7 @@ namespace SERVICES
                 }
             }
         }
-        public  bool validarUsuario(string user)
+        public bool validarUsuario(string user)
         {
             return Regex.IsMatch(user, @"^[A-Za-z]+$|^[A-Za-z0-9]+$");
             //suponeindo que un usuario pueda contener caracteres solo letras y numeros, ejemplo JoeDamerdjian28 o JoeDamerdjian simpple
@@ -110,7 +111,7 @@ namespace SERVICES
                 else
                 {
                     return false;
-                   
+
                 }
             }
         }
@@ -122,15 +123,15 @@ namespace SERVICES
             bool validacion = false;
 
             if (NombreUsuario.Contains("Ingrese") || Clave.Contains("Ingrese")) validacion = true;
-      
+
             return validacion;
         }
 
-        public bool ValidarCamposVaciosModificar(string id,string nombre,string apellido,string usuario,string dni,string mail)
+        public bool ValidarCamposVaciosModificar(string id, string nombre, string apellido, string usuario, string dni, string mail)
         {
             bool validacion = false;
 
-            if (id==string.Empty || nombre.Contains("Ingrese") || apellido.Contains("Ingrese") || usuario.Contains("Ingrese") || dni.Contains("Ingrese") || mail.Contains("Ingrese")) validacion = true;
+            if (id == string.Empty || nombre.Contains("Ingrese") || apellido.Contains("Ingrese") || usuario.Contains("Ingrese") || dni.Contains("Ingrese") || mail.Contains("Ingrese")) validacion = true;
 
 
             return validacion;
@@ -297,6 +298,13 @@ namespace SERVICES
         public bool validarListaEnterosCheckedListBox(CheckedListBox clb)
         {
             return validarCheckedListBox(clb);
+        }
+
+        public List<BEUsuario> ObtenerUsuariosYMailsRegistrados()
+        {
+            IDigitoVerificadorService DigitoVerificadorService = new DigitoVerificadorService();
+            BLLUsuario oBLLUsuario = new BLLUsuario(DigitoVerificadorService);
+            return oBLLUsuario.ListarTodo(false, 0);
         }
     }
 }

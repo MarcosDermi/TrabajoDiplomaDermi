@@ -12,5 +12,6 @@ namespace ABSTRACCION.Contracts
         DataTable BuscarPromocionesPorFiltrosVarios(string sNombre, DateTime FechaDesde, DateTime FechaHasta, bool IncluirInactivos);
         bool VerificarPromocionVigenteParaFecha(DateTime dtReservaFechaInicio);
         DataTable ObtenerPromocionesActivas();
+        List<DateTime> ObtenerFechasConPromociones();
     }
 }

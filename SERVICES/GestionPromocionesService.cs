@@ -9,17 +9,11 @@ namespace SERVICES
 {
     public class GestionPromocionesService : IGestionPromocionesService
     {
-        BLLProveedor oBLLProovedor;
-        BLLCategorias oBLLCategoria;
-        BLLInsumo oBLLInsumo;
         BLLServicios oBLLServicios;
         BLLPromocion oBLLPromocion;
 
         public GestionPromocionesService()
         {
-            oBLLProovedor = new BLLProveedor();
-            oBLLCategoria = new BLLCategorias();
-            oBLLInsumo = new BLLInsumo();
             oBLLServicios = new BLLServicios();
             oBLLPromocion = new BLLPromocion();
         }
@@ -81,6 +75,11 @@ namespace SERVICES
         public DataTable ObtenerPromocionesActivas()
         {
             return oBLLPromocion.ObtenerPromocionesActivas();
+        }
+
+        public List<DateTime> ObtenerFechasConPromociones()
+        {
+            return oBLLPromocion.ObtenerFechasConPromociones();
         }
     }
 }

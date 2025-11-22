@@ -49,8 +49,7 @@ namespace UI.Interfaces.ReservasLogOut
                     lblMes.Text = mesTexto;
                 };
 
-                var oBLLPromocion = new BLLPromocion();
-                var oLstFechasPromo = oBLLPromocion.ObtenerFechasConPromociones();
+                var oLstFechasPromo = GestionPromocionesService.ObtenerFechasConPromociones();
                 ucCalendario.MarcarFechasConPromociones(oLstFechasPromo);
 
                 lblMes.Text = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(DateTime.Today.ToString("MMMM yyyy", new System.Globalization.CultureInfo("es-ES")));

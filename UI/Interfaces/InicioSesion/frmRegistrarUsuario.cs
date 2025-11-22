@@ -356,6 +356,20 @@ namespace UI.Interfaces.InicioSesion
                         throw new Exception("Ingrese un mail valido");
                     }
 
+                    var oLstUsuarios = ValidatorsService.ObtenerUsuariosYMailsRegistrados();
+
+                    foreach (var oUser in oLstUsuarios)
+                    {
+                        if (oUser.Usuario.ToLower() == oBEUsuario.Usuario.ToLower())
+                        {
+                            throw new Exception("El nombre de usuario ya existe. Por favor, elija otro.");
+                        }
+                        if (oUser.Mail.ToLower() == oBEUsuario.Mail.ToLower())
+                        {
+                            throw new Exception("El mail ya se encuentra registrado. Por favor, ingrese otro.");
+                        }
+                    }
+
                     if (txtClave.Text != txtClaveConfirmada.Text)
                     {
                         txtClave.BackColor = Color.RosyBrown;

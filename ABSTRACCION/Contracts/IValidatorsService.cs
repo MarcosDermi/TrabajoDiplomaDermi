@@ -34,6 +34,6 @@ namespace ABSTRACCION.Contracts
         bool validarListaProfesionalesCheckedListBox(CheckedListBox clb);
         bool validarListaStringCheckedListBox(CheckedListBox clb);
         bool validarListaEnterosCheckedListBox(CheckedListBox clb);
-
+        List<BEUsuario> ObtenerUsuariosYMailsRegistrados();
     }
 }

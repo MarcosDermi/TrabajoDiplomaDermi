@@ -51,16 +51,16 @@ public class BLLFidelizacion
 
     public void ProcesarPuntosDeAsistencia(BEReserva oReserva, int iIdUsuario)
     {
-        BLLFidelizacion oFid = new BLLFidelizacion();
+        var oBLLFidelizacion = new BLLFidelizacion();
         var puntosGanados = CalcularPuntosPorReserva(oReserva.Servicios);
 
         if (iIdUsuario != 0)
         {
-            oFid.ActualizarPuntos(iIdUsuario, puntosGanados);
+            oBLLFidelizacion.ActualizarPuntos(iIdUsuario, puntosGanados);
         }
         else
         {
-            oFid.ActualizarPuntosPorEmail(oReserva.Cliente.Mail, puntosGanados);
+            oBLLFidelizacion.ActualizarPuntosPorEmail(oReserva.Cliente.Mail, puntosGanados);
         }
     }
 
