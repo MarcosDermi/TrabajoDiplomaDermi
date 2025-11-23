@@ -1,19 +1,10 @@
-﻿using BLL;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
 
 namespace UI.Interfaces.Sesion.Menu
 {
     public partial class frmFidelizacionCliente : BaseForm
     {
-        private readonly BLLFidelizacion _bll = new BLLFidelizacion();
         private readonly int _clienteId;
 
         public frmFidelizacionCliente(int clienteId)
@@ -31,13 +22,13 @@ namespace UI.Interfaces.Sesion.Menu
         {
             var oUsuario = GeneralService.ObtenerUsuarioPorUsuarioID(_clienteId);
 
-            var dt = _bll.ObtenerPorCliente(_clienteId, oUsuario.Mail);
+            var dt = FidelizacionService.ObtenerPorCliente(_clienteId, oUsuario.Mail);
 
             if (dt.Rows.Count > 0)
             {
                 if (dt.Rows[0].IsNull("ClienteID"))
                 {
-                    _bll.ActualizarFidelizacionConClienteID(_clienteId, oUsuario.Mail);
+                    FidelizacionService.ActualizarFidelizacionConClienteID(_clienteId, oUsuario.Mail);
                 }
                 lblPuntos.Text = dt.Rows[0]["PuntosAcumulados"].ToString();
             }
@@ -46,8 +37,8 @@ namespace UI.Interfaces.Sesion.Menu
                 lblPuntos.Text = "0";
             }
 
-            dgvHistorial.DataSource = _bll.ObtenerHistorialCanjes(_clienteId);
-            dgvPendientes.DataSource = _bll.ObtenerDescuentoPendiente(_clienteId);
+            dgvHistorial.DataSource = FidelizacionService.ObtenerHistorialCanjes(_clienteId);
+            dgvPendientes.DataSource = FidelizacionService.ObtenerDescuentoPendiente(_clienteId);
         }
 
         private void numPuntosCanje_ValueChanged(object sender, EventArgs e)
@@ -70,7 +61,7 @@ namespace UI.Interfaces.Sesion.Menu
 
             decimal descuento = (puntosCanjeados / 10m) * 5m;
 
-            _bll.RegistrarDescuentoPendiente(_clienteId, descuento, puntosCanjeados);
+            FidelizacionService.RegistrarDescuentoPendiente(_clienteId, descuento, puntosCanjeados);
             MessageBox.Show($"Canje exitoso. Obtendrá un {descuento}% de descuento en su próxima reserva.",
                             "Fidelización", MessageBoxButtons.OK, MessageBoxIcon.Information);
             CargarDatosCliente();

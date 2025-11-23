@@ -48,7 +48,6 @@ namespace UI.Interfaces.Sesion.Servicios
             cmbSubCategoria.DataSource = GestionStockService.OrdenarSubcategoriasPorCategoria(_oDtSubcategorias, cmbCategoria.SelectedValue.ToString());
 
             dgvResultadoBusqueda.DataSource = GestionStockService.BuscarInsumosPorFiltrosVarios(string.Empty, string.Empty, 0, 0, 0);
-            dgvResultadoBusqueda.DataSource = GestionStockService.BuscarInsumosPorFiltrosVarios(string.Empty, string.Empty, 0, 0, 0);
 
             PrepararDataGridView(dgvResultadoBusqueda);
 
