@@ -96,12 +96,11 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
                     }
                 }
 
-                if (oProveedorBLL.Guardar(oProveedor))
+                if (GestionStockService.GuardarProveedor(oProveedor))
                 {
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
-            ;
             }
             catch (Exception ex)
             {

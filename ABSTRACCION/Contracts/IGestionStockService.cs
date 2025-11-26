@@ -9,6 +9,7 @@ namespace SERVICES.Interfaces
     {
         BEInsumo ObtenerInsumo(int InsumoID);
         DataTable ObtenerProveedores(bool EsLista);
+        bool GuardarProveedor(BEProveedor oProveedor);
         void ActualizarStock(int productoId, int cantidad);
         DataTable BuscarProveedoresPorFiltrosVarios(string sCodigo, string sNombre, string sRazonSocial);
         List<UnidadesEnum> ObtenerInsumosPresentaciones();

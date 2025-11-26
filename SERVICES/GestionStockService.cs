@@ -47,6 +47,11 @@ namespace SERVICES
             return oDtLista;
         }
 
+        public bool GuardarProveedor(BEProveedor oProveedor)
+        {
+            return oBLLProovedor.Guardar(oProveedor);
+        }
+
         public DataTable BuscarProveedoresPorFiltrosVarios(string sCodigo, string sNombre, string sRazonSocial)
         {
             return oBLLProovedor.BuscarProveedoresPorFiltrosVarios(sCodigo, sNombre, sRazonSocial);
