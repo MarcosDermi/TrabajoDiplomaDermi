@@ -29,35 +29,41 @@ namespace UI.Interfaces.Sesion.Profesionales
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (HoraFin <= HoraInicio)
+            try
             {
-                MessageBox.Show("La hora de fin debe ser mayor que la hora de inicio.",
-                    "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            var oFranjasExistentes = ProfesionalService.ObtenerFranjaHorariaPorJornadaID(JornadaID);
-
-            foreach (DataRow row in oFranjasExistentes.Rows)
-            {
-                var horaInicioExistente = ((TimeSpan)row["HoraInicio"]);
-                var horaFinExistente = ((TimeSpan)row["HoraFin"]);
-                if (HoraInicio < horaFinExistente && HoraFin > horaInicioExistente)
+                if (HoraFin <= HoraInicio)
                 {
-                    MessageBox.Show("La franja horaria se superpone con una franja existente.",
+                    MessageBox.Show("La hora de fin debe ser mayor que la hora de inicio.",
                         "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+
+                var oFranjasExistentes = ProfesionalService.ObtenerFranjaHorariaPorJornadaID(JornadaID);
+
+                foreach (DataRow row in oFranjasExistentes.Rows)
+                {
+                    var horaInicioExistente = ((TimeSpan)row["HoraInicio"]);
+                    var horaFinExistente = ((TimeSpan)row["HoraFin"]);
+                    if (HoraInicio < horaFinExistente && HoraFin > horaInicioExistente)
+                    {
+                        MessageBox.Show("La franja horaria se superpone con una franja existente.",
+                            "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+
+                ProfesionalService.GuardarFranjaHoraria(JornadaID, HoraInicio, HoraFin);
+
+                MessageBox.Show("La franja horaria se guardo correctamente.", "Exito", MessageBoxButtons.OK);
+
+                DialogResult = DialogResult.OK;
+                Close();
             }
-
-            ProfesionalService.GuardarFranjaHoraria(JornadaID, HoraInicio, HoraFin);
-
-            MessageBox.Show("La franja horaria se guardo correctamente.","Exito", MessageBoxButtons.OK);
-
-            DialogResult = DialogResult.OK;
-            Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al guardar la franja horaria: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
