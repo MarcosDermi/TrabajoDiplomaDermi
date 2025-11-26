@@ -29,7 +29,7 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
         {
             txtRazonSocial.Enabled = false;
 
-            if(_ProveedorID != 0)
+            if (_ProveedorID != 0)
             {
                 CargarProveedor(_ProveedorID);
             }
@@ -73,6 +73,28 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
                     Nombre = txtNombre.Text,
                     RazonSocial = txtRazonSocial.Text,
                 };
+
+                var oDtProveedores = GestionStockService.ObtenerProveedores(false);
+
+                if (oDtProveedores.Rows.Count != 0)
+                {
+                    foreach (DataRow oDr in oDtProveedores.Rows)
+                    {
+                        if (oDr["Codigo"].ToString().Equals(oProveedor.Codigo, StringComparison.OrdinalIgnoreCase) &&
+                            (int)oDr["ProveedorID"] != oProveedor.IdProveedor)
+                        {
+                            MessageBox.Show("El código de proveedor ya existe. Por favor, ingrese un código único.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        if (oDr["Nombre"].ToString().Equals(oProveedor.Nombre, StringComparison.OrdinalIgnoreCase) &&
+                            (int)oDr["ProveedorID"] != oProveedor.IdProveedor)
+                        {
+                            MessageBox.Show("El nombre de proveedor ya existe. Por favor, ingrese un nombre único.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                    }
+                }
 
                 if (oProveedorBLL.Guardar(oProveedor))
                 {
