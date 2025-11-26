@@ -16,12 +16,14 @@ namespace UI.Interfaces.Sesion.Promociones
 
         private void BorrarCampos()
         {
+            PromocionID = 0;
             txtID.Clear();
             txtNombre.Clear();
             txtDescuento.Clear();
             chkActivo.Checked = false;
             dtpFechaDesde.Value = DateTime.Now;
             dtpFechaHasta.Value = DateTime.Now;
+            btnCrearPromocion.Enabled = true;
         }
 
         private void btnCrearPromocion_Click(object sender, EventArgs e)
@@ -124,6 +126,11 @@ namespace UI.Interfaces.Sesion.Promociones
                 dtpFechaDesde.Value = Convert.ToDateTime(Insumo.Row["FechaDesde"]);
                 dtpFechaHasta.Value = Convert.ToDateTime(Insumo.Row["FechaHasta"]);
             }
+
+            btnModificarPromocion.Enabled = true;
+            btnEliminarPromocion.Enabled = true;
+            btnCrearPromocion.Enabled = false;
+            btnBorrarCampos.Enabled = true;
         }
 
         private void btnEliminarPromocion_Click(object sender, EventArgs e)
@@ -222,6 +229,22 @@ namespace UI.Interfaces.Sesion.Promociones
                     MessageBox.Show("Promocion modificada con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     BorrarCampos();
                 }
+            }
+            catch (Exception ex)
+            {
+                MostrarMensajeError(ex.Message);
+            }
+        }
+
+        private void btnBorrarCampos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                BorrarCampos();
+                btnCrearPromocion.Enabled = true;
+                btnModificarPromocion.Enabled = false;
+                btnEliminarPromocion.Enabled = false;
+                btnBorrarCampos.Enabled = true;
             }
             catch (Exception ex)
             {

@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtID = new System.Windows.Forms.TextBox();
             this.btnModificarPromocion = new System.Windows.Forms.Button();
             this.chkActivo = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -58,8 +60,7 @@
             this.dtpFechaDesdeBusqueda = new System.Windows.Forms.DateTimePicker();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtID = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.btnBorrarCampos = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -93,6 +94,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnBorrarCampos);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.txtID);
             this.groupBox2.Controls.Add(this.btnModificarPromocion);
@@ -109,15 +111,32 @@
             this.groupBox2.Controls.Add(this.btnCrearPromocion);
             this.groupBox2.Location = new System.Drawing.Point(632, 104);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(255, 337);
+            this.groupBox2.Size = new System.Drawing.Size(255, 359);
             this.groupBox2.TabIndex = 23;
             this.groupBox2.TabStop = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(199, 30);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(21, 13);
+            this.label10.TabIndex = 15;
+            this.label10.Text = "Id:";
+            // 
+            // txtID
+            // 
+            this.txtID.Enabled = false;
+            this.txtID.Location = new System.Drawing.Point(202, 46);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(30, 21);
+            this.txtID.TabIndex = 14;
             // 
             // btnModificarPromocion
             // 
             this.btnModificarPromocion.BackColor = System.Drawing.Color.Khaki;
             this.btnModificarPromocion.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnModificarPromocion.Location = new System.Drawing.Point(30, 269);
+            this.btnModificarPromocion.Location = new System.Drawing.Point(30, 298);
             this.btnModificarPromocion.Name = "btnModificarPromocion";
             this.btnModificarPromocion.Size = new System.Drawing.Size(202, 25);
             this.btnModificarPromocion.TabIndex = 13;
@@ -203,7 +222,7 @@
             // 
             this.btnEliminarPromocion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(55)))), ((int)(((byte)(62)))));
             this.btnEliminarPromocion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnEliminarPromocion.Location = new System.Drawing.Point(30, 298);
+            this.btnEliminarPromocion.Location = new System.Drawing.Point(30, 327);
             this.btnEliminarPromocion.Name = "btnEliminarPromocion";
             this.btnEliminarPromocion.Size = new System.Drawing.Size(202, 25);
             this.btnEliminarPromocion.TabIndex = 5;
@@ -214,7 +233,7 @@
             // btnCrearPromocion
             // 
             this.btnCrearPromocion.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.btnCrearPromocion.Location = new System.Drawing.Point(30, 238);
+            this.btnCrearPromocion.Location = new System.Drawing.Point(30, 267);
             this.btnCrearPromocion.Name = "btnCrearPromocion";
             this.btnCrearPromocion.Size = new System.Drawing.Size(202, 25);
             this.btnCrearPromocion.TabIndex = 3;
@@ -242,14 +261,14 @@
             this.dgvPromociones.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvPromociones.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvPromociones.CausesValidation = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPromociones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPromociones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvPromociones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPromociones.Location = new System.Drawing.Point(15, 21);
             this.dgvPromociones.MultiSelect = false;
@@ -375,22 +394,16 @@
             this.label5.TabIndex = 13;
             this.label5.Text = "Nombre:";
             // 
-            // txtID
+            // btnBorrarCampos
             // 
-            this.txtID.Enabled = false;
-            this.txtID.Location = new System.Drawing.Point(202, 46);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(30, 21);
-            this.txtID.TabIndex = 14;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(199, 30);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(21, 13);
-            this.label10.TabIndex = 15;
-            this.label10.Text = "Id:";
+            this.btnBorrarCampos.BackColor = System.Drawing.Color.Ivory;
+            this.btnBorrarCampos.Location = new System.Drawing.Point(32, 236);
+            this.btnBorrarCampos.Name = "btnBorrarCampos";
+            this.btnBorrarCampos.Size = new System.Drawing.Size(110, 25);
+            this.btnBorrarCampos.TabIndex = 16;
+            this.btnBorrarCampos.Text = "🗑️ Borrar campos";
+            this.btnBorrarCampos.UseVisualStyleBackColor = false;
+            this.btnBorrarCampos.Click += new System.EventHandler(this.btnBorrarCampos_Click);
             // 
             // frmGestionarPromociones
             // 
@@ -448,5 +461,6 @@
         private System.Windows.Forms.Button btnModificarPromocion;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.Button btnBorrarCampos;
     }
 }

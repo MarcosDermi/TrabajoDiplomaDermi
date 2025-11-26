@@ -407,15 +407,15 @@ namespace UI.Interfaces.InicioSesion
 
         private void btnIniciarSesion_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //if (e.KeyChar == (char)Keys.Enter)
-            //{
-            //    btnIniciarSesion.PerformClick();
-            //}
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnIniciarSesion.PerformClick();
+            }
         }
 
         private void btnIniciarSesion_Enter(object sender, EventArgs e)
         {
-            btnIniciarSesion.PerformClick();
+            //btnIniciarSesion.PerformClick();
         }
 
         private void btnIniciarSesion_KeyDown(object sender, KeyEventArgs e)
