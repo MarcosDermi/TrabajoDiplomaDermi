@@ -66,6 +66,24 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(txtCodigo.Text))
+                {
+                    MessageBox.Show("El campo Código es obligatorio.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(txtNombre.Text))
+                {
+                    MessageBox.Show("El campo Nombre es obligatorio.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if(string.IsNullOrEmpty(txtRazonSocial.Text))
+                {
+                    MessageBox.Show("El campo Razón Social es obligatorio.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 oProveedor = new BEProveedor
                 {
                     IdProveedor = _ProveedorID,
