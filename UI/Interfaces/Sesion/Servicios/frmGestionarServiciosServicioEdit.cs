@@ -176,6 +176,18 @@ namespace UI.Interfaces.Sesion.Servicios
             {
                 try
                 {
+                    if(txtPrecio.Text == string.Empty || txtNombre.Text == string.Empty || txtDuracion.Text == string.Empty || txtBuffer.Text == string.Empty)
+                    {
+                        MessageBox.Show("Debe completar todos los campos.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    if(!decimal.TryParse(txtPrecio.Text, out decimal precio) || precio < 0)
+                    {
+                        MessageBox.Show("El precio debe ser un número decimal válido mayor o igual a cero.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
                     var oServicio = new BEServicio
                     {
                         ServicioID = ServicioID != 0 ? ServicioID : 0,
