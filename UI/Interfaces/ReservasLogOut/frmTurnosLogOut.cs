@@ -192,8 +192,7 @@ namespace UI.Interfaces.ReservasLogOut
                     return;
                 }
 
-                BLLPromocion oBLLPromos = new BLLPromocion();
-                bool diaConPromo = oBLLPromos.HayPromocionEnFecha(_fechaSeleccionada);
+                bool diaConPromo = GestionPromocionesService.VerificarPromocionVigenteParaFecha(_fechaSeleccionada);
 
                 var tsDuracionMin = TimeSpan.FromMinutes(
                     AgendaService.DuracionTotalSeleccionadaMin(oLstServiciosSeleccionados));

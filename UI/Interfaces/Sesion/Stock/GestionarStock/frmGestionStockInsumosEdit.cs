@@ -121,6 +121,41 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
         {
             try
             {
+                if (string.IsNullOrEmpty(txtCodigo.Text) || string.IsNullOrEmpty(txtNombre.Text))
+                {
+                    MessageBox.Show("El Codigo y Nombre no deben estar vacios.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if(dtpFechaVencimiento.Value <= DateTime.Now)
+                {
+                    MessageBox.Show("La fecha de vencimiento debe ser mayor a la fecha actual.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (!ValidatorsService.validarDecimal(txtStock.Text) && string.IsNullOrEmpty(txtStock.Text))
+                {
+                    MessageBox.Show("El stock debe ser en formato decimal. Por ejemplo: 50 o 0,50 y no debe quedar vacio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (chkAlertaStockMinimo.Checked && (!ValidatorsService.validarDecimal(txtStockMinimoAlerta.Text) || string.IsNullOrEmpty(txtStock.Text)))
+                {
+                    MessageBox.Show("El stock mínimo de alerta debe ser en formato decimal. Por ejemplo: 50 o 0,50 y no debe quedar vacio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (!ValidatorsService.validarDecimal(txtPrecioCompra.Text) || string.IsNullOrEmpty(txtPrecioCompra.Text))
+                {
+                    MessageBox.Show("El precio de compra debe ser en formato decimal. Por ejemplo: 1500 o 1500,50 y no debe quedar vacio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (!ValidatorsService.validarDecimal(txtDescuento.Text))
+                {
+                    MessageBox.Show("El valor del descuento debe ser en formato decimal. Por ejemplo: 50 o 0,50", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 var oBEInsumo = new BEInsumo()
                 {
                     IDInsumo = insumoID,
@@ -137,6 +172,23 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
                     PrecioFinal = Convert.ToDecimal(txtPrecioFinal.Text),
                     FechaVencimiento = dtpFechaVencimiento.Value,
                 };
+
+                var oDtInsumos = GestionStockService.BuscarInsumosPorFiltrosVarios(string.Empty, string.Empty, 0, 0, 0);
+
+                foreach (DataRow oDr in oDtInsumos.Rows)
+                {
+                    if (oDr["Codigo"].ToString().Equals(oBEInsumo.Codigo) && oDr["ProveedorID"].ToString().Equals(oBEInsumo.Proveedor.IdProveedor))
+                    {
+                        MessageBox.Show("El código ingresado ya existe para el proveedor seleccionado. Por favor, ingrese un código diferente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    if (oDr["Codigo"].ToString().Equals(oBEInsumo.Codigo) && Convert.ToInt32(oDr["InsumoID"]) != oBEInsumo.IDInsumo)
+                    {
+                        MessageBox.Show("El código ingresado ya existe. Por favor, ingrese un código diferente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
 
                 if (GestionStockService.GuardarInsumo(oBEInsumo))
                 {
