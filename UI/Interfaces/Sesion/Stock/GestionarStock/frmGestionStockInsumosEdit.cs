@@ -173,11 +173,21 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
                     FechaVencimiento = dtpFechaVencimiento.Value,
                 };
 
+                var oDtProveedor = GestionStockService.ObtenerProveedores(true);
+
+                foreach( DataRow oDr in oDtProveedor.AsEnumerable())
+                {
+                    if ((int)oDr["ProveedorID"] == oBEInsumo.Proveedor.IdProveedor)
+                    {
+                        oBEInsumo.Proveedor.Nombre = (string)oDr["RazonSocial"].ToString();
+                    }
+                }
+
                 var oDtInsumos = GestionStockService.BuscarInsumosPorFiltrosVarios(string.Empty, string.Empty, 0, 0, 0);
 
                 foreach (DataRow oDr in oDtInsumos.Rows)
                 {
-                    if (oDr["Codigo"].ToString().Equals(oBEInsumo.Codigo) && oDr["ProveedorID"].ToString().Equals(oBEInsumo.Proveedor.IdProveedor))
+                    if (oDr["Codigo"].ToString().Equals(oBEInsumo.Codigo) && oDr["Proveedor"].ToString().Equals(oBEInsumo.Proveedor.Nombre))
                     {
                         MessageBox.Show("El código ingresado ya existe para el proveedor seleccionado. Por favor, ingrese un código diferente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
