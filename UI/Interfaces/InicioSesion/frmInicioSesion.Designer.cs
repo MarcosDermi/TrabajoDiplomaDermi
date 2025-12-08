@@ -113,10 +113,10 @@
             this.btnRegistrarse.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRegistrarse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegistrarse.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnRegistrarse.Location = new System.Drawing.Point(396, 504);
+            this.btnRegistrarse.Location = new System.Drawing.Point(230, 492);
             this.btnRegistrarse.Margin = new System.Windows.Forms.Padding(4);
             this.btnRegistrarse.Name = "btnRegistrarse";
-            this.btnRegistrarse.Size = new System.Drawing.Size(97, 36);
+            this.btnRegistrarse.Size = new System.Drawing.Size(97, 33);
             this.btnRegistrarse.TabIndex = 5;
             this.btnRegistrarse.Tag = "Registrarse";
             this.btnRegistrarse.Text = "Registrarse";
