@@ -64,6 +64,7 @@ namespace UI.Interfaces.ReservasLogOut
         {
             try
             {
+                RefrescarHorariosInteligentes();
                 ActualizarTotalServicios();
             }
             catch (Exception ex)

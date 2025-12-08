@@ -250,6 +250,7 @@
             // 
             // cmbProfesional
             // 
+            this.cmbProfesional.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProfesional.FormattingEnabled = true;
             this.cmbProfesional.Location = new System.Drawing.Point(90, 21);
             this.cmbProfesional.Name = "cmbProfesional";

@@ -40,6 +40,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.chkMostrarTodosLosInsumos = new System.Windows.Forms.CheckBox();
             this.label15 = new System.Windows.Forms.Label();
             this.cmbSubCategoria = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -54,7 +55,6 @@
             this.txtNombreBusqueda = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.chkMostrarTodosLosInsumos = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultadoBusqueda)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -217,6 +217,17 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filtrar:";
             // 
+            // chkMostrarTodosLosInsumos
+            // 
+            this.chkMostrarTodosLosInsumos.AutoSize = true;
+            this.chkMostrarTodosLosInsumos.Location = new System.Drawing.Point(449, 87);
+            this.chkMostrarTodosLosInsumos.Name = "chkMostrarTodosLosInsumos";
+            this.chkMostrarTodosLosInsumos.Size = new System.Drawing.Size(99, 18);
+            this.chkMostrarTodosLosInsumos.TabIndex = 20;
+            this.chkMostrarTodosLosInsumos.Text = "Mostrar todos";
+            this.chkMostrarTodosLosInsumos.UseVisualStyleBackColor = true;
+            this.chkMostrarTodosLosInsumos.CheckedChanged += new System.EventHandler(this.chkMostrarTodosLosInsumos_CheckedChanged);
+            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -228,6 +239,7 @@
             // 
             // cmbSubCategoria
             // 
+            this.cmbSubCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSubCategoria.FormattingEnabled = true;
             this.cmbSubCategoria.Location = new System.Drawing.Point(122, 83);
             this.cmbSubCategoria.Name = "cmbSubCategoria";
@@ -245,6 +257,7 @@
             // 
             // cmbPresentacion
             // 
+            this.cmbPresentacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPresentacion.FormattingEnabled = true;
             this.cmbPresentacion.Location = new System.Drawing.Point(232, 83);
             this.cmbPresentacion.Name = "cmbPresentacion";
@@ -262,6 +275,7 @@
             // 
             // cmbCategoria
             // 
+            this.cmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategoria.FormattingEnabled = true;
             this.cmbCategoria.Location = new System.Drawing.Point(12, 83);
             this.cmbCategoria.Name = "cmbCategoria";
@@ -280,6 +294,7 @@
             // 
             // cmbProveedor
             // 
+            this.cmbProveedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProveedor.FormattingEnabled = true;
             this.cmbProveedor.Location = new System.Drawing.Point(232, 34);
             this.cmbProveedor.Name = "cmbProveedor";
@@ -341,17 +356,6 @@
             this.label1.Size = new System.Drawing.Size(190, 30);
             this.label1.TabIndex = 2;
             this.label1.Text = "Gestion de stock";
-            // 
-            // chkMostrarTodosLosInsumos
-            // 
-            this.chkMostrarTodosLosInsumos.AutoSize = true;
-            this.chkMostrarTodosLosInsumos.Location = new System.Drawing.Point(449, 87);
-            this.chkMostrarTodosLosInsumos.Name = "chkMostrarTodosLosInsumos";
-            this.chkMostrarTodosLosInsumos.Size = new System.Drawing.Size(99, 18);
-            this.chkMostrarTodosLosInsumos.TabIndex = 20;
-            this.chkMostrarTodosLosInsumos.Text = "Mostrar todos";
-            this.chkMostrarTodosLosInsumos.UseVisualStyleBackColor = true;
-            this.chkMostrarTodosLosInsumos.CheckedChanged += new System.EventHandler(this.chkMostrarTodosLosInsumos_CheckedChanged);
             // 
             // frmGestionStock
             // 
