@@ -56,7 +56,7 @@
             this.btnConfirmarReserva.Location = new System.Drawing.Point(12, 362);
             this.btnConfirmarReserva.Name = "btnConfirmarReserva";
             this.btnConfirmarReserva.Size = new System.Drawing.Size(208, 47);
-            this.btnConfirmarReserva.TabIndex = 36;
+            this.btnConfirmarReserva.TabIndex = 2;
             this.btnConfirmarReserva.Text = "Confirmar reserva";
             this.btnConfirmarReserva.UseVisualStyleBackColor = false;
             this.btnConfirmarReserva.Click += new System.EventHandler(this.txtConfirmarReserva_Click);
@@ -119,7 +119,7 @@
             this.txtEmail.Location = new System.Drawing.Point(9, 306);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(181, 21);
-            this.txtEmail.TabIndex = 36;
+            this.txtEmail.TabIndex = 1;
             // 
             // lblTotal
             // 
@@ -228,7 +228,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(12, 424);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(87, 28);
-            this.btnCancelar.TabIndex = 47;
+            this.btnCancelar.TabIndex = 3;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);

@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnBorrarCampos = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
             this.btnModificarPromocion = new System.Windows.Forms.Button();
@@ -60,7 +61,6 @@
             this.dtpFechaDesdeBusqueda = new System.Windows.Forms.DateTimePicker();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnBorrarCampos = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -115,6 +115,17 @@
             this.groupBox2.TabIndex = 23;
             this.groupBox2.TabStop = false;
             // 
+            // btnBorrarCampos
+            // 
+            this.btnBorrarCampos.BackColor = System.Drawing.Color.Ivory;
+            this.btnBorrarCampos.Location = new System.Drawing.Point(32, 236);
+            this.btnBorrarCampos.Name = "btnBorrarCampos";
+            this.btnBorrarCampos.Size = new System.Drawing.Size(110, 25);
+            this.btnBorrarCampos.TabIndex = 11;
+            this.btnBorrarCampos.Text = "🗑️ Borrar campos";
+            this.btnBorrarCampos.UseVisualStyleBackColor = false;
+            this.btnBorrarCampos.Click += new System.EventHandler(this.btnBorrarCampos_Click);
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -131,6 +142,7 @@
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(30, 21);
             this.txtID.TabIndex = 14;
+            this.txtID.TabStop = false;
             // 
             // btnModificarPromocion
             // 
@@ -150,7 +162,7 @@
             this.chkActivo.Location = new System.Drawing.Point(144, 101);
             this.chkActivo.Name = "chkActivo";
             this.chkActivo.Size = new System.Drawing.Size(56, 17);
-            this.chkActivo.TabIndex = 12;
+            this.chkActivo.TabIndex = 8;
             this.chkActivo.Text = "Activo";
             this.chkActivo.UseVisualStyleBackColor = true;
             // 
@@ -168,7 +180,7 @@
             this.txtDescuento.Location = new System.Drawing.Point(30, 101);
             this.txtDescuento.Name = "txtDescuento";
             this.txtDescuento.Size = new System.Drawing.Size(54, 21);
-            this.txtDescuento.TabIndex = 10;
+            this.txtDescuento.TabIndex = 7;
             // 
             // label4
             // 
@@ -184,7 +196,7 @@
             this.txtNombre.Location = new System.Drawing.Point(32, 46);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(132, 21);
-            this.txtNombre.TabIndex = 8;
+            this.txtNombre.TabIndex = 6;
             // 
             // label3
             // 
@@ -209,14 +221,14 @@
             this.dtpFechaHasta.Location = new System.Drawing.Point(32, 197);
             this.dtpFechaHasta.Name = "dtpFechaHasta";
             this.dtpFechaHasta.Size = new System.Drawing.Size(200, 21);
-            this.dtpFechaHasta.TabIndex = 1;
+            this.dtpFechaHasta.TabIndex = 10;
             // 
             // dtpFechaDesde
             // 
             this.dtpFechaDesde.Location = new System.Drawing.Point(32, 157);
             this.dtpFechaDesde.Name = "dtpFechaDesde";
             this.dtpFechaDesde.Size = new System.Drawing.Size(200, 21);
-            this.dtpFechaDesde.TabIndex = 0;
+            this.dtpFechaDesde.TabIndex = 9;
             // 
             // btnEliminarPromocion
             // 
@@ -225,7 +237,7 @@
             this.btnEliminarPromocion.Location = new System.Drawing.Point(30, 327);
             this.btnEliminarPromocion.Name = "btnEliminarPromocion";
             this.btnEliminarPromocion.Size = new System.Drawing.Size(202, 25);
-            this.btnEliminarPromocion.TabIndex = 5;
+            this.btnEliminarPromocion.TabIndex = 14;
             this.btnEliminarPromocion.Text = "Eliminar";
             this.btnEliminarPromocion.UseVisualStyleBackColor = false;
             this.btnEliminarPromocion.Click += new System.EventHandler(this.btnEliminarPromocion_Click);
@@ -236,7 +248,7 @@
             this.btnCrearPromocion.Location = new System.Drawing.Point(30, 267);
             this.btnCrearPromocion.Name = "btnCrearPromocion";
             this.btnCrearPromocion.Size = new System.Drawing.Size(202, 25);
-            this.btnCrearPromocion.TabIndex = 3;
+            this.btnCrearPromocion.TabIndex = 12;
             this.btnCrearPromocion.Text = "Crear";
             this.btnCrearPromocion.UseVisualStyleBackColor = false;
             this.btnCrearPromocion.Click += new System.EventHandler(this.btnCrearPromocion_Click);
@@ -261,14 +273,14 @@
             this.dgvPromociones.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvPromociones.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvPromociones.CausesValidation = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPromociones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPromociones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPromociones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPromociones.Location = new System.Drawing.Point(15, 21);
             this.dgvPromociones.MultiSelect = false;
@@ -277,6 +289,7 @@
             this.dgvPromociones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPromociones.Size = new System.Drawing.Size(585, 302);
             this.dgvPromociones.TabIndex = 0;
+            this.dgvPromociones.TabStop = false;
             this.dgvPromociones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPromociones_CellContentClick);
             // 
             // groupBox3
@@ -330,7 +343,7 @@
             this.chkIncluirInactivos.Location = new System.Drawing.Point(24, 55);
             this.chkIncluirInactivos.Name = "chkIncluirInactivos";
             this.chkIncluirInactivos.Size = new System.Drawing.Size(100, 17);
-            this.chkIncluirInactivos.TabIndex = 13;
+            this.chkIncluirInactivos.TabIndex = 4;
             this.chkIncluirInactivos.Text = "Incluir inactivas";
             this.chkIncluirInactivos.UseVisualStyleBackColor = true;
             // 
@@ -348,7 +361,7 @@
             this.dtpFechaHastaBusqueda.Location = new System.Drawing.Point(408, 32);
             this.dtpFechaHastaBusqueda.Name = "dtpFechaHastaBusqueda";
             this.dtpFechaHastaBusqueda.Size = new System.Drawing.Size(214, 21);
-            this.dtpFechaHastaBusqueda.TabIndex = 15;
+            this.dtpFechaHastaBusqueda.TabIndex = 3;
             // 
             // label7
             // 
@@ -364,14 +377,14 @@
             this.txtNombreBusqueda.Location = new System.Drawing.Point(24, 32);
             this.txtNombreBusqueda.Name = "txtNombreBusqueda";
             this.txtNombreBusqueda.Size = new System.Drawing.Size(132, 21);
-            this.txtNombreBusqueda.TabIndex = 12;
+            this.txtNombreBusqueda.TabIndex = 1;
             // 
             // dtpFechaDesdeBusqueda
             // 
             this.dtpFechaDesdeBusqueda.Location = new System.Drawing.Point(171, 32);
             this.dtpFechaDesdeBusqueda.Name = "dtpFechaDesdeBusqueda";
             this.dtpFechaDesdeBusqueda.Size = new System.Drawing.Size(214, 21);
-            this.dtpFechaDesdeBusqueda.TabIndex = 12;
+            this.dtpFechaDesdeBusqueda.TabIndex = 2;
             // 
             // btnBuscar
             // 
@@ -380,7 +393,7 @@
             this.btnBuscar.Location = new System.Drawing.Point(644, 24);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(200, 36);
-            this.btnBuscar.TabIndex = 14;
+            this.btnBuscar.TabIndex = 5;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
@@ -393,17 +406,6 @@
             this.label5.Size = new System.Drawing.Size(48, 13);
             this.label5.TabIndex = 13;
             this.label5.Text = "Nombre:";
-            // 
-            // btnBorrarCampos
-            // 
-            this.btnBorrarCampos.BackColor = System.Drawing.Color.Ivory;
-            this.btnBorrarCampos.Location = new System.Drawing.Point(32, 236);
-            this.btnBorrarCampos.Name = "btnBorrarCampos";
-            this.btnBorrarCampos.Size = new System.Drawing.Size(110, 25);
-            this.btnBorrarCampos.TabIndex = 16;
-            this.btnBorrarCampos.Text = "🗑️ Borrar campos";
-            this.btnBorrarCampos.UseVisualStyleBackColor = false;
-            this.btnBorrarCampos.Click += new System.EventHandler(this.btnBorrarCampos_Click);
             // 
             // frmGestionarPromociones
             // 

@@ -46,7 +46,7 @@ namespace UI.Interfaces.Sesion.Profesionales
             this.cboProfesional.Location = new System.Drawing.Point(110, 46);
             this.cboProfesional.Name = "cboProfesional";
             this.cboProfesional.Size = new System.Drawing.Size(220, 21);
-            this.cboProfesional.TabIndex = 2;
+            this.cboProfesional.TabIndex = 1;
             this.cboProfesional.SelectedIndexChanged += new System.EventHandler(this.cboProfesional_SelectedIndexChanged);
             // 
             // lblProfesional
@@ -69,7 +69,8 @@ namespace UI.Interfaces.Sesion.Profesionales
             this.dgvJornadas.ReadOnly = true;
             this.dgvJornadas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvJornadas.Size = new System.Drawing.Size(340, 250);
-            this.dgvJornadas.TabIndex = 6;
+            this.dgvJornadas.TabIndex = 2;
+            this.dgvJornadas.TabStop = false;
             this.dgvJornadas.SelectionChanged += new System.EventHandler(this.dgvJornadas_SelectionChanged);
             // 
             // dgvFranjas
@@ -84,6 +85,7 @@ namespace UI.Interfaces.Sesion.Profesionales
             this.dgvFranjas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFranjas.Size = new System.Drawing.Size(350, 250);
             this.dgvFranjas.TabIndex = 8;
+            this.dgvFranjas.TabStop = false;
             this.dgvFranjas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFranjas_CellContentClick);
             // 
             // btnAgregarJornada
@@ -91,7 +93,7 @@ namespace UI.Interfaces.Sesion.Profesionales
             this.btnAgregarJornada.Location = new System.Drawing.Point(25, 370);
             this.btnAgregarJornada.Name = "btnAgregarJornada";
             this.btnAgregarJornada.Size = new System.Drawing.Size(150, 35);
-            this.btnAgregarJornada.TabIndex = 9;
+            this.btnAgregarJornada.TabIndex = 2;
             this.btnAgregarJornada.Text = "Modificar Jornadas";
             this.btnAgregarJornada.Click += new System.EventHandler(this.btnAgregarJornada_Click);
             // 
@@ -100,7 +102,7 @@ namespace UI.Interfaces.Sesion.Profesionales
             this.btnAgregarFranja.Location = new System.Drawing.Point(390, 370);
             this.btnAgregarFranja.Name = "btnAgregarFranja";
             this.btnAgregarFranja.Size = new System.Drawing.Size(150, 35);
-            this.btnAgregarFranja.TabIndex = 11;
+            this.btnAgregarFranja.TabIndex = 3;
             this.btnAgregarFranja.Text = "Agregar Franja";
             this.btnAgregarFranja.Click += new System.EventHandler(this.btnAgregarFranja_Click);
             // 
@@ -110,7 +112,7 @@ namespace UI.Interfaces.Sesion.Profesionales
             this.btnEliminarFranja.Location = new System.Drawing.Point(560, 370);
             this.btnEliminarFranja.Name = "btnEliminarFranja";
             this.btnEliminarFranja.Size = new System.Drawing.Size(150, 35);
-            this.btnEliminarFranja.TabIndex = 12;
+            this.btnEliminarFranja.TabIndex = 4;
             this.btnEliminarFranja.Text = "Eliminar Franja";
             this.btnEliminarFranja.Click += new System.EventHandler(this.btnEliminarFranja_Click);
             // 

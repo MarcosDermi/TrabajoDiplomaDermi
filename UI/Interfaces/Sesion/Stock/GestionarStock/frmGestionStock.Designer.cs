@@ -86,6 +86,7 @@
             this.dgvResultadoBusqueda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvResultadoBusqueda.Size = new System.Drawing.Size(1020, 350);
             this.dgvResultadoBusqueda.TabIndex = 0;
+            this.dgvResultadoBusqueda.TabStop = false;
             this.dgvResultadoBusqueda.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvResultadoBusqueda_CellContentClick);
             this.dgvResultadoBusqueda.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvResultadoBusqueda_DataBindingComplete);
             // 
@@ -113,7 +114,7 @@
             this.btnEliminarInsumo.Location = new System.Drawing.Point(877, 64);
             this.btnEliminarInsumo.Name = "btnEliminarInsumo";
             this.btnEliminarInsumo.Size = new System.Drawing.Size(171, 25);
-            this.btnEliminarInsumo.TabIndex = 5;
+            this.btnEliminarInsumo.TabIndex = 11;
             this.btnEliminarInsumo.Text = "Eliminar";
             this.btnEliminarInsumo.UseVisualStyleBackColor = false;
             this.btnEliminarInsumo.Click += new System.EventHandler(this.btnEliminarInsumo_Click);
@@ -126,7 +127,7 @@
             this.btnModificarInsumo.Location = new System.Drawing.Point(698, 64);
             this.btnModificarInsumo.Name = "btnModificarInsumo";
             this.btnModificarInsumo.Size = new System.Drawing.Size(173, 25);
-            this.btnModificarInsumo.TabIndex = 4;
+            this.btnModificarInsumo.TabIndex = 10;
             this.btnModificarInsumo.Text = "Modificar";
             this.btnModificarInsumo.UseVisualStyleBackColor = false;
             this.btnModificarInsumo.Click += new System.EventHandler(this.btnModificarInsumo_Click);
@@ -137,7 +138,7 @@
             this.btnCrearInsumo.Location = new System.Drawing.Point(698, 31);
             this.btnCrearInsumo.Name = "btnCrearInsumo";
             this.btnCrearInsumo.Size = new System.Drawing.Size(350, 25);
-            this.btnCrearInsumo.TabIndex = 3;
+            this.btnCrearInsumo.TabIndex = 9;
             this.btnCrearInsumo.Text = "Crear";
             this.btnCrearInsumo.UseVisualStyleBackColor = false;
             this.btnCrearInsumo.Click += new System.EventHandler(this.btnCrearInsumo_Click);
@@ -162,7 +163,7 @@
             this.btnSerializar.Location = new System.Drawing.Point(578, 9);
             this.btnSerializar.Name = "btnSerializar";
             this.btnSerializar.Size = new System.Drawing.Size(118, 30);
-            this.btnSerializar.TabIndex = 20;
+            this.btnSerializar.TabIndex = 12;
             this.btnSerializar.Text = "Exportar resultados";
             this.btnSerializar.UseVisualStyleBackColor = true;
             this.btnSerializar.Click += new System.EventHandler(this.btnSerializar_Click);
@@ -223,7 +224,7 @@
             this.chkMostrarTodosLosInsumos.Location = new System.Drawing.Point(449, 87);
             this.chkMostrarTodosLosInsumos.Name = "chkMostrarTodosLosInsumos";
             this.chkMostrarTodosLosInsumos.Size = new System.Drawing.Size(99, 18);
-            this.chkMostrarTodosLosInsumos.TabIndex = 20;
+            this.chkMostrarTodosLosInsumos.TabIndex = 7;
             this.chkMostrarTodosLosInsumos.Text = "Mostrar todos";
             this.chkMostrarTodosLosInsumos.UseVisualStyleBackColor = true;
             this.chkMostrarTodosLosInsumos.CheckedChanged += new System.EventHandler(this.chkMostrarTodosLosInsumos_CheckedChanged);
@@ -244,7 +245,7 @@
             this.cmbSubCategoria.Location = new System.Drawing.Point(122, 83);
             this.cmbSubCategoria.Name = "cmbSubCategoria";
             this.cmbSubCategoria.Size = new System.Drawing.Size(104, 22);
-            this.cmbSubCategoria.TabIndex = 18;
+            this.cmbSubCategoria.TabIndex = 5;
             // 
             // label14
             // 
@@ -262,7 +263,7 @@
             this.cmbPresentacion.Location = new System.Drawing.Point(232, 83);
             this.cmbPresentacion.Name = "cmbPresentacion";
             this.cmbPresentacion.Size = new System.Drawing.Size(104, 22);
-            this.cmbPresentacion.TabIndex = 16;
+            this.cmbPresentacion.TabIndex = 6;
             // 
             // label13
             // 
@@ -280,7 +281,7 @@
             this.cmbCategoria.Location = new System.Drawing.Point(12, 83);
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(104, 22);
-            this.cmbCategoria.TabIndex = 14;
+            this.cmbCategoria.TabIndex = 4;
             this.cmbCategoria.SelectedIndexChanged += new System.EventHandler(this.cmbCategoria_SelectedIndexChanged);
             // 
             // label12
@@ -299,7 +300,7 @@
             this.cmbProveedor.Location = new System.Drawing.Point(232, 34);
             this.cmbProveedor.Name = "cmbProveedor";
             this.cmbProveedor.Size = new System.Drawing.Size(150, 22);
-            this.cmbProveedor.TabIndex = 12;
+            this.cmbProveedor.TabIndex = 3;
             this.cmbProveedor.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label11
@@ -325,14 +326,14 @@
             this.txtCodigoBusqueda.Location = new System.Drawing.Point(21, 34);
             this.txtCodigoBusqueda.Name = "txtCodigoBusqueda";
             this.txtCodigoBusqueda.Size = new System.Drawing.Size(72, 21);
-            this.txtCodigoBusqueda.TabIndex = 4;
+            this.txtCodigoBusqueda.TabIndex = 1;
             // 
             // txtNombreBusqueda
             // 
             this.txtNombreBusqueda.Location = new System.Drawing.Point(99, 34);
             this.txtNombreBusqueda.Name = "txtNombreBusqueda";
             this.txtNombreBusqueda.Size = new System.Drawing.Size(127, 21);
-            this.txtNombreBusqueda.TabIndex = 3;
+            this.txtNombreBusqueda.TabIndex = 2;
             // 
             // btnBuscar
             // 
@@ -341,7 +342,7 @@
             this.btnBuscar.Location = new System.Drawing.Point(449, 30);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(189, 50);
-            this.btnBuscar.TabIndex = 2;
+            this.btnBuscar.TabIndex = 8;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);

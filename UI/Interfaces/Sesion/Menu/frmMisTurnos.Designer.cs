@@ -109,7 +109,7 @@
             this.btnCancelarTurno.Location = new System.Drawing.Point(17, 263);
             this.btnCancelarTurno.Name = "btnCancelarTurno";
             this.btnCancelarTurno.Size = new System.Drawing.Size(119, 33);
-            this.btnCancelarTurno.TabIndex = 27;
+            this.btnCancelarTurno.TabIndex = 7;
             this.btnCancelarTurno.Text = "Cancelar";
             this.btnCancelarTurno.UseVisualStyleBackColor = false;
             this.btnCancelarTurno.Click += new System.EventHandler(this.btnCancelarTurno_Click);
@@ -127,7 +127,7 @@
             this.dgvDetalleTurno.Location = new System.Drawing.Point(6, 20);
             this.dgvDetalleTurno.Name = "dgvDetalleTurno";
             this.dgvDetalleTurno.Size = new System.Drawing.Size(145, 175);
-            this.dgvDetalleTurno.TabIndex = 0;
+            this.dgvDetalleTurno.TabIndex = 6;
             this.dgvDetalleTurno.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalleTurno_CellContentClick);
             // 
             // groupBox4
@@ -214,7 +214,7 @@
             this.btnMesAnterior.Location = new System.Drawing.Point(17, 106);
             this.btnMesAnterior.Name = "btnMesAnterior";
             this.btnMesAnterior.Size = new System.Drawing.Size(32, 27);
-            this.btnMesAnterior.TabIndex = 34;
+            this.btnMesAnterior.TabIndex = 2;
             this.btnMesAnterior.Text = "<";
             this.btnMesAnterior.UseVisualStyleBackColor = true;
             this.btnMesAnterior.Click += new System.EventHandler(this.btnMesAnterior_Click);
@@ -233,7 +233,7 @@
             this.btnMesSiguiente.Location = new System.Drawing.Point(162, 106);
             this.btnMesSiguiente.Name = "btnMesSiguiente";
             this.btnMesSiguiente.Size = new System.Drawing.Size(32, 27);
-            this.btnMesSiguiente.TabIndex = 33;
+            this.btnMesSiguiente.TabIndex = 3;
             this.btnMesSiguiente.Text = ">";
             this.btnMesSiguiente.UseVisualStyleBackColor = true;
             this.btnMesSiguiente.Click += new System.EventHandler(this.btnMesSiguiente_Click);
@@ -260,7 +260,7 @@
             this.dataGridViewHorarios.Location = new System.Drawing.Point(14, 20);
             this.dataGridViewHorarios.Name = "dataGridViewHorarios";
             this.dataGridViewHorarios.Size = new System.Drawing.Size(189, 336);
-            this.dataGridViewHorarios.TabIndex = 24;
+            this.dataGridViewHorarios.TabIndex = 5;
             this.dataGridViewHorarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewHorarios_CellContentClick);
             // 
             // groupBox1
@@ -278,7 +278,7 @@
             this.ucCalendario.Location = new System.Drawing.Point(3, 17);
             this.ucCalendario.Name = "ucCalendario";
             this.ucCalendario.Size = new System.Drawing.Size(477, 313);
-            this.ucCalendario.TabIndex = 0;
+            this.ucCalendario.TabIndex = 4;
             this.ucCalendario.Load += new System.EventHandler(this.ucCalendario_Load);
             this.ucCalendario.Click += new System.EventHandler(this.ucCalendario_Click);
             // 
@@ -289,7 +289,7 @@
             this.btnAgendarNuevoTurno.Location = new System.Drawing.Point(733, 59);
             this.btnAgendarNuevoTurno.Name = "btnAgendarNuevoTurno";
             this.btnAgendarNuevoTurno.Size = new System.Drawing.Size(151, 42);
-            this.btnAgendarNuevoTurno.TabIndex = 30;
+            this.btnAgendarNuevoTurno.TabIndex = 1;
             this.btnAgendarNuevoTurno.Text = "Agendar nuevo turno";
             this.btnAgendarNuevoTurno.UseVisualStyleBackColor = true;
             this.btnAgendarNuevoTurno.Click += new System.EventHandler(this.btnAgendarNuevoTurno_Click);

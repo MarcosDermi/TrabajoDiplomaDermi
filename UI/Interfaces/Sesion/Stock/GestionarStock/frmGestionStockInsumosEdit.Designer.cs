@@ -78,7 +78,7 @@
             this.dtpFechaVencimiento.Location = new System.Drawing.Point(417, 40);
             this.dtpFechaVencimiento.Name = "dtpFechaVencimiento";
             this.dtpFechaVencimiento.Size = new System.Drawing.Size(133, 21);
-            this.dtpFechaVencimiento.TabIndex = 31;
+            this.dtpFechaVencimiento.TabIndex = 5;
             // 
             // label14
             // 
@@ -97,7 +97,7 @@
             this.cmbPresentacion.Location = new System.Drawing.Point(224, 44);
             this.cmbPresentacion.Name = "cmbPresentacion";
             this.cmbPresentacion.Size = new System.Drawing.Size(72, 21);
-            this.cmbPresentacion.TabIndex = 29;
+            this.cmbPresentacion.TabIndex = 3;
             // 
             // label13
             // 
@@ -116,7 +116,7 @@
             this.cmbCategorias.Location = new System.Drawing.Point(21, 90);
             this.cmbCategorias.Name = "cmbCategorias";
             this.cmbCategorias.Size = new System.Drawing.Size(161, 21);
-            this.cmbCategorias.TabIndex = 27;
+            this.cmbCategorias.TabIndex = 6;
             this.cmbCategorias.SelectedIndexChanged += new System.EventHandler(this.cmbCategorias_SelectedIndexChanged);
             // 
             // label12
@@ -136,7 +136,7 @@
             this.cmbProveedores.Location = new System.Drawing.Point(302, 43);
             this.cmbProveedores.Name = "cmbProveedores";
             this.cmbProveedores.Size = new System.Drawing.Size(109, 21);
-            this.cmbProveedores.TabIndex = 25;
+            this.cmbProveedores.TabIndex = 4;
             // 
             // label11
             // 
@@ -161,21 +161,21 @@
             this.txtCodigo.Location = new System.Drawing.Point(15, 44);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(72, 21);
-            this.txtCodigo.TabIndex = 22;
+            this.txtCodigo.TabIndex = 1;
             // 
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(93, 44);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(127, 21);
-            this.txtNombre.TabIndex = 21;
+            this.txtNombre.TabIndex = 2;
             // 
             // txtStock
             // 
             this.txtStock.Location = new System.Drawing.Point(15, 33);
             this.txtStock.Name = "txtStock";
             this.txtStock.Size = new System.Drawing.Size(111, 21);
-            this.txtStock.TabIndex = 33;
+            this.txtStock.TabIndex = 8;
             // 
             // groupBox1
             // 
@@ -204,7 +204,7 @@
             this.chkAlertaStockMinimo.Location = new System.Drawing.Point(10, 23);
             this.chkAlertaStockMinimo.Name = "chkAlertaStockMinimo";
             this.chkAlertaStockMinimo.Size = new System.Drawing.Size(118, 17);
-            this.chkAlertaStockMinimo.TabIndex = 37;
+            this.chkAlertaStockMinimo.TabIndex = 9;
             this.chkAlertaStockMinimo.Text = "Alerta stock minimo";
             this.chkAlertaStockMinimo.UseVisualStyleBackColor = true;
             this.chkAlertaStockMinimo.CheckedChanged += new System.EventHandler(this.chkAlertaStockMinimo_CheckedChanged);
@@ -215,7 +215,7 @@
             this.txtStockMinimoAlerta.Location = new System.Drawing.Point(137, 33);
             this.txtStockMinimoAlerta.Name = "txtStockMinimoAlerta";
             this.txtStockMinimoAlerta.Size = new System.Drawing.Size(91, 21);
-            this.txtStockMinimoAlerta.TabIndex = 37;
+            this.txtStockMinimoAlerta.TabIndex = 10;
             this.txtStockMinimoAlerta.Text = "0";
             // 
             // btnCrearInsumo
@@ -224,7 +224,7 @@
             this.btnCrearInsumo.Location = new System.Drawing.Point(337, 257);
             this.btnCrearInsumo.Name = "btnCrearInsumo";
             this.btnCrearInsumo.Size = new System.Drawing.Size(231, 47);
-            this.btnCrearInsumo.TabIndex = 36;
+            this.btnCrearInsumo.TabIndex = 14;
             this.btnCrearInsumo.Text = "Guardar";
             this.btnCrearInsumo.UseVisualStyleBackColor = false;
             this.btnCrearInsumo.Click += new System.EventHandler(this.btnCrearInsumo_Click);
@@ -252,7 +252,8 @@
             this.txtPrecioCompra.Location = new System.Drawing.Point(6, 31);
             this.txtPrecioCompra.Name = "txtPrecioCompra";
             this.txtPrecioCompra.Size = new System.Drawing.Size(90, 21);
-            this.txtPrecioCompra.TabIndex = 39;
+            this.txtPrecioCompra.TabIndex = 11;
+            this.txtPrecioCompra.Text = "0";
             this.txtPrecioCompra.Leave += new System.EventHandler(this.txtPrecioCompra_Leave);
             // 
             // label5
@@ -269,7 +270,7 @@
             this.txtDescuento.Location = new System.Drawing.Point(132, 31);
             this.txtDescuento.Name = "txtDescuento";
             this.txtDescuento.Size = new System.Drawing.Size(48, 21);
-            this.txtDescuento.TabIndex = 41;
+            this.txtDescuento.TabIndex = 12;
             this.txtDescuento.Text = "0";
             this.txtDescuento.Leave += new System.EventHandler(this.txtDescuento_Leave);
             // 
@@ -288,7 +289,7 @@
             this.txtPrecioFinal.Location = new System.Drawing.Point(223, 31);
             this.txtPrecioFinal.Name = "txtPrecioFinal";
             this.txtPrecioFinal.Size = new System.Drawing.Size(90, 21);
-            this.txtPrecioFinal.TabIndex = 43;
+            this.txtPrecioFinal.TabIndex = 13;
             // 
             // groupBox2
             // 
@@ -343,7 +344,7 @@
             this.cmbSubCategorias.Location = new System.Drawing.Point(189, 90);
             this.cmbSubCategorias.Name = "cmbSubCategorias";
             this.cmbSubCategorias.Size = new System.Drawing.Size(205, 21);
-            this.cmbSubCategorias.TabIndex = 51;
+            this.cmbSubCategorias.TabIndex = 7;
             // 
             // groupBox4
             // 

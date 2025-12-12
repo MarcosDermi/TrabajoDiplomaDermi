@@ -63,7 +63,7 @@ namespace UI.Interfaces.Sesion.Reporteria
             this.cmbTipoReporte.Location = new System.Drawing.Point(30, 32);
             this.cmbTipoReporte.Name = "cmbTipoReporte";
             this.cmbTipoReporte.Size = new System.Drawing.Size(150, 23);
-            this.cmbTipoReporte.TabIndex = 0;
+            this.cmbTipoReporte.TabIndex = 1;
             // 
             // dtpDesde
             // 
@@ -71,7 +71,7 @@ namespace UI.Interfaces.Sesion.Reporteria
             this.dtpDesde.Location = new System.Drawing.Point(14, 36);
             this.dtpDesde.Name = "dtpDesde";
             this.dtpDesde.Size = new System.Drawing.Size(200, 22);
-            this.dtpDesde.TabIndex = 1;
+            this.dtpDesde.TabIndex = 3;
             // 
             // dtpHasta
             // 
@@ -79,7 +79,7 @@ namespace UI.Interfaces.Sesion.Reporteria
             this.dtpHasta.Location = new System.Drawing.Point(14, 77);
             this.dtpHasta.Name = "dtpHasta";
             this.dtpHasta.Size = new System.Drawing.Size(200, 22);
-            this.dtpHasta.TabIndex = 2;
+            this.dtpHasta.TabIndex = 4;
             // 
             // btnGenerar
             // 
@@ -90,7 +90,7 @@ namespace UI.Interfaces.Sesion.Reporteria
             this.btnGenerar.Location = new System.Drawing.Point(30, 61);
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Size = new System.Drawing.Size(150, 35);
-            this.btnGenerar.TabIndex = 3;
+            this.btnGenerar.TabIndex = 2;
             this.btnGenerar.Text = "Generar";
             this.btnGenerar.UseVisualStyleBackColor = false;
             this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
@@ -108,6 +108,7 @@ namespace UI.Interfaces.Sesion.Reporteria
             this.dgvResultados.ReadOnly = true;
             this.dgvResultados.Size = new System.Drawing.Size(732, 278);
             this.dgvResultados.TabIndex = 4;
+            this.dgvResultados.TabStop = false;
             // 
             // label1
             // 
@@ -204,7 +205,7 @@ namespace UI.Interfaces.Sesion.Reporteria
             this.btnExportar.Location = new System.Drawing.Point(302, 471);
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(150, 35);
-            this.btnExportar.TabIndex = 10;
+            this.btnExportar.TabIndex = 5;
             this.btnExportar.Text = "Exportar a Excel";
             this.btnExportar.UseVisualStyleBackColor = false;
             this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
@@ -226,6 +227,7 @@ namespace UI.Interfaces.Sesion.Reporteria
             this.ChartReport.Series.Add(series1);
             this.ChartReport.Size = new System.Drawing.Size(732, 300);
             this.ChartReport.TabIndex = 11;
+            this.ChartReport.TabStop = false;
             this.ChartReport.Text = "chart1";
             // 
             // frmReporteria

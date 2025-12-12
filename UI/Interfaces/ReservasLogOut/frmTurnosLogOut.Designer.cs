@@ -147,6 +147,7 @@
             // 
             this.cmbProfesional.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProfesional.FormattingEnabled = true;
+            this.cmbProfesional.ItemHeight = 13;
             this.cmbProfesional.Location = new System.Drawing.Point(16, 43);
             this.cmbProfesional.Name = "cmbProfesional";
             this.cmbProfesional.Size = new System.Drawing.Size(150, 21);

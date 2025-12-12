@@ -40,7 +40,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(35, 190);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(90, 30);
-            this.btnGuardar.TabIndex = 5;
+            this.btnGuardar.TabIndex = 2;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnAceptar_Click);
@@ -53,7 +53,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(145, 190);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(90, 30);
-            this.btnCancelar.TabIndex = 6;
+            this.btnCancelar.TabIndex = 3;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -64,7 +64,7 @@
             this.chkJornadasProfesional.Location = new System.Drawing.Point(35, 53);
             this.chkJornadasProfesional.Name = "chkJornadasProfesional";
             this.chkJornadasProfesional.Size = new System.Drawing.Size(200, 116);
-            this.chkJornadasProfesional.TabIndex = 9;
+            this.chkJornadasProfesional.TabIndex = 1;
             // 
             // frmJornadaLaboralEdit
             // 

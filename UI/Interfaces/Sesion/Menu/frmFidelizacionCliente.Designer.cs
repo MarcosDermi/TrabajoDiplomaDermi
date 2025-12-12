@@ -131,7 +131,7 @@
             0});
             this.numPuntosCanje.Name = "numPuntosCanje";
             this.numPuntosCanje.Size = new System.Drawing.Size(120, 25);
-            this.numPuntosCanje.TabIndex = 2;
+            this.numPuntosCanje.TabIndex = 1;
             this.numPuntosCanje.Value = new decimal(new int[] {
             10,
             0,
@@ -158,7 +158,7 @@
             this.btnAplicarDescuento.Location = new System.Drawing.Point(400, 50);
             this.btnAplicarDescuento.Name = "btnAplicarDescuento";
             this.btnAplicarDescuento.Size = new System.Drawing.Size(150, 35);
-            this.btnAplicarDescuento.TabIndex = 4;
+            this.btnAplicarDescuento.TabIndex = 2;
             this.btnAplicarDescuento.Text = "Aplicar descuento";
             this.btnAplicarDescuento.UseVisualStyleBackColor = false;
             this.btnAplicarDescuento.Click += new System.EventHandler(this.btnAplicarDescuento_Click);
@@ -173,7 +173,7 @@
             this.dgvHistorial.Name = "dgvHistorial";
             this.dgvHistorial.ReadOnly = true;
             this.dgvHistorial.Size = new System.Drawing.Size(580, 200);
-            this.dgvHistorial.TabIndex = 0;
+            this.dgvHistorial.TabIndex = 4;
             // 
             // lblHistorial
             // 
@@ -195,7 +195,7 @@
             this.dgvPendientes.Name = "dgvPendientes";
             this.dgvPendientes.ReadOnly = true;
             this.dgvPendientes.Size = new System.Drawing.Size(580, 110);
-            this.dgvPendientes.TabIndex = 7;
+            this.dgvPendientes.TabIndex = 3;
             // 
             // label1
             // 

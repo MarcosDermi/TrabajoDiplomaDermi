@@ -54,7 +54,7 @@
             this.rbTarjDebito.Location = new System.Drawing.Point(15, 67);
             this.rbTarjDebito.Name = "rbTarjDebito";
             this.rbTarjDebito.Size = new System.Drawing.Size(108, 17);
-            this.rbTarjDebito.TabIndex = 25;
+            this.rbTarjDebito.TabIndex = 3;
             this.rbTarjDebito.Text = "Tarjeta de debito";
             this.rbTarjDebito.UseVisualStyleBackColor = true;
             // 
@@ -64,7 +64,7 @@
             this.rbTarjCredito.Location = new System.Drawing.Point(15, 44);
             this.rbTarjCredito.Name = "rbTarjCredito";
             this.rbTarjCredito.Size = new System.Drawing.Size(111, 17);
-            this.rbTarjCredito.TabIndex = 24;
+            this.rbTarjCredito.TabIndex = 2;
             this.rbTarjCredito.Text = "Tarjeta de credito";
             this.rbTarjCredito.UseVisualStyleBackColor = true;
             // 
@@ -74,7 +74,7 @@
             this.rbEfectivo.Location = new System.Drawing.Point(15, 21);
             this.rbEfectivo.Name = "rbEfectivo";
             this.rbEfectivo.Size = new System.Drawing.Size(64, 17);
-            this.rbEfectivo.TabIndex = 23;
+            this.rbEfectivo.TabIndex = 1;
             this.rbEfectivo.Text = "Efectivo";
             this.rbEfectivo.UseVisualStyleBackColor = true;
             // 
@@ -87,7 +87,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(12, 122);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(153, 35);
-            this.btnGuardar.TabIndex = 29;
+            this.btnGuardar.TabIndex = 4;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);

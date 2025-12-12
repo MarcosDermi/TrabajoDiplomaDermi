@@ -71,7 +71,7 @@
             this.btnCrearInsumo.Location = new System.Drawing.Point(28, 393);
             this.btnCrearInsumo.Name = "btnCrearInsumo";
             this.btnCrearInsumo.Size = new System.Drawing.Size(350, 25);
-            this.btnCrearInsumo.TabIndex = 3;
+            this.btnCrearInsumo.TabIndex = 8;
             this.btnCrearInsumo.Text = "Agregar";
             this.btnCrearInsumo.UseVisualStyleBackColor = false;
             this.btnCrearInsumo.Click += new System.EventHandler(this.btnCrearInsumo_Click);
@@ -105,7 +105,7 @@
             this.chkMostrarTodosLosInsumos.Location = new System.Drawing.Point(428, 87);
             this.chkMostrarTodosLosInsumos.Name = "chkMostrarTodosLosInsumos";
             this.chkMostrarTodosLosInsumos.Size = new System.Drawing.Size(93, 17);
-            this.chkMostrarTodosLosInsumos.TabIndex = 21;
+            this.chkMostrarTodosLosInsumos.TabIndex = 8;
             this.chkMostrarTodosLosInsumos.Text = "Mostrar todos";
             this.chkMostrarTodosLosInsumos.UseVisualStyleBackColor = true;
             this.chkMostrarTodosLosInsumos.CheckedChanged += new System.EventHandler(this.chkMostrarTodosLosInsumos_CheckedChanged);
@@ -126,7 +126,7 @@
             this.cmbSubCategoria.Location = new System.Drawing.Point(122, 83);
             this.cmbSubCategoria.Name = "cmbSubCategoria";
             this.cmbSubCategoria.Size = new System.Drawing.Size(104, 21);
-            this.cmbSubCategoria.TabIndex = 18;
+            this.cmbSubCategoria.TabIndex = 5;
             // 
             // label14
             // 
@@ -144,7 +144,7 @@
             this.cmbPresentacion.Location = new System.Drawing.Point(232, 83);
             this.cmbPresentacion.Name = "cmbPresentacion";
             this.cmbPresentacion.Size = new System.Drawing.Size(104, 21);
-            this.cmbPresentacion.TabIndex = 16;
+            this.cmbPresentacion.TabIndex = 6;
             // 
             // label13
             // 
@@ -162,7 +162,7 @@
             this.cmbCategoria.Location = new System.Drawing.Point(12, 83);
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(104, 21);
-            this.cmbCategoria.TabIndex = 14;
+            this.cmbCategoria.TabIndex = 4;
             // 
             // label12
             // 
@@ -180,7 +180,7 @@
             this.cmbProveedor.Location = new System.Drawing.Point(232, 34);
             this.cmbProveedor.Name = "cmbProveedor";
             this.cmbProveedor.Size = new System.Drawing.Size(150, 21);
-            this.cmbProveedor.TabIndex = 12;
+            this.cmbProveedor.TabIndex = 3;
             // 
             // label11
             // 
@@ -205,14 +205,14 @@
             this.txtCodigoBusqueda.Location = new System.Drawing.Point(21, 34);
             this.txtCodigoBusqueda.Name = "txtCodigoBusqueda";
             this.txtCodigoBusqueda.Size = new System.Drawing.Size(72, 21);
-            this.txtCodigoBusqueda.TabIndex = 4;
+            this.txtCodigoBusqueda.TabIndex = 1;
             // 
             // txtNombreBusqueda
             // 
             this.txtNombreBusqueda.Location = new System.Drawing.Point(99, 34);
             this.txtNombreBusqueda.Name = "txtNombreBusqueda";
             this.txtNombreBusqueda.Size = new System.Drawing.Size(127, 21);
-            this.txtNombreBusqueda.TabIndex = 3;
+            this.txtNombreBusqueda.TabIndex = 2;
             // 
             // btnBuscar
             // 
@@ -221,7 +221,7 @@
             this.btnBuscar.Location = new System.Drawing.Point(428, 29);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(189, 50);
-            this.btnBuscar.TabIndex = 2;
+            this.btnBuscar.TabIndex = 7;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
@@ -250,6 +250,7 @@
             this.dgvResultadoBusqueda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvResultadoBusqueda.Size = new System.Drawing.Size(664, 243);
             this.dgvResultadoBusqueda.TabIndex = 0;
+            this.dgvResultadoBusqueda.TabStop = false;
             // 
             // frmGestionarServiciosBusquedaInsumo
             // 

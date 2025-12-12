@@ -1,12 +1,7 @@
 ﻿using BE;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UI.Interfaces.Sesion.Stock.GestionarStock
@@ -39,8 +34,8 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
             cmbSubCategorias.DisplayMember = "SubcategoriaNombre";
             cmbSubCategorias.ValueMember = "CategoriaID";
             cmbSubCategorias.DataSource = GestionStockService.OrdenarSubcategoriasPorCategoria(_oDtSubcategorias, cmbCategorias.SelectedValue.ToString());
-        
-            if(insumoID != 0)
+
+            if (insumoID != 0)
             {
                 CargarInsumo(insumoID);
             }
@@ -91,13 +86,21 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
 
         private void txtDescuento_Leave(object sender, EventArgs e)
         {
-            if (!ValidatorsService.validarDecimal(txtDescuento.Text))
+            try
             {
-                txtDescuento.Text = "0";
-                MessageBox.Show("El valor del descuento debe ser en formato decimal. Por ejemplo: 50 o 0,50", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                if (!ValidatorsService.validarDecimal(txtDescuento.Text) || string.IsNullOrEmpty(txtDescuento.Text))
+                {
+                    txtDescuento.Text = "0";
+                    MessageBox.Show("El valor del descuento debe ser en formato decimal. Por ejemplo: 50 o 0,50", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             ;
-            txtPrecioFinal.Text = PrecioTotalCalculado(Convert.ToDecimal(txtPrecioCompra.Text), Convert.ToDecimal(txtDescuento.Text)).ToString();
+                txtPrecioFinal.Text = PrecioTotalCalculado(Convert.ToDecimal(txtPrecioCompra.Text), Convert.ToDecimal(txtDescuento.Text)).ToString();
+            }
+            catch (Exception Ex)
+            {
+                MostrarMensajeError(Ex.Message);
+            }
         }
 
         private decimal PrecioTotalCalculado(decimal PrecioCompra, decimal Descuento)
@@ -109,6 +112,12 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
         {
             try
             {
+                if (!ValidatorsService.validarDecimal(txtPrecioCompra.Text) || string.IsNullOrEmpty(txtPrecioCompra.Text))
+                {
+                    MessageBox.Show("El precio de compra debe ser en formato decimal. Por ejemplo: 1500 o 1500,50 y no debe quedar vacio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 txtPrecioFinal.Text = PrecioTotalCalculado(Convert.ToDecimal(txtPrecioCompra.Text), Convert.ToDecimal(txtDescuento.Text)).ToString();
             }
             catch (Exception Ex)
@@ -127,7 +136,7 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
                     return;
                 }
 
-                if(dtpFechaVencimiento.Value <= DateTime.Now)
+                if (dtpFechaVencimiento.Value <= DateTime.Now)
                 {
                     MessageBox.Show("La fecha de vencimiento debe ser mayor a la fecha actual.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -175,7 +184,7 @@ namespace UI.Interfaces.Sesion.Stock.GestionarStock
 
                 var oDtProveedor = GestionStockService.ObtenerProveedores(true);
 
-                foreach( DataRow oDr in oDtProveedor.AsEnumerable())
+                foreach (DataRow oDr in oDtProveedor.AsEnumerable())
                 {
                     if ((int)oDr["ProveedorID"] == oBEInsumo.Proveedor.IdProveedor)
                     {

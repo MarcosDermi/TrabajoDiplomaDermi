@@ -121,6 +121,7 @@
             this.dgvInsumosServicios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvInsumosServicios.Size = new System.Drawing.Size(350, 302);
             this.dgvInsumosServicios.TabIndex = 0;
+            this.dgvInsumosServicios.TabStop = false;
             // 
             // groupBox6
             // 
@@ -186,6 +187,7 @@
             this.dgvServiciosProfesional.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvServiciosProfesional.Size = new System.Drawing.Size(350, 302);
             this.dgvServiciosProfesional.TabIndex = 0;
+            this.dgvServiciosProfesional.TabStop = false;
             this.dgvServiciosProfesional.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvServiciosProfesional_CellContentClick);
             // 
             // groupBox3
@@ -234,7 +236,7 @@
             this.chkVerServicios.Location = new System.Drawing.Point(90, 50);
             this.chkVerServicios.Name = "chkVerServicios";
             this.chkVerServicios.Size = new System.Drawing.Size(157, 17);
-            this.chkVerServicios.TabIndex = 14;
+            this.chkVerServicios.TabIndex = 2;
             this.chkVerServicios.Text = "Mostrar todos los servicios.";
             this.chkVerServicios.UseVisualStyleBackColor = true;
             this.chkVerServicios.CheckedChanged += new System.EventHandler(this.chkVerServicios_CheckedChanged);
@@ -255,7 +257,7 @@
             this.cmbProfesional.Location = new System.Drawing.Point(90, 21);
             this.cmbProfesional.Name = "cmbProfesional";
             this.cmbProfesional.Size = new System.Drawing.Size(156, 21);
-            this.cmbProfesional.TabIndex = 12;
+            this.cmbProfesional.TabIndex = 1;
             this.cmbProfesional.SelectedIndexChanged += new System.EventHandler(this.cmbProfesional_SelectedIndexChanged);
             // 
             // btnEliminarServicio

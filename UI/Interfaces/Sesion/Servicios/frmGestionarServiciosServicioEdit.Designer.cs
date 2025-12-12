@@ -87,7 +87,7 @@
             this.chkLstProfesional.Location = new System.Drawing.Point(6, 27);
             this.chkLstProfesional.Name = "chkLstProfesional";
             this.chkLstProfesional.Size = new System.Drawing.Size(137, 84);
-            this.chkLstProfesional.TabIndex = 27;
+            this.chkLstProfesional.TabIndex = 5;
             // 
             // label1
             // 
@@ -103,7 +103,7 @@
             this.txtBuffer.Location = new System.Drawing.Point(201, 87);
             this.txtBuffer.Name = "txtBuffer";
             this.txtBuffer.Size = new System.Drawing.Size(71, 21);
-            this.txtBuffer.TabIndex = 55;
+            this.txtBuffer.TabIndex = 4;
             // 
             // label9
             // 
@@ -119,14 +119,14 @@
             this.txtDuracion.Location = new System.Drawing.Point(201, 40);
             this.txtDuracion.Name = "txtDuracion";
             this.txtDuracion.Size = new System.Drawing.Size(71, 21);
-            this.txtDuracion.TabIndex = 53;
+            this.txtDuracion.TabIndex = 3;
             // 
             // txtPrecio
             // 
             this.txtPrecio.Location = new System.Drawing.Point(18, 87);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(77, 21);
-            this.txtPrecio.TabIndex = 37;
+            this.txtPrecio.TabIndex = 2;
             // 
             // label7
             // 
@@ -142,7 +142,7 @@
             this.txtNombre.Location = new System.Drawing.Point(18, 40);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(127, 21);
-            this.txtNombre.TabIndex = 21;
+            this.txtNombre.TabIndex = 1;
             // 
             // label11
             // 
@@ -159,7 +159,7 @@
             this.btnCrearInsumo.Location = new System.Drawing.Point(153, 408);
             this.btnCrearInsumo.Name = "btnCrearInsumo";
             this.btnCrearInsumo.Size = new System.Drawing.Size(231, 47);
-            this.btnCrearInsumo.TabIndex = 48;
+            this.btnCrearInsumo.TabIndex = 8;
             this.btnCrearInsumo.Text = "Guardar";
             this.btnCrearInsumo.UseVisualStyleBackColor = false;
             this.btnCrearInsumo.Click += new System.EventHandler(this.btnCrearInsumo_Click);
@@ -182,7 +182,7 @@
             this.btnEliminarInsumoAgregado.Location = new System.Drawing.Point(15, 194);
             this.btnEliminarInsumoAgregado.Name = "btnEliminarInsumoAgregado";
             this.btnEliminarInsumoAgregado.Size = new System.Drawing.Size(112, 30);
-            this.btnEliminarInsumoAgregado.TabIndex = 53;
+            this.btnEliminarInsumoAgregado.TabIndex = 7;
             this.btnEliminarInsumoAgregado.Text = "Eliminar Insumo";
             this.btnEliminarInsumoAgregado.UseVisualStyleBackColor = false;
             this.btnEliminarInsumoAgregado.Click += new System.EventHandler(this.btnEliminarInsumoAgregado_Click);
@@ -193,7 +193,7 @@
             this.btnAgregarInsumo.Location = new System.Drawing.Point(394, 20);
             this.btnAgregarInsumo.Name = "btnAgregarInsumo";
             this.btnAgregarInsumo.Size = new System.Drawing.Size(112, 30);
-            this.btnAgregarInsumo.TabIndex = 52;
+            this.btnAgregarInsumo.TabIndex = 6;
             this.btnAgregarInsumo.Text = "Agregar insumo";
             this.btnAgregarInsumo.UseVisualStyleBackColor = false;
             this.btnAgregarInsumo.Click += new System.EventHandler(this.btnAgregarInsumo_Click);

@@ -110,7 +110,7 @@
             this.btnCancelarTurno.Location = new System.Drawing.Point(17, 322);
             this.btnCancelarTurno.Name = "btnCancelarTurno";
             this.btnCancelarTurno.Size = new System.Drawing.Size(119, 33);
-            this.btnCancelarTurno.TabIndex = 27;
+            this.btnCancelarTurno.TabIndex = 4;
             this.btnCancelarTurno.Text = "Cancelar";
             this.btnCancelarTurno.UseVisualStyleBackColor = false;
             this.btnCancelarTurno.Click += new System.EventHandler(this.btnCancelarTurno_Click);
@@ -122,7 +122,7 @@
             this.btnAtendido.Location = new System.Drawing.Point(6, 283);
             this.btnAtendido.Name = "btnAtendido";
             this.btnAtendido.Size = new System.Drawing.Size(145, 33);
-            this.btnAtendido.TabIndex = 26;
+            this.btnAtendido.TabIndex = 3;
             this.btnAtendido.Text = "Atendido";
             this.btnAtendido.UseVisualStyleBackColor = true;
             this.btnAtendido.Click += new System.EventHandler(this.btnAtendido_Click);
@@ -227,7 +227,7 @@
             this.btnMesAnterior.Location = new System.Drawing.Point(15, 51);
             this.btnMesAnterior.Name = "btnMesAnterior";
             this.btnMesAnterior.Size = new System.Drawing.Size(32, 30);
-            this.btnMesAnterior.TabIndex = 34;
+            this.btnMesAnterior.TabIndex = 5;
             this.btnMesAnterior.Text = "<";
             this.btnMesAnterior.UseVisualStyleBackColor = true;
             this.btnMesAnterior.Click += new System.EventHandler(this.btnMesAnterior_Click);
@@ -246,7 +246,7 @@
             this.btnMesSiguiente.Location = new System.Drawing.Point(160, 51);
             this.btnMesSiguiente.Name = "btnMesSiguiente";
             this.btnMesSiguiente.Size = new System.Drawing.Size(32, 30);
-            this.btnMesSiguiente.TabIndex = 33;
+            this.btnMesSiguiente.TabIndex = 6;
             this.btnMesSiguiente.Text = ">";
             this.btnMesSiguiente.UseVisualStyleBackColor = true;
             this.btnMesSiguiente.Click += new System.EventHandler(this.btnMesSiguiente_Click);
@@ -273,7 +273,7 @@
             this.dataGridViewHorarios.Location = new System.Drawing.Point(14, 20);
             this.dataGridViewHorarios.Name = "dataGridViewHorarios";
             this.dataGridViewHorarios.Size = new System.Drawing.Size(189, 336);
-            this.dataGridViewHorarios.TabIndex = 24;
+            this.dataGridViewHorarios.TabIndex = 2;
             this.dataGridViewHorarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewHorarios_CellContentClick);
             // 
             // groupBox1
@@ -291,7 +291,7 @@
             this.ucCalendario.Location = new System.Drawing.Point(3, 17);
             this.ucCalendario.Name = "ucCalendario";
             this.ucCalendario.Size = new System.Drawing.Size(477, 316);
-            this.ucCalendario.TabIndex = 0;
+            this.ucCalendario.TabIndex = 1;
             this.ucCalendario.Load += new System.EventHandler(this.ucCalendario_Load);
             this.ucCalendario.Click += new System.EventHandler(this.ucCalendario_Click);
             // 
