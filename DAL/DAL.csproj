@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".bak\12-10-2025\TrabajoDiplomaLocal.bak" />
+    <None Include=".bak\12-12-2025\TrabajoDiplomaLocal.bak" />
     <None Include=".bak\13-11-2025\TrabajoDiplomaLocal.bak" />
     <None Include=".bak\14-11-2025\TrabajoDiplomaLocal.bak" />
     <None Include=".bak\28-11-2025\TrabajoDiplomaLocal.bak" />
